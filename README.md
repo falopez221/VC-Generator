@@ -68,13 +68,13 @@ El proyecto incluye `.openai/hosting.json` y salida ESM compatible con el hostin
 
 1. Subí el repositorio a GitHub, GitLab o Bitbucket.
 2. En Vercel, creá un proyecto e importá el repositorio.
-3. Usá `npm install` como instalación y `npm run build` como build.
+3. El archivo `vercel.json` selecciona Next.js y ejecuta `npm run build:vercel`.
 4. No se requieren variables de entorno para esta versión.
 5. Antes de publicar, reemplazá `SITE_URL` en `src/config/site.ts` por el dominio final.
 
 ### Netlify o servidor Node
 
-Configurá el runtime de Node 22+, `npm run build` como build y `npm run start` como comando de servidor. Verificá la compatibilidad del adaptador con Next/Vinext del proveedor elegido.
+Configurá el runtime de Node 22+. Para un servidor compatible con el adaptador principal usá `npm run build` y `npm run start`; para un runtime Next.js estándar usá `npm run build:vercel` y `npm run start:next`.
 
 ## Mejoras futuras
 

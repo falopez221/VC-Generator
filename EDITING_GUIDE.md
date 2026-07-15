@@ -88,6 +88,6 @@ npm run start
 
 1. Publicá el proyecto en un repositorio Git.
 2. Importalo desde Vercel.
-3. Mantené `npm install` y `npm run build`.
+3. Vercel leerá `vercel.json` y ejecutará `npm run build:vercel`.
 4. Cambiá `SITE_URL` por el dominio definitivo.
 5. Desplegá y verificá `/sitemap.xml`, `/robots.txt` y la descarga del PDF.

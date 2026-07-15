@@ -5,7 +5,7 @@ import { SectionHeading } from "@/src/components/ui/SectionHeading";
 import { BLUE_OCEAN_FACTORS, ERRC, FRAMEWORK_GROUPS } from "@/src/content/frameworks";
 
 export function StrategyLab() {
-  const [curve, setCurve] = useState(BLUE_OCEAN_FACTORS.map((item) => item.concept));
+  const [curve, setCurve] = useState<number[]>(BLUE_OCEAN_FACTORS.map((item) => item.concept));
 
   return (
     <section className="section section--paper" id="frameworks">
