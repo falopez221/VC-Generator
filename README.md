@@ -1,6 +1,6 @@
-# Venture Intelligence
+# Venture Intelligence OS™
 
-Sitio institucional interactivo para presentar Venture Intelligence OS: una arquitectura conceptual multiagente aplicada al descubrimiento, modelado y evaluación de oportunidades de venture.
+Sitio institucional interactivo para presentar Venture Intelligence OS™: una arquitectura conceptual multiagente aplicada al descubrimiento, modelado y evaluación de oportunidades de venture.
 
 El whitepaper estratégico v1.0 está integrado en la narrativa del sitio y disponible en `public/documents/venture-intelligence-whitepaper.pdf`.
 

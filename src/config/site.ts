@@ -4,7 +4,7 @@
  * Ningún componente debería contener URLs escritas directamente.
  */
 
-export const PROJECT_NAME = "Venture Intelligence OS";
+export const PROJECT_NAME = "Venture Intelligence OS™";
 export const PROJECT_TAGLINE = "De tesis dispersas a decisiones trazables.";
 export const PROJECT_DESCRIPTION =
   "Arquitectura conceptual multiagente para descubrir, modelar y evaluar oportunidades de inversión con evidencia, simulación y supervisión humana.";
