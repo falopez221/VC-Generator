@@ -6,7 +6,7 @@ export function UseCasesBusiness() {
     <section className="section section--paper" id="casos">
       <div className="container">
         <SectionHeading
-          eyebrow="09 · Casos de uso"
+          eyebrow="10 · Casos de uso"
           title="Una arquitectura, distintos puntos de entrada."
           description="La propuesta no reemplaza el proceso de cada institución: se integra en el tramo donde el costo de coordinación o incertidumbre es mayor."
         />

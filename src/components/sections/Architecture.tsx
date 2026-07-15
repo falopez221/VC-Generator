@@ -6,9 +6,9 @@ export function Architecture() {
     <section className="section section--paper" id="arquitectura">
       <div className="container">
         <SectionHeading
-          eyebrow="03 · Arquitectura conceptual"
-          title="Capas separadas para razonar, observar y gobernar."
-          description="La arquitectura reduce acoplamiento: los agentes pueden evolucionar sin mezclar experiencia de usuario, conocimiento, simulación y controles institucionales."
+          eyebrow="04 · Arquitectura conceptual"
+          title="Seis planos para razonar, observar y gobernar."
+          description="Los veinte agentes son responsabilidades lógicas. El MVP los consolida en seis runtimes y sólo separa procesos cuando mejoran calidad, independencia, seguridad o costo."
         />
         <div className="architecture-layout">
           <div className="layer-stack" aria-label="Arquitectura de software por capas">
@@ -29,7 +29,7 @@ export function Architecture() {
           </aside>
         </div>
         <div className="architecture-principles">
-          <span>MODULAR</span><span>FAULT-TOLERANT</span><span>AUDITABLE</span><span>SCALABLE</span><span>HUMAN-GOVERNED</span>
+          <span>6 RUNTIMES MVP</span><span>20 ROLES LÓGICOS</span><span>DAG EVENT-DRIVEN</span><span>READ-ONLY DEFAULT</span><span>HUMAN-IN-COMMAND</span>
         </div>
       </div>
     </section>

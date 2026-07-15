@@ -10,6 +10,8 @@ import { ModelingEvaluation } from "@/src/components/sections/ModelingEvaluation
 import { UseCasesBusiness } from "@/src/components/sections/UseCasesBusiness";
 import { RoadmapRisks } from "@/src/components/sections/RoadmapRisks";
 import { FinalCta } from "@/src/components/sections/FinalCta";
+import { WhitepaperInsights } from "@/src/components/sections/WhitepaperInsights";
+import { WhitepaperSection } from "@/src/components/sections/WhitepaperSection";
 
 export default function Home() {
   return (
@@ -19,6 +21,7 @@ export default function Home() {
       <main id="contenido">
         <Hero />
         <ProblemSolution />
+        <WhitepaperInsights />
         <Architecture />
         <AgentExplorer />
         <DecisionPipeline />
@@ -26,6 +29,7 @@ export default function Home() {
         <ModelingEvaluation />
         <UseCasesBusiness />
         <RoadmapRisks />
+        <WhitepaperSection />
         <FinalCta />
       </main>
       <Footer />

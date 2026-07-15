@@ -12,7 +12,7 @@ export function AgentExplorer() {
     <section className="section section--ink" id="agentes">
       <div className="container">
         <SectionHeading
-          eyebrow="04 · Arquitectura multiagente"
+          eyebrow="05 · Arquitectura multiagente"
           title="Especialistas coordinados. Límites explícitos."
           description="Seleccioná un agente para inspeccionar su propósito, sus entregas, las dependencias que activa y los controles que limitan su actuación."
         />

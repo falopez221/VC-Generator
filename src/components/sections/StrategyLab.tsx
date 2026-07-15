@@ -11,7 +11,7 @@ export function StrategyLab() {
     <section className="section section--paper" id="frameworks">
       <div className="container">
         <SectionHeading
-          eyebrow="06 · Frameworks estratégicos"
+          eyebrow="07 · Frameworks estratégicos"
           title="Los frameworks no son checklists. Son lentes con entregas concretas."
           description="Cada marco entra al pipeline para reducir una clase distinta de incertidumbre y dejar un artefacto que otro agente pueda cuestionar."
         />

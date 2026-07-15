@@ -8,7 +8,7 @@ export function RoadmapRisks() {
       <section className="section section--light" id="roadmap">
         <div className="container">
           <SectionHeading
-            eyebrow="10 · Roadmap"
+            eyebrow="11 · Roadmap"
             title="Validar capacidad antes de construir plataforma."
             description="La secuencia reduce riesgo técnico, operativo e institucional. Cada fase agrega controles y alcance solo después de aprender del flujo anterior."
           />
@@ -26,7 +26,7 @@ export function RoadmapRisks() {
       <section className="section section--ink" id="riesgos">
         <div className="container">
           <SectionHeading
-            eyebrow="11 · Riesgos y limitaciones"
+            eyebrow="12 · Riesgos y limitaciones"
             title="La credibilidad empieza donde termina la automatización."
             description="Un sistema serio documenta sus límites, diseña controles proporcionales y facilita la intervención cuando la evidencia o el modelo no alcanzan."
           />

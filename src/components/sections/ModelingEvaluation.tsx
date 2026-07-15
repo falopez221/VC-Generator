@@ -9,7 +9,7 @@ export function ModelingEvaluation() {
       <section className="section section--navy" id="modelado">
         <div className="container">
           <SectionHeading
-            eyebrow="07 · Modelado matemático"
+            eyebrow="08 · Modelado matemático"
             title="Modelar rangos. Explicar sensibilidad. Evitar falsa precisión."
             description="La matemática estructura incertidumbre y trade-offs. Sus resultados se presentan como escenarios conceptuales hasta que datos calibrados permitan afirmar más."
           />
@@ -42,7 +42,7 @@ export function ModelingEvaluation() {
       <section className="section section--light" id="evaluacion">
         <div className="container">
           <SectionHeading
-            eyebrow="08 · Sistema de evaluación"
+            eyebrow="09 · Sistema de evaluación"
             title="Un score no es una respuesta. Es una interfaz para discutir evidencia."
             description="La evaluación combina dimensiones, confianza, hipótesis y objeciones. Ningún agregado oculta qué datos faltan o quién debe decidir."
           />

@@ -1,8 +1,8 @@
 # Venture Intelligence
 
-Sitio institucional interactivo para presentar una arquitectura conceptual multiagente aplicada al descubrimiento, modelado y evaluación de oportunidades de venture.
+Sitio institucional interactivo para presentar Venture Intelligence OS: una arquitectura conceptual multiagente aplicada al descubrimiento, modelado y evaluación de oportunidades de venture.
 
-> Nota de contenido: el PDF maestro mencionado en el encargo no fue incluido entre los archivos recibidos. Por eso el sitio utiliza únicamente conceptos expresos del brief, identifica los datos demostrativos y mantiene deshabilitada la descarga hasta incorporar el whitepaper real.
+El whitepaper estratégico v1.0 está integrado en la narrativa del sitio y disponible en `public/documents/venture-intelligence-whitepaper.pdf`.
 
 ## Stack
 
@@ -78,7 +78,6 @@ Configurá el runtime de Node 22+. Para un servidor compatible con el adaptador 
 
 ## Mejoras futuras
 
-- Incorporar y sintetizar el whitepaper maestro.
 - Calibrar visualizaciones con datos autorizados.
 - Añadir CMS o editor para equipos no técnicos.
 - Implementar fuentes, retrieval y agentes reales en un producto separado.

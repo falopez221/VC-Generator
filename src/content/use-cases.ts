@@ -10,10 +10,10 @@ export const USE_CASES = [
 ] as const;
 
 export const BUSINESS_MODEL = [
-  { label: "Clientes", value: "Fondos, venture studios, CVC y equipos institucionales de innovación." },
-  { label: "Valor", value: "Más amplitud analítica, memoria institucional y decisiones explicables." },
-  { label: "Ingresos", value: "SaaS, licencias enterprise, API, pilotos y servicios de análisis." },
-  { label: "Entrada", value: "Pilotos acotados sobre un flujo concreto y criterios acordados." },
-  { label: "Expansión", value: "Integraciones, módulos sectoriales, memoria y simulación avanzada." },
-  { label: "Defensibilidad", value: "Workflow, trazabilidad, datos propios autorizados y aprendizaje operativo." },
+  { label: "Analyst Workspace", value: "Research, clasificación, memos, scorecards y evidencia; suscripción por equipo más uso." },
+  { label: "Venture Studio Lab", value: "Generación, simulación y experimentos; contrato anual más módulos cuantitativos." },
+  { label: "Enterprise Governed", value: "RBAC, SSO, private data, políticas y auditoría; licencia e implementación." },
+  { label: "API / Modules", value: "Deduplicación, ranking, evidence graph, quant o Red Team; consumo y mínimo anual." },
+  { label: "Wedge recomendado", value: "Screening y memo trazable en un dominio estrecho, no generación masiva como feature aislada." },
+  { label: "Moat potencial", value: "Outcome data, calibración por dominio, workflow integrado, ontología, seguridad y confianza." },
 ] as const;

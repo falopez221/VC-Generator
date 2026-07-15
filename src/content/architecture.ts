@@ -1,9 +1,10 @@
 export const ARCHITECTURE_LAYERS = [
-  { layer: "Experiencia", modules: ["Workspace", "Explorador", "Memos", "Comité"] },
-  { layer: "Orquestación", modules: ["Planner", "Routing", "Presupuestos", "Human gates"] },
-  { layer: "Inteligencia", modules: ["Agentes", "Retrieval", "Simulación", "Evaluación"] },
-  { layer: "Conocimiento", modules: ["Fuentes", "Memoria", "Embeddings", "Taxonomías"] },
-  { layer: "Confianza", modules: ["Observabilidad", "Auditoría", "Seguridad", "Gobierno"] },
+  { layer: "Interfaz y gobierno", modules: ["Tesis", "Aprobaciones", "Disenso", "Kill switch"] },
+  { layer: "Orquestación y control", modules: ["DAG", "Routing", "Presupuestos", "Políticas"] },
+  { layer: "Plano de agentes", modules: ["Descubrimiento", "Técnica", "Economía", "Riesgo"] },
+  { layer: "Laboratorio cuantitativo", modules: ["Modelos", "Monte Carlo", "Juegos", "Optimización"] },
+  { layer: "Datos, evidencia y memoria", modules: ["Fuentes", "RAG", "Ontología", "Procedencia"] },
+  { layer: "Seguridad y observabilidad", modules: ["Guardrails", "Evals", "Trazas", "Auditoría"] },
 ] as const;
 
 export const VALUE_TRANSFORMATION = [
