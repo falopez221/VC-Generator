@@ -235,6 +235,17 @@ export function LabDemo() {
         {AGENT_NAMES.map((name, index) => <div key={name}><span>0{index + 1}</span><strong>{name}</strong><small>Public structured agent</small></div>)}
       </section>
 
+      <section className="lab-howto" aria-labelledby="lab-howto-title">
+        <div className="lab-panel-heading"><div><p className="lab-kicker">HOW TO USE THE LAB</p><h2 id="lab-howto-title">From a question to a human decision.</h2></div><span>Four steps · approximately one minute</span></div>
+        <ol className="lab-howto-steps">
+          <li><span>01</span><div><strong>Define the boundary</strong><p>Describe the problem, thesis, market, technology, customer and constraints. Use a preset or replace every field with your own words.</p></div></li>
+          <li><span>02</span><div><strong>Run the public model</strong><p>Choose 6–12 opportunities and a seed. Identical inputs and seed reproduce the same synthetic result.</p></div></li>
+          <li><span>03</span><div><strong>Read signals together</strong><p>Never read score alone. Compare evidence, risk, uncertainty and agent disagreement before opening an opportunity.</p></div></li>
+          <li><span>04</span><div><strong>Stress-test and decide</strong><p>Change assumptions, compare up to three finalists, request evidence and record a human review state.</p></div></li>
+        </ol>
+        <p className="lab-howto-note"><strong>What changes when you edit text?</strong> Names, problems, solutions and agent reports use your context. Quantitative values are driven mainly by the visible controls and seed because this public demo uses deterministic rules, not a language model.</p>
+      </section>
+
       <section className="lab-intake">
         <div className="lab-panel-heading"><div><p className="lab-kicker">HUMAN INTAKE</p><h2>Define the exploration boundary.</h2></div><span>Synthetic demonstration data · inputs remain in this browser</span></div>
         <div className="lab-example-row">{Object.keys(EXAMPLES).map((name) => <button type="button" key={name} onClick={() => loadExample(name)}>Load {name}</button>)}<button type="button" onClick={() => { setInput(EMPTY_INPUT); reset(); }}>Clear</button></div>
@@ -269,6 +280,24 @@ export function LabDemo() {
         <section className="lab-dashboard" aria-label="Executive overview">
           <div className="lab-panel-heading"><div><p className="lab-kicker">EXECUTIVE OVERVIEW</p><h2>{run.input.analysisName}</h2></div><div className="lab-export"><a href={`/lab/results/${run.id}`}>Open result view</a><button type="button" onClick={exportJson}>Export JSON</button><button type="button" onClick={exportCsv}>Export CSV</button><button type="button" onClick={() => window.print()}>Print</button></div></div>
           {metrics && <div className="lab-metrics"><Metric label="Generated" value={run.opportunities.length} tooltip="Reduced public sample, not the complete architecture." /><Metric label="Average score" value={metrics.score} tooltip="Demonstrative weighted public score." /><Metric label="Average evidence" value={`${metrics.evidence}%`} tooltip="Synthetic and user-provided evidence quality estimate." /><Metric label="Average risk" value={`${metrics.risk}%`} tooltip="Visible probability/impact proxy, not a forecast." /><Metric label="Uncertainty" value={`${metrics.uncertainty}%`} tooltip="Public uncertainty from evidence, risk and disagreement." /><Metric label="Agent disagreement" value={metrics.disagreement} tooltip="Standard deviation across four public agent scores." /><Metric label="Pending review" value={metrics.pending} tooltip="Opportunities without a final human state." /></div>}
+          <details className="lab-reading-guide" open>
+            <summary>How to read this dashboard</summary>
+            <div className="lab-reading-grid">
+              <article><span>SCORE</span><strong>Comparative priority, not success probability.</strong><p>Higher means stronger under the current visible assumptions. A 70 does not mean a 70% chance of success.</p></article>
+              <article><span>EVIDENCE</span><strong>How much support the estimate has.</strong><p>Higher is better. A strong score with weak evidence should trigger validation, not confidence.</p></article>
+              <article><span>RISK</span><strong>Lower is preferable, but context matters.</strong><p>Open the risk matrix to inspect probability, impact, uncertainty and proposed mitigation.</p></article>
+              <article><span>UNCERTAINTY</span><strong>How unstable the conclusion may be.</strong><p>High uncertainty means plausible input changes can materially alter the result or its ranking.</p></article>
+              <article><span>AGENT DISAGREEMENT</span><strong>Difference between specialist views.</strong><p>A high value is a review signal: inspect each agent instead of averaging away the conflict.</p></article>
+              <article><span>CATEGORY & RANK</span><strong>Conditional labels, not approvals.</strong><p>Rank compares the current set. Categories are gated by evidence and uncertainty; arrows show movement after recalculation.</p></article>
+            </div>
+            <ol className="lab-reading-sequence">
+              <li><span>1</span>Scan score, evidence, risk and uncertainty together.</li>
+              <li><span>2</span>Open the opportunity and inspect the four agents.</li>
+              <li><span>3</span>Change weights, scenarios or evidence and watch the ranking move.</li>
+              <li><span>4</span>Compare finalists and record the human decision.</li>
+            </ol>
+            <p className="lab-reading-rule"><strong>Recommended pattern:</strong> prioritize opportunities that combine a stronger score, stronger evidence, manageable risk and lower uncertainty. If those signals conflict, request more evidence before deciding.</p>
+          </details>
           <div className="lab-funnel" aria-label="Public opportunity funnel">{[[run.opportunities.length + 2, "Initial"], [2, "Duplicates removed"], [run.opportunities.length, "First filter"], [run.opportunities.length, "Agent analysis"], [run.opportunities.length, "Quantitative Lab"], [Math.min(3, run.opportunities.length), "Finalists"], [metrics?.pending ?? 0, "Human review"]].map(([value, label], index) => <div key={String(label)} style={{ width: `${100 - index * 7}%` }}><strong>{value}</strong><span>{label}</span></div>)}</div>
         </section>
 

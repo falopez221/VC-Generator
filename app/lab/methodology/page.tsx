@@ -18,10 +18,17 @@ export default function MethodologyPage() {
         <article><span>HUMAN GATE</span><h2>Recommendation is not approval.</h2><p>Save, compare, request evidence, mark promising, uncertain or reject. No action invests, funds, deploys or executes a company.</p></article>
         <article><span>EARLY TECHNICAL SUPPORT</span><h2>MCPs are evidence artifacts, not company execution.</h2><p>An MCP specification or limited prototype may help validate technical feasibility. It does not replace product engineering, founders, operations, sales or governance.</p></article>
       </section>
+      <section className="lab-section lab-section--reading"><header><p className="lab-kicker">DASHBOARD READING</p><h2>Interpret a pattern of signals, not a single number.</h2><p>Start with the comparative score, then test whether evidence, risk, uncertainty and specialist agreement support the same conclusion.</p></header><div className="lab-reading-grid">
+        <article><span>SCORE</span><strong>Relative priority</strong><p>A weighted comparison under current assumptions. It is not a probability of startup success.</p></article>
+        <article><span>EVIDENCE</span><strong>Support quality</strong><p>High scores with weak evidence require validation before they deserve confidence.</p></article>
+        <article><span>RISK</span><strong>Exposure profile</strong><p>Read probability, impact, uncertainty and mitigation together. Lower is generally preferable.</p></article>
+        <article><span>UNCERTAINTY</span><strong>Conclusion stability</strong><p>Higher values mean reasonable assumption changes may materially alter the conclusion.</p></article>
+        <article><span>DISAGREEMENT</span><strong>Specialist conflict</strong><p>Inspect each agent when their scores diverge; disagreement is information, not an error.</p></article>
+        <article><span>HUMAN REVIEW</span><strong>Final governance gate</strong><p>Compare, request evidence, mark promising, uncertain or reject. No score approves an investment.</p></article>
+      </div></section>
       <section className="lab-section lab-section--dark"><header><p className="lab-kicker">DEMONSTRATIVE MODELS</p><h2>Visible mechanics and explicit limits.</h2></header><div className="lab-model-list">{models.map(([name, copy]) => <article key={name}><h3>{name}</h3><p>{copy}</p><small>Public formula · synthetic or user-provided inputs · no private calibration</small></article>)}</div></section>
       <section className="lab-warning"><strong>Investment limitation</strong><p>This laboratory produces model-based estimates from assumptions and synthetic or user-provided data. It does not constitute investment advice and does not predict startup success.</p></section>
       <section className="lab-warning"><strong>Intellectual-property boundary</strong><p>This public lab demonstrates only a limited part of the broader Venture Governance architecture. The complete local system, extended agent network, proprietary orchestration logic and private quantitative models are not included.</p></section>
     </main>
   );
 }
-

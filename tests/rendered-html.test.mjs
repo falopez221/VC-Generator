@@ -30,6 +30,16 @@ test("public demo exposes only the four allowed public agents", async () => {
   assert.doesNotMatch(html, /Tokenomics Agent|Red Team Agent|Investment Committee Agent/i);
   assert.match(html, /Public demonstration model/i);
   assert.match(html, /synthetic data/i);
+  assert.match(html, /How to use the Lab/i);
+  assert.match(html, /Never read score alone/i);
+});
+
+test("methodology explains how to interpret dashboard results", async () => {
+  const response = await render("/lab/methodology");
+  const html = await response.text();
+  assert.match(html, /Dashboard reading/i);
+  assert.match(html, /not a probability of startup success/i);
+  assert.match(html, /No score approves an investment/i);
 });
 
 test("Lab audio has no autoplay markup", async () => {
