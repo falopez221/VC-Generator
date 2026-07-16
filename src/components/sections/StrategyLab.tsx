@@ -70,7 +70,7 @@ export function StrategyLab() {
               <div>Actor A coopera</div><strong>3 · 3<small>equilibrio</small></strong><strong>−1 · 4<small>free-riding</small></strong>
               <div>Actor A desvía</div><strong>4 · −1<small>captura</small></strong><strong>0 · 0<small>bloqueo</small></strong>
             </div>
-            <p>Los pagos son ilustrativos: sirven para exponer estrategias, colusión, ataques y fallas de coordinación.</p>
+            <p>Los pagos son ilustrativos: sirven para exponer estrategias, coordinación, presiones y fricciones entre actores.</p>
           </article>
         </div>
       </div>

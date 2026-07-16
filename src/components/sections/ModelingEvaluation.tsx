@@ -1,5 +1,6 @@
 import { SectionHeading } from "@/src/components/ui/SectionHeading";
 import { ALGORITHMS, MATH_MODELS, SCORE_DIMENSIONS } from "@/src/content/models";
+import { MathPriorityLab } from "@/src/components/sections/MathPriorityLab";
 
 const distribution = [12, 18, 28, 41, 58, 76, 92, 100, 94, 82, 64, 44, 28, 17, 9];
 
@@ -10,7 +11,7 @@ export function ModelingEvaluation() {
         <div className="container">
           <SectionHeading
             eyebrow="08 · Modelado matemático"
-            title="Modelar rangos. Explicar sensibilidad. Evitar falsa precisión."
+            title="Modelar rangos. Explicar sensibilidad. Evitar precisión aparente."
             description="La matemática estructura incertidumbre y trade-offs. Sus resultados se presentan como escenarios conceptuales hasta que datos calibrados permitan afirmar más."
           />
           <div className="model-dashboard">
@@ -20,7 +21,7 @@ export function ModelingEvaluation() {
                 {distribution.map((value, index) => <i key={index} style={{ height: `${value}%` }} />)}
                 <span className="p10">P10</span><span className="p90">P90</span>
               </div>
-              <div className="scenario-row"><span><i />Adverso <strong>18</strong></span><span><i />Base <strong>54</strong></span><span><i />Expansivo <strong>87</strong></span></div>
+              <div className="scenario-row"><span><i />Conservador <strong>18</strong></span><span><i />Base <strong>54</strong></span><span><i />Expansivo <strong>87</strong></span></div>
             </div>
             <div className="pareto-card">
               <div className="card-top"><div><span>Frontera de Pareto</span><strong>RIESGO / RETORNO</strong></div></div>
@@ -36,6 +37,7 @@ export function ModelingEvaluation() {
               <article key={model.name}><span>0{index + 1}</span><h3>{model.name}</h3><p>{model.purpose}</p><small>ENTREGA · {model.output}</small></article>
             ))}
           </div>
+          <MathPriorityLab />
         </div>
       </section>
 

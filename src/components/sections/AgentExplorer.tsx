@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { AGENTS, AGENT_GROUPS } from "@/src/content/agents";
 import { SectionHeading } from "@/src/components/ui/SectionHeading";
+import { AgentDiagram } from "@/src/components/sections/AgentDiagram";
 
 export function AgentExplorer() {
   const [selectedId, setSelectedId] = useState("orchestrator");
@@ -16,8 +17,14 @@ export function AgentExplorer() {
           title="Especialistas coordinados. Límites explícitos."
           description="Seleccioná un agente para inspeccionar su propósito, sus entregas, las dependencias que activa y los controles que limitan su actuación."
         />
+        <div className="agent-guide" aria-label="Cómo usar el explorador de agentes">
+          <div><span>01</span><strong>Elegí un agente</strong><p>Hacé clic en cualquier nodo del mapa.</p></div>
+          <div><span>02</span><strong>Leé sus relaciones</strong><p>El borde azul señala dependencias directas.</p></div>
+          <div><span>03</span><strong>Inspeccioná la ficha</strong><p>Entradas, entregas, métricas y límite de actuación.</p></div>
+        </div>
         <div className="agent-workbench">
           <div className="agent-map" role="list" aria-label="Agentes agrupados por función">
+            <p className="map-stage-label">MAPA INTERACTIVO · SELECCIONÁ UN NODO</p>
             <div className="map-orchestrator">
               <button
                 className={selectedId === "orchestrator" ? "agent-node is-selected" : "agent-node"}
@@ -51,9 +58,10 @@ export function AgentExplorer() {
                 </div>
               ))}
             </div>
-            <div className="map-legend"><span><i className="selected-key" /> Seleccionado</span><span><i className="connected-key" /> Dependencia directa</span></div>
+            <div className="map-legend"><span><i className="selected-key" /> Nodo seleccionado</span><span><i className="connected-key" /> Conexión directa con el seleccionado</span></div>
           </div>
           <aside className="agent-detail" aria-live="polite">
+            <p className="detail-guide">FICHA DEL NODO SELECCIONADO</p>
             <div className="agent-detail-top"><span>{selected.group}</span><span>{selected.phase}</span></div>
             <p className="detail-index">AGENT / {String(AGENTS.indexOf(selected) + 1).padStart(2, "0")}</p>
             <h3>{selected.name}</h3>
@@ -71,6 +79,7 @@ export function AgentExplorer() {
             <div className="agent-limit"><span>Límite de actuación</span><p>{selected.limits}</p></div>
           </aside>
         </div>
+        <AgentDiagram />
       </div>
     </section>
   );

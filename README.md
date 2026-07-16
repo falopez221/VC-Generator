@@ -51,7 +51,7 @@ public/documents/       Ubicación del whitepaper
 - Contenido y URLs desacoplados de la presentación.
 - Diagramas HTML/CSS progresivos: funcionan sin WebGL, reducen consumo y respetan `prefers-reduced-motion`.
 - Estado cliente limitado a navegación, explorador de agentes y curva de valor editable.
-- Ejemplos cuantitativos etiquetados como conceptuales para evitar falsa precisión.
+- Ejemplos cuantitativos etiquetados como conceptuales para evitar precisión aparente.
 - Gates humanos visibles en arquitectura, pipeline y scorecard.
 
 ## Personalización

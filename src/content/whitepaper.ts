@@ -32,7 +32,7 @@ export const OPERATING_FUNNEL = [
   { value: "700", label: "familias únicas" },
   { value: "200", label: "puerta básica" },
   { value: "60", label: "análisis profundos" },
-  { value: "15", label: "simulación + Red Team" },
+  { value: "15", label: "simulación + revisión crítica" },
   { value: "5", label: "experimentos" },
   { value: "1–3", label: "decisiones humanas" },
 ] as const;
@@ -47,7 +47,7 @@ export const WHITEPAPER_DOMAINS = [
 export const WHITEPAPER_META = {
   version: "1.0",
   date: "Julio de 2026",
-  pages: 56,
+  pages: 57,
   chapters: 16,
   northStar: "Maximizar la reducción de incertidumbre relevante por unidad de tiempo, costo y riesgo, preservando la decisión humana.",
 } as const;

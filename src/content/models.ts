@@ -24,5 +24,5 @@ export const ALGORITHMS = [
   { task: "Ranking", method: "MCDA + calibración + MMR", tradeoff: "Relevancia / exploración" },
   { task: "Simulación", method: "Monte Carlo + modelos bayesianos", tradeoff: "Fidelidad / costo" },
   { task: "Asignación", method: "Colas por prioridad + caché + paralelismo", tradeoff: "Profundidad / presupuesto" },
-  { task: "Control", method: "Anomalías + evaluación cruzada + auditoría", tradeoff: "Sensibilidad / falsos positivos" },
+  { task: "Control", method: "Anomalías + evaluación cruzada + auditoría", tradeoff: "Sensibilidad / alertas incorrectas" },
 ] as const;

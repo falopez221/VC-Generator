@@ -4,7 +4,7 @@ export const USE_CASES = [
   { audience: "Corporate Venture Capital", use: "Conectar señales externas con capacidades y prioridades internas.", shift: "De radar aislado a opciones estratégicas comparables." },
   { audience: "Bancos y Private Equity", use: "Estructurar investigación sectorial y riesgos de transformación.", shift: "De screening manual a análisis asistido y auditable." },
   { audience: "Aceleradoras e incubadoras", use: "Detectar brechas y diseñar rutas de validación por cohorte.", shift: "De mentoría genérica a evidencia por hipótesis." },
-  { audience: "Fintech y protocolos DeFi", use: "Probar incentivos, gobernanza y vectores de ataque económico.", shift: "De tokenomics estática a escenarios adversariales." },
+  { audience: "Fintech y protocolos DeFi", use: "Probar incentivos, gobernanza y puntos de presión económica.", shift: "De tokenomics estática a escenarios de resistencia." },
   { audience: "Equipos de innovación", use: "Administrar señales, oportunidades y experimentos con un lenguaje común.", shift: "De backlog de ideas a cartera de incertidumbre." },
   { audience: "Consultoras y laboratorios", use: "Acelerar síntesis sin perder fuentes, supuestos ni disenso.", shift: "De entregable final a proceso reproducible." },
 ] as const;

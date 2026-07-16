@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { NAVIGATION, PROJECT_NAME, WHITEPAPER_AVAILABLE } from "@/src/config/site";
 import { useActiveSection } from "@/src/hooks/use-active-section";
+import { SoundController } from "@/src/components/ui/SoundController";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -50,6 +51,7 @@ export function Header() {
           })}
           {!WHITEPAPER_AVAILABLE && <span className="nav-status">PDF pendiente</span>}
         </nav>
+        <SoundController />
       </div>
     </header>
   );

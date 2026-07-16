@@ -15,7 +15,7 @@ export const WHITEPAPER_URL = "/documents/venture-intelligence-whitepaper.pdf";
 export const WHITEPAPER_AVAILABLE = true;
 
 // Reemplazá estos datos de contacto antes de publicar.
-export const CONTACT_EMAIL = "reemplazar@ejemplo.com";
+export const CONTACT_EMAIL = "franciscoariellopez22@gmail.com";
 export const CONTACT_URL = "#contacto";
 export const LINKEDIN_URL = "#contacto";
 export const DEMO_URL = "#arquitectura";
