@@ -1,84 +1,83 @@
-# Venture Intelligence OS™
+# Venture Governance System™
 
-Sitio institucional interactivo para presentar Venture Intelligence OS™: una arquitectura conceptual multiagente aplicada al descubrimiento, modelado y evaluación de oportunidades de venture.
+Sitio institucional y demostración pública limitada de Venture Governance System™. La portada explica la arquitectura conceptual; el Public Lab permite explorar oportunidades sintéticas con cuatro agentes visibles —Mathematics, Finance, Strategy y Marketing— y modelos cuantitativos demostrativos.
 
-El whitepaper estratégico v1.0 está integrado en la narrativa del sitio y disponible en `public/documents/venture-intelligence-whitepaper.pdf`.
+## Rutas principales
+
+- `/`: landing institucional y whitepaper.
+- `/lab`: alcance de la demostración pública.
+- `/lab/demo`: simulación interactiva reproducible por semilla.
+- `/lab/results/[id]`: resultado guardado localmente.
+- `/lab/methodology`: metodología, supuestos y limitaciones.
+
+## Qué incluye el Public Lab
+
+- Generación determinista de 6 a 12 oportunidades sintéticas.
+- MCDA normalizado, Monte Carlo, sensibilidad, actualización bayesiana, escenarios, matriz de riesgo y frente de Pareto.
+- Comparación de hasta tres oportunidades, decisiones humanas y evidencia adicional.
+- Persistencia únicamente en `localStorage`, exportación JSON/CSV e impresión.
+- Sonido opcional después de una interacción del usuario, con volumen configurable.
+
+Los resultados no son predicciones ni asesoramiento de inversión. La arquitectura completa, los agentes internos, los prompts, el scoring propietario, las fuentes privadas y la ejecución a escala no forman parte de este repositorio público.
 
 ## Stack
 
-- Next.js con App Router y React.
-- TypeScript estricto.
-- Tailwind CSS 4 disponible mediante PostCSS; sistema visual principal centralizado en tokens CSS.
-- Vinext/Vite para desarrollo rápido y despliegue compatible con Sites/Cloudflare Workers.
-- Componentes interactivos nativos, sin librerías de gráficos o 3D innecesarias.
+- Next.js 16 App Router, React 19 y TypeScript estricto.
+- Vinext/Vite para Sites/Cloudflare Workers.
+- HTML, CSS y SVG nativos para las visualizaciones; sin dependencias de gráficos.
+- Motor matemático local y determinista, sin llamadas externas.
 
-## Requisitos
+## Desarrollo
 
-- Node.js 22.13 o superior.
-- npm 10 o superior.
-
-## Instalación y ejecución
+Requiere Node.js 22.13 o superior.
 
 ```bash
 npm install
 npm run dev
 ```
 
-Abrí la URL local informada en la terminal. Para producción:
+No se requieren variables de entorno para la demo. `.env.example` reserva únicamente nombres para una futura integración de servidor; nunca deben exponerse claves en el cliente.
+
+## Validación
 
 ```bash
+npm run typecheck
 npm run lint
+npm test
 npm run build
-npm run start
+npm run build:vercel
 ```
+
+`npm test` ejecuta pruebas unitarias del motor y pruebas de integración de las rutas renderizadas.
 
 ## Estructura
 
 ```text
-app/                    Rutas, layout, metadata, sitemap y robots
-src/components/         UI, layout y secciones
-src/config/site.ts      Todos los enlaces, identidad y metadata
-src/content/            Agentes, pipeline, modelos, casos, roadmap y riesgos
-src/hooks/              Comportamientos reutilizables
-src/styles/site.css     Tokens y sistema visual responsive
-public/documents/       Ubicación del whitepaper
-.openai/hosting.json    Configuración de hosting
+app/                         Rutas, layouts, metadata, sitemap y robots
+app/lab/                     Rutas del Public Lab
+src/lab/                     Motor, modelos, esquema, persistencia, audio y UI
+src/styles/lab.css           Sistema visual responsive del Lab
+src/components/              Landing institucional
+src/config/site.ts           Identidad, URLs y navegación
+docs/public-lab*.md          Arquitectura, modelos, límites y audio
+public/documents/            Whitepaper público
+.openai/hosting.json         Proyecto de Sites existente
+AGENTS.md                    Reglas de alcance y protección de IP
 ```
 
-## Decisiones arquitectónicas
+## Integración futura con modelos de lenguaje
 
-- Una sola narrativa vertical para que un inversor entienda el sistema sin navegar entre rutas.
-- Contenido y URLs desacoplados de la presentación.
-- Diagramas HTML/CSS progresivos: funcionan sin WebGL, reducen consumo y respetan `prefers-reduced-motion`.
-- Estado cliente limitado a navegación, explorador de agentes y curva de valor editable.
-- Ejemplos cuantitativos etiquetados como conceptuales para evitar precisión aparente.
-- Gates humanos visibles en arquitectura, pipeline y scorecard.
+`src/lab/llm-provider.ts` define una interfaz desacoplada. Una implementación futura debe ejecutarse exclusivamente en servidor, validar sus respuestas contra el esquema público, aplicar límites de uso y mantener prompts y credenciales fuera del navegador. El modo determinista actual debe seguir disponible como fallback auditable.
 
-## Personalización
+## Documentación
 
-Consultá [EDITING_GUIDE.md](./EDITING_GUIDE.md). Los cambios habituales se hacen en `src/config/site.ts`, `src/content/` y `src/styles/site.css`.
+- [Alcance y uso](./docs/public-lab.md)
+- [Arquitectura](./docs/public-lab-architecture.md)
+- [Modelos matemáticos](./docs/public-lab-models.md)
+- [Limitaciones](./docs/public-lab-limitations.md)
+- [Audio](./docs/public-lab-audio.md)
+- [Guía de edición](./EDITING_GUIDE.md)
 
 ## Despliegue
 
-### Sites / Cloudflare
-
-El proyecto incluye `.openai/hosting.json` y salida ESM compatible con el hosting administrado de Sites.
-
-### Vercel
-
-1. Subí el repositorio a GitHub, GitLab o Bitbucket.
-2. En Vercel, creá un proyecto e importá el repositorio.
-3. El archivo `vercel.json` selecciona Next.js y ejecuta `npm run build:vercel`.
-4. No se requieren variables de entorno para esta versión.
-5. Antes de publicar, reemplazá `SITE_URL` en `src/config/site.ts` por el dominio final.
-
-### Netlify o servidor Node
-
-Configurá el runtime de Node 22+. Para un servidor compatible con el adaptador principal usá `npm run build` y `npm run start`; para un runtime Next.js estándar usá `npm run build:vercel` y `npm run start:next`.
-
-## Mejoras futuras
-
-- Calibrar visualizaciones con datos autorizados.
-- Añadir CMS o editor para equipos no técnicos.
-- Implementar fuentes, retrieval y agentes reales en un producto separado.
-- Realizar pruebas de usuario y auditoría WCAG formal.
+El proyecto está vinculado a Sites mediante `.openai/hosting.json`. Para Vercel, `vercel.json` usa `npm run build:vercel`. La demo no necesita base de datos ni servicios externos.

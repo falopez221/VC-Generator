@@ -18,7 +18,7 @@ export const WHITEPAPER_AVAILABLE = true;
 export const CONTACT_EMAIL = "franciscoariellopez22@gmail.com";
 export const CONTACT_URL = "#contacto";
 export const LINKEDIN_URL = "#contacto";
-export const DEMO_URL = "#arquitectura";
+export const DEMO_URL = "/lab/demo";
 export const GITHUB_URL = "#contacto";
 export const CALENDAR_URL = "#contacto";
 
@@ -33,18 +33,11 @@ export const FOOTER_TEXT =
   "Sistema conceptual de apoyo a decisiones. No constituye asesoramiento financiero ni reemplaza el criterio de un comité de inversión.";
 
 export const NAVIGATION = [
-  { label: "Visión", href: "#vision" },
-  { label: "Problema", href: "#problema" },
-  { label: "Solución", href: "#solucion" },
-  { label: "Arquitectura", href: "#arquitectura" },
-  { label: "Agentes", href: "#agentes" },
-  { label: "Metodología", href: "#metodologia" },
-  { label: "Modelado", href: "#modelado" },
-  { label: "Evaluación", href: "#evaluacion" },
-  { label: "Casos de uso", href: "#casos" },
-  { label: "Roadmap", href: "#roadmap" },
-  { label: "Whitepaper", href: "#whitepaper", disabled: !WHITEPAPER_AVAILABLE },
-  { label: "Contacto", href: CONTACT_URL },
+  { label: "Home", href: "/" },
+  { label: "Architecture", href: "/#arquitectura" },
+  { label: "Methodology", href: "/lab/methodology" },
+  { label: "Whitepaper", href: "/#whitepaper", disabled: !WHITEPAPER_AVAILABLE },
+  { label: "Lab", href: "/lab" },
 ] as const;
 
 export const SITE_LINKS = {

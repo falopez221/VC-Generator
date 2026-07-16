@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import { NAVIGATION, PROJECT_NAME, WHITEPAPER_AVAILABLE } from "@/src/config/site";
 import { useActiveSection } from "@/src/hooks/use-active-section";
 import { SoundController } from "@/src/components/ui/SoundController";
@@ -8,7 +9,7 @@ import { SoundController } from "@/src/components/ui/SoundController";
 export function Header() {
   const [open, setOpen] = useState(false);
   const sectionIds = useMemo(
-    () => NAVIGATION.filter((item) => item.href.startsWith("#")).map((item) => item.href.slice(1)),
+    () => NAVIGATION.filter((item) => item.href.startsWith("/#")).map((item) => item.href.slice(2)),
     [],
   );
   const active = useActiveSection(sectionIds);
@@ -16,10 +17,10 @@ export function Header() {
   return (
     <header className="site-header">
       <div className="nav-shell">
-        <a className="brand" href="#vision" aria-label={`${PROJECT_NAME}, inicio`}>
+        <Link className="brand" href="/" aria-label={`${PROJECT_NAME}, inicio`}>
           <span className="brand-mark" aria-hidden="true"><i /><i /><i /></span>
           <span>{PROJECT_NAME}</span>
-        </a>
+        </Link>
         <button
           className="menu-toggle"
           type="button"
@@ -32,13 +33,13 @@ export function Header() {
         </button>
         <nav id="primary-navigation" className={open ? "nav-links is-open" : "nav-links"} aria-label="Navegación principal">
           {NAVIGATION.map((item) => {
-            const id = item.href.startsWith("#") ? item.href.slice(1) : "";
+            const id = item.href.startsWith("/#") ? item.href.slice(2) : "";
             const disabled = "disabled" in item && item.disabled;
             if (disabled) {
               return <span className="nav-link is-disabled" key={item.label} title="Whitepaper pendiente de incorporar">{item.label}</span>;
             }
             return (
-              <a
+              <Link
                 key={item.label}
                 className={active === id ? "nav-link is-active" : "nav-link"}
                 href={item.href}
@@ -46,7 +47,7 @@ export function Header() {
                 aria-current={active === id ? "location" : undefined}
               >
                 {item.label}
-              </a>
+              </Link>
             );
           })}
           {!WHITEPAPER_AVAILABLE && <span className="nav-status">PDF pendiente</span>}
