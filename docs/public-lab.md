@@ -2,6 +2,8 @@
 
 The Public Lab is a limited, interactive demonstration of the Venture Governance concept. It accepts a human thesis or problem, generates a reduced synthetic opportunity set, runs four public specialist perspectives, applies demonstrative quantitative models, and returns a ranking for human review.
 
+The intake starts with a large free-text idea field. A transparent local assistant can summarize that narrative and suggest editable parameters before the four specialist agents run. This helper is not a fifth agent and does not call an external language model in public mode. The visible nine-stage pipeline is deliberately paced at roughly six seconds so visitors can follow it; the underlying deterministic calculations complete more quickly.
+
 It is intentionally not the complete product, the private local architecture, an autonomous investment system, or a startup execution platform.
 
 ## Routes
@@ -18,4 +20,3 @@ Demo mode requires no API key. Identical sanitized inputs, parameters, and seed 
 ## Future Live AI mode
 
 The repository exposes an `LLMProvider` contract only. A future provider must execute server-side, use minimal public prompts, enforce timeouts and structured validation, and fall back to deterministic demo mode. No private prompts or orchestration are included here.
-

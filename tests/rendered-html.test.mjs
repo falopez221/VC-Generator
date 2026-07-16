@@ -32,6 +32,9 @@ test("public demo exposes only the four allowed public agents", async () => {
   assert.match(html, /synthetic data/i);
   assert.match(html, /How to use the Lab/i);
   assert.match(html, /Never read score alone/i);
+  assert.match(html, /Put your full idea here/i);
+  assert.match(html, /Summarize idea &amp; suggest parameters/i);
+  assert.match(html, /not a fifth specialist agent/i);
 });
 
 test("methodology explains how to interpret dashboard results", async () => {

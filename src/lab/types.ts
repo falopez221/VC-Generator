@@ -29,6 +29,8 @@ export type OpportunityCategory = "Insufficient Evidence" | "Weak" | "Uncertain"
 export type SimulationStatus = "Ready" | "Running" | "Paused" | "Completed" | "Insufficient Evidence" | "Invalid Configuration" | "Simulation Failed";
 
 export interface LabInput {
+  ideaNarrative: string;
+  ideaSummary: string;
   analysisName: string;
   problem: string;
   thesis: string;
@@ -177,4 +179,3 @@ export interface ComparisonDelta {
   scoreDelta: number;
   mainDriver: string;
 }
-

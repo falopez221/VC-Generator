@@ -4,19 +4,21 @@ import { clamp } from "./random.ts";
 
 const MAX_TEXT = 900;
 
-export function sanitizeText(value: unknown, fallback = "") {
+export function sanitizeText(value: unknown, fallback = "", maxLength = MAX_TEXT) {
   return String(value ?? fallback)
     .replace(/[<>]/g, "")
     .replace(/[\u0000-\u001f\u007f]/g, " ")
     .replace(/\s+/g, " ")
     .trim()
-    .slice(0, MAX_TEXT);
+    .slice(0, maxLength);
 }
 
 export function validateLabInput(value: Partial<LabInput>) {
   const errors: string[] = [];
   const objective = OBJECTIVES.includes(value.objective as Objective) ? value.objective as Objective : OBJECTIVES[0];
   const data: LabInput = {
+    ideaNarrative: sanitizeText(value.ideaNarrative, "", 4000),
+    ideaSummary: sanitizeText(value.ideaSummary).slice(0, 900),
     analysisName: sanitizeText(value.analysisName, "Untitled public Lab analysis").slice(0, 120),
     problem: sanitizeText(value.problem).slice(0, 600),
     thesis: sanitizeText(value.thesis).slice(0, 600),
@@ -65,4 +67,3 @@ export function isOpportunity(value: unknown): value is Opportunity {
     && DIMENSION_KEYS.every((key) => Number.isFinite(candidate.dimensions?.[key]))
     && AGENT_NAMES.every((name) => isAgentResult(candidate.agents?.[name]));
 }
-

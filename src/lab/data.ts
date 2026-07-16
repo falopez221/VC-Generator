@@ -55,6 +55,8 @@ export const STAGES: StageDefinition[] = [
 
 export const EXAMPLES: Record<string, LabInput> = {
   "Venture Capital": {
+    ideaNarrative: "Industrial operators need to reduce energy cost and emissions without replacing critical equipment. The opportunity is to combine software-assisted optimization, distributed energy resources and measurable savings for mid-market manufacturers in Latin America. The business should begin with a focused industrial workflow and expand only after technical and commercial evidence is observed.",
+    ideaSummary: "An industrial climate opportunity focused on helping mid-market manufacturers reduce energy cost and emissions through software-assisted distributed energy optimization, with staged technical and commercial validation.",
     analysisName: "Climate infrastructure opportunity scan",
     problem: "Industrial operators need to reduce energy cost and emissions without replacing critical equipment.",
     thesis: "Software-assisted distributed energy optimization can create measurable savings for mid-market industry.",
@@ -74,6 +76,8 @@ export const EXAMPLES: Record<string, LabInput> = {
     seed: 4217,
   },
   "Corporate Innovation": {
+    ideaNarrative: "Large regulated teams lose time reconciling evidence across fragmented workflows. A governed evidence layer could organize source material, maintain human accountability and reduce repetitive manual review. The initial customer is an enterprise compliance team operating under growing audit and AI-governance requirements.",
+    ideaSummary: "A governed evidence layer for regulated enterprises that reduces fragmented manual review while preserving auditability and human accountability.",
     analysisName: "Regulated workflow modernization",
     problem: "Large regulated teams lose time reconciling evidence across fragmented workflows.",
     thesis: "A governed evidence layer can reduce manual review while keeping humans accountable.",
@@ -93,6 +97,8 @@ export const EXAMPLES: Record<string, LabInput> = {
     seed: 8142,
   },
   "Technology Exploration": {
+    ideaNarrative: "Autonomous software cannot reliably prove policy compliance before executing small machine-to-machine transactions. Verifiable credentials, programmable controls and blockchain infrastructure may enable governed machine commerce. The concept should first be tested as a narrow developer-platform artifact rather than a complete autonomous economy.",
+    ideaSummary: "A verifiable control layer for governed machine-to-machine commerce, beginning with a narrow developer-platform validation artifact.",
     analysisName: "Verifiable machine-to-machine commerce",
     problem: "Autonomous software cannot reliably prove policy compliance before executing small transactions.",
     thesis: "Verifiable credentials and programmable controls may enable governed machine commerce.",
@@ -127,4 +133,3 @@ export const OPPORTUNITY_BLUEPRINTS = [
   { suffix: "Adaptive Procurement Rail", model: "Shared-savings fee", customer: "Procurement leaders", novelty: 73, capital: 0.95, profile: [86, 85, 68, 79, 72, 63, 46, 88] },
   { suffix: "Exploration Sandbox", model: "Project license", customer: "Technology and R&D teams", novelty: 89, capital: 0.48, profile: [62, 60, 86, 57, 69, 36, 65, 70] },
 ] as const;
-

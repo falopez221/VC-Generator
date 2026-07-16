@@ -8,9 +8,14 @@ import { bayesianUpdate, calculateMCDA, calculateScenarios, normalizeWeights, pa
 import { getAudioSettings, playSound, unlockAudio } from "../audio.ts";
 import { duplicateRun, listRuns, loadLastRun, saveRun } from "../storage.ts";
 import { validateLabInput } from "../schema.ts";
+import { structureIdea } from "../idea-assistant.ts";
 import { AGENT_NAMES, DIMENSION_KEYS, type AgentName, type HumanDecision, type LabInput, type LabRun, type MonteCarloConfig, type Opportunity } from "../types.ts";
 
+const PUBLIC_STAGE_DELAY_MS = 650;
+
 const EMPTY_INPUT: LabInput = {
+  ideaNarrative: "",
+  ideaSummary: "",
   analysisName: "",
   problem: "",
   thesis: "",
@@ -76,6 +81,7 @@ export function LabDemo() {
   const [rankingDeltas, setRankingDeltas] = useState<{ id: string; previousRank: number; rank: number; scoreDelta: number; mainDriver: string }[]>([]);
   const [sortKey, setSortKey] = useState<"rank" | "score" | "risk" | "evidence">("rank");
   const [errors, setErrors] = useState<string[]>([]);
+  const [assistantNotice, setAssistantNotice] = useState("");
   const [evidenceText, setEvidenceText] = useState("");
   const [bayes, setBayes] = useState({ prior: 42, strength: 65, falsePositive: 18, falseNegative: 22, type: EVIDENCE_TYPES[0] });
   const [scenario, setScenario] = useState({ growth: 0, adoption: 0, margin: 0 });
@@ -90,7 +96,7 @@ export function LabDemo() {
       setHistory(listRuns());
       if (previous) {
         setRun(previous);
-        setInput(previous.input);
+        setInput({ ...EMPTY_INPUT, ...previous.input });
         setSelectedId(previous.opportunities[0]?.id ?? null);
         setStatus("Completed");
         setMcConfig((current) => ({ ...current, seed: previous.input.seed, initialInvestment: previous.input.estimatedCapital }));
@@ -111,13 +117,13 @@ export function LabDemo() {
           return complete;
         });
         playSound("simulation.complete");
-      }, 120);
+      }, 450);
       return () => window.clearTimeout(timer);
     }
     const timer = window.setTimeout(() => {
       setStageIndex((current) => current + 1);
       if ([2, 3, 4, 5].includes(stageIndex + 1)) playSound("agent.complete");
-    }, 135);
+    }, PUBLIC_STAGE_DELAY_MS);
     return () => window.clearTimeout(timer);
   }, [stageIndex, status]);
 
@@ -147,9 +153,38 @@ export function LabDemo() {
 
   const updateInput = (name: keyof LabInput, value: string | number) => setInput((current) => ({ ...current, [name]: value }));
 
+  const runIdeaAssistant = (source = input) => {
+    unlockAudio();
+    const structured = structureIdea(source);
+    if (!structured.success) {
+      setErrors([structured.error ?? "Add more context before structuring the idea."]);
+      setAssistantNotice("");
+      playSound("evidence.warning");
+      return null;
+    }
+    setInput(structured.input);
+    setErrors([]);
+    setAssistantNotice(`Summary created and parameters suggested: ${structured.detected.join(" · ")}. Review every field before running.`);
+    playSound("ui.select");
+    return structured.input;
+  };
+
   const startSimulation = (nextInput = input) => {
     unlockAudio();
-    const validated = validateLabInput(nextInput);
+    const shouldStructure = nextInput.ideaNarrative.trim().length >= 40 && !nextInput.ideaSummary.trim();
+    const automaticStructure = shouldStructure ? structureIdea(nextInput) : null;
+    if (automaticStructure && !automaticStructure.success) {
+      setErrors([automaticStructure.error ?? "The idea could not be structured safely."]);
+      setStatus("Invalid Configuration");
+      playSound("evidence.warning");
+      return;
+    }
+    const preparedInput = automaticStructure?.input ?? nextInput;
+    if (shouldStructure) {
+      setInput(preparedInput);
+      setAssistantNotice("The idea was summarized automatically before the run. Review the suggested parameters when you rerun or compare results.");
+    }
+    const validated = validateLabInput(preparedInput);
     if (!validated.success) {
       setErrors(validated.errors);
       setStatus("Invalid Configuration");
@@ -177,7 +212,7 @@ export function LabDemo() {
   const pause = () => { unlockAudio(); setStatus("Paused"); playSound("simulation.pause"); };
   const resume = () => { unlockAudio(); setStatus("Running"); playSound("simulation.start"); };
   const reset = () => { setRun(null); setSelectedId(null); setComparisonIds([]); setStageIndex(-1); setStatus("Ready"); setErrors([]); };
-  const loadExample = (name: string) => { unlockAudio(); const example = EXAMPLES[name]; setInput(example); setRun(null); setStatus("Ready"); setErrors([]); playSound("ui.select"); };
+  const loadExample = (name: string) => { unlockAudio(); const example = EXAMPLES[name]; setInput(example); setRun(null); setStatus("Ready"); setErrors([]); setAssistantNotice("Example loaded. Replace the full idea or edit any suggested parameter."); playSound("ui.select"); };
 
   const commitRun = (next: LabRun) => { setRun(next); saveRun(next); setHistory(listRuns()); };
   const decide = (decision: HumanDecision) => {
@@ -236,20 +271,28 @@ export function LabDemo() {
       </section>
 
       <section className="lab-howto" aria-labelledby="lab-howto-title">
-        <div className="lab-panel-heading"><div><p className="lab-kicker">HOW TO USE THE LAB</p><h2 id="lab-howto-title">From a question to a human decision.</h2></div><span>Four steps · approximately one minute</span></div>
+        <div className="lab-panel-heading"><div><p className="lab-kicker">HOW TO USE THE LAB</p><h2 id="lab-howto-title">From a question to a human decision.</h2></div><span>Four steps · accelerated public run</span></div>
         <ol className="lab-howto-steps">
           <li><span>01</span><div><strong>Define the boundary</strong><p>Describe the problem, thesis, market, technology, customer and constraints. Use a preset or replace every field with your own words.</p></div></li>
-          <li><span>02</span><div><strong>Run the public model</strong><p>Choose 6–12 opportunities and a seed. Identical inputs and seed reproduce the same synthetic result.</p></div></li>
+          <li><span>02</span><div><strong>Run the public model</strong><p>Choose 6–12 opportunities and a seed. The visible pipeline takes about six seconds; identical inputs and seed reproduce the same synthetic result.</p></div></li>
           <li><span>03</span><div><strong>Read signals together</strong><p>Never read score alone. Compare evidence, risk, uncertainty and agent disagreement before opening an opportunity.</p></div></li>
           <li><span>04</span><div><strong>Stress-test and decide</strong><p>Change assumptions, compare up to three finalists, request evidence and record a human review state.</p></div></li>
         </ol>
-        <p className="lab-howto-note"><strong>What changes when you edit text?</strong> Names, problems, solutions and agent reports use your context. Quantitative values are driven mainly by the visible controls and seed because this public demo uses deterministic rules, not a language model.</p>
+        <p className="lab-howto-note"><strong>Why is it still fast?</strong> The public stages are an accelerated visualization of local deterministic calculations. They do not wait for external web research or remote specialist models. The complete private system can take longer depending on data retrieval, models and validation gates.</p>
       </section>
 
       <section className="lab-intake">
         <div className="lab-panel-heading"><div><p className="lab-kicker">HUMAN INTAKE</p><h2>Define the exploration boundary.</h2></div><span>Synthetic demonstration data · inputs remain in this browser</span></div>
-        <div className="lab-example-row">{Object.keys(EXAMPLES).map((name) => <button type="button" key={name} onClick={() => loadExample(name)}>Load {name}</button>)}<button type="button" onClick={() => { setInput(EMPTY_INPUT); reset(); }}>Clear</button></div>
+        <div className="lab-example-row">{Object.keys(EXAMPLES).map((name) => <button type="button" key={name} onClick={() => loadExample(name)}>Load {name}</button>)}<button type="button" onClick={() => { setInput(EMPTY_INPUT); setAssistantNotice(""); reset(); }}>Clear</button></div>
         <form onSubmit={(event) => { event.preventDefault(); startSimulation(); }}>
+          <section className="lab-idea-assistant" aria-labelledby="idea-assistant-title">
+            <header><div><span>AI-READY IDEA INTAKE · PUBLIC MODE</span><h3 id="idea-assistant-title">Explain the complete idea in your own words.</h3></div><small>Local structuring assistant · not a fifth specialist agent</small></header>
+            <label className="lab-field"><span>Put your full idea here / Poner idea aquí</span><textarea className="lab-idea-textarea" value={input.ideaNarrative} maxLength={4000} placeholder="Put your idea here / Poner idea aquí. Explain the problem, proposed solution, customer, market, technology, business model, evidence, risks and anything else that matters." onChange={(event) => { setInput((current) => ({ ...current, ideaNarrative: event.target.value, ideaSummary: "" })); setAssistantNotice(""); }} /></label>
+            <div className="lab-assistant-actions"><button className="lab-button lab-button--primary" type="button" onClick={() => runIdeaAssistant()}>Summarize idea & suggest parameters</button><span aria-live="polite">{assistantNotice || "The public fallback structures the text locally. No idea is sent to an external model."}</span></div>
+            {input.ideaSummary && <label className="lab-field"><span>Assistant summary · editable</span><textarea className="lab-summary-textarea" value={input.ideaSummary} maxLength={900} onChange={(event) => updateInput("ideaSummary", event.target.value)} /></label>}
+            <p>This assistant prepares the intake for Mathematics, Finance, Strategy and Marketing. It does not add another public agent, and its suggested parameters remain editable.</p>
+          </section>
+          <div className="lab-parameter-divider"><span>STRUCTURED PARAMETERS</span><p>Review and correct the assistant suggestions before running the simulation.</p></div>
           <div className="lab-form-grid">
             <InputField label="Analysis name" name="analysisName" value={input.analysisName} onChange={updateInput} />
             <label className="lab-field"><span>Objective</span><select value={input.objective} onChange={(event) => updateInput("objective", event.target.value)}>{OBJECTIVES.map((objective) => <option key={objective}>{objective}</option>)}</select></label>
@@ -275,10 +318,11 @@ export function LabDemo() {
       </section>
 
       {run && <>
-        <section className="lab-progress" aria-live="polite">{STAGES.map((stage, index) => { const stageStatus = index < stageIndex || (index === stageIndex && status === "Completed") ? "Completed" : index === stageIndex && status === "Paused" ? "Paused" : index === stageIndex ? "Active" : "Waiting"; const processed = index <= stageIndex ? run.opportunities.length : 0; return <article className={`stage-${stageStatus.toLowerCase()}`} key={stage.id}><span>{String(stage.id).padStart(2, "0")}</span><div><strong>{stage.label}</strong><small>{stage.owner} · ~0.1s demo step</small><p>{stage.task} · {processed}/{run.opportunities.length} opportunities</p></div><b>{stageStatus}</b></article>; })}</section>
+        <section className="lab-progress" aria-live="polite">{STAGES.map((stage, index) => { const stageStatus = index < stageIndex || (index === stageIndex && status === "Completed") ? "Completed" : index === stageIndex && status === "Paused" ? "Paused" : index === stageIndex ? "Active" : "Waiting"; const processed = index <= stageIndex ? run.opportunities.length : 0; return <article className={`stage-${stageStatus.toLowerCase()}`} key={stage.id}><span>{String(stage.id).padStart(2, "0")}</span><div><strong>{stage.label}</strong><small>{stage.owner} · ~0.6s accelerated demo step</small><p>{stage.task} · {processed}/{run.opportunities.length} opportunities</p></div><b>{stageStatus}</b></article>; })}</section>
 
         <section className="lab-dashboard" aria-label="Executive overview">
           <div className="lab-panel-heading"><div><p className="lab-kicker">EXECUTIVE OVERVIEW</p><h2>{run.input.analysisName}</h2></div><div className="lab-export"><a href={`/lab/results/${run.id}`}>Open result view</a><button type="button" onClick={exportJson}>Export JSON</button><button type="button" onClick={exportCsv}>Export CSV</button><button type="button" onClick={() => window.print()}>Print</button></div></div>
+          {run.input.ideaSummary && <div className="lab-executive-summary"><span>STRUCTURED IDEA SUMMARY</span><p>{run.input.ideaSummary}</p><small>Assistant-generated starting point · review against the original narrative and structured parameters</small></div>}
           {metrics && <div className="lab-metrics"><Metric label="Generated" value={run.opportunities.length} tooltip="Reduced public sample, not the complete architecture." /><Metric label="Average score" value={metrics.score} tooltip="Demonstrative weighted public score." /><Metric label="Average evidence" value={`${metrics.evidence}%`} tooltip="Synthetic and user-provided evidence quality estimate." /><Metric label="Average risk" value={`${metrics.risk}%`} tooltip="Visible probability/impact proxy, not a forecast." /><Metric label="Uncertainty" value={`${metrics.uncertainty}%`} tooltip="Public uncertainty from evidence, risk and disagreement." /><Metric label="Agent disagreement" value={metrics.disagreement} tooltip="Standard deviation across four public agent scores." /><Metric label="Pending review" value={metrics.pending} tooltip="Opportunities without a final human state." /></div>}
           <details className="lab-reading-guide" open>
             <summary>How to read this dashboard</summary>
@@ -340,7 +384,7 @@ export function LabDemo() {
           <article className="lab-model-panel"><header><div><span>07 · PARETO</span><h3>Trade-offs without forcing one score</h3></div><p title="Highlights opportunities with stronger trade-offs that are not clearly dominated by another option.">Non-dominated points remain candidates for human comparison.</p></header><div className="lab-control-grid"><label>X objective<select value={paretoAxes.x} onChange={(event) => setParetoAxes((current) => ({ ...current, x: event.target.value as typeof paretoAxes.x }))}><option value="potential">potential</option><option value="evidence">evidence</option><option value="scalability">scalability</option></select></label><label>Y trade-off<select value={paretoAxes.y} onChange={(event) => setParetoAxes((current) => ({ ...current, y: event.target.value as typeof paretoAxes.y }))}><option value="risk">risk</option><option value="capital">capital</option><option value="novelty">novelty</option></select></label></div><ParetoChart points={pareto} opportunities={run.opportunities} /><p className="lab-model-note">{pareto.filter((point) => !point.dominated).length} non-dominated opportunities · {pareto.filter((point) => point.dominated).length} dominated under the selected public objectives.</p></article>
         </section>}
 
-        <section className="lab-history"><div className="lab-panel-heading"><div><p className="lab-kicker">LOCAL PERSISTENCE</p><h2>Repeat and compare public runs.</h2></div><span>Stored only in this browser</span></div><div>{history.map((item) => <article key={item.id}><span>{new Date(item.createdAt).toLocaleString()}</span><h3>{item.input.analysisName}</h3><p>Seed {item.input.seed} · {item.opportunities.length} opportunities</p><button type="button" onClick={() => { setRun(item); setInput(item.input); setSelectedId(item.opportunities[0]?.id ?? null); setStatus("Completed"); }}>Load</button><button type="button" onClick={() => { const copy = duplicateRun(item); setRun(copy); setHistory(listRuns()); }}>Duplicate</button></article>)}</div></section>
+        <section className="lab-history"><div className="lab-panel-heading"><div><p className="lab-kicker">LOCAL PERSISTENCE</p><h2>Repeat and compare public runs.</h2></div><span>Stored only in this browser</span></div><div>{history.map((item) => <article key={item.id}><span>{new Date(item.createdAt).toLocaleString()}</span><h3>{item.input.analysisName}</h3><p>Seed {item.input.seed} · {item.opportunities.length} opportunities</p><button type="button" onClick={() => { setRun(item); setInput({ ...EMPTY_INPUT, ...item.input }); setSelectedId(item.opportunities[0]?.id ?? null); setStatus("Completed"); }}>Load</button><button type="button" onClick={() => { const copy = duplicateRun(item); setRun(copy); setHistory(listRuns()); }}>Duplicate</button></article>)}</div></section>
       </>}
 
       <section className="lab-warning"><strong>Public demonstration model</strong><p>The complete architecture, agent system, scoring logic and local implementation are proprietary and are not included in this demo. This Lab uses simplified agents, synthetic data and demonstrative quantitative models. It does not constitute investment advice or predict startup success.</p></section>

@@ -4,6 +4,7 @@ import { EXAMPLES, DEFAULT_WEIGHTS, PRESETS } from "../src/lab/data.ts";
 import { addEvidence, generateLabRun, rerankLabRun, serializeReproducibleRun, updateHumanDecision } from "../src/lab/engine.ts";
 import { bayesianUpdate, calculateMCDA, classifyOpportunity, normalizeWeights, paretoFront, runMonteCarlo } from "../src/lab/models.ts";
 import { isAgentResult, isOpportunity, validateLabInput } from "../src/lab/schema.ts";
+import { structureIdea } from "../src/lab/idea-assistant.ts";
 
 test("validates and bounds the public input", () => {
   const result = validateLabInput({ ...EXAMPLES["Venture Capital"], opportunityCount: 100, seed: -5, problem: "<b>test problem with enough detail</b>" });
@@ -11,6 +12,26 @@ test("validates and bounds the public input", () => {
   assert.equal(result.data.opportunityCount, 12);
   assert.equal(result.data.seed, 1);
   assert.doesNotMatch(result.data.problem, /[<>]/);
+});
+
+test("idea intake assistant summarizes Spanish text and suggests editable parameters", () => {
+  const result = structureIdea({
+    ...EXAMPLES["Venture Capital"],
+    ideaNarrative: "Las empresas agrícolas necesitan detectar enfermedades de cultivos antes de perder producción. Una plataforma con inteligencia artificial y sensores podría analizar imágenes para productores agrícolas y recomendar una inspección temprana.",
+    ideaSummary: "",
+  });
+  assert.equal(result.success, true);
+  assert.match(result.input.ideaSummary, /Core problem/i);
+  assert.equal(result.input.industry, "Agriculture technology");
+  assert.equal(result.input.technology, "Artificial intelligence");
+  assert.equal(result.input.customerType, "B2B organizations");
+  assert.match(result.input.market, /productores agrícolas/i);
+});
+
+test("idea intake assistant requests enough context", () => {
+  const result = structureIdea({ ...EXAMPLES["Venture Capital"], ideaNarrative: "Una app.", ideaSummary: "" });
+  assert.equal(result.success, false);
+  assert.match(result.error ?? "", /at least 40 characters/i);
 });
 
 test("same seed and parameters generate reproducible structured results", () => {
@@ -87,4 +108,3 @@ test("human decisions and new evidence persist in run state", () => {
   const updated = addEvidence(decided, id, "Observed willingness-to-pay test reached the public threshold.");
   assert.ok((updated.opportunities.find((opportunity) => opportunity.id === id)?.availableEvidence.length ?? 0) > run.opportunities[0].availableEvidence.length);
 });
-
