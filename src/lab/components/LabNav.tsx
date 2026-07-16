@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { getAudioSettings, playSound, setAudioSettings, unlockAudio } from "../audio.ts";
+import { openLabTour } from "./LabTour.tsx";
 
 const links = [
   ["Home", "/"],
@@ -38,6 +39,7 @@ export function LabNav() {
       </Link>
       <nav aria-label="Public Lab navigation">
         {links.map(([label, href]) => <Link href={href} key={href}>{label}</Link>)}
+        <button type="button" onClick={() => window.location.pathname.startsWith("/lab/demo") ? openLabTour() : window.location.assign("/lab/demo?tour=1")}>Help</button>
       </nav>
       <div className="lab-audio" aria-label="Audio controls">
         <button type="button" aria-pressed={enabled} onClick={() => updateAudio(!enabled, volume)}>{enabled ? "Sound On" : "Sound Off"}</button>

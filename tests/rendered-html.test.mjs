@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { readFile } from "node:fs/promises";
 
 async function render(pathname) {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
@@ -35,6 +36,19 @@ test("public demo exposes only the four allowed public agents", async () => {
   assert.match(html, /Put your full idea here/i);
   assert.match(html, /Summarize idea &amp; suggest parameters/i);
   assert.match(html, /not a fifth specialist agent/i);
+  assert.match(html, /How Venture Governance Works/i);
+  assert.match(html, /Human Input/i);
+  assert.match(html, /Changing this affects/i);
+  assert.match(html, />Help</i);
+});
+
+test("first-time tour remains available without changing the public model", async () => {
+  const source = await readFile(new URL("../src/lab/components/LabTour.tsx", import.meta.url), "utf8");
+  assert.match(source, /Welcome to Venture Governance Lab/i);
+  assert.match(source, /Start Tour/i);
+  assert.match(source, /Skip/i);
+  assert.match(source, /localStorage\.setItem/);
+  assert.match(source, /Modify assumptions/i);
 });
 
 test("methodology explains how to interpret dashboard results", async () => {
