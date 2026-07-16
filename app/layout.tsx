@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_AR",
     url: SITE_URL,
-    images: [{ url: "/og.png", width: 1733, height: 909, alt: "Venture Intelligence — red multiagente institucional" }],
+    images: [{ url: "/og.png", width: 1733, height: 909, alt: "Venture Governance System — red multiagente institucional" }],
   },
   twitter: {
     card: "summary_large_image",

@@ -13,9 +13,9 @@ export function WhitepaperSection() {
           description="Versión 1.0 del documento maestro: arquitectura, roles, métodos cuantitativos, algoritmos, producto, implementación y gobierno responsable."
         />
         <div className="whitepaper-shell">
-          <div className="whitepaper-cover" aria-label="Portada estilizada del whitepaper Venture Intelligence OS, marca comercial">
+          <div className="whitepaper-cover" aria-label="Portada estilizada del whitepaper Venture Governance System, marca comercial">
             <div className="cover-meta"><span>DOCUMENTO ESTRATÉGICO</span><span>VERSIÓN {WHITEPAPER_META.version}</span></div>
-            <h3>Venture<br />Intelligence <em>OS<sup>™</sup></em></h3>
+            <h3>Venture<br />Governance <em>System<sup>™</sup></em></h3>
             <p>Arquitectura multiagente para explorar, diseñar, simular y priorizar oportunidades de Venture Capital.</p>
             <div className="cover-wave"><i /><i /><i /><i /></div>
             <div className="cover-bottom"><span>{WHITEPAPER_META.date}</span><span>{WHITEPAPER_META.pages} páginas</span></div>

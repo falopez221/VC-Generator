@@ -4,7 +4,7 @@
  * Ningún componente debería contener URLs escritas directamente.
  */
 
-export const PROJECT_NAME = "Venture Intelligence OS™";
+export const PROJECT_NAME = "Venture Governance System™";
 export const PROJECT_TAGLINE = "De tesis dispersas a decisiones trazables.";
 export const PROJECT_DESCRIPTION =
   "Arquitectura conceptual multiagente para descubrir, modelar y evaluar oportunidades de inversión con evidencia, simulación y supervisión humana.";
@@ -27,7 +27,7 @@ export const PRIMARY_CTA_URL = "#solucion";
 export const SECONDARY_CTA_URL = "#arquitectura";
 
 // Reemplazá por el dominio final para canonical, sitemap y previews sociales.
-export const SITE_URL = "https://venture-intelligence-lab.franciscoariellopez2.chatgpt.site";
+export const SITE_URL = "https://venturegovernance.com";
 
 export const FOOTER_TEXT =
   "Sistema conceptual de apoyo a decisiones. No constituye asesoramiento financiero ni reemplaza el criterio de un comité de inversión.";

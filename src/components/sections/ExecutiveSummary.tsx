@@ -13,11 +13,11 @@ export function ExecutiveSummary() {
         <SectionHeading
           eyebrow="Resumen ejecutivo"
           title="Un sistema para ampliar el universo de oportunidades."
-          description="Venture Intelligence System coordina inteligencia especializada para detectar, explicar y priorizar oportunidades que difícilmente surgirían de un análisis tradicional."
+          description="Venture Governance System coordina inteligencia especializada para detectar, explicar y priorizar oportunidades que difícilmente surgirían de un análisis tradicional."
         />
         <div className="executive-layout">
           <div className="executive-copy">
-            <p>Venture Intelligence System es un orquestador de agentes de inteligencia artificial especializados en economía, matemática aplicada, estrategia, negocios, teoría de juegos, criptografía, tecnología, blockchain y desarrollo de empresas. Trabajan de forma coordinada con modelos de lenguaje que investigan continuamente nuevas tendencias, problemas, tecnologías y combinaciones entre industrias. El sistema identifica posibles ideas de startups y analiza por qué podrían funcionar, cómo construirlas, qué modelo de negocio utilizar, cuáles son sus riesgos y qué pasos permitirían convertirlas en empresas reales.</p>
+            <p>Venture Governance System es un orquestador de agentes de inteligencia artificial especializados en economía, matemática aplicada, estrategia, negocios, teoría de juegos, criptografía, tecnología, blockchain y desarrollo de empresas. Trabajan de forma coordinada con modelos de lenguaje que investigan continuamente nuevas tendencias, problemas, tecnologías y combinaciones entre industrias. El sistema identifica posibles ideas de startups y analiza por qué podrían funcionar, cómo construirlas, qué modelo de negocio utilizar, cuáles son sus riesgos y qué pasos permitirían convertirlas en empresas reales.</p>
             <p>Como puede generar miles de hipótesis, utiliza modelos matemáticos predefinidos, simulaciones de Monte Carlo, análisis de sensibilidad y criterios probabilísticos para clasificarlas como débiles, prometedoras, muy prometedoras o excepcionales. Automatiza y fortalece la exploración, generación, filtrado y priorización inicial en Venture Capital, sin reemplazar a fundadores, equipos, capital, validación comercial ni gestión operativa. Cuando una oportunidad lo requiere, los agentes pueden construir un MVP inicial para aportar evidencia antes de una inversión. La misma infraestructura sirve para investigación estratégica, innovación corporativa y exploración de nuevos mercados.</p>
           </div>
           <aside className="executive-boundary">

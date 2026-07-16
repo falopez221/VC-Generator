@@ -37,19 +37,19 @@ export function ProblemSolution() {
           <SectionHeading
             eyebrow="02 · Solución"
             title="Un sistema operativo para explorar decisiones de venture."
-            description="Venture Intelligence organiza agentes especializados alrededor de un flujo común: convertir señales e hipótesis en modelos, evidencia, escenarios y experimentos comparables."
+            description="Venture Governance System organiza agentes especializados alrededor de un flujo común: convertir señales e hipótesis en modelos, evidencia, escenarios y experimentos comparables."
           />
           <div className="transformation-grid">
             <div className="transform-column">
               <p className="column-label">Materia prima</p>
               {VALUE_TRANSFORMATION.map((item) => <div className="transform-input" key={item.input}>{item.input}</div>)}
             </div>
-            <div className="transform-engine" aria-label="Proceso de Venture Intelligence">
-              <div className="engine-top"><span>VENTURE</span><span>INTELLIGENCE</span></div>
+            <div className="transform-engine" aria-label="Proceso de Venture Governance System">
+              <div className="engine-top"><span>VENTURE</span><span>GOVERNANCE</span></div>
               <div className="engine-layers">
                 <span>Descubrir</span><span>Diseñar</span><span>Contrastar</span><span>Simular</span><span>Decidir</span>
               </div>
-              <div className="engine-core">VI<span>orquestación multiagente</span></div>
+              <div className="engine-core">VG<span>orquestación multiagente</span></div>
               <p>Cada entrega conserva fuentes, supuestos, confianza y revisiones.</p>
             </div>
             <div className="transform-column transform-column--output">

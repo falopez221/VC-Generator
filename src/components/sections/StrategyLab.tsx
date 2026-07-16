@@ -30,7 +30,7 @@ export function StrategyLab() {
         </div>
         <div className="strategy-layout">
           <div className="strategy-canvas" aria-label="Curva de valor conceptual editable">
-            <div className="canvas-legend"><span><i className="incumbent-line" /> Proceso tradicional</span><span><i className="concept-line" /> Concepto VI</span></div>
+            <div className="canvas-legend"><span><i className="incumbent-line" /> Proceso tradicional</span><span><i className="concept-line" /> Concepto VG</span></div>
             {BLUE_OCEAN_FACTORS.map((factor, index) => (
               <div className="factor-row" key={factor.label}>
                 <label htmlFor={`factor-${index}`}>{factor.label}</label>

@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 
-const INTRO_KEY = "venture-intelligence-intro-seen";
-const SOUND_KEY = "venture-intelligence-sound";
+const INTRO_KEY = "venture-governance-intro-seen";
+const SOUND_KEY = "venture-governance-sound";
 
 export function BrandIntro() {
   const [visible, setVisible] = useState(true);
@@ -40,8 +40,8 @@ export function BrandIntro() {
       <div className="intro-lockup">
         <div className="intro-mark"><i /><i /><i /><span>™</span></div>
         <div className="intro-wordmark">
-          <small>VENTURE INTELLIGENCE</small>
-          <strong>OS<span>™</span></strong>
+          <small>VENTURE GOVERNANCE</small>
+          <strong>SYSTEM<span>™</span></strong>
         </div>
       </div>
       <div className="intro-progress"><i /></div>

@@ -17,7 +17,7 @@ const SOUND_VOLUMES: Record<SoundName, number> = {
 };
 
 const INTERACTIVE_SELECTOR = "a, button, summary, input[type='range'], [role='button']";
-const STORAGE_KEY = "venture-intelligence-sound";
+const STORAGE_KEY = "venture-governance-sound";
 
 export function SoundController() {
   const [enabled, setEnabled] = useState(true);
