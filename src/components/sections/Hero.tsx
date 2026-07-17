@@ -5,7 +5,7 @@ import { HeroExperience } from "@/src/components/sections/HeroExperience";
 
 const PUBLIC_PROOF = [
   ["04", "Public specialist agents"],
-  ["12", "Documented quantitative models"],
+  ["12+2", "Core models + context lenses"],
   ["6–12", "Reproducible synthetic opportunities"],
   ["01", "Named Human Gate"],
 ] as const;
