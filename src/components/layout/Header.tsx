@@ -2,12 +2,14 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { NAVIGATION, PROJECT_NAME, WHITEPAPER_AVAILABLE } from "@/src/config/site";
 import { useActiveSection } from "@/src/hooks/use-active-section";
 import { SoundController } from "@/src/components/ui/SoundController";
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
   const sectionIds = useMemo(
     () => NAVIGATION.filter((item) => item.href.startsWith("/#")).map((item) => item.href.slice(2)),
     [],
@@ -34,6 +36,7 @@ export function Header() {
         <nav id="primary-navigation" className={open ? "nav-links is-open" : "nav-links"} aria-label="Navegación principal">
           {NAVIGATION.map((item) => {
             const id = item.href.startsWith("/#") ? item.href.slice(2) : "";
+            const routeActive = item.href !== "/" && !item.href.startsWith("/#") && pathname.startsWith(item.href);
             const disabled = "disabled" in item && item.disabled;
             if (disabled) {
               return <span className="nav-link is-disabled" key={item.label} title="Whitepaper pendiente de incorporar">{item.label}</span>;
@@ -41,10 +44,10 @@ export function Header() {
             return (
               <Link
                 key={item.label}
-                className={active === id ? "nav-link is-active" : "nav-link"}
+                className={active === id || routeActive ? "nav-link is-active" : "nav-link"}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                aria-current={active === id ? "location" : undefined}
+                aria-current={active === id || routeActive ? "page" : undefined}
               >
                 {item.label}
               </Link>

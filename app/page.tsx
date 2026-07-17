@@ -12,13 +12,11 @@ import { RoadmapRisks } from "@/src/components/sections/RoadmapRisks";
 import { FinalCta } from "@/src/components/sections/FinalCta";
 import { WhitepaperInsights } from "@/src/components/sections/WhitepaperInsights";
 import { WhitepaperSection } from "@/src/components/sections/WhitepaperSection";
-import { BrandIntro } from "@/src/components/layout/BrandIntro";
 import { ExecutiveSummary } from "@/src/components/sections/ExecutiveSummary";
 
 export default function Home() {
   return (
     <>
-      <BrandIntro />
       <a className="skip-link" href="#contenido">Saltar al contenido</a>
       <Header />
       <main id="contenido">

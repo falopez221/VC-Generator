@@ -7,8 +7,8 @@ export function InfoTip({ label, text }: { label: string; text: string }) {
   return <span className="lab-info-tip"><button type="button" aria-label={`Explain ${label}`} aria-describedby={id}>ⓘ</button><span className="lab-tooltip" id={id} role="tooltip">{text}</span></span>;
 }
 
-export function PanelIntro({ shows, useful }: { shows: string; useful: string }) {
-  return <div className="lab-panel-intro"><p><span>WHAT DOES THIS SHOW?</span>{shows}</p><p><span>WHY IS IT USEFUL?</span>{useful}</p></div>;
+export function PanelIntro({ shows, useful, interpret }: { shows: string; useful: string; interpret?: string }) {
+  return <div className="lab-panel-intro"><p><span>WHAT DOES THIS SHOW?</span>{shows}</p><p><span>WHY DOES IT MATTER?</span>{useful}</p>{interpret && <p><span>HOW SHOULD I INTERPRET IT?</span>{interpret}</p>}</div>;
 }
 
 export function ModelIntro({ shows, matters }: { shows: string; matters: string }) {

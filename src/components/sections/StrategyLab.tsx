@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { SectionHeading } from "@/src/components/ui/SectionHeading";
 import { BLUE_OCEAN_FACTORS, ERRC, FRAMEWORK_GROUPS } from "@/src/content/frameworks";
+import { ProgressiveDisclosure } from "@/src/components/ui/ProgressiveDisclosure";
+import { ChartExplainer } from "@/src/components/ui/ChartExplainer";
 
 export function StrategyLab() {
   const [curve, setCurve] = useState<number[]>(BLUE_OCEAN_FACTORS.map((item) => item.concept));
@@ -14,6 +16,14 @@ export function StrategyLab() {
           eyebrow="07 · Frameworks estratégicos"
           title="Los frameworks no son checklists. Son lentes con entregas concretas."
           description="Cada marco entra al pipeline para reducir una clase distinta de incertidumbre y dejar un artefacto que otro agente pueda cuestionar."
+        />
+        <ProgressiveDisclosure
+          what="Un conjunto de lentes estratégicos que transforma preguntas abstractas en artefactos comparables."
+          does="Estructura diferenciación, modelo de negocio, validación, incentivos y escalamiento."
+          matters="Evita aplicar un único marco a problemas que requieren distintos tipos de evidencia."
+          how={["Cada framework reduce una incertidumbre específica.", "Su salida puede ser cuestionada por otro agente.", "Los sliders permiten explorar decisiones de diseño, no afirmar datos de mercado."]}
+          technical={["Curva de valor normalizada de 5 a 100.", "Matriz de pagos conceptual.", "Ciclo Build–Measure–Learn orientado a reducción de incertidumbre."]}
+          limitations={["Los valores y pagos son ilustrativos.", "Un framework no sustituye investigación primaria.", "Mover un control no modifica evidencia observada."]}
         />
         <div className="framework-grid">
           {FRAMEWORK_GROUPS.map((group, index) => (
@@ -28,6 +38,11 @@ export function StrategyLab() {
           <div><p className="eyebrow">Blue Ocean Strategy</p><h3>Diseñar una curva de valor, no una promesa.</h3></div>
           <p>Comparación conceptual editable. Los valores ilustran una herramienta de trabajo y no provienen de datos de mercado.</p>
         </div>
+        <ChartExplainer
+          shows="La intensidad relativa de cinco factores para un proceso tradicional y un concepto Venture Governance."
+          matters="Permite discutir qué conviene eliminar, reducir, incrementar o crear para producir diferenciación."
+          interpret="La distancia entre las líneas expresa una decisión de diseño. No es market share, rendimiento observado ni una proyección."
+        />
         <div className="strategy-layout">
           <div className="strategy-canvas" aria-label="Curva de valor conceptual editable">
             <div className="canvas-legend"><span><i className="incumbent-line" /> Proceso tradicional</span><span><i className="concept-line" /> Concepto VG</span></div>
@@ -47,8 +62,10 @@ export function StrategyLab() {
                   onChange={(event) => setCurve((values) => values.map((value, valueIndex) => valueIndex === index ? Number(event.target.value) : value))}
                   aria-label={`Nivel conceptual de ${factor.label}`}
                 />
+                <output htmlFor={`factor-${index}`}>{curve[index]}</output>
               </div>
             ))}
+            <p className="strategy-slider-note">Los controles cambian sólo la curva conceptual. No alteran evidencia de mercado, riesgo ni confianza.</p>
           </div>
           <div className="errc-grid">
             {ERRC.map((quadrant) => (

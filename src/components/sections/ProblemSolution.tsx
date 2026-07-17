@@ -1,4 +1,5 @@
 import { SectionHeading } from "@/src/components/ui/SectionHeading";
+import { ProgressiveDisclosure } from "@/src/components/ui/ProgressiveDisclosure";
 import { VALUE_TRANSFORMATION } from "@/src/content/architecture";
 
 const problems = [
@@ -17,6 +18,14 @@ export function ProblemSolution() {
             eyebrow="01 · Problema"
             title="El cuello de botella no es acceder a información. Es convertirla en criterio compartido."
             description="El análisis institucional combina investigación intensiva, juicio experto y coordinación. Cuando el volumen crece, la trazabilidad y la capacidad de contraste se degradan primero."
+          />
+          <ProgressiveDisclosure
+            what="Un problema de capacidad para transformar información abundante en criterio compartido."
+            does="Expone dónde el volumen, la fragmentación y los sesgos degradan la comparación entre oportunidades."
+            matters="Sin trazabilidad, más investigación puede producir más ruido y una falsa sensación de precisión."
+            how={["Separa señales, supuestos e inferencias.", "Identifica dependencias y desacuerdos.", "Convierte lagunas de evidencia en preguntas verificables."]}
+            technical={["Provenance por fuente y fecha.", "Versionado de hipótesis y decisiones.", "Métricas de evidencia, incertidumbre y disenso."]}
+            limitations={["La estructura no elimina sesgos humanos o de datos.", "La calidad de salida depende de la evidencia disponible.", "Los casos ambiguos requieren contexto institucional."]}
           />
           <div className="problem-grid">
             {problems.map((problem) => (
@@ -38,6 +47,14 @@ export function ProblemSolution() {
             eyebrow="02 · Solución"
             title="Un sistema operativo para explorar decisiones de venture."
             description="Venture Governance System organiza agentes especializados alrededor de un flujo común: convertir señales e hipótesis en modelos, evidencia, escenarios y experimentos comparables."
+          />
+          <ProgressiveDisclosure
+            what="Una capa de orquestación para el tramo exploratorio del proceso de venture."
+            does="Organiza investigación, diseño, contraste, simulación y priorización en un flujo auditable."
+            matters="Permite comparar más alternativas con criterios explícitos antes de consumir capital o tiempo ejecutivo."
+            how={["Una persona define la tesis y las restricciones.", "Los agentes producen y critican artefactos.", "Los modelos cuantitativos estructuran rangos y el resultado vuelve a revisión humana."]}
+            technical={["Flujo event-driven con dependencias visibles.", "Artefactos versionados y controles cross-layer.", "Read-only por defecto y gates de autoridad."]}
+            limitations={["No automatiza la inversión ni la ejecución integral.", "Un score no reemplaza diligencia debida.", "Las integraciones y calibraciones dependen de cada institución."]}
           />
           <div className="transformation-grid">
             <div className="transform-column">

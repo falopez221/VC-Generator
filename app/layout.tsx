@@ -13,13 +13,13 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_AR",
     url: SITE_URL,
-    images: [{ url: "/og.png", width: 1733, height: 909, alt: "Venture Governance System — red multiagente institucional" }],
+    images: [{ url: "/og-public-v2.png", width: 1731, height: 909, alt: "Venture Governance System — cuatro agentes públicos y doce modelos visibles" }],
   },
   twitter: {
     card: "summary_large_image",
     title: SITE_METADATA.title,
     description: SITE_METADATA.description,
-    images: ["/og.png"],
+    images: ["/og-public-v2.png"],
   },
   icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
 };

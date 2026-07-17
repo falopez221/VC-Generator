@@ -9,12 +9,18 @@ async function render(pathname) {
   return worker.fetch(new Request(`http://localhost${pathname}`, { headers: { accept: "text/html" } }), { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } }, { waitUntil() {}, passThroughOnException() {} });
 }
 
+function renderedText(html) {
+  return html.replace(/<!--[\s\S]*?-->/g, "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+}
+
 for (const [pathname, expected] of [
   ["/", "Venture Governance System"],
   ["/lab", "Explore how governed agents"],
   ["/lab/demo", "Run Lab Simulation"],
   ["/lab/methodology", "Score is an analytical interface"],
   ["/lab/results/example", "LOADING LOCAL RESULT"],
+  ["/applications", "One architecture"],
+  ["/applications/energy-prioritize", "Prioritized portfolio"],
 ]) {
   test(`server renders ${pathname}`, async () => {
     const response = await render(pathname);
@@ -23,6 +29,14 @@ for (const [pathname, expected] of [
     assert.match(await response.text(), new RegExp(expected, "i"));
   });
 }
+
+test("applications exposes the governed explorer and mission builder", async () => {
+  const response = await render("/applications");
+  const html = await response.text();
+  const text = renderedText(html);
+  for (const expected of ["APPLICATION EXPLORER", "MISSION BUILDER", "Cards", "Map", "Matrix", "Value", "HIGH-IMPACT DOMAINS", "HUMAN GATE"]) assert.match(text, new RegExp(expected, "i"));
+  assert.doesNotMatch(text, /guaranteed outcome|autonomous investment approval/i);
+});
 
 test("public demo exposes only the four allowed public agents", async () => {
   const response = await render("/lab/demo");
@@ -57,6 +71,25 @@ test("methodology explains how to interpret dashboard results", async () => {
   assert.match(html, /Dashboard reading/i);
   assert.match(html, /not a probability of startup success/i);
   assert.match(html, /No score approves an investment/i);
+  for (const model of ["Tornado Sensitivity", "Break-even", "Rank Robustness", "Validation Priority"]) assert.match(html, new RegExp(model, "i"));
+});
+
+test("public Lab summary is synchronized with the model catalog", async () => {
+  const response = await render("/lab");
+  assert.match(renderedText(await response.text()), /12 public models/i);
+});
+
+test("landing is synchronized with public whitepaper v2 and the IP boundary", async () => {
+  const response = await render("/");
+  const html = await response.text();
+  const text = renderedText(html);
+  assert.match(html, /venture-governance-system-whitepaper-publico-v2\.pdf/i);
+  assert.match(text, /Whitepaper p[uú]blico v2\.0/i);
+  assert.match(text, /26 p[aá]ginas/i);
+  assert.match(text, /4 agentes p[uú]blicos/i);
+  assert.match(text, /12 modelos/i);
+  for (const name of ["Mathematics", "Finance", "Strategy", "Marketing"]) assert.match(text, new RegExp(name, "i"));
+  assert.doesNotMatch(text, /20 roles|6 runtimes|Whitepaper v1\.0|1[\.,]000 hip[oó]tesis/i);
 });
 
 test("Lab audio has no autoplay markup", async () => {

@@ -10,7 +10,7 @@ export const PROJECT_DESCRIPTION =
   "Arquitectura conceptual multiagente para descubrir, modelar y evaluar oportunidades de inversión con evidencia, simulación y supervisión humana.";
 
 // Ruta central del whitepaper maestro dentro de /public/documents/.
-export const WHITEPAPER_URL = "/documents/venture-intelligence-whitepaper.pdf";
+export const WHITEPAPER_URL = "/documents/venture-governance-system-whitepaper-publico-v2.pdf";
 // Cambiá a false si retirás temporalmente el documento.
 export const WHITEPAPER_AVAILABLE = true;
 
@@ -36,6 +36,7 @@ export const NAVIGATION = [
   { label: "Home", href: "/" },
   { label: "Architecture", href: "/#arquitectura" },
   { label: "Methodology", href: "/lab/methodology" },
+  { label: "Applications", href: "/applications" },
   { label: "Whitepaper", href: "/#whitepaper", disabled: !WHITEPAPER_AVAILABLE },
   { label: "Lab", href: "/lab" },
 ] as const;

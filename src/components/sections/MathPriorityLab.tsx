@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { ChartExplainer } from "@/src/components/ui/ChartExplainer";
 
 const DIMENSIONS = ["Mercado", "Tecnología", "Economía", "Diferenciación", "Validación"] as const;
 const OPPORTUNITIES = [
@@ -59,6 +60,11 @@ export function MathPriorityLab() {
         <div><p className="eyebrow">Laboratorio interactivo de priorización</p><h3>Mové los pesos y observá cómo cambia el ranking.</h3></div>
         <p>El modelo usa un score multicriterio lineal, una transformación a factores latentes y una simulación conceptual para expresar rango e incertidumbre.</p>
       </div>
+      <ChartExplainer
+        shows="Cómo cambian el ranking, los intervalos simulados y los factores latentes cuando la tesis modifica sus pesos."
+        matters="Permite probar si una prioridad es robusta o depende de una preferencia muy específica."
+        interpret="Leé primero el ranking, después el rango P10–P90 y finalmente la probabilidad ilustrativa. Un score alto con un intervalo amplio sigue siendo incierto."
+      />
       <div className="math-lab-grid">
         <div className="weight-panel">
           <div className="panel-label"><span>VECTOR DE PESOS</span><strong>w / Σw</strong></div>
@@ -66,6 +72,7 @@ export function MathPriorityLab() {
             <label className="weight-control" key={dimension}>
               <span>{dimension}<strong>{Math.round(weights[index] / totalWeight * 100)}%</strong></span>
               <input type="range" min="5" max="45" value={weights[index]} onChange={(event) => updateWeight(index, Number(event.target.value))} aria-label={`Peso de ${dimension}`} />
+              <small>Impacta score, ranking, intervalo y clasificación.</small>
             </label>
           ))}
           <div className="formula-card"><span>SCORE LINEAL</span><strong>s = wᵀx / Σw</strong><p>Cada proyecto es un vector de features x. El producto interno con w permite comparar oportunidades bajo una tesis explícita.</p></div>
@@ -91,6 +98,7 @@ export function MathPriorityLab() {
           </article>
         ))}
       </div>
+      <p className="dashboard-reading"><strong>Cómo leer estos resultados:</strong> P10 representa un escenario bajo, la mediana el centro de la simulación y P90 un escenario alto. El porcentaje indica cuántas muestras sintéticas superaron 70; no es una probabilidad calibrada de éxito empresarial.</p>
       <div className="linear-transform-panel">
         <div><span>TRANSFORMACIÓN LINEAL</span><h3>z = Ax</h3><p>La matriz A combina features correlacionadas en tres factores interpretables. No crea evidencia nueva: reorganiza la disponible para comparar mejor.</p></div>
         <div className="matrix-card" aria-label="Matriz de transformación conceptual"><span>A =</span><code>0.70  0.00  0.00  0.00  0.30<br />0.00  0.55  0.45  0.00  0.00<br />0.30  0.00  0.00  0.70  0.00</code></div>

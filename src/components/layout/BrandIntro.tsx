@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 
 const INTRO_KEY = "venture-governance-intro-seen";
-const SOUND_KEY = "venture-governance-sound";
 
 export function BrandIntro() {
   const [visible, setVisible] = useState(true);
@@ -17,18 +16,10 @@ export function BrandIntro() {
     window.sessionStorage.setItem(INTRO_KEY, "yes");
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const duration = reduceMotion ? 120 : 920;
-    const audio = new Audio("/audio/swosh.mp3");
-    audio.preload = "auto";
-    audio.volume = 0.12;
-
-    if (!reduceMotion && window.localStorage.getItem(SOUND_KEY) !== "off") {
-      void audio.play().catch(() => undefined);
-    }
 
     const timer = window.setTimeout(() => setVisible(false), duration);
     return () => {
       window.clearTimeout(timer);
-      audio.pause();
     };
   }, []);
 

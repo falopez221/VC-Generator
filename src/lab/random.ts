@@ -34,7 +34,12 @@ export function sampleDistribution(
 ) {
   if (distribution === "normal") return Math.max(-2.5, Math.min(2.5, randomNormal(random))) / 2.5;
   if (distribution === "triangular") return (random() + random() - 1);
-  if (distribution === "beta") return ((random() + random() + random() + random()) / 4 - 0.5) * 2;
+  if (distribution === "beta") {
+    const gammaShapeTwo = () => -Math.log(Math.max(Number.EPSILON, random()) * Math.max(Number.EPSILON, random()));
+    const left = gammaShapeTwo();
+    const right = gammaShapeTwo();
+    return (left / (left + right) - 0.5) * 2;
+  }
   if (distribution === "bernoulli") return random() > 0.5 ? 1 : -1;
   return random() * 2 - 1;
 }
@@ -47,4 +52,3 @@ export function round(value: number, digits = 2) {
   const factor = 10 ** digits;
   return Math.round(value * factor) / factor;
 }
-

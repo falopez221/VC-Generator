@@ -28,26 +28,26 @@ export const AUTOMATION_BOUNDARY = [
 ] as const;
 
 export const OPERATING_FUNNEL = [
-  { value: "1.000", label: "hipótesis" },
-  { value: "700", label: "familias únicas" },
-  { value: "200", label: "puerta básica" },
-  { value: "60", label: "análisis profundos" },
-  { value: "15", label: "simulación + revisión crítica" },
-  { value: "5", label: "experimentos" },
-  { value: "1–3", label: "decisiones humanas" },
+  { value: "1", label: "input humano" },
+  { value: "6–12", label: "oportunidades sintéticas" },
+  { value: "4", label: "agentes públicos" },
+  { value: "12", label: "modelos visibles" },
+  { value: "1", label: "ranking comparable" },
+  { value: "1", label: "revisión humana" },
 ] as const;
 
 export const WHITEPAPER_DOMAINS = [
-  { index: "I", title: "Sistema", chapters: "Problema · Principios · Arquitectura · 20 roles" },
-  { index: "II", title: "Decisión", chapters: "Frameworks · Matemática · Algoritmos · Ranking" },
-  { index: "III", title: "Producto", chapters: "Software · Operación · Negocio · Go-to-market" },
-  { index: "IV", title: "Gobierno", chapters: "Roadmap · Riesgos · Extensiones · Datos y fuentes" },
+  { index: "I", title: "Alcance público", chapters: "Auditoría · Frontera IP · Flujo reproducible" },
+  { index: "II", title: "Cuatro agentes", chapters: "Mathematics · Finance · Strategy · Marketing" },
+  { index: "III", title: "Decisión", chapters: "12 modelos · Gates · Dashboard · Ranking responsable" },
+  { index: "IV", title: "Gobierno", chapters: "Seguridad · Calidad · Roadmap · Trazabilidad" },
 ] as const;
 
 export const WHITEPAPER_META = {
-  version: "1.0",
+  version: "2.0",
   date: "Julio de 2026",
-  pages: 57,
-  chapters: 16,
+  pages: 26,
+  chapters: 14,
+  appendices: 3,
   northStar: "Maximizar la reducción de incertidumbre relevante por unidad de tiempo, costo y riesgo, preservando la decisión humana.",
 } as const;

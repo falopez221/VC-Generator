@@ -13,7 +13,7 @@ Sitio institucional y demostración pública limitada de Venture Governance Syst
 ## Qué incluye el Public Lab
 
 - Generación determinista de 6 a 12 oportunidades sintéticas.
-- MCDA normalizado, Monte Carlo, sensibilidad, actualización bayesiana, escenarios, matriz de riesgo y frente de Pareto.
+- Catálogo v2.0.0 de 12 modelos: MCDA, Monte Carlo, sensibilidad, actualización bayesiana, escenarios, matriz de riesgo, Pareto, mínimos cuadrados, tornado, break-even, robustez del ranking y prioridad de validación.
 - Comparación de hasta tres oportunidades, decisiones humanas y evidencia adicional.
 - Persistencia únicamente en `localStorage`, exportación JSON/CSV e impresión.
 - Sonido opcional después de una interacción del usuario, con volumen configurable.
@@ -55,7 +55,9 @@ npm run build:vercel
 ```text
 app/                         Rutas, layouts, metadata, sitemap y robots
 app/lab/                     Rutas del Public Lab
+app/applications/            Explorer y fichas de Application Intelligence
 src/lab/                     Motor, modelos, esquema, persistencia, audio y UI
+src/applications/            Catálogo, filtros, misiones, analytics y componentes
 src/styles/lab.css           Sistema visual responsive del Lab
 src/components/              Landing institucional
 src/config/site.ts           Identidad, URLs y navegación
@@ -76,7 +78,10 @@ AGENTS.md                    Reglas de alcance y protección de IP
 - [Modelos matemáticos](./docs/public-lab-models.md)
 - [Limitaciones](./docs/public-lab-limitations.md)
 - [Audio](./docs/public-lab-audio.md)
+- [Application Intelligence Explorer](./docs/applications.md)
 - [Guía de edición](./EDITING_GUIDE.md)
+
+El whitepaper público v2 se genera de forma reproducible con `scripts/generate_public_whitepaper.py` y se publica en `public/documents/venture-governance-system-whitepaper-publico-v2.pdf`.
 
 ## Despliegue
 

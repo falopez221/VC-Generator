@@ -1,9 +1,10 @@
 import { SectionHeading } from "@/src/components/ui/SectionHeading";
+import { ProgressiveDisclosure } from "@/src/components/ui/ProgressiveDisclosure";
 
 const CAPABILITIES = [
-  ["01", "Exploración permanente", "Investiga tendencias, problemas, tecnologías y cruces entre industrias."],
-  ["02", "Priorización cuantitativa", "Clasifica hipótesis con modelos, Monte Carlo, sensibilidad y criterios probabilísticos."],
-  ["03", "Validación inicial", "Puede avanzar hasta un MVP para reducir incertidumbre y aportar evidencia."],
+  ["01", "Exploración acotada", "Genera entre 6 y 12 oportunidades sintéticas por ejecución reproducible."],
+  ["02", "Cuatro perspectivas", "Mathematics, Finance, Strategy y Marketing entregan evaluaciones estructuradas."],
+  ["03", "Decisión asistida", "Doce modelos exponen robustez, economía, riesgo y la siguiente evidencia útil."],
 ] as const;
 
 export function ExecutiveSummary() {
@@ -15,15 +16,23 @@ export function ExecutiveSummary() {
           title="Un sistema para ampliar el universo de oportunidades."
           description="Venture Governance System coordina inteligencia especializada para detectar, explicar y priorizar oportunidades que difícilmente surgirían de un análisis tradicional."
         />
+        <ProgressiveDisclosure
+          what="Un Lab público reproducible para explorar y priorizar oportunidades sintéticas."
+          does="Convierte un mandato humano y señales dispersas en hipótesis comparables, riesgos explícitos y próximos experimentos."
+          matters="Amplía la cantidad de oportunidades examinadas sin transferir la responsabilidad de inversión a la IA."
+          how={["Coordina perspectivas especializadas.", "Contrasta evidencia, economía, riesgo y estrategia.", "Devuelve candidatos priorizados para revisión humana."]}
+          technical={["Cuatro agentes públicos con un contrato común.", "Doce modelos determinísticos y probabilísticos demostrativos.", "Gates humanos proporcionales al riesgo, evidencia e incertidumbre."]}
+          limitations={["No garantiza resultados ni predice unicornios.", "No reemplaza fundadores, validación comercial o ejecución.", "La demostración pública usa datos y reglas sintéticas."]}
+        />
         <div className="executive-layout">
           <div className="executive-copy">
-            <p>Venture Governance System es un orquestador de agentes de inteligencia artificial especializados en economía, matemática aplicada, estrategia, negocios, teoría de juegos, criptografía, tecnología, blockchain y desarrollo de empresas. Trabajan de forma coordinada con modelos de lenguaje que investigan continuamente nuevas tendencias, problemas, tecnologías y combinaciones entre industrias. El sistema identifica posibles ideas de startups y analiza por qué podrían funcionar, cómo construirlas, qué modelo de negocio utilizar, cuáles son sus riesgos y qué pasos permitirían convertirlas en empresas reales.</p>
-            <p>Como puede generar miles de hipótesis, utiliza modelos matemáticos predefinidos, simulaciones de Monte Carlo, análisis de sensibilidad y criterios probabilísticos para clasificarlas como débiles, prometedoras, muy prometedoras o excepcionales. Automatiza y fortalece la exploración, generación, filtrado y priorización inicial en Venture Capital, sin reemplazar a fundadores, equipos, capital, validación comercial ni gestión operativa. Cuando una oportunidad lo requiere, los agentes pueden construir un MVP inicial para aportar evidencia antes de una inversión. La misma infraestructura sirve para investigación estratégica, innovación corporativa y exploración de nuevos mercados.</p>
+            <p>Venture Governance System recibe una tesis humana, valida sus límites y genera entre 6 y 12 oportunidades sintéticas. Mathematics, Finance, Strategy y Marketing evalúan cada alternativa mediante contratos estructurados que separan hallazgos, supuestos, riesgos, evidencia faltante, incertidumbre y crítica.</p>
+            <p>Doce modelos públicos permiten inspeccionar MCDA, Monte Carlo, sensibilidad, actualización bayesiana, escenarios, riesgo, Pareto, mínimos cuadrados, tornado, break-even, robustez del ranking y prioridad de validación. El sistema compara y sugiere próximos experimentos; no construye una startup completa, no financia, no invierte y no reemplaza la validación comercial ni el juicio humano.</p>
           </div>
           <aside className="executive-boundary">
             <span>ALCANCE DEL SISTEMA</span>
             <strong>Amplía la exploración.<br />Preserva la decisión humana.</strong>
-            <p>Su valor está en aumentar la probabilidad de detectar ideas con potencial extraordinario —incluidos posibles futuros unicornios— sin confundir análisis inicial con ejecución empresarial completa.</p>
+            <p>Su valor está en hacer comparables las alternativas y localizar qué evidencia puede reducir más incertidumbre, sin confundir una simulación con validación real.</p>
           </aside>
         </div>
         <div className="executive-capabilities">

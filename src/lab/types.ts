@@ -148,14 +148,32 @@ export interface BayesianResult {
 export interface ScenarioResult {
   name: "Downside" | "Base" | "Upside";
   score: number;
-  estimatedReturn: number;
+  returnIndex: number;
   risk: number;
   confidence: number;
   recommendation: string;
 }
 
+export interface LeastSquaresPoint {
+  id: string;
+  x: number;
+  y: number;
+  fittedY: number;
+}
+
+export interface LeastSquaresResult {
+  slope: number;
+  intercept: number;
+  rSquared: number;
+  rmse: number;
+  informative: boolean;
+  reason: string;
+  points: LeastSquaresPoint[];
+}
+
 export interface LabRun {
   id: string;
+  modelVersion: string;
   createdAt: string;
   input: LabInput;
   status: SimulationStatus;

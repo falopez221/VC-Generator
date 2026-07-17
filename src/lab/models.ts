@@ -1,4 +1,4 @@
-import { AGENT_NAMES, DIMENSION_KEYS, type AgentName, type BayesianResult, type ComparisonDelta, type LabWeights, type MonteCarloConfig, type MonteCarloResult, type Opportunity, type OpportunityCategory, type ScenarioResult } from "./types.ts";
+import { AGENT_NAMES, DIMENSION_KEYS, type BayesianResult, type ComparisonDelta, type LabWeights, type LeastSquaresResult, type MonteCarloConfig, type MonteCarloResult, type Opportunity, type OpportunityCategory, type ScenarioResult } from "./types.ts";
 import { clamp, createRandom, round, sampleDistribution } from "./random.ts";
 
 export function normalizeWeights<T extends string>(weights: Record<T, number>): Record<T, number> {
@@ -6,6 +6,17 @@ export function normalizeWeights<T extends string>(weights: Record<T, number>): 
   const safe = keys.map((key) => Math.max(0, Number(weights[key]) || 0));
   const total = safe.reduce((sum, value) => sum + value, 0) || keys.length;
   return Object.fromEntries(keys.map((key, index) => [key, round(safe[index] / total * 100, 4)])) as Record<T, number>;
+}
+
+export function normalizeLabWeights(weights: LabWeights): LabWeights {
+  return {
+    agents: normalizeWeights(weights.agents),
+    dimensions: normalizeWeights(weights.dimensions),
+    riskAversion: round(clamp(weights.riskAversion), 2),
+    innovationPreference: round(clamp(weights.innovationPreference), 2),
+    evidenceThreshold: round(clamp(weights.evidenceThreshold), 2),
+    uncertaintyTolerance: round(clamp(weights.uncertaintyTolerance), 2),
+  };
 }
 
 export function calculateMCDA(opportunity: Opportunity, weights: LabWeights) {
@@ -19,7 +30,7 @@ export function calculateMCDA(opportunity: Opportunity, weights: LabWeights) {
   const evidenceGap = Math.max(0, weights.evidenceThreshold - opportunity.dimensions.evidenceQuality);
   const evidenceAdjustment = opportunity.dimensions.evidenceQuality * 0.06 - evidenceGap * 0.16;
   const innovationAdjustment = (opportunity.novelty - 50) * (weights.innovationPreference - 50) / 2500;
-  const uncertaintyPenalty = opportunity.uncertainty * (100 - weights.uncertaintyTolerance) * 0.08;
+  const uncertaintyPenalty = opportunity.uncertainty * ((100 - weights.uncertaintyTolerance) / 100) * 0.08;
   const weightedScore = clamp(rawScore - riskPenalty + evidenceAdjustment + innovationAdjustment - uncertaintyPenalty);
   const interval = Math.max(4, opportunity.uncertainty * 0.24 + opportunity.disagreement * 0.18);
   return {
@@ -27,6 +38,7 @@ export function calculateMCDA(opportunity: Opportunity, weights: LabWeights) {
     weightedScore: round(weightedScore),
     riskPenalty: round(riskPenalty),
     evidenceAdjustment: round(evidenceAdjustment),
+    uncertaintyPenalty: round(uncertaintyPenalty),
     contributions,
     interval: [round(clamp(weightedScore - interval)), round(clamp(weightedScore + interval))] as [number, number],
   };
@@ -47,7 +59,24 @@ export function classifyOpportunity(score: number, evidence: number, risk: numbe
   return "Uncertain";
 }
 
-export function recalculateRanking(opportunities: Opportunity[], weights: LabWeights) {
+function describeWeightChange(previousWeights: LabWeights | undefined, nextWeights: LabWeights) {
+  if (!previousWeights) return "Initial public weights with visible risk, evidence and uncertainty adjustments";
+  const previous = normalizeLabWeights(previousWeights);
+  const next = normalizeLabWeights(nextWeights);
+  const changes = [
+    ...AGENT_NAMES.map((name) => ({ label: `${name} agent weight`, delta: next.agents[name] - previous.agents[name] })),
+    ...DIMENSION_KEYS.map((key) => ({ label: `${key} dimension weight`, delta: next.dimensions[key] - previous.dimensions[key] })),
+    { label: "Risk aversion", delta: next.riskAversion - previous.riskAversion },
+    { label: "Innovation preference", delta: next.innovationPreference - previous.innovationPreference },
+    { label: "Evidence threshold", delta: next.evidenceThreshold - previous.evidenceThreshold },
+    { label: "Uncertainty tolerance", delta: next.uncertaintyTolerance - previous.uncertaintyTolerance },
+  ];
+  const driver = changes.reduce((largest, change) => Math.abs(change.delta) > Math.abs(largest.delta) ? change : largest, changes[0]);
+  if (!driver || Math.abs(driver.delta) < 0.001) return "No public weight changed; movement reflects updated opportunity evidence or state";
+  return `${driver.label} ${driver.delta >= 0 ? "increased" : "decreased"} by ${Math.abs(round(driver.delta, 2))} points`;
+}
+
+export function recalculateRanking(opportunities: Opportunity[], weights: LabWeights, previousWeights?: LabWeights) {
   const previous = new Map(opportunities.map((opportunity) => [opportunity.id, { rank: opportunity.rank, score: opportunity.totalScore }]));
   const recalculated = opportunities.map((opportunity) => {
     const mcda = calculateMCDA(opportunity, weights);
@@ -60,14 +89,12 @@ export function recalculateRanking(opportunities: Opportunity[], weights: LabWei
 
   const deltas: ComparisonDelta[] = recalculated.map((opportunity) => {
     const prior = previous.get(opportunity.id) ?? { rank: opportunity.rank, score: opportunity.totalScore };
-    const agentWeights = normalizeWeights(weights.agents);
-    const dominantAgent = AGENT_NAMES.reduce((best, name) => agentWeights[name] > agentWeights[best] ? name : best, "Mathematics" as AgentName);
     return {
       id: opportunity.id,
       previousRank: prior.rank,
       rank: opportunity.rank,
       scoreDelta: round(opportunity.totalScore - prior.score),
-      mainDriver: `${dominantAgent} weight and visible risk/evidence adjustments`,
+      mainDriver: describeWeightChange(previousWeights, weights),
     };
   });
   return { opportunities: recalculated, deltas };
@@ -142,7 +169,7 @@ export function calculateScenarios(opportunity: Opportunity, growthAdjustment = 
     return {
       name: definition.name,
       score: round(score),
-      estimatedReturn: round((score - 50) * 3.2),
+      returnIndex: round((score - 50) * 3.2),
       risk: round(clamp(opportunity.dimensions.risk + definition.risk - adjustment * 0.15)),
       confidence: round(clamp(opportunity.confidence + definition.confidence)),
       recommendation: score >= 72 ? "Advance to human-designed validation" : score >= 58 ? "Request discriminating evidence" : "Do not prioritize without new evidence",
@@ -166,3 +193,34 @@ export function paretoFront(opportunities: Opportunity[], x: "potential" | "evid
   });
 }
 
+export function leastSquaresTrend(points: { id: string; x: number; y: number }[]): LeastSquaresResult {
+  const count = points.length;
+  if (count === 0) return { slope: 0, intercept: 0, rSquared: 0, rmse: 0, informative: false, reason: "No points are available.", points: [] };
+  const meanX = points.reduce((sum, point) => sum + point.x, 0) / count;
+  const meanY = points.reduce((sum, point) => sum + point.y, 0) / count;
+  const varianceX = points.reduce((sum, point) => sum + (point.x - meanX) ** 2, 0);
+  const covariance = points.reduce((sum, point) => sum + (point.x - meanX) * (point.y - meanY), 0);
+  const slope = varianceX === 0 ? 0 : covariance / varianceX;
+  const intercept = meanY - slope * meanX;
+  const fitted = points.map((point) => ({ ...point, fittedY: intercept + slope * point.x }));
+  const residualSum = fitted.reduce((sum, point) => sum + (point.y - point.fittedY) ** 2, 0);
+  const totalSum = points.reduce((sum, point) => sum + (point.y - meanY) ** 2, 0);
+  const informative = count >= 2 && varianceX > 0 && totalSum > 0;
+  const rSquared = informative ? clamp(1 - residualSum / totalSum, 0, 1) : 0;
+  const reason = count < 2
+    ? "At least two points are required."
+    : varianceX === 0
+      ? "The selected X values do not vary."
+      : totalSum === 0
+        ? "The selected Y values do not vary."
+        : "Descriptive fit only; association does not imply causality.";
+  return {
+    slope: round(slope, 4),
+    intercept: round(intercept, 2),
+    rSquared: round(rSquared, 3),
+    rmse: round(Math.sqrt(residualSum / count), 2),
+    informative,
+    reason,
+    points: fitted.map((point) => ({ ...point, fittedY: round(point.fittedY, 2) })),
+  };
+}

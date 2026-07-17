@@ -1,4 +1,5 @@
 import type { AgentName } from "./types.ts";
+import { PUBLIC_MODEL_CATALOG, type PublicModelName } from "./model-catalog.ts";
 
 export interface AgentGuide {
   role: string;
@@ -39,45 +40,29 @@ export const AGENT_GUIDES: Record<AgentName, AgentGuide> = {
   },
 };
 
-export const MODEL_GUIDES = {
-  MCDA: {
-    shows: "How visible criteria and weights contribute to one comparative score.",
-    matters: "It makes prioritization assumptions inspectable instead of hiding them in a single number.",
-  },
-  "Monte Carlo": {
-    shows: "Hundreds or thousands of possible outcomes under editable uncertainty.",
-    matters: "It quantifies a distribution of outcomes instead of relying on one estimate.",
-  },
-  Sensitivity: {
-    shows: "How ranking changes when agent importance, criteria or tolerances change.",
-    matters: "It reveals which conclusions are robust and which depend heavily on assumptions.",
-  },
-  "Bayesian Update": {
-    shows: "How prior confidence changes after a new piece of evidence.",
-    matters: "It makes learning explicit and separates initial belief from updated confidence.",
-  },
-  Scenarios: {
-    shows: "Downside, base and upside results under different operating assumptions.",
-    matters: "It exposes asymmetric outcomes and prevents one forecast from appearing certain.",
-  },
-  "Risk Matrix": {
-    shows: "Risk probability, impact, uncertainty and proposed mitigation.",
-    matters: "It helps distinguish manageable exposure from risks that require more evidence or a stop condition.",
-  },
-  Pareto: {
-    shows: "Opportunities that remain competitive across two objectives without collapsing every trade-off.",
-    matters: "It preserves strong alternatives that a single weighted score could hide.",
-  },
-} as const;
+export const MODEL_GUIDES = Object.fromEntries(PUBLIC_MODEL_CATALOG.map((model) => [
+  model.name,
+  { shows: model.shows, matters: model.matters },
+])) as Record<PublicModelName, { shows: string; matters: string }>;
 
 export const METRIC_HELP = {
-  generated: "Number of synthetic opportunities in this reduced public run.",
-  score: "Comparative priority under the current public weights. It is not a probability of success.",
-  evidence: "Quality and quantity of information supporting the current evaluation.",
-  risk: "Visible downside exposure from probability, impact and uncertainty. Lower is generally preferable.",
-  uncertainty: "How much the conclusion could change when assumptions or evidence change.",
-  disagreement: "Variation between the four specialist evaluations. Higher values deserve inspection.",
-  pending: "Opportunities that still require a human review state.",
-  confidence: "Confidence of the evaluation given the available information and public assumptions.",
-  sensitivity: "Degree to which ranking changes when assumptions or weights change.",
+  generated: "Count of synthetic opportunities created in this run. More opportunities broaden the comparison set; they do not improve its quality by themselves.",
+  score: "Comparative priority on a 0–100 public scale under the current weights. Read it only against other opportunities in this run; it is not a probability of success.",
+  evidence: "Support available for the current evaluation on a 0–100 public scale. Higher means the assumptions have more stated backing, not that they are proven.",
+  risk: "Visible downside exposure on a 0–100 scale, combining probability, impact and uncertainty. Lower is generally preferable; open the matrix to inspect the causes.",
+  uncertainty: "Instability of the conclusion on a 0–100 scale. Higher means reasonable changes in inputs or evidence could materially change the score or rank.",
+  disagreement: "Spread between the four specialist scores. Higher means the agents see materially different strengths or weaknesses and human inspection matters more.",
+  pending: "Count of opportunities without a recorded human review state. It measures review workload, not model quality.",
+  confidence: "How supported the current evaluation is under the visible inputs and assumptions. It is conditional confidence, not certainty about the future.",
+  sensitivity: "Degree to which ranking changes when public assumptions or weights change. Higher sensitivity means the prioritization is less robust.",
+} as const;
+
+export const METRIC_READ = {
+  generated: "Use it to understand search breadth and expected review workload.",
+  score: "Compare score together with evidence, risk and uncertainty; never use it alone.",
+  evidence: "Low evidence should trigger a validation experiment even when score is high.",
+  risk: "A high value asks for mitigation, more evidence or rejection—not automatic pessimism.",
+  uncertainty: "High uncertainty means the ranking should be treated as provisional.",
+  disagreement: "Open the agent inspector to locate the source of the disagreement.",
+  pending: "Reduce it only through explicit human review; the system cannot approve an investment.",
 } as const;

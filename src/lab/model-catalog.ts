@@ -1,0 +1,103 @@
+export const PUBLIC_MODEL_VERSION = "2.0.0";
+
+export const PUBLIC_MODEL_CATALOG = [
+  {
+    id: "mcda",
+    name: "MCDA",
+    family: "Prioritization",
+    shows: "How visible criteria and normalized weights contribute to one comparative score.",
+    matters: "It makes prioritization assumptions inspectable instead of hiding them in a single number.",
+    limitation: "The score is relative to this run and is not a probability of startup success.",
+  },
+  {
+    id: "monte-carlo",
+    name: "Monte Carlo",
+    family: "Uncertainty",
+    shows: "Hundreds or thousands of possible outcomes under editable uncertainty and a reproducible seed.",
+    matters: "It quantifies a distribution of outcomes instead of relying on one estimate.",
+    limitation: "Synthetic distributions amplify the quality - or weakness - of their assumptions.",
+  },
+  {
+    id: "sensitivity",
+    name: "Sensitivity",
+    family: "Robustness",
+    shows: "How ranking changes when agent importance, criteria or tolerances change.",
+    matters: "It reveals which conclusions are robust and which depend heavily on assumptions.",
+    limitation: "Interactive reweighting is exploratory; the tornado model provides the explicit one-at-a-time calculation.",
+  },
+  {
+    id: "bayesian-update",
+    name: "Bayesian Update",
+    family: "Learning",
+    shows: "How prior confidence changes after a new piece of evidence under visible likelihood assumptions.",
+    matters: "It makes learning explicit and separates initial belief from updated confidence.",
+    limitation: "The posterior is conditional on public assumptions and is not an observed success probability.",
+  },
+  {
+    id: "scenarios",
+    name: "Scenarios",
+    family: "Uncertainty",
+    shows: "Downside, base and upside results under different operating assumptions.",
+    matters: "It exposes asymmetric outcomes and prevents one forecast from appearing certain.",
+    limitation: "Three scenarios cannot represent every plausible future or correlated shock.",
+  },
+  {
+    id: "risk-matrix",
+    name: "Risk Matrix",
+    family: "Risk",
+    shows: "Risk probability, impact, uncertainty and proposed mitigation.",
+    matters: "It distinguishes manageable exposure from risks that require more evidence or a stop condition.",
+    limitation: "Ordinal risk values require human ownership, evidence and domain review.",
+  },
+  {
+    id: "pareto",
+    name: "Pareto",
+    family: "Multi-objective",
+    shows: "Opportunities that remain competitive across two objectives without collapsing every trade-off.",
+    matters: "It preserves strong alternatives that a single weighted score could hide.",
+    limitation: "The frontier changes when the selected objectives or assumptions change.",
+  },
+  {
+    id: "least-squares",
+    name: "Least Squares",
+    family: "Descriptive statistics",
+    shows: "A straight descriptive trend through the current synthetic opportunities and each residual.",
+    matters: "It reveals whether selected dimensions tend to move together in this small sample.",
+    limitation: "Association does not imply causality and a 6-12 item sample is not predictive.",
+  },
+  {
+    id: "tornado-sensitivity",
+    name: "Tornado Sensitivity",
+    family: "Robustness",
+    shows: "The score range produced by changing one public dimension at a time around the current value.",
+    matters: "It identifies the assumptions that deserve validation before the ranking is trusted.",
+    limitation: "One-at-a-time analysis does not capture interactions between changing assumptions.",
+  },
+  {
+    id: "break-even",
+    name: "Break-even",
+    family: "Economics",
+    shows: "Contribution per retained customer, customers required, adoption required and payback under current assumptions.",
+    matters: "It connects price, CAC, churn, margin and capital to an auditable operating threshold.",
+    limitation: "It is an illustrative unit-economics threshold, not a valuation or financial forecast.",
+  },
+  {
+    id: "rank-robustness",
+    name: "Rank Robustness",
+    family: "Robustness",
+    shows: "How often each opportunity remains first or in the top three across seeded weight perturbations.",
+    matters: "It distinguishes stable priorities from rankings that depend on one exact weight configuration.",
+    limitation: "SMAA-style perturbations test public weights only; they are not historical calibration.",
+  },
+  {
+    id: "validation-priority",
+    name: "Validation Priority",
+    family: "Learning",
+    shows: "An ordinal value-of-information-style index for the next evidence request from each public agent.",
+    matters: "It directs limited validation effort toward evidence most likely to reduce decision uncertainty.",
+    limitation: "The index is not monetary EVSI and does not authorize research, spending or investment.",
+  },
+] as const;
+
+export type PublicModelName = (typeof PUBLIC_MODEL_CATALOG)[number]["name"];
+export const PUBLIC_MODEL_COUNT = PUBLIC_MODEL_CATALOG.length;

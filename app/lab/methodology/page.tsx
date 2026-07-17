@@ -1,12 +1,4 @@
-const models = [
-  ["MCDA", "Combines visible public criteria and weights; exposes contribution, risk penalty, evidence adjustment and uncertainty interval."],
-  ["Monte Carlo", "Explores many possible outcomes by repeatedly varying uncertain inputs with a reproducible seed."],
-  ["Sensitivity", "Shows which assumptions and public weights have the greatest influence on ranking."],
-  ["Bayesian Update", "Updates confidence when new evidence becomes available, using visible demonstrative likelihoods."],
-  ["Scenarios", "Compares editable downside, base and upside assumptions without treating one forecast as certain."],
-  ["Risk Matrix", "Separates probability, impact, uncertainty, mitigation and evidence."],
-  ["Pareto", "Highlights opportunities with stronger trade-offs that are not clearly dominated by another option."],
-] as const;
+import { PUBLIC_MODEL_CATALOG, PUBLIC_MODEL_VERSION } from "@/src/lab/model-catalog";
 
 export default function MethodologyPage() {
   return (
@@ -26,7 +18,7 @@ export default function MethodologyPage() {
         <article><span>DISAGREEMENT</span><strong>Specialist conflict</strong><p>Inspect each agent when their scores diverge; disagreement is information, not an error.</p></article>
         <article><span>HUMAN REVIEW</span><strong>Final governance gate</strong><p>Compare, request evidence, mark promising, uncertain or reject. No score approves an investment.</p></article>
       </div></section>
-      <section className="lab-section lab-section--dark"><header><p className="lab-kicker">DEMONSTRATIVE MODELS</p><h2>Visible mechanics and explicit limits.</h2></header><div className="lab-model-list">{models.map(([name, copy]) => <article key={name}><h3>{name}</h3><p>{copy}</p><small>Public formula · synthetic or user-provided inputs · no private calibration</small></article>)}</div></section>
+      <section className="lab-section lab-section--dark"><header><p className="lab-kicker">DEMONSTRATIVE MODELS · VERSION {PUBLIC_MODEL_VERSION}</p><h2>Visible mechanics and explicit limits.</h2></header><div className="lab-model-list">{PUBLIC_MODEL_CATALOG.map((model) => <article key={model.id}><span>{model.family}</span><h3>{model.name}</h3><p>{model.shows}</p><small>{model.limitation}</small></article>)}</div></section>
       <section className="lab-warning"><strong>Investment limitation</strong><p>This laboratory produces model-based estimates from assumptions and synthetic or user-provided data. It does not constitute investment advice and does not predict startup success.</p></section>
       <section className="lab-warning"><strong>Intellectual-property boundary</strong><p>This public lab demonstrates only a limited part of the broader Venture Governance architecture. The complete local system, extended agent network, proprietary orchestration logic and private quantitative models are not included.</p></section>
     </main>

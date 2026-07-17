@@ -1,4 +1,5 @@
 import { SectionHeading } from "@/src/components/ui/SectionHeading";
+import { ProgressiveDisclosure } from "@/src/components/ui/ProgressiveDisclosure";
 import { ARCHITECTURE_LAYERS } from "@/src/content/architecture";
 
 export function Architecture() {
@@ -8,7 +9,15 @@ export function Architecture() {
         <SectionHeading
           eyebrow="04 · Arquitectura conceptual"
           title="Seis planos para razonar, observar y gobernar."
-          description="Los veinte agentes son responsabilidades lógicas. El MVP los consolida en seis runtimes y sólo separa procesos cuando mejoran calidad, independencia, seguridad o costo."
+          description="Cuatro agentes públicos trabajan sobre contratos estructurados; validación, generación, ranking, persistencia y revisión permanecen como módulos deterministas y auditables."
+        />
+        <ProgressiveDisclosure
+          what="Una arquitectura conceptual organizada en seis planos operativos y controles transversales."
+          does="Separa descubrimiento, diseño, evaluación, validación y decisión para que cada entrega pueda inspeccionarse."
+          matters="La separación reduce acoplamiento, hace visibles las responsabilidades y permite escalar sólo donde aporta calidad."
+          how={["El orquestador activa capacidades según dependencias.", "Cada plano produce artefactos versionados.", "Memoria, observabilidad, seguridad y supervisión atraviesan todo el flujo."]}
+          technical={["4 agentes públicos y catálogo versionado de 12 modelos.", "Funciones puras, seed reproducible y persistencia local validada.", "Contratos tipados separan interfaz, dominio y modelos."]}
+          limitations={["Es la arquitectura del demostrador público, no la red privada.", "No incluye APIs pagas, autenticación ni datos remotos.", "Los resultados son sintéticos hasta que una etiqueta indique evidencia aportada."]}
         />
         <div className="architecture-layout">
           <div className="layer-stack" aria-label="Arquitectura de software por capas">
@@ -29,7 +38,7 @@ export function Architecture() {
           </aside>
         </div>
         <div className="architecture-principles">
-          <span>6 RUNTIMES MVP</span><span>20 ROLES LÓGICOS</span><span>DAG EVENT-DRIVEN</span><span>READ-ONLY DEFAULT</span><span>HUMAN-IN-COMMAND</span>
+          <span>4 AGENTES PÚBLICOS</span><span>12 MODELOS V2</span><span>FLUJO DETERMINISTA</span><span>LOCAL-FIRST</span><span>HUMAN-IN-COMMAND</span>
         </div>
       </div>
     </section>

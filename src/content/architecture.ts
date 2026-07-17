@@ -1,10 +1,10 @@
 export const ARCHITECTURE_LAYERS = [
-  { layer: "Interfaz y gobierno", modules: ["Tesis", "Aprobaciones", "Disenso", "Kill switch"] },
-  { layer: "Orquestación y control", modules: ["DAG", "Routing", "Presupuestos", "Políticas"] },
-  { layer: "Plano de agentes", modules: ["Descubrimiento", "Técnica", "Economía", "Riesgo"] },
-  { layer: "Laboratorio cuantitativo", modules: ["Modelos", "Monte Carlo", "Juegos", "Optimización"] },
-  { layer: "Datos, evidencia y memoria", modules: ["Fuentes", "RAG", "Ontología", "Procedencia"] },
-  { layer: "Seguridad y observabilidad", modules: ["Guardrails", "Evals", "Trazas", "Auditoría"] },
+  { layer: "Interfaz y revisión humana", modules: ["Tesis", "Configuración", "Comparación", "Revisión"] },
+  { layer: "Validación y ejecución", modules: ["Sanitización", "Bounds", "Seed", "Versión"] },
+  { layer: "Cuatro agentes públicos", modules: ["Mathematics", "Finance", "Strategy", "Marketing"] },
+  { layer: "Biblioteca cuantitativa", modules: ["12 modelos", "Escenarios", "Robustez", "Pareto"] },
+  { layer: "Estado y evidencia", modules: ["Etiquetas", "Persistencia local", "Exportación", "Procedencia"] },
+  { layer: "Seguridad y accesibilidad", modules: ["Guardrails", "ARIA", "Audio opcional", "Pruebas"] },
 ] as const;
 
 export const VALUE_TRANSFORMATION = [

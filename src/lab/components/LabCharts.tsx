@@ -1,4 +1,4 @@
-import type { BayesianResult, MonteCarloResult, Opportunity, ScenarioResult } from "../types.ts";
+import type { BayesianResult, LeastSquaresResult, MonteCarloResult, Opportunity, ScenarioResult } from "../types.ts";
 
 export function HistogramChart({ result }: { result: MonteCarloResult }) {
   const maximum = Math.max(...result.histogram, 1);
@@ -30,7 +30,7 @@ export function RadarChart({ opportunity }: { opportunity: Opportunity }) {
 }
 
 export function ScenarioChart({ scenarios }: { scenarios: ScenarioResult[] }) {
-  return <div className="lab-scenario-chart" role="img" aria-label={scenarios.map((scenario) => `${scenario.name} score ${scenario.score}`).join(", ")}>{scenarios.map((scenario) => <div key={scenario.name}><span>{scenario.name}</span><i><b style={{ width: `${scenario.score}%` }} /></i><strong>{scenario.score.toFixed(1)}</strong><small>Risk {scenario.risk.toFixed(0)} · Confidence {scenario.confidence.toFixed(0)}</small></div>)}</div>;
+  return <div className="lab-scenario-chart" role="img" aria-label={scenarios.map((scenario) => `${scenario.name} score ${scenario.score}, return index ${scenario.returnIndex}`).join(", ")}>{scenarios.map((scenario) => <div key={scenario.name}><span>{scenario.name}</span><i><b style={{ width: `${scenario.score}%` }} /></i><strong>{scenario.score.toFixed(1)}</strong><small>Risk {scenario.risk.toFixed(0)} · Confidence {scenario.confidence.toFixed(0)} · Return index {scenario.returnIndex.toFixed(0)}</small></div>)}</div>;
 }
 
 export function BayesianChart({ result }: { result: BayesianResult }) {
@@ -46,17 +46,56 @@ export function RiskMatrixChart({ opportunity }: { opportunity: Opportunity }) {
   );
 }
 
-export function ParetoChart({ points, opportunities }: { points: { id: string; x: number; y: number; dominated: boolean }[]; opportunities: Opportunity[] }) {
+export function ParetoChart({ points, opportunities, xLabel, yLabel }: { points: { id: string; x: number; y: number; dominated: boolean }[]; opportunities: Opportunity[]; xLabel: string; yLabel: string }) {
+  const left = 68;
+  const right = 570;
+  const top = 28;
+  const bottom = 242;
   const yValues = points.map((point) => point.y);
   const minY = Math.min(...yValues);
   const maxY = Math.max(...yValues);
-  const scaleY = (value: number) => maxY === minY ? 50 : 88 - (value - minY) / (maxY - minY) * 76;
+  const scaleX = (value: number) => left + value / 100 * (right - left);
+  const scaleY = (value: number) => maxY === minY ? (top + bottom) / 2 : bottom - (value - minY) / (maxY - minY) * (bottom - top);
   return (
-    <svg className="lab-pareto" viewBox="0 0 600 260" role="img" aria-label={`${points.filter((point) => !point.dominated).length} non-dominated opportunities in the selected public Pareto comparison.`}>
-      <title>Public Pareto comparison</title><line x1="52" y1="220" x2="574" y2="220" /><line x1="52" y1="20" x2="52" y2="220" />
-      {points.map((point) => { const opportunity = opportunities.find((candidate) => candidate.id === point.id); return <g key={point.id} className={point.dominated ? "is-dominated" : "is-frontier"}><circle cx={52 + point.x / 100 * 510} cy={scaleY(point.y) / 100 * 230} r={point.dominated ? 6 : 9}><title>{opportunity?.name}: x {point.x}, y {point.y}</title></circle><text x={58 + point.x / 100 * 510} y={scaleY(point.y) / 100 * 230 - 8}>{point.id}</text></g>; })}
-      <text x="280" y="252">stronger x objective →</text><text x="6" y="18">y trade-off</text>
+    <svg className="lab-pareto" viewBox="0 0 600 292" role="img" aria-label={`${points.filter((point) => !point.dominated).length} non-dominated opportunities. Each point includes straight projection guides to the ${xLabel} and ${yLabel} axes.`}>
+      <title>Public Pareto comparison with axis projection guides</title>
+      {[0, 25, 50, 75, 100].map((tick) => <g className="lab-pareto-grid" key={`x-${tick}`}><line x1={scaleX(tick)} y1={top} x2={scaleX(tick)} y2={bottom} /><text x={scaleX(tick)} y={bottom + 15} textAnchor="middle">{tick}</text></g>)}
+      {[0, .25, .5, .75, 1].map((ratio) => { const value = minY + (maxY - minY) * ratio; const y = scaleY(value); return <g className="lab-pareto-grid" key={`y-${ratio}`}><line x1={left} y1={y} x2={right} y2={y} /><text x={left - 8} y={y + 3} textAnchor="end">{Math.round(value)}</text></g>; })}
+      <line className="lab-pareto-axis" x1={left} y1={bottom} x2={right} y2={bottom} /><line className="lab-pareto-axis" x1={left} y1={top} x2={left} y2={bottom} />
+      {points.map((point) => {
+        const opportunity = opportunities.find((candidate) => candidate.id === point.id);
+        const x = scaleX(point.x);
+        const y = scaleY(point.y);
+        return <g key={point.id} className={point.dominated ? "is-dominated" : "is-frontier"}><line className="lab-pareto-guide" x1={x} y1={y} x2={x} y2={bottom} /><line className="lab-pareto-guide" x1={left} y1={y} x2={x} y2={y} /><circle cx={x} cy={y} r={point.dominated ? 3.5 : 4.5}><title>{opportunity?.name}: {xLabel} {point.x}, {yLabel} {point.y}</title></circle><text x={x + 6} y={y - 5}>{point.id}</text></g>;
+      })}
+      <text className="lab-pareto-axis-label" x={(left + right) / 2} y="283" textAnchor="middle">{xLabel} (higher is stronger)</text><text className="lab-pareto-axis-label" x="8" y="16">{yLabel}</text>
     </svg>
   );
 }
 
+export function LeastSquaresChart({ result, xLabel, yLabel }: { result: LeastSquaresResult; xLabel: string; yLabel: string }) {
+  if (!result.informative || result.points.length < 2) {
+    return <div className="lab-empty-chart" role="status"><strong>Descriptive fit unavailable</strong><p>{result.reason}</p></div>;
+  }
+  const left = 68;
+  const right = 570;
+  const top = 28;
+  const bottom = 225;
+  const values = result.points.flatMap((point) => [point.y, point.fittedY]);
+  const minY = Math.min(...values);
+  const maxY = Math.max(...values);
+  const scaleX = (value: number) => left + value / 100 * (right - left);
+  const scaleY = (value: number) => maxY === minY ? (top + bottom) / 2 : bottom - (value - minY) / (maxY - minY) * (bottom - top);
+  const minX = Math.min(...result.points.map((point) => point.x));
+  const maxX = Math.max(...result.points.map((point) => point.x));
+  const startY = result.intercept + result.slope * minX;
+  const endY = result.intercept + result.slope * maxX;
+  return <svg className="lab-least-squares" viewBox="0 0 600 278" role="img" aria-label={`Least-squares descriptive trend between ${xLabel} and ${yLabel}. R squared ${result.rSquared}.`}>
+    <title>Least-squares descriptive trend</title>
+    {[0, 25, 50, 75, 100].map((tick) => <line className="lab-trend-grid" key={tick} x1={scaleX(tick)} y1={top} x2={scaleX(tick)} y2={bottom} />)}
+    <line className="lab-trend-axis" x1={left} y1={bottom} x2={right} y2={bottom} /><line className="lab-trend-axis" x1={left} y1={top} x2={left} y2={bottom} />
+    <line className="lab-trend-line" x1={scaleX(minX)} y1={scaleY(startY)} x2={scaleX(maxX)} y2={scaleY(endY)} />
+    {result.points.map((point) => <g key={point.id}><line className="lab-trend-residual" x1={scaleX(point.x)} y1={scaleY(point.y)} x2={scaleX(point.x)} y2={scaleY(point.fittedY)} /><circle cx={scaleX(point.x)} cy={scaleY(point.y)} r="4"><title>{point.id}: observed {point.y}; fitted {point.fittedY}</title></circle><text x={scaleX(point.x) + 6} y={scaleY(point.y) - 5}>{point.id}</text></g>)}
+    <text className="lab-pareto-axis-label" x={(left + right) / 2} y="268" textAnchor="middle">{xLabel}</text><text className="lab-pareto-axis-label" x="8" y="16">{yLabel}</text>
+  </svg>;
+}

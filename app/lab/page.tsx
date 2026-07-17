@@ -1,4 +1,5 @@
 import { STAGES } from "@/src/lab/data";
+import { PUBLIC_MODEL_COUNT } from "@/src/lab/model-catalog";
 
 const publicAgents = [
   ["Mathematics", "Uncertainty, robustness, sensitivity and data quality."],
@@ -17,7 +18,7 @@ export default function LabHome() {
           <p>This public Lab uses four simplified agents, synthetic data and demonstrative quantitative models. It is not the complete architecture or the private local product.</p>
           <div className="lab-actions"><a className="lab-button lab-button--primary" href="/lab/demo">Run Lab Simulation</a><a className="lab-button" href="/lab/methodology">Read methodology</a></div>
         </div>
-        <aside className="lab-disclosure"><span>PUBLIC SCOPE</span><strong>6–12 synthetic opportunities</strong><strong>4 visible agents</strong><strong>7 public models</strong><p>Human supervision remains the final gate.</p></aside>
+        <aside className="lab-disclosure"><span>PUBLIC SCOPE</span><strong>6–12 synthetic opportunities</strong><strong>4 visible agents</strong><strong>{PUBLIC_MODEL_COUNT} public models</strong><p>Human supervision remains the final gate.</p></aside>
       </section>
       <section className="lab-band" aria-label="Public limitation">
         The complete Venture Governance architecture is designed for large-scale opportunity exploration. This public lab uses a reduced sample for speed, clarity and intellectual property protection.
@@ -37,4 +38,3 @@ export default function LabHome() {
     </main>
   );
 }
-

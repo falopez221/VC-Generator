@@ -1,5 +1,6 @@
 import { DEFAULT_WEIGHTS, OPPORTUNITY_BLUEPRINTS } from "./data.ts";
-import { calculateMCDA, classifyOpportunity, recalculateRanking } from "./models.ts";
+import { PUBLIC_MODEL_VERSION } from "./model-catalog.ts";
+import { calculateMCDA, classifyOpportunity, normalizeLabWeights, recalculateRanking } from "./models.ts";
 import { clamp, createRandom, hashString, randomBetween, round } from "./random.ts";
 import { isOpportunity, validateLabInput } from "./schema.ts";
 import { AGENT_NAMES, DIMENSION_KEYS, type AgentName, type AgentResult, type LabInput, type LabRun, type LabWeights, type Opportunity, type RiskItem } from "./types.ts";
@@ -63,13 +64,14 @@ function buildAgentResult(name: AgentName, opportunity: Omit<Opportunity, "agent
   const score = round(clamp(definition.score));
   const evidenceQuality = round(clamp(d.evidenceQuality + (name === "Marketing" ? -3 : name === "Mathematics" ? 2 : 0)));
   const confidence = round(clamp(evidenceQuality * 0.72 + (100 - d.risk) * 0.28));
+  const hasUserSuppliedEvidence = opportunity.availableEvidence.some((item) => item !== "Synthetic demonstration profile" && item !== "Synthetic demonstration profile only");
   return {
     agentName: name,
     domain: definition.domain,
     score,
     confidence,
     evidenceQuality,
-    findings: [definition.finding, "Observed data: none supplied directly to this public synthetic run.", "Synthetic data: opportunity dimensions and scenarios generated from the selected seed."],
+    findings: [definition.finding, hasUserSuppliedEvidence ? "User-supplied evidence: present but not independently verified by this public Lab." : "Observed evidence: none supplied directly to this public synthetic run.", "Synthetic data: opportunity dimensions and scenarios generated from the selected seed."],
     risks: [definition.risk],
     assumptions: [definition.assumption],
     missingEvidence: [definition.missing],
@@ -157,17 +159,19 @@ export function generateLabRun(rawInput: Partial<LabInput>, weights: LabWeights 
   const validated = validateLabInput(rawInput);
   if (!validated.success) throw new Error(validated.errors.join(" "));
   const input = validated.data;
-  const fingerprint = `${input.seed}:${input.problem}:${input.thesis}:${input.industry}:${input.technology}:${input.opportunityCount}`;
+  const normalizedWeights = normalizeLabWeights(weights);
+  const fingerprint = JSON.stringify({ modelVersion: PUBLIC_MODEL_VERSION, input, weights: normalizedWeights });
   const random = createRandom(input.seed + hashString(fingerprint));
   const opportunities = Array.from({ length: input.opportunityCount }, (_, index) => createOpportunity(input, index, random));
   if (!opportunities.every(isOpportunity)) throw new Error("Structured opportunity validation failed.");
-  const ranked = recalculateRanking(opportunities, weights).opportunities;
+  const ranked = recalculateRanking(opportunities, normalizedWeights).opportunities;
   return {
-    id: `vg-${input.seed}-${hashString(fingerprint).toString(36)}`,
+    id: `vg-${PUBLIC_MODEL_VERSION.replace(/\./g, "-")}-${input.seed}-${hashString(fingerprint).toString(36)}`,
+    modelVersion: PUBLIC_MODEL_VERSION,
     createdAt: new Date().toISOString(),
     input,
     status: "Completed",
-    weights,
+    weights: normalizedWeights,
     opportunities: ranked,
     warnings: input.availableEvidence.length < 18 ? ["Evidence is limited. Categories are capped by public evidence rules."] : [],
     disclosures: DISCLOSURES,
@@ -175,8 +179,9 @@ export function generateLabRun(rawInput: Partial<LabInput>, weights: LabWeights 
 }
 
 export function rerankLabRun(run: LabRun, weights: LabWeights) {
-  const ranked = recalculateRanking(run.opportunities, weights);
-  return { run: { ...run, weights, opportunities: ranked.opportunities }, deltas: ranked.deltas };
+  const normalizedWeights = normalizeLabWeights(weights);
+  const ranked = recalculateRanking(run.opportunities, normalizedWeights, run.weights);
+  return { run: { ...run, weights: normalizedWeights, opportunities: ranked.opportunities }, deltas: ranked.deltas };
 }
 
 export function updateHumanDecision(run: LabRun, opportunityId: string, decision: Opportunity["humanDecision"]) {
@@ -191,13 +196,23 @@ export function addEvidence(run: LabRun, opportunityId: string, evidence: string
   if (!text) return run;
   const updated = run.opportunities.map((opportunity) => {
     if (opportunity.id !== opportunityId) return opportunity;
-    const dimensions = { ...opportunity.dimensions, evidenceQuality: round(clamp(opportunity.dimensions.evidenceQuality + 8)) };
-    const agents = Object.fromEntries(AGENT_NAMES.map((name) => [name, { ...opportunity.agents[name], evidenceQuality: round(clamp(opportunity.agents[name].evidenceQuality + 7)), confidence: round(clamp(opportunity.agents[name].confidence + 5)) }])) as Opportunity["agents"];
-    return { ...opportunity, availableEvidence: [...opportunity.availableEvidence, text], dimensions, agents, uncertainty: round(clamp(opportunity.uncertainty - 6)) };
+    const normalizedText = text.toLowerCase();
+    const duplicate = opportunity.availableEvidence.some((item) => item.replace(/^User-supplied \(unverified\):\s*/i, "").toLowerCase() === normalizedText);
+    if (duplicate) return opportunity;
+    const nextEvidenceQuality = opportunity.dimensions.evidenceQuality >= 75 ? opportunity.dimensions.evidenceQuality : Math.min(75, opportunity.dimensions.evidenceQuality + 4);
+    const dimensions = { ...opportunity.dimensions, evidenceQuality: round(nextEvidenceQuality) };
+    const agents = Object.fromEntries(AGENT_NAMES.map((name) => {
+      const agent = opportunity.agents[name];
+      const agentEvidence = agent.evidenceQuality >= 75 ? agent.evidenceQuality : Math.min(75, agent.evidenceQuality + 3);
+      return [name, { ...agent, evidenceQuality: round(agentEvidence), confidence: round(clamp(agent.confidence + 2)) }];
+    })) as Opportunity["agents"];
+    const uncertainty = round(clamp(opportunity.uncertainty - 3));
+    const confidence = round(clamp(dimensions.evidenceQuality * 0.62 + (100 - uncertainty) * 0.38));
+    return { ...opportunity, availableEvidence: [...opportunity.availableEvidence, `User-supplied (unverified): ${text}`], dimensions, agents, uncertainty, confidence };
   });
   return { ...run, opportunities: recalculateRanking(updated, run.weights).opportunities };
 }
 
 export function serializeReproducibleRun(run: LabRun) {
-  return JSON.stringify({ input: run.input, weights: run.weights, opportunities: run.opportunities.map((opportunity) => ({ ...opportunity, humanDecision: "Pending" })) });
+  return JSON.stringify({ modelVersion: run.modelVersion, input: run.input, weights: run.weights, opportunities: run.opportunities.map((opportunity) => ({ ...opportunity, humanDecision: "Pending" })) });
 }

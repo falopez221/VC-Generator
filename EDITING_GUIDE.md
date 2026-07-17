@@ -39,15 +39,15 @@ Los titulares narrativos cortos viven en cada archivo de sección bajo `src/comp
 
 1. Copiá el PDF final como:
 
-   `public/documents/venture-intelligence-whitepaper.pdf`
+   `public/documents/venture-governance-system-whitepaper-publico-v2.pdf`
 
 2. Verificá `WHITEPAPER_URL` en `src/config/site.ts`.
 3. Cambiá `WHITEPAPER_AVAILABLE` a `true`.
 4. Ejecutá `npm run build` para verificar la descarga.
 
-## Agregar o eliminar agentes
+## Mantener los agentes públicos
 
-Editá `AGENTS` en `src/content/agents.ts`. Cada agente necesita un `id` único. Las relaciones se definen con `connectsTo`, usando esos mismos ids. El explorador se actualiza automáticamente.
+El alcance público está limitado a Mathematics, Finance, Strategy y Marketing. Editá sus contratos en `src/content/agents.ts`; no agregues agentes públicos. Las relaciones se definen con `connectsTo`, usando esos mismos ids. El explorador se actualiza automáticamente.
 
 ## Cambiar colores
 
