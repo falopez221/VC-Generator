@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { LabNav } from "@/src/lab/components/LabNav";
+import { LabChrome } from "@/src/lab/components/LabChrome";
 import { SITE_URL } from "@/src/config/site";
 
 export const metadata: Metadata = {
@@ -12,7 +12,7 @@ export default function LabLayout({ children }: Readonly<{ children: React.React
   return (
     <div className="lab-app" lang="en">
       <a className="skip-link" href="#lab-content">Skip to Lab content</a>
-      <LabNav />
+      <LabChrome />
       {children}
       <footer className="lab-footer"><span>Venture Governance System™ · Public demonstration</span><a href="/lab/methodology">Methodology & limitations</a></footer>
     </div>

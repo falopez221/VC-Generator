@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { requestInterfaceSound } from "@/src/components/ui/SoundController";
 import { APPLICATION_CATALOG, APPLICATION_DECISIONS, APPLICATION_DOMAINS, APPLICATION_HORIZONS, APPLICATION_METHODS, APPLICATION_OBJECTIVES, APPLICATION_ORGANIZATIONS, APPLICATION_OUTPUTS, CROSS_DOMAIN_MISSIONS } from "../catalog";
-import { buildMission, EMPTY_FILTERS, filterApplications, filtersFromSearchParams, filtersToSearchParams, recommendAgents, recommendModels } from "../engine";
+import { buildMission, diversifyApplications, EMPTY_FILTERS, filterApplications, filtersFromSearchParams, filtersToSearchParams, recommendAgents, recommendModels } from "../engine";
 import type { ApplicationDefinition, ApplicationFilters, ApplicationView, GovernanceLevel, Language, MissionConfiguration } from "../types";
 import { MissionNetwork } from "./MissionNetwork";
 import { trackApplicationsEvent } from "../analytics";
@@ -106,7 +106,7 @@ export function ApplicationsPageClient() {
     window.history.replaceState(null, "", `${window.location.pathname}${query.size ? `?${query}` : ""}${window.location.hash}`);
   }, [filters, view, language]);
 
-  const results = useMemo(() => filterApplications(APPLICATION_CATALOG, filters), [filters]);
+  const results = useMemo(() => diversifyApplications(filterApplications(APPLICATION_CATALOG, filters)), [filters]);
   const compared = useMemo(() => comparison.map((slug) => APPLICATION_CATALOG.find((item) => item.slug === slug)).filter(Boolean) as ApplicationDefinition[], [comparison]);
   const updateFilter = (key: keyof ApplicationFilters, value: string) => { setFilters((current) => ({ ...current, [key]: value })); setVisible(12); requestInterfaceSound("ui.tick"); trackApplicationsEvent(key === "query" ? "application_search_used" : "application_filter_changed", { filter: key, active: Boolean(value) }); };
   const toggleCompare = (slug: string) => setComparison((current) => { if (current.includes(slug)) return current.filter((item) => item !== slug); if (current.length >= 3) { setNotice("Comparison is limited to three applications so trade-offs remain readable."); return current; } requestInterfaceSound("ui.toggle"); trackApplicationsEvent("application_compared", { slug }); return [...current, slug]; });

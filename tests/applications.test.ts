@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { APPLICATION_CATALOG, APPLICATION_DOMAINS, CROSS_DOMAIN_MISSIONS, validateApplicationCatalog } from "../src/applications/catalog.ts";
-import { buildMission, classifyMissionRisk, EMPTY_FILTERS, filterApplications, filtersFromSearchParams, filtersToSearchParams, recommendAgents, recommendModels } from "../src/applications/engine.ts";
+import { buildMission, classifyMissionRisk, diversifyApplications, EMPTY_FILTERS, filterApplications, filtersFromSearchParams, filtersToSearchParams, recommendAgents, recommendModels } from "../src/applications/engine.ts";
 
 test("catalog exposes 150 bilingual, unique and connected applications", () => {
   assert.equal(APPLICATION_CATALOG.length, 150);
@@ -24,6 +24,14 @@ test("search and combined filters remain deterministic", () => {
   assert.ok(energy.length > 0);
   assert.ok(energy.every((item) => item.decisionTypes.includes("Prioritize") && item.riskLevel === "high-impact"));
   assert.deepEqual(filterApplications(APPLICATION_CATALOG, { ...EMPTY_FILTERS, query: "impossible-query-value" }), []);
+});
+
+test("application explorer diversifies domains without duplicating catalog entries", () => {
+  const diversified = diversifyApplications(APPLICATION_CATALOG);
+  assert.equal(diversified.length, APPLICATION_CATALOG.length);
+  assert.equal(new Set(diversified.map((item) => item.slug)).size, APPLICATION_CATALOG.length);
+  assert.equal(new Set(diversified.slice(0, 12).map((item) => item.primaryDomain)).size, 12);
+  assert.deepEqual(new Set(diversified), new Set(APPLICATION_CATALOG));
 });
 
 test("filter URL state round-trips without hidden values", () => {

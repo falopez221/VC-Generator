@@ -22,6 +22,27 @@ export function filterApplications(catalog: ApplicationDefinition[], filters: Ap
   });
 }
 
+export function diversifyApplications(applications: ApplicationDefinition[]) {
+  const byDomain = new Map<string, ApplicationDefinition[]>();
+  applications.forEach((application) => {
+    const group = byDomain.get(application.primaryDomain) ?? [];
+    group.push(application);
+    byDomain.set(application.primaryDomain, group);
+  });
+
+  const diversified: ApplicationDefinition[] = [];
+  let depth = 0;
+  while (diversified.length < applications.length) {
+    byDomain.forEach((group) => {
+      const application = group[depth];
+      if (application) diversified.push(application);
+    });
+    depth += 1;
+  }
+
+  return diversified;
+}
+
 export function filtersFromSearchParams(params: URLSearchParams): ApplicationFilters {
   return Object.fromEntries(Object.keys(EMPTY_FILTERS).map((key) => [key, params.get(key) ?? ""])) as ApplicationFilters;
 }
