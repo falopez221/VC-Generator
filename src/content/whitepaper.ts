@@ -44,10 +44,10 @@ export const WHITEPAPER_DOMAINS = [
 ] as const;
 
 export const WHITEPAPER_META = {
-  version: "2.0",
+  version: "2026.2",
   date: "Julio de 2026",
-  pages: 26,
-  chapters: 14,
-  appendices: 3,
+  pages: 36,
+  chapters: 13,
+  appendices: 4,
   northStar: "Maximizar la reducción de incertidumbre relevante por unidad de tiempo, costo y riesgo, preservando la decisión humana.",
 } as const;

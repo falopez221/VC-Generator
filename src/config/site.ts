@@ -10,7 +10,7 @@ export const PROJECT_DESCRIPTION =
   "A governed intelligence environment that turns a human thesis into inspectable opportunities, visible uncertainty and human review.";
 
 // Ruta central del whitepaper maestro dentro de /public/documents/.
-export const WHITEPAPER_URL = "/documents/venture-governance-system-whitepaper-publico-v2.pdf";
+export const WHITEPAPER_URL = "/documents/venture-governance-system-whitepaper-2026.pdf";
 // Cambiá a false si retirás temporalmente el documento.
 export const WHITEPAPER_AVAILABLE = true;
 
