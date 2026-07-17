@@ -4,17 +4,26 @@ import { useState } from "react";
 import Link from "next/link";
 import { CinematicField } from "@/src/components/experience/CinematicField";
 import { LinkButton } from "@/src/components/ui/LinkButton";
-import { requestInterfaceSound } from "@/src/components/ui/SoundController";
+import { requestInterfaceSound, requestInterfaceSoundSettings } from "@/src/components/ui/SoundController";
 import { SITE_LINKS } from "@/src/config/site";
 
 export function Hero() {
   const [active, setActive] = useState(true);
   const [revealed, setRevealed] = useState(false);
+  const [entered, setEntered] = useState(false);
+
+  const enterSystem = () => {
+    requestInterfaceSoundSettings({ enabled: true, volume: 75 });
+    requestInterfaceSound("human.input");
+    setEntered(true);
+    setRevealed(true);
+  };
 
   return (
     <>
       <section className={`cinematic-hero ${revealed ? "is-revealed" : ""}`} id="vision" lang="en">
-        <CinematicField mode="intro" active={active} />
+        <CinematicField mode="intro" active={entered && active} />
+        {!entered && <div className="cinematic-entry-gate" role="dialog" aria-modal="true" aria-labelledby="entry-gate-title"><div><span>VENTURE GOVERNANCE SYSTEM™</span><h2 id="entry-gate-title">Knowledge begins in silence.</h2><p>Enter to activate the collective intelligence field and its original cinematic score.</p><button type="button" autoFocus onClick={enterSystem}>ENTER THE SYSTEM <i aria-hidden="true">→</i></button><small>Sound begins at 75% · mute and volume controls remain available inside</small></div></div>}
         <div className="cinematic-sequence" aria-hidden="true"><span>00:70</span><div /><small>collective inference field</small></div>
         <div className="cinematic-controls" aria-label="Experience controls">
           <button type="button" onClick={() => setActive((value) => !value)} aria-pressed={!active}>{active ? "PAUSE FIELD" : "RESUME FIELD"}</button>

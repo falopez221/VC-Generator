@@ -99,7 +99,7 @@ export function SoundController() {
     if (!unlockedRef.current || requestedVolume <= 0) return;
     if (ambientRef.current) {
       const now = ambientRef.current.context.currentTime;
-      ambientRef.current.master.gain.linearRampToValueAtTime(requestedVolume / 100 * .035, now + 1.2);
+      ambientRef.current.master.gain.linearRampToValueAtTime(requestedVolume / 100 * .12, now + .8);
       return;
     }
     const context = new AudioContext();
@@ -110,7 +110,7 @@ export function SoundController() {
     filter.type = "lowpass";
     filter.frequency.value = 420;
     filter.Q.value = .4;
-    master.gain.value = 0;
+    master.gain.value = .012;
     lfo.frequency.value = .035;
     lfoGain.gain.value = .006;
     lfo.connect(lfoGain).connect(master.gain);
@@ -126,7 +126,7 @@ export function SoundController() {
     });
     filter.connect(master).connect(context.destination);
     lfo.start();
-    master.gain.linearRampToValueAtTime(requestedVolume / 100 * .035, context.currentTime + 3.5);
+    master.gain.linearRampToValueAtTime(requestedVolume / 100 * .12, context.currentTime + 1.8);
     ambientRef.current = { context, master, oscillators, lfo };
   }, []);
 

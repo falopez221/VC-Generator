@@ -63,7 +63,7 @@ function stopAmbient() {
 function startAmbient() {
   if (!unlocked || !enabled || volume <= 0 || typeof window === "undefined") return;
   if (ambient) {
-    ambient.master.gain.linearRampToValueAtTime(volume / 100 * .028, ambient.context.currentTime + 1);
+    ambient.master.gain.linearRampToValueAtTime(volume / 100 * .11, ambient.context.currentTime + .8);
     return;
   }
   const context = new AudioContext();
@@ -75,7 +75,7 @@ function startAmbient() {
   filter.frequency.value = 360;
   lfo.frequency.value = .028;
   lfoGain.gain.value = .004;
-  master.gain.value = 0;
+  master.gain.value = .012;
   lfo.connect(lfoGain).connect(master.gain);
   const oscillators = [46.25, 69.38, 92.5].map((frequency, index) => {
     const oscillator = context.createOscillator();
@@ -89,7 +89,7 @@ function startAmbient() {
   });
   filter.connect(master).connect(context.destination);
   lfo.start();
-  master.gain.linearRampToValueAtTime(volume / 100 * .028, context.currentTime + 3.2);
+  master.gain.linearRampToValueAtTime(volume / 100 * .11, context.currentTime + 1.8);
   ambient = { context, master, oscillators, lfo };
 }
 
