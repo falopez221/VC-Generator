@@ -14,7 +14,7 @@ export default function LabLayout({ children }: Readonly<{ children: React.React
       <a className="skip-link" href="#lab-content">Skip to Lab content</a>
       <LabChrome />
       {children}
-      <footer className="lab-footer"><span>Venture Governance System™ · Public demonstration · <a href="https://www.scottbuckley.com.au/library/discovery/" target="_blank" rel="noreferrer">“Discovery” by Scott Buckley · CC BY 4.0</a></span><a href="/lab/methodology">Methodology & limitations</a></footer>
+      <footer className="lab-footer"><span>Venture Governance System™ · Public demonstration · <a href="https://www.scottbuckley.com.au/library/the-vision/" target="_blank" rel="noreferrer">“The Vision” by Scott Buckley · CC BY 4.0</a></span><a href="/lab/methodology">Methodology & limitations</a></footer>
     </div>
   );
 }

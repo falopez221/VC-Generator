@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { CinematicField } from "@/src/components/experience/CinematicField";
 import { LinkButton } from "@/src/components/ui/LinkButton";
-import { requestInterfaceSound, requestInterfaceSoundSettings } from "@/src/components/ui/SoundController";
+import { requestInterfaceSoundSettings } from "@/src/components/ui/SoundController";
 import { SITE_LINKS } from "@/src/config/site";
 
 export function Hero() {
@@ -14,7 +14,6 @@ export function Hero() {
 
   const enterSystem = () => {
     requestInterfaceSoundSettings({ enabled: true, volume: 75 });
-    requestInterfaceSound("human.input");
     setEntryState("entering");
     setRevealed(true);
     window.setTimeout(() => setEntryState("entered"), 850);
@@ -28,7 +27,7 @@ export function Hero() {
         <div className="cinematic-sequence" aria-hidden="true"><span>00:70</span><div /><small>collective inference field</small></div>
         <div className="cinematic-controls" aria-label="Experience controls">
           <button type="button" onClick={() => setActive((value) => !value)} aria-pressed={!active}>{active ? "PAUSE FIELD" : "RESUME FIELD"}</button>
-          {!revealed && <button type="button" onClick={() => { setRevealed(true); requestInterfaceSound("stage.complete"); }}>REVEAL INTERFACE</button>}
+          {!revealed && <button type="button" onClick={() => setRevealed(true)}>REVEAL INTERFACE</button>}
         </div>
         <div className="cinematic-hero-copy">
           <div>

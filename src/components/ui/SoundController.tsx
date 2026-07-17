@@ -2,31 +2,9 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
-type SoundFile = "hover" | "tick" | "toggle" | "swosh";
 export type InterfaceSoundEvent = "ui.hover" | "ui.tick" | "ui.toggle" | "human.input" | "agent.pulse" | "stage.complete" | "opportunity.prioritized";
-
-const SOUND_PATHS: Record<SoundFile, string> = {
-  hover: "/audio/ui-hover.wav",
-  tick: "/audio/tick.mp3",
-  toggle: "/audio/ui-toggle.wav",
-  swosh: "/audio/swosh.mp3",
-};
-
-const SOUND_VOLUMES: Record<SoundFile, number> = { hover: 0.05, tick: 0.1, toggle: 0.08, swosh: 0.11 };
-const EVENT_SOUND: Record<InterfaceSoundEvent, SoundFile> = {
-  "ui.hover": "hover",
-  "ui.tick": "tick",
-  "ui.toggle": "toggle",
-  "human.input": "swosh",
-  "agent.pulse": "hover",
-  "stage.complete": "toggle",
-  "opportunity.prioritized": "tick",
-};
-
-const INTERACTIVE_SELECTOR = "a, button, summary, input[type='range'], [role='button']";
-const SCORE_PATH = "/audio/discovery-scott-buckley.mp3";
+const SCORE_PATH = "/audio/the-vision-scott-buckley.mp3";
 const STORAGE_KEY = "venture-governance-sound";
-const PLAY_EVENT = "venture-governance:sound-play";
 const SETTINGS_EVENT = "venture-governance:sound-settings";
 export const INTERFACE_SOUND_STATE_EVENT = "venture-governance:sound-state";
 
@@ -44,7 +22,7 @@ export function readInterfaceSoundSettings() {
 }
 
 export function requestInterfaceSound(eventName: InterfaceSoundEvent) {
-  if (typeof window !== "undefined") window.dispatchEvent(new CustomEvent(PLAY_EVENT, { detail: { eventName } }));
+  void eventName;
 }
 
 export function requestInterfaceSoundSettings(settings: { enabled: boolean; volume: number }) {
@@ -57,29 +35,7 @@ export function SoundController() {
   const enabledRef = useRef(false);
   const volumeRef = useRef(25);
   const unlockedRef = useRef(false);
-  const soundsRef = useRef<Partial<Record<SoundFile, HTMLAudioElement>>>({});
-  const lastHoverRef = useRef(0);
   const scoreRef = useRef<HTMLAudioElement | null>(null);
-
-  const ensureSounds = useCallback(() => {
-    if (Object.keys(soundsRef.current).length > 0) return;
-    soundsRef.current = Object.fromEntries((Object.keys(SOUND_PATHS) as SoundFile[]).map((name) => {
-      const audio = new Audio(SOUND_PATHS[name]);
-      audio.preload = "auto";
-      return [name, audio];
-    }));
-  }, []);
-
-  const play = useCallback((eventName: InterfaceSoundEvent) => {
-    if (!unlockedRef.current || !enabledRef.current || volumeRef.current <= 0) return;
-    ensureSounds();
-    const file = EVENT_SOUND[eventName];
-    const sound = soundsRef.current[file];
-    if (!sound) return;
-    sound.volume = SOUND_VOLUMES[file] * volumeRef.current / 100;
-    sound.currentTime = 0;
-    void sound.play().catch(() => undefined);
-  }, [ensureSounds]);
 
   const stopScore = useCallback(() => {
     scoreRef.current?.pause();
@@ -106,8 +62,8 @@ export function SoundController() {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify({ enabled: next.enabled, volume: safeVolume }));
     window.dispatchEvent(new CustomEvent(INTERFACE_SOUND_STATE_EVENT, { detail: { enabled: next.enabled, volume: safeVolume } }));
     if (next.enabled && safeVolume > 0) startScore(safeVolume); else stopScore();
-    if (preview && next.enabled) queueMicrotask(() => play("ui.toggle"));
-  }, [play, startScore, stopScore]);
+    void preview;
+  }, [startScore, stopScore]);
 
   useEffect(() => {
     const initial = readInterfaceSoundSettings();
@@ -115,47 +71,20 @@ export function SoundController() {
     volumeRef.current = initial.volume;
     queueMicrotask(() => { setEnabled(initial.enabled); setVolume(initial.volume); window.dispatchEvent(new CustomEvent(INTERFACE_SOUND_STATE_EVENT, { detail: initial })); });
 
-    const unlock = () => { unlockedRef.current = true; if (enabledRef.current) { ensureSounds(); startScore(volumeRef.current); } };
-    const onPointerOver = (event: PointerEvent) => {
-      if (event.pointerType !== "mouse" || !enabledRef.current) return;
-      const target = event.target instanceof Element ? event.target.closest(INTERACTIVE_SELECTOR) : null;
-      if (!target || target.hasAttribute("aria-disabled") || target.classList.contains("sound-toggle") || target.closest("[data-sound-control]")) return;
-      if (event.relatedTarget instanceof Node && target.contains(event.relatedTarget)) return;
-      const now = performance.now();
-      if (now - lastHoverRef.current < 70) return;
-      lastHoverRef.current = now;
-      play("ui.hover");
-    };
-    const onClick = (event: MouseEvent) => {
-      const target = event.target instanceof Element ? event.target.closest(INTERACTIVE_SELECTOR) : null;
-      if (!target || target.classList.contains("sound-toggle") || target.closest("[data-sound-control]") || target.hasAttribute("aria-disabled") || target.matches("input[type='range']")) return;
-      play(target.matches("summary, [aria-pressed], [aria-expanded]") ? "ui.toggle" : "ui.tick");
-    };
-    const onChange = (event: Event) => { const target = event.target; if (target instanceof HTMLInputElement && target.type === "range") play("ui.toggle"); };
-    const onPlayRequest = (event: Event) => play((event as CustomEvent<{ eventName: InterfaceSoundEvent }>).detail.eventName);
+    const unlock = () => { unlockedRef.current = true; if (enabledRef.current) startScore(volumeRef.current); };
     const onSettingsRequest = (event: Event) => applySettings((event as CustomEvent<{ enabled: boolean; volume: number }>).detail, true);
 
     document.addEventListener("pointerdown", unlock);
     document.addEventListener("keydown", unlock);
-    document.addEventListener("pointerover", onPointerOver);
-    document.addEventListener("click", onClick);
-    document.addEventListener("change", onChange);
-    window.addEventListener(PLAY_EVENT, onPlayRequest);
     window.addEventListener(SETTINGS_EVENT, onSettingsRequest);
     return () => {
       document.removeEventListener("pointerdown", unlock);
       document.removeEventListener("keydown", unlock);
-      document.removeEventListener("pointerover", onPointerOver);
-      document.removeEventListener("click", onClick);
-      document.removeEventListener("change", onChange);
-      window.removeEventListener(PLAY_EVENT, onPlayRequest);
       window.removeEventListener(SETTINGS_EVENT, onSettingsRequest);
-      Object.values(soundsRef.current).forEach((sound) => sound?.pause());
-      soundsRef.current = {};
       stopScore();
       scoreRef.current = null;
     };
-  }, [applySettings, ensureSounds, play, startScore, stopScore]);
+  }, [applySettings, startScore, stopScore]);
 
   const toggleSound = () => applySettings({ enabled: !enabledRef.current, volume }, true);
 
