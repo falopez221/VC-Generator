@@ -41,7 +41,7 @@ export function Footer() {
 
       <div className="container footer-bottom">
         <span>Venture Governance System™ · Conceptual decision-support system · 2026</span>
-        <span>Synthetic public demo · No financial advice</span>
+        <span>Synthetic public demo · No financial advice · <a href="https://www.scottbuckley.com.au/library/discovery/" target="_blank" rel="noreferrer">“Discovery” by Scott Buckley · CC BY 4.0</a></span>
         <Link href="/#vision">Back to top ↑</Link>
       </div>
     </footer>

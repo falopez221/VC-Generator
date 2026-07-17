@@ -18,7 +18,7 @@ export function LabNav() {
   const [enabled, setEnabled] = useState(false);
   const [volume, setVolume] = useState(25);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [entered, setEntered] = useState(false);
+  const [entryState, setEntryState] = useState<"locked" | "entering" | "entered">("locked");
   const pathname = usePathname();
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -57,7 +57,7 @@ export function LabNav() {
 
   return (
     <>
-    {!entered && <div className="lab-audio-gate" role="dialog" aria-modal="true" aria-labelledby="lab-entry-title"><div><span>PUBLIC LAB · AUDIOVISUAL MODE</span><h2 id="lab-entry-title">Observe the system think.</h2><p>Enter to activate the original score and the live intelligence field.</p><button type="button" autoFocus onClick={() => { updateAudio(true, 75); setEntered(true); }}>ENTER THE LAB <i aria-hidden="true">→</i></button><small>Sound begins at 75% · you can mute or adjust it after entering</small></div></div>}
+    {entryState !== "entered" && <div className={`lab-audio-gate ${entryState === "entering" ? "is-entering" : ""}`} role="dialog" aria-modal="true" aria-labelledby="lab-entry-title"><div><span>PUBLIC LAB · AUDIOVISUAL MODE</span><h2 id="lab-entry-title">Observe the system think.</h2><p>Enter to activate the licensed score and the live intelligence field.</p><button type="button" autoFocus disabled={entryState === "entering"} onClick={() => { updateAudio(true, 75); setEntryState("entering"); window.setTimeout(() => setEntryState("entered"), 850); }}>ENTER THE LAB <i aria-hidden="true">→</i></button><small>Sound begins at 75% · you can mute or adjust it after entering</small></div></div>}
     <header className="lab-nav">
       <div className="lab-nav-shell">
         <Link className="lab-brand" href="/" aria-label={`${PROJECT_NAME}, home`} onClick={() => setMenuOpen(false)}>

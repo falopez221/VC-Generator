@@ -38,59 +38,46 @@ const EVENT_SOUND: Record<SoundEventName, SoundFile> = {
 };
 
 const SETTINGS_KEY = "venture-governance-public-lab-audio-v1";
+const SCORE_PATH = "/audio/discovery-scott-buckley.mp3";
 let unlocked = false;
 let enabled = false;
 let volume = 25;
 let lastPlayedAt = 0;
+let score: HTMLAudioElement | null = null;
+let scoreFadeFrame = 0;
 const audio = new Map<SoundFile, HTMLAudioElement>();
-let ambient: { context: AudioContext; master: GainNode; oscillators: OscillatorNode[]; lfo: OscillatorNode } | null = null;
 
-function stopAmbient() {
-  if (!ambient) return;
-  const rig = ambient;
-  ambient = null;
-  const now = rig.context.currentTime;
-  rig.master.gain.cancelScheduledValues(now);
-  rig.master.gain.setValueAtTime(rig.master.gain.value, now);
-  rig.master.gain.linearRampToValueAtTime(0, now + .7);
-  window.setTimeout(() => {
-    rig.oscillators.forEach((oscillator) => { try { oscillator.stop(); } catch { /* already stopped */ } });
-    try { rig.lfo.stop(); } catch { /* already stopped */ }
-    void rig.context.close();
-  }, 800);
+function fadeScore(level: number, duration = 900) {
+  if (!score) return;
+  window.cancelAnimationFrame(scoreFadeFrame);
+  const startVolume = score.volume;
+  const target = Math.min(.82, Math.max(0, volume / 100 * level));
+  const startedAt = performance.now();
+  const step = (now: number) => {
+    if (!score) return;
+    const progress = Math.min(1, (now - startedAt) / duration);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    score.volume = startVolume + (target - startVolume) * eased;
+    if (progress < 1) scoreFadeFrame = window.requestAnimationFrame(step);
+  };
+  scoreFadeFrame = window.requestAnimationFrame(step);
 }
 
-function startAmbient() {
+function startScore() {
   if (!unlocked || !enabled || volume <= 0 || typeof window === "undefined") return;
-  if (ambient) {
-    ambient.master.gain.linearRampToValueAtTime(volume / 100 * .11, ambient.context.currentTime + .8);
-    return;
+  if (!score) {
+    score = new Audio(SCORE_PATH);
+    score.loop = true;
+    score.preload = "metadata";
+    score.volume = 0;
   }
-  const context = new AudioContext();
-  const master = context.createGain();
-  const filter = context.createBiquadFilter();
-  const lfo = context.createOscillator();
-  const lfoGain = context.createGain();
-  filter.type = "lowpass";
-  filter.frequency.value = 360;
-  lfo.frequency.value = .028;
-  lfoGain.gain.value = .004;
-  master.gain.value = .012;
-  lfo.connect(lfoGain).connect(master.gain);
-  const oscillators = [46.25, 69.38, 92.5].map((frequency, index) => {
-    const oscillator = context.createOscillator();
-    const gain = context.createGain();
-    oscillator.type = index === 1 ? "triangle" : "sine";
-    oscillator.frequency.value = frequency;
-    gain.gain.value = index === 0 ? .5 : index === 1 ? .11 : .04;
-    oscillator.connect(gain).connect(filter);
-    oscillator.start();
-    return oscillator;
-  });
-  filter.connect(master).connect(context.destination);
-  lfo.start();
-  master.gain.linearRampToValueAtTime(volume / 100 * .11, context.currentTime + 1.8);
-  ambient = { context, master, oscillators, lfo };
+  void score.play().catch(() => undefined);
+  fadeScore(.68, 1400);
+}
+
+function stopScore() {
+  window.cancelAnimationFrame(scoreFadeFrame);
+  score?.pause();
 }
 
 export function getAudioSettings() {
@@ -106,8 +93,7 @@ export function getAudioSettings() {
     } catch {
       enabled = false;
     }
-  }
-  else {
+  } else {
     enabled = false;
     volume = 25;
   }
@@ -125,18 +111,24 @@ export function unlockAudio() {
       audio.set(name, element);
     }
   });
-  startAmbient();
+  startScore();
 }
 
 export function setAudioSettings(next: { enabled: boolean; volume: number }) {
   enabled = next.enabled;
   volume = [0, 25, 50, 75, 100].includes(next.volume) ? next.volume : 25;
   if (typeof window !== "undefined") window.localStorage.setItem(SETTINGS_KEY, JSON.stringify({ enabled, volume }));
-  if (enabled && volume > 0) startAmbient(); else stopAmbient();
+  if (enabled && volume > 0) startScore(); else stopScore();
 }
 
 export function playSound(eventName: SoundEventName) {
   if (!unlocked || !enabled || volume <= 0 || typeof window === "undefined") return false;
+  if (eventName === "simulation.start") fadeScore(.82, 700);
+  else if (eventName === "simulation.pause") fadeScore(.42, 500);
+  else if (eventName === "simulation.complete") fadeScore(.56, 1400);
+  else if (eventName === "opportunity.generated" || eventName === "ranking.updated") fadeScore(.72, 600);
+  else if (eventName.startsWith("human.")) fadeScore(.6, 900);
+
   const now = performance.now();
   if (now - lastPlayedAt < 90) return false;
   lastPlayedAt = now;

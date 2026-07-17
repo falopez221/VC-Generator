@@ -1,0 +1,9 @@
+Audio track: "Discovery"
+Composer: Scott Buckley
+Source: https://www.scottbuckley.com.au/library/discovery/
+License: Creative Commons Attribution 4.0 International
+License URL: https://creativecommons.org/licenses/by/4.0/
+
+Required attribution:
+"Discovery" by Scott Buckley — released under CC BY 4.0.
+https://www.scottbuckley.com.au

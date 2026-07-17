@@ -15,6 +15,7 @@
 .cinematic-entry-gate button:hover, .lab-audio-gate button:hover, .cinematic-entry-gate button:focus-visible, .lab-audio-gate button:focus-visible { background: rgb(83 184 223 / 22%); box-shadow: 0 16px 55px rgb(0 0 0 / 30%), 0 0 45px rgb(74 190 233 / 18%); transform: translateY(-2px); outline: 2px solid #9ce5ff; outline-offset: 4px; }
 .cinematic-entry-gate button i, .lab-audio-gate button i { margin-left: 1rem; font-style: normal; }
 .cinematic-entry-gate small, .lab-audio-gate small { display: block; margin-top: 1rem; color: #587488; font: 500 .52rem var(--font-mono); letter-spacing: .04em; }
+.cinematic-entry-gate.is-entering, .lab-audio-gate.is-entering { pointer-events: none; animation: entry-dissolve .85s cubic-bezier(.22,.75,.24,1) forwards; }
 
 .cinematic-hero { min-height: 100svh; position: relative; isolation: isolate; display: grid; align-items: end; color: white; background: #02080f; overflow: hidden; }
 .cinematic-hero::before { content: ""; position: absolute; z-index: 1; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgb(2 8 15 / 75%) 0, rgb(2 8 15 / 18%) 48%, rgb(2 8 15 / 26%) 100%); }
@@ -84,6 +85,7 @@ main > section:not(.cinematic-hero):not(.lab-cinematic-hero):not(.lab-live-field
 @keyframes chapter-enter { from { opacity: .3; transform: translateY(24px); } to { opacity: 1; transform: none; } }
 @keyframes field-discovery { from { filter: brightness(1.35); } to { filter: brightness(1); } }
 @keyframes entry-breathe { 0%, 100% { opacity: .35; transform: scale(.8); } 50% { opacity: 1; transform: scale(1.25); } }
+@keyframes entry-dissolve { 0% { opacity: 1; filter: brightness(1); } 35% { opacity: 1; filter: brightness(1.75); } 100% { opacity: 0; filter: brightness(2.2); transform: scale(1.025); } }
 
 @media (max-width: 900px) {
   .cinematic-hero-copy { grid-template-columns: 1fr; }
