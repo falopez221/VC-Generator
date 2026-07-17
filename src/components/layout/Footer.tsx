@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FOOTER_TEXT, NAVIGATION, PROJECT_NAME, SITE_LINKS } from "@/src/config/site";
 
 export function Footer() {
@@ -9,17 +10,17 @@ export function Footer() {
           <p className="footer-note">{FOOTER_TEXT}</p>
         </div>
         <div className="footer-links" aria-label="Enlaces del pie">
-          {NAVIGATION.slice(0, 6).map((item) => <a href={item.href} key={item.label}>{item.label}</a>)}
+          {NAVIGATION.map((item) => <a href={item.href} key={item.label}>{item.label}</a>)}
         </div>
         <div className="footer-links">
           <a href={SITE_LINKS.email}>Email</a>
-          <a href={SITE_LINKS.linkedin}>LinkedIn</a>
-          <a href={SITE_LINKS.github}>GitHub</a>
+          <Link href="/request-access">Request access</Link>
+          <a href={SITE_LINKS.whitepaper}>Whitepaper</a>
         </div>
       </div>
       <div className="container footer-bottom">
         <span>Documento conceptual · 2026</span>
-        <a href="#vision">Volver arriba ↑</a>
+        <Link href="/#vision">Volver arriba ↑</Link>
       </div>
     </footer>
   );

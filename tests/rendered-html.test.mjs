@@ -2,11 +2,13 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { readFile } from "node:fs/promises";
 
-async function render(pathname) {
+process.env.VG_OWNER_EMAIL = "franciscoariellopez22@gmail.com";
+
+async function render(pathname, headers = {}) {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}-${pathname}`);
   const { default: worker } = await import(workerUrl.href);
-  return worker.fetch(new Request(`http://localhost${pathname}`, { headers: { accept: "text/html" } }), { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } }, { waitUntil() {}, passThroughOnException() {} });
+  return worker.fetch(new Request(`http://localhost${pathname}`, { headers: { accept: "text/html", ...headers } }), { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } }, { waitUntil() {}, passThroughOnException() {} });
 }
 
 function renderedText(html) {
@@ -21,6 +23,8 @@ for (const [pathname, expected] of [
   ["/lab/results/example", "LOADING LOCAL RESULT"],
   ["/applications", "One architecture"],
   ["/applications/energy-prioritize", "Prioritized portfolio"],
+  ["/app/login", "Authorized Platform Access"],
+  ["/request-access", "Request an authorized workspace"],
 ]) {
   test(`server renders ${pathname}`, async () => {
     const response = await render(pathname);
@@ -29,6 +33,42 @@ for (const [pathname, expected] of [
     assert.match(await response.text(), new RegExp(expected, "i"));
   });
 }
+
+test("private platform redirects anonymous and non-member users server-side", async () => {
+  const anonymous = await render("/app");
+  assert.ok([302, 303, 307, 308].includes(anonymous.status));
+  assert.match(anonymous.headers.get("location") ?? "", /\/signin-with-chatgpt\?return_to=%2Fapp/i);
+
+  const nonMember = await render("/app", { "oai-authenticated-user-email": "not-authorized@example.com" });
+  assert.ok([302, 303, 307, 308].includes(nonMember.status));
+  assert.match(nonMember.headers.get("location") ?? "", /\/app\/login\?reason=not-authorized/i);
+});
+
+test("private platform preserves a requested deep link through sign-in", async () => {
+  const response = await render("/app/missions?mission=MIS-009");
+  assert.ok([302, 303, 307, 308].includes(response.status));
+  const location = new URL(response.headers.get("location") ?? "http://localhost/", "http://localhost");
+  assert.equal(location.pathname, "/signin-with-chatgpt");
+  assert.equal(location.searchParams.get("return_to"), "/app/missions?mission=MIS-009");
+});
+
+test("the configured owner can render the protected demo workspace", async () => {
+  const response = await render("/app", { "oai-authenticated-user-email": "franciscoariellopez22@gmail.com" });
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(renderedText(html), /Decisions, evidence and human gates/i);
+  assert.match(html, /noindex/i);
+  assert.doesNotMatch(renderedText(html), /SYSTEM AVAILABLE/i);
+  assert.match(renderedText(html), /AUTHORIZED DEMO/i);
+});
+
+test("robots excludes private and dispatcher-owned routes", async () => {
+  const response = await render("/robots.txt");
+  assert.equal(response.status, 200);
+  const text = await response.text();
+  assert.match(text, /Disallow:\s*\/app\//i);
+  assert.match(text, /Disallow:\s*\/signin-with-chatgpt/i);
+});
 
 test("applications exposes the governed explorer and mission builder", async () => {
   const response = await render("/applications");
@@ -68,6 +108,7 @@ test("first-time tour remains available without changing the public model", asyn
 test("methodology explains how to interpret dashboard results", async () => {
   const response = await render("/lab/methodology");
   const html = await response.text();
+  assert.match(html, /rel="canonical" href="https:\/\/venturegovernance\.com\/lab\/methodology"/i);
   assert.match(html, /Dashboard reading/i);
   assert.match(html, /not a probability of startup success/i);
   assert.match(html, /No score approves an investment/i);

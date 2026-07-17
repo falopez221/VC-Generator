@@ -8,6 +8,7 @@ import { buildMission, EMPTY_FILTERS, filterApplications, filtersFromSearchParam
 import type { ApplicationDefinition, ApplicationFilters, ApplicationView, GovernanceLevel, Language, MissionConfiguration } from "../types";
 import { MissionNetwork } from "./MissionNetwork";
 import { trackApplicationsEvent } from "../analytics";
+import { IntelligenceGraph } from "@/src/platform/components/IntelligenceGraph";
 
 const STAGES = [
   ["QUESTION", "Defines the decision, owner and constraints.", "Strategy · Human owner", "Mission brief", "Unclear mandate", "HUMAN GATE"],
@@ -46,7 +47,7 @@ function ApplicationCard({ application, language, selected, onCompare, onMission
 
 function ApplicationsMap({ applications, language }: { applications: ApplicationDefinition[]; language: Language }) {
   const sample = applications.slice(0, 18);
-  return <div className="application-map-view" role="group" aria-label="Network of filtered applications and domains"><div className="application-map-core"><span>ACTIVE VIEW</span><strong>{applications.length}</strong><small>applications</small></div>{sample.map((application, index) => <Link key={application.id} href={`/applications/${application.slug}`} className={`map-application map-position-${index % 9}`} style={{ "--ring": String(Math.floor(index / 9)) } as React.CSSProperties} aria-label={`${label(application, language)}, ${application.primaryDomain}`}><i /><span>{application.id}</span><small>{application.primaryDomain}</small></Link>)}<p>Showing a clustered sample. Open a node to trace domains, models, outputs and the human gate.</p></div>;
+  return <div className="application-system-map" role="group" aria-label="Interconnected map of the filtered application architecture"><IntelligenceGraph variant="applications" compact title={`${applications.length} matching applications · governed system map`} /><div className="application-system-index"><p>FILTERED APPLICATION SAMPLE</p>{sample.map((application) => <Link key={application.id} href={`/applications/${application.slug}`} aria-label={`${label(application, language)}, ${application.primaryDomain}`}><span>{application.id}</span><strong>{label(application, language)}</strong><small>{application.primaryDomain} · {application.governanceLevel}</small></Link>)}</div><p className="applications-disclaimer">The interactive graph explains how a mission connects evidence, the four public agents, models and a Human Gate. The list reflects the active catalog filters; it is not a live operational network.</p></div>;
 }
 
 function ApplicationsMatrix({ applications, language }: { applications: ApplicationDefinition[]; language: Language }) {
@@ -113,7 +114,7 @@ export function ApplicationsPageClient() {
   const generateMission = () => { const built = buildMission({ question: missionQuestion.slice(0, 1200), organization: "National government", domains: missionDomains, horizon: "3–10 years", constraints: "Evidence provenance, reversibility and authorized human review.", riskTolerance: "elevated", output: "Decision dossier" }); setMission(built); requestInterfaceSound("opportunity.prioritized"); trackApplicationsEvent("mission_generated", { domainCount: missionDomains.length, governance: built.governance }); };
   const saveView = () => { localStorage.setItem("vg-applications-view", window.location.href); setNotice("This filtered view was saved on this device."); };
 
-  return <main id="applications-content" className="applications-page">
+  return <main id="applications-content" className="applications-page" lang={language}>
     <section className="applications-hero">
       <div className="applications-container applications-hero-grid"><div><p className="applications-kicker">APPLICATION INTELLIGENCE</p><h1>One architecture.<br /><em>Thousands of possible missions.</em></h1><p className="applications-lede">Combine specialized agents, evidence, mathematical models and human governance to explore complex decisions across industries.</p><p className="applications-secondary">From venture discovery and corporate strategy to scientific research, infrastructure, national planning, energy, health and defensive resilience.</p><div className="applications-actions"><a href="#application-explorer">{t.explore}</a><a href="#mission-builder">{t.build}</a><Link href="/lab">{t.open}</Link><button type="button" onClick={() => setLanguage((current) => current === "en" ? "es" : "en")}>{t.language}</button></div><div className="applications-principles"><span><b>01 EVIDENCE</b>Traceable</span><span><b>02 UNCERTAINTY</b>Explicit</span><span><b>03 DECISION</b>Human</span></div></div><MissionNetwork /></div>
     </section>

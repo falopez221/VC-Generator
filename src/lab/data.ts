@@ -42,7 +42,7 @@ export const PRESETS: Record<string, LabWeights> = {
 };
 
 export const STAGES: StageDefinition[] = [
-  { id: 1, label: "Signal and problem intake", owner: "Human + Orchestrator", task: "Normalize thesis, evidence and constraints" },
+  { id: 1, label: "Signal and problem intake", owner: "Human + Orchestrator", task: "Normalize inputs and capture optional specialist web-search snapshots" },
   { id: 2, label: "Opportunity generation", owner: "Simplified public orchestrator", task: "Create a reduced synthetic opportunity set" },
   { id: 3, label: "Mathematics analysis", owner: "Mathematics", task: "Quantify uncertainty and robustness" },
   { id: 4, label: "Finance analysis", owner: "Finance", task: "Model economics and capital scenarios" },

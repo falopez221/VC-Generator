@@ -215,6 +215,9 @@ test("human decisions and new evidence persist in run state", () => {
   assert.equal(decided.opportunities.find((opportunity) => opportunity.id === id)?.humanDecision, "Promising");
   const updated = addEvidence(decided, id, "Observed willingness-to-pay test reached the public threshold.");
   assert.ok((updated.opportunities.find((opportunity) => opportunity.id === id)?.availableEvidence.length ?? 0) > run.opportunities[0].availableEvidence.length);
+  assert.equal(updated.opportunities.find((opportunity) => opportunity.id === id)?.totalScore, decided.opportunities.find((opportunity) => opportunity.id === id)?.totalScore);
+  assert.equal(updated.opportunities.find((opportunity) => opportunity.id === id)?.category, decided.opportunities.find((opportunity) => opportunity.id === id)?.category);
+  assert.equal(updated.opportunities.find((opportunity) => opportunity.id === id)?.dimensions.evidenceQuality, decided.opportunities.find((opportunity) => opportunity.id === id)?.dimensions.evidenceQuality);
   const duplicate = addEvidence(updated, id, "Observed willingness-to-pay test reached the public threshold.");
   assert.equal(duplicate.opportunities.find((opportunity) => opportunity.id === id)?.availableEvidence.length, updated.opportunities.find((opportunity) => opportunity.id === id)?.availableEvidence.length);
 });

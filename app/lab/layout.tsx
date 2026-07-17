@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function LabLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <div className="lab-app">
+    <div className="lab-app" lang="en">
       <a className="skip-link" href="#lab-content">Skip to Lab content</a>
       <LabNav />
       {children}
@@ -18,4 +18,3 @@ export default function LabLayout({ children }: Readonly<{ children: React.React
     </div>
   );
 }
-

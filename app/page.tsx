@@ -13,6 +13,7 @@ import { FinalCta } from "@/src/components/sections/FinalCta";
 import { WhitepaperInsights } from "@/src/components/sections/WhitepaperInsights";
 import { WhitepaperSection } from "@/src/components/sections/WhitepaperSection";
 import { ExecutiveSummary } from "@/src/components/sections/ExecutiveSummary";
+import { PlatformShowcase } from "@/src/components/sections/PlatformShowcase";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
       <Header />
       <main id="contenido">
         <Hero />
+        <PlatformShowcase />
         <ExecutiveSummary />
         <ProblemSolution />
         <WhitepaperInsights />

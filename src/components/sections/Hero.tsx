@@ -15,8 +15,9 @@ export function Hero() {
           <p className="hero-tagline">AI explores. Models evaluate. Humans decide.</p>
           <p className="hero-description">Venture Governance explores large spaces of possible business opportunities, evaluates them through specialized agents and quantitative models, and prioritizes candidates for human review.</p>
           <div className="hero-actions">
-            <LinkButton href={SITE_LINKS.secondaryCta}>Explore the Architecture</LinkButton>
-            <LinkButton href={SITE_LINKS.demo} variant="secondary">Try the Lab</LinkButton>
+            <LinkButton href={SITE_LINKS.platform}>Enter Platform</LinkButton>
+            <LinkButton href={SITE_LINKS.demo} variant="secondary">Explore Public Demo</LinkButton>
+            <LinkButton href={SITE_LINKS.secondaryCta} variant="quiet">Architecture</LinkButton>
             <LinkButton href={SITE_LINKS.whitepaper} variant="quiet" disabled={!WHITEPAPER_AVAILABLE}>Read the Whitepaper</LinkButton>
           </div>
           <div className="hero-proof" aria-label="Principios del sistema">

@@ -44,7 +44,7 @@ export function Header() {
             return (
               <Link
                 key={item.label}
-                className={active === id || routeActive ? "nav-link is-active" : "nav-link"}
+                className={`${active === id || routeActive ? "nav-link is-active" : "nav-link"}${item.label === "Access" ? " nav-link--access" : ""}`}
                 href={item.href}
                 onClick={() => setOpen(false)}
                 aria-current={active === id || routeActive ? "page" : undefined}

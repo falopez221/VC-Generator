@@ -77,6 +77,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visibl
 .nav-link { position: relative; flex: 0 0 auto; padding: .64rem .62rem; color: #aebdca; border-radius: 7px; font-size: .7rem; transition: color .2s ease, background .2s ease; }
 .nav-link:hover, .nav-link.is-active { color: white; background: rgb(255 255 255 / 8%); }
 .nav-link.is-active::after { content: ""; position: absolute; left: .65rem; right: .65rem; bottom: 3px; height: 1px; background: var(--cyan-400); }
+.nav-link--access { margin-left: .28rem; color: #e4f7ff; background: rgb(85 197 236 / 8%); border: 1px solid rgb(85 197 236 / 22%); }
+.nav-link--access:hover, .nav-link--access.is-active { background: rgb(85 197 236 / 14%); border-color: rgb(85 197 236 / 42%); }
 .nav-link.is-disabled { opacity: .4; cursor: not-allowed; }
 .nav-status { margin-left: .4rem; padding: .5rem .6rem; color: #93a8bb; border: 1px solid rgb(255 255 255 / 12%); border-radius: 6px; font: 600 .58rem var(--font-mono); white-space: nowrap; }
 .sound-toggle { min-width: 88px; height: 40px; display: inline-flex; align-items: center; justify-content: center; gap: .45rem; padding: 0 .65rem; flex: 0 0 auto; color: #7890a3; background: rgb(255 255 255 / 4%); border: 1px solid rgb(255 255 255 / 12%); border-radius: 7px; cursor: pointer; transition: color .18s ease, border-color .18s ease, background .18s ease; }

@@ -28,6 +28,28 @@ export type HumanDecision = "Pending" | "Saved" | "Promising" | "Uncertain" | "R
 export type OpportunityCategory = "Insufficient Evidence" | "Weak" | "Uncertain" | "Promising" | "Highly Promising" | "Priority for Human Review";
 export type SimulationStatus = "Ready" | "Running" | "Paused" | "Completed" | "Insufficient Evidence" | "Invalid Configuration" | "Simulation Failed";
 
+export type PublicWebSourceKind = "Web result" | "Technology signal" | "Public research";
+
+export interface PublicWebSource {
+  id: string;
+  agentName: AgentName;
+  kind: PublicWebSourceKind;
+  title: string;
+  url: string;
+  source: string;
+  snippet: string;
+  publishedAt: string | null;
+}
+
+export interface PublicWebResearch {
+  query: string;
+  agentQueries: Record<AgentName, string>;
+  retrievedAt: string;
+  status: "Completed" | "Partial" | "Unavailable";
+  sources: PublicWebSource[];
+  warnings: string[];
+}
+
 export interface LabInput {
   ideaNarrative: string;
   ideaSummary: string;
@@ -179,6 +201,7 @@ export interface LabRun {
   status: SimulationStatus;
   weights: LabWeights;
   opportunities: Opportunity[];
+  webResearch?: PublicWebResearch;
   warnings: string[];
   disclosures: string[];
 }

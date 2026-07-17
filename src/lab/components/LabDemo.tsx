@@ -7,9 +7,9 @@ import { DEFAULT_WEIGHTS, EXAMPLES, OBJECTIVES, PRESETS, STAGES } from "../data.
 import { bayesianUpdate, calculateMCDA, calculateScenarios, leastSquaresTrend, normalizeWeights, paretoFront, runMonteCarlo } from "../models.ts";
 import { getAudioSettings, playSound, unlockAudio } from "../audio.ts";
 import { duplicateRun, listRuns, loadLastRun, saveRun } from "../storage.ts";
-import { validateLabInput } from "../schema.ts";
+import { normalizePublicWebResearch, validateLabInput } from "../schema.ts";
 import { structureIdea } from "../idea-assistant.ts";
-import { AGENT_NAMES, DIMENSION_KEYS, type AgentName, type HumanDecision, type LabInput, type LabRun, type MonteCarloConfig, type Opportunity } from "../types.ts";
+import { AGENT_NAMES, DIMENSION_KEYS, type AgentName, type HumanDecision, type LabInput, type LabRun, type MonteCarloConfig, type Opportunity, type PublicWebResearch } from "../types.ts";
 import { AGENT_GUIDES, METRIC_HELP, METRIC_READ, MODEL_GUIDES } from "../ux.ts";
 import { InfoTip, ModelIntro, PanelIntro, SliderImpact } from "./LabUX.tsx";
 import { LabTour } from "./LabTour.tsx";
@@ -65,6 +65,25 @@ function csvCell(value: unknown) {
   return `"${String(value ?? "").replace(/"/g, '""')}"`;
 }
 
+async function requestPublicWebResearch(input: LabInput) {
+  const response = await fetch("/api/lab/research", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      problem: input.problem,
+      thesis: input.thesis,
+      industry: input.industry,
+      market: input.market,
+      technology: input.technology,
+      region: input.region,
+    }),
+  });
+  if (!response.ok) throw new Error("Public web research is temporarily unavailable.");
+  const research = normalizePublicWebResearch(await response.json());
+  if (!research) throw new Error("Public web research returned an invalid response.");
+  return research;
+}
+
 function Metric({ label, value, tooltip, reading }: { label: string; value: string | number; tooltip: string; reading?: string }) {
   return <article className="lab-metric"><header><span>{label}</span><InfoTip label={label} text={tooltip} /></header><strong>{value}</strong><small>{tooltip}</small>{reading && <em><b>How to read it:</b> {reading}</em>}</article>;
 }
@@ -86,6 +105,9 @@ export function LabDemo() {
   const [sortKey, setSortKey] = useState<"rank" | "score" | "risk" | "evidence">("rank");
   const [errors, setErrors] = useState<string[]>([]);
   const [assistantNotice, setAssistantNotice] = useState("");
+  const [webResearchEnabled, setWebResearchEnabled] = useState(false);
+  const [researchStatus, setResearchStatus] = useState<"Idle" | "Searching" | "Completed" | "Partial" | "Unavailable">("Idle");
+  const [researchNotice, setResearchNotice] = useState("Live research has not run yet.");
   const [parameterNotice, setParameterNotice] = useState("");
   const [changedControl, setChangedControl] = useState("");
   const [evidenceText, setEvidenceText] = useState("");
@@ -194,7 +216,8 @@ export function LabDemo() {
     return structured.input;
   };
 
-  const startSimulation = (nextInput = input) => {
+  const startSimulation = async (nextInput = input) => {
+    if (researchStatus === "Searching") return;
     unlockAudio();
     const shouldStructure = nextInput.ideaNarrative.trim().length >= 40 && !nextInput.ideaSummary.trim();
     const automaticStructure = shouldStructure ? structureIdea(nextInput) : null;
@@ -216,8 +239,26 @@ export function LabDemo() {
       playSound("evidence.warning");
       return;
     }
+    let research: PublicWebResearch | undefined;
+    if (webResearchEnabled) {
+      setResearchStatus("Searching");
+      setResearchNotice("The four public agents are running specialist searches across the public web…");
+      try {
+        research = await requestPublicWebResearch(validated.data);
+        setResearchStatus(research.status);
+        setResearchNotice(research.sources.length
+          ? `${research.sources.length} contextual signals captured in a dated snapshot.`
+          : "No matching public signals were returned. Continuing with the deterministic fallback.");
+      } catch {
+        setResearchStatus("Unavailable");
+        setResearchNotice("Public sources are unavailable. Continuing safely with the deterministic fallback.");
+      }
+    } else {
+      setResearchStatus("Idle");
+      setResearchNotice("Live public web signals were disabled for this run.");
+    }
     try {
-      const generated = generateLabRun(validated.data, run?.weights ?? DEFAULT_WEIGHTS);
+      const generated = generateLabRun(validated.data, run?.weights ?? DEFAULT_WEIGHTS, research);
       setInput(validated.data);
       setRun({ ...generated, status: "Running" });
       setSelectedId(generated.opportunities[0]?.id ?? null);
@@ -236,7 +277,7 @@ export function LabDemo() {
 
   const pause = () => { unlockAudio(); setStatus("Paused"); playSound("simulation.pause"); };
   const resume = () => { unlockAudio(); setStatus("Running"); playSound("simulation.start"); };
-  const reset = () => { setRun(null); setSelectedId(null); setComparisonIds([]); setStageIndex(-1); setStatus("Ready"); setErrors([]); };
+  const reset = () => { setRun(null); setSelectedId(null); setComparisonIds([]); setStageIndex(-1); setStatus("Ready"); setResearchStatus("Idle"); setResearchNotice("Live research has not run yet."); setErrors([]); };
   const loadExample = (name: string) => { unlockAudio(); const example = EXAMPLES[name]; setInput(example); setRun(null); setStatus("Ready"); setErrors([]); setAssistantNotice("Example loaded. Replace the full idea or edit any suggested parameter."); playSound("ui.select"); };
 
   const commitRun = (next: LabRun) => { setRun(next); saveRun(next); setHistory(listRuns()); };
@@ -251,7 +292,8 @@ export function LabDemo() {
     const next = addEvidence(run, selectedOpportunity.id, evidenceText);
     commitRun(next);
     setEvidenceText("");
-    playSound("ranking.updated");
+    setParameterNotice("Unverified evidence note saved. It does not change score, confidence or ranking until primary validation is recorded through an approved workflow.");
+    playSound("ui.select");
   };
   const toggleCompare = (id: string) => {
     setComparisonIds((current) => current.includes(id) ? current.filter((candidate) => candidate !== id) : current.length < 3 ? [...current, id] : current);
@@ -311,21 +353,21 @@ export function LabDemo() {
         <div className="lab-panel-heading"><div><p className="lab-kicker">HOW TO USE THE LAB</p><h2 id="lab-howto-title">From a question to a human decision.</h2></div><span>Four steps · accelerated public run</span></div>
         <ol className="lab-howto-steps">
           <li><span>01</span><div><strong>Define the boundary</strong><p>Describe the problem, thesis, market, technology, customer and constraints. Use a preset or replace every field with your own words.</p></div></li>
-          <li><span>02</span><div><strong>Run the public model</strong><p>Choose 6–12 opportunities and a seed. The visible pipeline takes about six seconds; identical inputs and seed reproduce the same synthetic result.</p></div></li>
+          <li><span>02</span><div><strong>Search and run</strong><p>Optionally capture current public technology and research signals, then generate 6–12 synthetic opportunities from a reproducible seed.</p></div></li>
           <li><span>03</span><div><strong>Read signals together</strong><p>Never read score alone. Compare evidence, risk, uncertainty and agent disagreement before opening an opportunity.</p></div></li>
           <li><span>04</span><div><strong>Stress-test and decide</strong><p>Change assumptions, compare up to three finalists, request evidence and record a human review state.</p></div></li>
         </ol>
-        <p className="lab-howto-note"><strong>Why is it still fast?</strong> The public stages are an accelerated visualization of local deterministic calculations. They do not wait for external web research or remote specialist models. The complete private system can take longer depending on data retrieval, models and validation gates.</p>
+        <p className="lab-howto-note"><strong>How does live research work?</strong> Mathematics, Finance, Strategy and Marketing each run a specialist query against a public Internet news index from the server. Result snippets are frozen as a dated snapshot; they guide questions but do not silently change scores.</p>
       </section>
 
       <section className="lab-intake" data-tour-target="configure">
-        <div className="lab-panel-heading"><div><p className="lab-kicker">HUMAN INTAKE</p><h2>Define the exploration boundary.</h2></div><span>Synthetic demonstration data · inputs remain in this browser</span></div>
+        <div className="lab-panel-heading"><div><p className="lab-kicker">HUMAN INTAKE</p><h2>Define the exploration boundary.</h2></div><span>Optional public web signals · no user URLs accepted</span></div>
         <div className="lab-example-row">{Object.keys(EXAMPLES).map((name) => <button type="button" key={name} onClick={() => loadExample(name)}>Load {name}</button>)}<button type="button" onClick={() => { setInput(EMPTY_INPUT); setAssistantNotice(""); reset(); }}>Clear</button></div>
-        <form onSubmit={(event) => { event.preventDefault(); startSimulation(); }}>
+        <form onSubmit={(event) => { event.preventDefault(); void startSimulation(); }}>
           <section className="lab-idea-assistant" aria-labelledby="idea-assistant-title">
             <header><div><span>AI-READY IDEA INTAKE · PUBLIC MODE</span><h3 id="idea-assistant-title">Explain the complete idea in your own words.</h3></div><small>Local structuring assistant · not a fifth specialist agent</small></header>
             <label className="lab-field"><span>Put your full idea here / Poner idea aquí</span><textarea className="lab-idea-textarea" value={input.ideaNarrative} maxLength={4000} placeholder="Put your idea here / Poner idea aquí. Explain the problem, proposed solution, customer, market, technology, business model, evidence, risks and anything else that matters." onChange={(event) => { setInput((current) => ({ ...current, ideaNarrative: event.target.value, ideaSummary: "" })); setAssistantNotice(""); }} /></label>
-            <div className="lab-assistant-actions"><button className="lab-button lab-button--primary" type="button" onClick={() => runIdeaAssistant()}>Summarize idea & suggest parameters</button><span aria-live="polite">{assistantNotice || "The public fallback structures the text locally. No idea is sent to an external model."}</span></div>
+            <div className="lab-assistant-actions"><button className="lab-button lab-button--primary" type="button" onClick={() => runIdeaAssistant()}>Summarize idea & suggest parameters</button><span aria-live="polite">{assistantNotice || "Structuring stays local. If live research is enabled, only the reviewed market fields are sent to the server-side public search."}</span></div>
             {input.ideaSummary && <label className="lab-field"><span>Assistant summary · editable</span><textarea className="lab-summary-textarea" value={input.ideaSummary} maxLength={900} onChange={(event) => updateInput("ideaSummary", event.target.value)} /></label>}
             <p>This assistant prepares the intake for Mathematics, Finance, Strategy and Marketing. It does not add another public agent, and its suggested parameters remain editable.</p>
           </section>
@@ -349,13 +391,27 @@ export function LabDemo() {
             <label className="lab-field lab-field--wide"><span>Known signals</span><textarea value={input.knownSignals} maxLength={600} onChange={(event) => updateInput("knownSignals", event.target.value)} /></label>
             <label className="lab-field lab-field--wide"><span>Available evidence</span><textarea value={input.availableEvidence} maxLength={600} onChange={(event) => updateInput("availableEvidence", event.target.value)} /></label>
           </div>
+          <section className="lab-web-control" aria-labelledby="web-research-control-title">
+            <label>
+              <input type="checkbox" checked={webResearchEnabled} disabled={researchStatus === "Searching"} onChange={(event) => setWebResearchEnabled(event.target.checked)} />
+              <span><strong id="web-research-control-title">Let the four agents search the Internet</strong><small>Off by default. When enabled, problem, thesis, industry, market, technology and region are reduced to bounded keywords and sent by the server to Google News RSS. Do not include confidential information. Snippets remain unverified context and never change ranking.</small></span>
+            </label>
+            <div className={`lab-research-state is-${researchStatus.toLowerCase()}`} role="status" aria-live="polite"><span>{researchStatus}</span><p>{researchNotice}</p></div>
+          </section>
           {errors.length > 0 && <div className="lab-errors" role="alert">{errors.map((error) => <p key={error}>{error}</p>)}</div>}
-          <div className="lab-run-actions" data-tour-target="run"><button className="lab-button lab-button--primary" type="submit">Run Lab Simulation</button>{status === "Running" && <button className="lab-button" type="button" onClick={pause}>Pause</button>}{status === "Paused" && <button className="lab-button" type="button" onClick={resume}>Resume</button>}{run && <button className="lab-button" type="button" onClick={() => startSimulation(input)}>Run again</button>}<button className="lab-button" type="button" onClick={reset}>Reset</button>{run && <button className="lab-button" type="button" onClick={() => startSimulation({ ...input, seed: input.seed + 1 })}>Change seed & run</button>}</div>
+          <div className="lab-run-actions" data-tour-target="run"><button className="lab-button lab-button--primary" type="submit" disabled={researchStatus === "Searching"}>{researchStatus === "Searching" ? "Agents are searching the web…" : webResearchEnabled ? "Agents Search Web & Run Lab Simulation" : "Run Lab Simulation"}</button>{status === "Running" && <button className="lab-button" type="button" onClick={pause}>Pause</button>}{status === "Paused" && <button className="lab-button" type="button" onClick={resume}>Resume</button>}{run && <button className="lab-button" type="button" onClick={() => void startSimulation(input)}>Run again</button>}<button className="lab-button" type="button" onClick={reset}>Reset</button>{run && <button className="lab-button" type="button" onClick={() => void startSimulation({ ...input, seed: input.seed + 1 })}>Change seed & run</button>}</div>
         </form>
       </section>
 
       {run && <>
         <section className="lab-progress" aria-live="polite">{STAGES.map((stage, index) => { const stageStatus = index < stageIndex || (index === stageIndex && status === "Completed") ? "Completed" : index === stageIndex && status === "Paused" ? "Paused" : index === stageIndex ? "Active" : "Waiting"; const processed = index <= stageIndex ? run.opportunities.length : 0; return <article className={`stage-${stageStatus.toLowerCase()}`} key={stage.id}><span>{String(stage.id).padStart(2, "0")}</span><div><strong>{stage.label}</strong><small>{stage.owner} · ~0.6s accelerated demo step</small><p>{stage.task} · {processed}/{run.opportunities.length} opportunities</p></div><b>{stageStatus}</b></article>; })}</section>
+
+        {run.webResearch && <section className="lab-web-research" aria-labelledby="web-research-title">
+          <div className="lab-panel-heading"><div><p className="lab-kicker">PUBLIC WEB SNAPSHOT</p><h2 id="web-research-title">Current signals, separated from synthetic estimates.</h2></div><span>{run.webResearch.status} · {run.webResearch.sources.length} sources · {new Date(run.webResearch.retrievedAt).toLocaleString()}</span></div>
+          <div className="lab-web-summary"><div><span>FOUR SPECIALIST QUERIES</span><ul>{AGENT_NAMES.map((agentName) => <li key={agentName}><strong>{agentName}</strong><p>{run.webResearch?.agentQueries[agentName]}</p></li>)}</ul></div><div><span>INTERPRETATION</span><p>These Internet results help each public agent frame hypotheses in its own domain. They do not prove demand, unit economics, feasibility or investability.</p></div></div>
+          {run.webResearch.sources.length > 0 ? <div className="lab-web-source-grid">{run.webResearch.sources.map((source) => <article key={source.id}><div><span>{source.id} · {source.agentName} · {source.kind}</span><small>{source.publishedAt ? new Date(source.publishedAt).toLocaleDateString() : "Date unavailable"}</small></div><h3>{source.title}</h3><p>{source.snippet}</p><a href={source.url} target="_blank" rel="noreferrer">Open source website: {source.source}<span aria-hidden="true"> ↗</span></a></article>)}</div> : <p className="lab-web-empty">No matching Internet results were available. All four agents continued with the local deterministic fallback.</p>}
+          <ul className="lab-web-warnings">{run.webResearch.warnings.map((warning) => <li key={warning}>{warning}</li>)}</ul>
+        </section>}
 
         <section className="lab-dashboard" aria-label="Executive overview">
           <div className="lab-panel-heading"><div><p className="lab-kicker">EXECUTIVE OVERVIEW</p><h2>{run.input.analysisName}</h2></div><div className="lab-export"><a href={`/lab/results/${run.id}`}>Open result view</a><button type="button" onClick={exportJson}>Export JSON</button><button type="button" onClick={exportCsv}>Export CSV</button><button type="button" onClick={() => window.print()}>Print</button></div></div>
@@ -389,7 +445,7 @@ export function LabDemo() {
           <div className="lab-agent-network" role="group" aria-label="Interactive network of four public agents"><div className="lab-agent-core"><span>HUMAN INPUT</span><strong>Public Orchestrator</strong><small>Simplified model</small></div>{AGENT_NAMES.map((name, index) => <button key={name} type="button" className={`${selectedAgent === name ? "is-selected" : ""} ${stageIndex === index + 2 && status === "Running" ? "is-active" : ""}`} onClick={() => { unlockAudio(); setSelectedAgent(name); playSound("agent.activate"); }}><span>0{index + 1}</span><strong>{name}</strong><small>{selectedOpportunity?.agents[name].status ?? "Waiting"}</small></button>)}</div>
           {selectedOpportunity && <div className="lab-agent-inspector" aria-live="polite">
             <div className="lab-agent-profile">
-              <div><span>{selectedAgent} Agent</span><h3>{selectedOpportunity.agents[selectedAgent].domain}</h3><p>{selectedOpportunity.agents[selectedAgent].findings[0]}</p></div>
+              <div><span>{selectedAgent} Agent</span><h3>{selectedOpportunity.agents[selectedAgent].domain}</h3><ul className="lab-agent-findings">{selectedOpportunity.agents[selectedAgent].findings.map((finding) => <li key={finding}>{finding}</li>)}</ul></div>
               <div className="lab-agent-guide"><article><span>ROLE</span><p>{AGENT_GUIDES[selectedAgent].role}</p></article><article><span>INPUTS</span><div>{AGENT_GUIDES[selectedAgent].inputs.map((item) => <small key={item}>{item}</small>)}</div></article><article><span>OUTPUTS</span><div>{AGENT_GUIDES[selectedAgent].outputs.map((item) => <small key={item}>{item}</small>)}</div></article><article><span>WHAT IT EVALUATES</span><p>{AGENT_GUIDES[selectedAgent].evaluates}</p></article><article><span>LIMITATIONS</span><p>{AGENT_GUIDES[selectedAgent].limitations}</p></article></div>
             </div>
             <dl><div><dt>Score <InfoTip label="agent score" text={METRIC_HELP.score} /></dt><dd>{selectedOpportunity.agents[selectedAgent].score}</dd></div><div><dt>Confidence <InfoTip label="confidence" text={METRIC_HELP.confidence} /></dt><dd>{selectedOpportunity.agents[selectedAgent].confidence}%</dd></div><div><dt>Evidence <InfoTip label="evidence" text={METRIC_HELP.evidence} /></dt><dd>{selectedOpportunity.agents[selectedAgent].evidenceQuality}%</dd></div></dl>
@@ -413,10 +469,10 @@ export function LabDemo() {
         {selectedOpportunity && <section className="lab-detail">
           <div className="lab-panel-heading"><div><p className="lab-kicker">OPPORTUNITY DETAIL · {selectedOpportunity.id}</p><h2>{selectedOpportunity.name}</h2></div><div><span>{selectedOpportunity.category}</span><strong>{selectedOpportunity.totalScore.toFixed(1)}</strong><button type="button" onClick={() => setSelectedId(null)}>Close detail</button></div></div>
           <div className="lab-opportunity-guide"><div><span>HOW TO READ THIS OPPORTUNITY</span><p>This opportunity was independently evaluated by four specialized agents. The ranking combines their structured outputs with public quantitative models.</p></div><div>{AGENT_NAMES.map((name) => <small key={name}>{name}</small>)}</div></div>
-          <div className="lab-detail-grid"><div><h3>Problem</h3><p>{selectedOpportunity.problem}</p><h3>Proposed solution</h3><p>{selectedOpportunity.proposedSolution}</p><h3>Target customer</h3><p>{selectedOpportunity.targetCustomer}</p><h3>Business model</h3><p>{selectedOpportunity.businessModel}</p><h3>Critical hypotheses</h3><ul>{selectedOpportunity.criticalHypotheses.map((hypothesis) => <li key={hypothesis}>{hypothesis}</li>)}</ul></div><div><RadarChart opportunity={selectedOpportunity} /><h3>What would change this conclusion?</h3><p>Observed willingness to pay, lower acquisition cost, a failed technical prototype, a strong competitor response, or evidence that the problem is less urgent could materially change confidence and ranking.</p><h3>Lean Startup experiment</h3><p>Build the smallest measurable workflow prototype, define a behavioral success threshold and compare it with the current alternative.</p><h3>Jobs To Be Done</h3><p>When the target team faces the stated constraint, help it make a traceable decision with less coordination cost and clearer evidence.</p></div></div>
+          <div className="lab-detail-grid"><div><h3>Problem</h3><p>{selectedOpportunity.problem}</p><h3>Proposed solution</h3><p>{selectedOpportunity.proposedSolution}</p><h3>Target customer</h3><p>{selectedOpportunity.targetCustomer}</p><h3>Business model</h3><p>{selectedOpportunity.businessModel}</p><h3>Evidence ledger</h3><ul>{selectedOpportunity.availableEvidence.map((evidence) => <li key={evidence}>{evidence}</li>)}</ul><h3>Critical hypotheses</h3><ul>{selectedOpportunity.criticalHypotheses.map((hypothesis) => <li key={hypothesis}>{hypothesis}</li>)}</ul></div><div><RadarChart opportunity={selectedOpportunity} /><h3>What would change this conclusion?</h3><p>Observed willingness to pay, lower acquisition cost, a failed technical prototype, a strong competitor response, or evidence that the problem is less urgent could materially change confidence and ranking.</p><h3>Lean Startup experiment</h3><p>Build the smallest measurable workflow prototype, define a behavioral success threshold and compare it with the current alternative.</p><h3>Jobs To Be Done</h3><p>When the target team faces the stated constraint, help it make a traceable decision with less coordination cost and clearer evidence.</p></div></div>
           <div className="lab-human-review-copy"><span>HUMAN REVIEW</span><strong>The system never makes investment decisions.</strong><p>Its role is to generate, analyze and prioritize opportunities. Final decisions always remain under human supervision.</p></div>
           <div className="lab-human-actions" aria-label="Human supervision"><button type="button" onClick={() => decide("Saved")}>Save</button><button type="button" onClick={() => toggleCompare(selectedOpportunity.id)}>Compare</button><button type="button" onClick={() => decide("More evidence")}>Request more evidence</button><button type="button" onClick={() => decide("Promising")}>Mark as promising</button><button type="button" onClick={() => decide("Uncertain")}>Uncertain</button><button type="button" onClick={() => decide("Rejected")}>Reject</button></div>
-          <div className="lab-evidence-add"><label><span>Add new evidence</span><input value={evidenceText} maxLength={300} onChange={(event) => setEvidenceText(event.target.value)} placeholder="Observed result, interview, prototype or public artifact" /></label><button type="button" onClick={submitEvidence}>Add & re-evaluate</button></div>
+          <div className="lab-evidence-add"><label><span>Add an unverified evidence note</span><input value={evidenceText} maxLength={300} onChange={(event) => setEvidenceText(event.target.value)} placeholder="Observed result, interview, prototype or public artifact" /></label><button type="button" onClick={submitEvidence}>Save note</button></div>
         </section>}
 
         {selectedOpportunity && <section className="lab-quant" data-tour-target="models">

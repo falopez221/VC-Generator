@@ -4,6 +4,8 @@ The Public Lab is a limited, interactive demonstration of the Venture Governance
 
 The intake starts with a large free-text idea field. A transparent local assistant can summarize that narrative and suggest editable parameters before the four specialist agents run. This helper is not a fifth agent and does not call an external language model in public mode. The visible nine-stage pipeline is deliberately paced at roughly six seconds so visitors can follow it; the underlying deterministic calculations complete more quickly.
 
+Optional public-web research is available as an explicit, off-by-default control. When enabled, bounded keywords derived from the reviewed market fields are sent server-side to a fixed Google News RSS endpoint. Returned snippets are stored in the run snapshot as unverified context; they do not increase evidence quality, confidence, score or ranking. Users are warned not to include confidential information.
+
 It is intentionally not the complete product, the private local architecture, an autonomous investment system, or a startup execution platform.
 
 ## Routes

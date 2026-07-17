@@ -19,6 +19,7 @@ export const CONTACT_EMAIL = "franciscoariellopez22@gmail.com";
 export const CONTACT_URL = "#contacto";
 export const LINKEDIN_URL = "#contacto";
 export const DEMO_URL = "/lab/demo";
+export const PLATFORM_URL = "/app/login";
 export const GITHUB_URL = "#contacto";
 export const CALENDAR_URL = "#contacto";
 
@@ -39,6 +40,7 @@ export const NAVIGATION = [
   { label: "Applications", href: "/applications" },
   { label: "Whitepaper", href: "/#whitepaper", disabled: !WHITEPAPER_AVAILABLE },
   { label: "Lab", href: "/lab" },
+  { label: "Access", href: PLATFORM_URL },
 ] as const;
 
 export const SITE_LINKS = {
@@ -47,6 +49,7 @@ export const SITE_LINKS = {
   email: `mailto:${CONTACT_EMAIL}`,
   linkedin: LINKEDIN_URL,
   demo: DEMO_URL,
+  platform: PLATFORM_URL,
   github: GITHUB_URL,
   calendar: CALENDAR_URL,
   primaryCta: PRIMARY_CTA_URL,

@@ -1,4 +1,12 @@
+import type { Metadata } from "next";
+import { SITE_URL } from "@/src/config/site";
 import { PUBLIC_MODEL_CATALOG, PUBLIC_MODEL_VERSION } from "@/src/lab/model-catalog";
+
+export const metadata: Metadata = {
+  title: "Public Methodology — Venture Governance System™",
+  description: "How the public agents, quantitative models, uncertainty metrics and human review controls should be interpreted.",
+  alternates: { canonical: `${SITE_URL}/lab/methodology` },
+};
 
 export default function MethodologyPage() {
   return (
