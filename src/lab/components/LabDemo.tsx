@@ -16,6 +16,7 @@ import { LabTour } from "./LabTour.tsx";
 import { DecisionModelsDashboard } from "./DecisionModelsDashboard.tsx";
 import { calculateDefensibilityLens, calculateMacroeconomicLens } from "../context-lenses.ts";
 import { PUBLIC_MODEL_COUNT } from "../model-catalog.ts";
+import { CinematicField } from "@/src/components/experience/CinematicField";
 
 const PUBLIC_STAGE_DELAY_MS = 650;
 
@@ -339,9 +340,12 @@ export function LabDemo() {
     <main className="lab-page lab-demo" id="lab-content">
       <LabTour />
       {parameterNotice && <div className="lab-toast" role="status" aria-live="polite"><span>UPDATED</span><p>{parameterNotice}</p></div>}
-      <section className="lab-demo-head">
-        <div><p className="lab-kicker">SIMPLIFIED PUBLIC ORCHESTRATION MODEL</p><h1>Public opportunity exploration Lab</h1><p>Run a fast deterministic sample, inspect four structured agents, change public assumptions and leave the final decision to human review.</p></div>
-        <div className={`lab-status lab-status--${status.toLowerCase().replaceAll(" ", "-")}`} aria-live="polite"><span>{status}</span><strong>{stageIndex >= 0 ? `Stage ${Math.min(stageIndex + 1, 9)} / 9` : "Awaiting human input"}</strong><small>{stageIndex >= 0 ? STAGES[Math.min(stageIndex, 8)].task : "Synthetic demonstration data"}</small></div>
+      <section className={`lab-live-field lab-live-field--${status.toLowerCase().replaceAll(" ", "-")}`}>
+        <CinematicField mode="lab" state={status === "Running" ? "running" : status === "Paused" ? "paused" : status === "Completed" ? "completed" : "idle"} stage={Math.max(0, stageIndex)} opportunityCount={run?.opportunities.length ?? input.opportunityCount} />
+        <div className="lab-live-field-copy">
+          <div><p className="lab-kicker">SIMPLIFIED PUBLIC ORCHESTRATION MODEL</p><h2>{status === "Completed" ? "The field has converged." : status === "Running" ? "Possibilities are competing." : "Define the question. Observe the system respond."}</h2></div>
+          <div className="lab-live-field-status" aria-live="polite"><span>{status.toUpperCase()}</span><strong>{stageIndex >= 0 ? `Stage ${Math.min(stageIndex + 1, 9)} / 9` : "Awaiting human input"}</strong><small>{stageIndex >= 0 ? STAGES[Math.min(stageIndex, 8)].task : "Synthetic demonstration data · deterministic and reproducible"}</small></div>
+        </div>
       </section>
 
       <section className="lab-band">The complete Venture Governance architecture is designed for large-scale opportunity exploration. This public lab uses a reduced sample for speed, clarity and intellectual property protection.</section>

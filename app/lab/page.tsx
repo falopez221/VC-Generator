@@ -1,3 +1,4 @@
+import { CinematicField } from "@/src/components/experience/CinematicField";
 import { STAGES } from "@/src/lab/data";
 import { PUBLIC_MODEL_COUNT } from "@/src/lab/model-catalog";
 
@@ -11,18 +12,17 @@ const publicAgents = [
 export default function LabHome() {
   return (
     <main className="lab-page" id="lab-content">
-      <section className="lab-hero">
-        <div>
+      <section className="lab-cinematic-hero">
+        <CinematicField mode="lab" state="idle" />
+        <div className="lab-cinematic-copy">
           <p className="lab-kicker">PUBLIC · LIMITED · INTERACTIVE</p>
-          <h1>Explore how governed agents turn a thesis into opportunities for human review.</h1>
+          <h1>Explore how governed agents turn a thesis into <em>visible possibilities.</em></h1>
           <p>This public Lab uses four simplified agents, synthetic data and demonstrative quantitative models. It is not the complete architecture or the private local product.</p>
           <div className="lab-actions"><a className="lab-button lab-button--primary" href="/lab/demo">Run Lab Simulation</a><a className="lab-button" href="/lab/methodology">Read methodology</a></div>
         </div>
-        <aside className="lab-disclosure"><span>PUBLIC SCOPE</span><strong>6–12 synthetic opportunities</strong><strong>4 visible agents</strong><strong>{PUBLIC_MODEL_COUNT} public models</strong><p>Human supervision remains the final gate.</p></aside>
+        <aside className="lab-cinematic-metrics" aria-label="Public Lab scope"><div><strong>6–12</strong><span>SYNTHETIC OPPORTUNITIES</span></div><div><strong>04</strong><span>VISIBLE AGENTS</span></div><div><strong>{PUBLIC_MODEL_COUNT}</strong><span>PUBLIC MODELS</span></div></aside>
       </section>
-      <section className="lab-band" aria-label="Public limitation">
-        The complete Venture Governance architecture is designed for large-scale opportunity exploration. This public lab uses a reduced sample for speed, clarity and intellectual property protection.
-      </section>
+      <section className="lab-band" aria-label="Public limitation">The complete Venture Governance architecture is designed for large-scale opportunity exploration. This public lab uses a reduced sample for speed, clarity and intellectual property protection.</section>
       <section className="lab-section">
         <header><p className="lab-kicker">FOUR PUBLIC AGENTS</p><h2>Structured perspectives, visible disagreement.</h2><p>Only outputs, evidence, assumptions, calculations and criticism are shown. Private prompts and internal reasoning are excluded.</p></header>
         <div className="lab-agent-cards">{publicAgents.map(([name, copy], index) => <article key={name}><span>0{index + 1}</span><h3>{name}</h3><p>{copy}</p></article>)}</div>

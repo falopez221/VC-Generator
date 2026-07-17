@@ -15,7 +15,7 @@ const links = [
 ] as const;
 
 export function LabNav() {
-  const [enabled, setEnabled] = useState(true);
+  const [enabled, setEnabled] = useState(false);
   const [volume, setVolume] = useState(25);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
@@ -84,6 +84,7 @@ export function LabNav() {
           <button className="lab-help" type="button" onClick={openHelp}>Help</button>
           <button className={enabled ? "lab-sound is-on" : "lab-sound"} type="button" aria-pressed={enabled} aria-label={enabled ? "Disable Lab sound" : "Enable Lab sound"} onClick={() => updateAudio(!enabled, volume)}>
             <span aria-hidden="true">{enabled ? "Sound On" : "Sound Off"}</span>
+            <span className="sr-only">Sound On is optional and begins only after user interaction.</span>
           </button>
           <label className="lab-volume">
             <span className="sr-only">Volume</span>

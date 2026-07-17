@@ -5,9 +5,9 @@
  */
 
 export const PROJECT_NAME = "Venture Governance System™";
-export const PROJECT_TAGLINE = "De tesis dispersas a decisiones trazables.";
+export const PROJECT_TAGLINE = "Knowledge begins as possibility.";
 export const PROJECT_DESCRIPTION =
-  "Arquitectura conceptual multiagente para descubrir, modelar y evaluar oportunidades de inversión con evidencia, simulación y supervisión humana.";
+  "A governed intelligence environment that turns a human thesis into inspectable opportunities, visible uncertainty and human review.";
 
 // Ruta central del whitepaper maestro dentro de /public/documents/.
 export const WHITEPAPER_URL = "/documents/venture-governance-system-whitepaper-publico-v2.pdf";

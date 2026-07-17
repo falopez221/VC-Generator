@@ -39,10 +39,59 @@ const EVENT_SOUND: Record<SoundEventName, SoundFile> = {
 
 const SETTINGS_KEY = "venture-governance-public-lab-audio-v1";
 let unlocked = false;
-let enabled = true;
+let enabled = false;
 let volume = 25;
 let lastPlayedAt = 0;
 const audio = new Map<SoundFile, HTMLAudioElement>();
+let ambient: { context: AudioContext; master: GainNode; oscillators: OscillatorNode[]; lfo: OscillatorNode } | null = null;
+
+function stopAmbient() {
+  if (!ambient) return;
+  const rig = ambient;
+  ambient = null;
+  const now = rig.context.currentTime;
+  rig.master.gain.cancelScheduledValues(now);
+  rig.master.gain.setValueAtTime(rig.master.gain.value, now);
+  rig.master.gain.linearRampToValueAtTime(0, now + .7);
+  window.setTimeout(() => {
+    rig.oscillators.forEach((oscillator) => { try { oscillator.stop(); } catch { /* already stopped */ } });
+    try { rig.lfo.stop(); } catch { /* already stopped */ }
+    void rig.context.close();
+  }, 800);
+}
+
+function startAmbient() {
+  if (!unlocked || !enabled || volume <= 0 || typeof window === "undefined") return;
+  if (ambient) {
+    ambient.master.gain.linearRampToValueAtTime(volume / 100 * .028, ambient.context.currentTime + 1);
+    return;
+  }
+  const context = new AudioContext();
+  const master = context.createGain();
+  const filter = context.createBiquadFilter();
+  const lfo = context.createOscillator();
+  const lfoGain = context.createGain();
+  filter.type = "lowpass";
+  filter.frequency.value = 360;
+  lfo.frequency.value = .028;
+  lfoGain.gain.value = .004;
+  master.gain.value = 0;
+  lfo.connect(lfoGain).connect(master.gain);
+  const oscillators = [46.25, 69.38, 92.5].map((frequency, index) => {
+    const oscillator = context.createOscillator();
+    const gain = context.createGain();
+    oscillator.type = index === 1 ? "triangle" : "sine";
+    oscillator.frequency.value = frequency;
+    gain.gain.value = index === 0 ? .5 : index === 1 ? .11 : .04;
+    oscillator.connect(gain).connect(filter);
+    oscillator.start();
+    return oscillator;
+  });
+  filter.connect(master).connect(context.destination);
+  lfo.start();
+  master.gain.linearRampToValueAtTime(volume / 100 * .028, context.currentTime + 3.2);
+  ambient = { context, master, oscillators, lfo };
+}
 
 export function getAudioSettings() {
   if (typeof window !== "undefined") {
@@ -51,10 +100,16 @@ export function getAudioSettings() {
       if (stored) {
         enabled = stored.enabled !== false;
         volume = [0, 25, 50, 75, 100].includes(Number(stored.volume)) ? Number(stored.volume) : 25;
+      } else {
+        enabled = false;
       }
     } catch {
-      // Invalid local preference is ignored.
+      enabled = false;
     }
+  }
+  else {
+    enabled = false;
+    volume = 25;
   }
   return { enabled, volume };
 }
@@ -70,12 +125,14 @@ export function unlockAudio() {
       audio.set(name, element);
     }
   });
+  startAmbient();
 }
 
 export function setAudioSettings(next: { enabled: boolean; volume: number }) {
   enabled = next.enabled;
   volume = [0, 25, 50, 75, 100].includes(next.volume) ? next.volume : 25;
   if (typeof window !== "undefined") window.localStorage.setItem(SETTINGS_KEY, JSON.stringify({ enabled, volume }));
+  if (enabled && volume > 0) startAmbient(); else stopAmbient();
 }
 
 export function playSound(eventName: SoundEventName) {
@@ -91,4 +148,3 @@ export function playSound(eventName: SoundEventName) {
   void element.play().catch(() => undefined);
   return true;
 }
-

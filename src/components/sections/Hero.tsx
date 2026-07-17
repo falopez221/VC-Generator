@@ -1,50 +1,53 @@
-import Link from "next/link";
-import { LinkButton } from "@/src/components/ui/LinkButton";
-import { SITE_LINKS, WHITEPAPER_AVAILABLE } from "@/src/config/site";
-import { HeroExperience } from "@/src/components/sections/HeroExperience";
+"use client";
 
-const PUBLIC_PROOF = [
-  ["04", "Public specialist agents"],
-  ["12+2", "Core models + context lenses"],
-  ["6–12", "Reproducible synthetic opportunities"],
-  ["01", "Named Human Gate"],
-] as const;
+import { useState } from "react";
+import Link from "next/link";
+import { CinematicField } from "@/src/components/experience/CinematicField";
+import { LinkButton } from "@/src/components/ui/LinkButton";
+import { requestInterfaceSound } from "@/src/components/ui/SoundController";
+import { SITE_LINKS } from "@/src/config/site";
 
 export function Hero() {
+  const [active, setActive] = useState(true);
+  const [revealed, setRevealed] = useState(false);
+
   return (
-    <section className="hero" id="vision" lang="en">
-      <div className="hero-grid container">
-        <div className="hero-copy">
-          <div className="system-status"><i aria-hidden="true" /> <span lang="es">Whitepaper público v2.0</span> · Multi-agent decision intelligence · Human-in-command</div>
-          <h1>Explore more possibilities. <em>Keep authority visible.</em></h1>
-          <p className="hero-tagline">AI explores. Models evaluate. Humans decide.</p>
-          <p className="hero-description">Venture Governance turns a human mandate into an inspectable network of evidence, specialist agents and quantitative models—then returns prioritized opportunities for human review.</p>
-          <div className="hero-actions">
-            <LinkButton href={SITE_LINKS.demo}>Run the Public Lab</LinkButton>
-            <LinkButton href={SITE_LINKS.platform} variant="secondary">Workspace sign-in</LinkButton>
+    <>
+      <section className={`cinematic-hero ${revealed ? "is-revealed" : ""}`} id="vision" lang="en">
+        <CinematicField mode="intro" active={active} />
+        <div className="cinematic-sequence" aria-hidden="true"><span>00:70</span><div /><small>collective inference field</small></div>
+        <div className="cinematic-controls" aria-label="Experience controls">
+          <button type="button" onClick={() => setActive((value) => !value)} aria-pressed={!active}>{active ? "PAUSE FIELD" : "RESUME FIELD"}</button>
+          {!revealed && <button type="button" onClick={() => { setRevealed(true); requestInterfaceSound("stage.complete"); }}>REVEAL INTERFACE</button>}
+        </div>
+        <div className="cinematic-hero-copy">
+          <div>
+            <p className="cinematic-eyebrow"><i aria-hidden="true" /> Venture Governance System™ · Whitepaper público v2.0 · Public research surface</p>
+            <h1>Knowledge begins <span>as possibility.</span></h1>
+            <p className="cinematic-hero-lede">A governed intelligence environment that turns a human thesis into inspectable opportunities, visible uncertainty and decisions that remain unmistakably human.</p>
+            <div className="cinematic-hero-actions">
+              <LinkButton href={SITE_LINKS.demo}>Enter the Public Lab</LinkButton>
+              <LinkButton href="#platform" variant="secondary">Descend into the system</LinkButton>
+            </div>
           </div>
-          <nav className="hero-secondary-links" aria-label="Further reading">
-            <Link href={SITE_LINKS.secondaryCta}>Explore architecture <span aria-hidden="true">↗</span></Link>
-            {WHITEPAPER_AVAILABLE && <Link href={SITE_LINKS.whitepaper}>Read the whitepaper <span aria-hidden="true">↗</span></Link>}
-          </nav>
+          <aside className="cinematic-observer">
+            <span>OBSERVED PROCESS · 01</span>
+            <strong>Signals are organizing into specialist perspectives.</strong>
+            <p>Four public agents. Synthetic data. Deterministic models. Human authority remains the final gate.</p>
+          </aside>
         </div>
-        <div className="hero-experience-wrap">
-          <HeroExperience />
-          <p className="hero-experience-note">INTERACTIVE SYSTEM SEQUENCE · SELECT AN AGENT TO INSPECT ITS ROLE</p>
+        <Link className="cinematic-scroll-cue" href="#platform">Enter system</Link>
+      </section>
+
+      <section className="experience-threshold" aria-labelledby="threshold-title">
+        <div className="container">
+          <span className="experience-threshold-index">CHAPTER 01 · THE SEARCH SPACE</span>
+          <div>
+            <h2 id="threshold-title">Not a stream of answers. <em>A visible field of competing possibilities.</em></h2>
+            <p>The public experience reveals the architecture in layers: human intent, four specialist perspectives, quantitative stress tests, evidence boundaries and a named human decision. The complete private system remains outside this repository.</p>
+          </div>
         </div>
-      </div>
-      <div className="hero-proof container" aria-label="Public system scope">
-        {PUBLIC_PROOF.map(([value, label]) => (
-          <div key={label}><strong>{value}</strong><span>{label}</span></div>
-        ))}
-      </div>
-      <div className="hero-rail container">
-        <span>Built for governed exploration</span>
-        <div>VENTURE CAPITAL</div>
-        <div>VENTURE STUDIOS</div>
-        <div>CORPORATE INNOVATION</div>
-        <div>INSTITUTIONAL RESEARCH</div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
