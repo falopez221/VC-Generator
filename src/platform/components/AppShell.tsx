@@ -86,7 +86,7 @@ export function AppShell({ user, children }: Props) {
           <details className="platform-status-menu"><summary>PROCESSES <b>0 LIVE</b></summary><div><p><span className="status-dot is-ready" />Deterministic runs<strong>On demand</strong></p><p><span className="status-dot is-unavailable" />Background executor<strong>Not connected</strong></p></div></details>
           <details className="platform-status-menu platform-notifications"><summary>REVIEWS <b>{String(DEMO_GOVERNANCE_QUEUE.length).padStart(2, "0")}</b></summary><div>{DEMO_GOVERNANCE_QUEUE.map((item) => <p key={item.id}>{item.id}<strong>{item.issue}</strong></p>)}</div></details>
           <button className="platform-context-toggle" type="button" onClick={() => setContextOpen((value) => !value)} aria-controls="platform-context" aria-expanded={contextOpen}>{contextOpen ? "Hide context" : "Show context"}</button>
-          <SoundController />
+          <SoundController theme="workspace" />
         </div>
         <details className="platform-user"><summary>{user.displayName}</summary><div><span>{user.email}</span>{user.role && <small>{user.role}</small>}<Link href="/app/documentation">Help & documentation</Link><a href="/signout-with-chatgpt?return_to=%2Fapp%2Flogin">Lock session</a><a href="/signout-with-chatgpt?return_to=%2F">Sign out</a></div></details>
       </header>

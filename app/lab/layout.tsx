@@ -9,12 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function LabLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return (
-    <div className="lab-app" lang="en">
-      <a className="skip-link" href="#lab-content">Skip to Lab content</a>
-      <LabChrome />
-      {children}
-      <footer className="lab-footer"><span>Venture Governance System™ · Public demonstration · <a href="https://www.scottbuckley.com.au/library/the-vision/" target="_blank" rel="noreferrer">“The Vision” by Scott Buckley · CC BY 4.0</a></span><a href="/lab/methodology">Methodology & limitations</a></footer>
-    </div>
-  );
+  return <div className="lab-app" lang="en"><a className="skip-link" href="#lab-content">Skip to Lab content</a><LabChrome />{children}<footer className="lab-footer"><span>Venture Governance System™ · Public demonstration · Original score cycle by Scott Buckley: <a href="https://www.scottbuckley.com.au/library/decoherence/" target="_blank" rel="noreferrer">Decoherence</a>, <a href="https://www.scottbuckley.com.au/library/computations/" target="_blank" rel="noreferrer">Computations</a>, <a href="https://www.scottbuckley.com.au/library/adrift-among-infinite-stars/" target="_blank" rel="noreferrer">Adrift</a> · CC BY 4.0</span><a href="/lab/methodology">Methodology & limitations</a></footer></div>;
 }

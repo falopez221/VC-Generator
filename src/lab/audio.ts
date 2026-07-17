@@ -13,13 +13,25 @@ export type SoundEventName =
   | "human.uncertain"
   | "human.reject";
 
+export type LabScoreTheme = "lab" | "simulation" | "discovery" | "methodology";
+
+const SCORE_PATHS: Record<LabScoreTheme, string> = {
+  lab: "https://www.scottbuckley.com.au/library/wp-content/uploads/2022/03/sb_decoherence.mp3",
+  simulation: "https://www.scottbuckley.com.au/library/wp-content/uploads/2019/01/sb_computations.mp3",
+  discovery: "/audio/the-vision-scott-buckley.mp3",
+  methodology: "https://www.scottbuckley.com.au/library/wp-content/uploads/2022/02/AdriftAmongInfiniteStars.mp3",
+};
 const SETTINGS_KEY = "venture-governance-public-lab-audio-v1";
-const SCORE_PATH = "/audio/the-vision-scott-buckley.mp3";
 let unlocked = false;
 let enabled = false;
 let volume = 25;
+let scoreTheme: LabScoreTheme = "lab";
 let score: HTMLAudioElement | null = null;
 let scoreFadeFrame = 0;
+
+function normalizeVolume(value: number) {
+  return Number.isFinite(value) ? Math.min(100, Math.max(0, Math.round(value))) : 25;
+}
 
 function fadeScore(level: number, duration = 900) {
   if (!score) return;
@@ -40,7 +52,7 @@ function fadeScore(level: number, duration = 900) {
 function startScore() {
   if (!unlocked || !enabled || volume <= 0 || typeof window === "undefined") return;
   if (!score) {
-    score = new Audio(SCORE_PATH);
+    score = new Audio(SCORE_PATHS[scoreTheme]);
     score.loop = true;
     score.preload = "metadata";
     score.volume = 0;
@@ -60,10 +72,8 @@ export function getAudioSettings() {
       const stored = JSON.parse(window.localStorage.getItem(SETTINGS_KEY) ?? "null") as { enabled?: boolean; volume?: number } | null;
       if (stored) {
         enabled = stored.enabled !== false;
-        volume = [0, 25, 50, 75, 100].includes(Number(stored.volume)) ? Number(stored.volume) : 25;
-      } else {
-        enabled = false;
-      }
+        volume = normalizeVolume(Number(stored.volume));
+      } else enabled = false;
     } catch {
       enabled = false;
     }
@@ -83,9 +93,18 @@ export function unlockAudio() {
 
 export function setAudioSettings(next: { enabled: boolean; volume: number }) {
   enabled = next.enabled;
-  volume = [0, 25, 50, 75, 100].includes(next.volume) ? next.volume : 25;
+  volume = normalizeVolume(next.volume);
   if (typeof window !== "undefined") window.localStorage.setItem(SETTINGS_KEY, JSON.stringify({ enabled, volume }));
   if (enabled && volume > 0) startScore(); else stopScore();
+}
+
+export function setLabScoreTheme(nextTheme: LabScoreTheme) {
+  if (nextTheme === scoreTheme) return;
+  const wasPlaying = Boolean(score && !score.paused);
+  stopScore();
+  score = null;
+  scoreTheme = nextTheme;
+  if (wasPlaying) startScore();
 }
 
 export function playSound(eventName: SoundEventName) {
@@ -95,6 +114,5 @@ export function playSound(eventName: SoundEventName) {
   else if (eventName === "simulation.complete") fadeScore(.56, 1400);
   else if (eventName === "opportunity.generated" || eventName === "ranking.updated") fadeScore(.72, 600);
   else if (eventName.startsWith("human.")) fadeScore(.6, 900);
-
   return true;
 }

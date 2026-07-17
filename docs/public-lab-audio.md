@@ -1,14 +1,14 @@
 # Public Lab audio
 
-The continuous cinematic score is `the-vision-scott-buckley.mp3`:
+The public experience uses a four-part original score cycle by Scott Buckley, licensed under Creative Commons Attribution 4.0 International:
 
-- “The Vision” by Scott Buckley
-- Source: https://www.scottbuckley.com.au/library/the-vision/
-- License: Creative Commons Attribution 4.0 International
-- Required attribution: `'The Vision' by Scott Buckley - released under CC-BY 4.0. www.scottbuckley.com.au`
+- `the-vision-scott-buckley.mp3` — “The Vision” — https://www.scottbuckley.com.au/library/the-vision/
+- “Decoherence” — https://www.scottbuckley.com.au/library/decoherence/
+- “Computations in a Snowstorm” — https://www.scottbuckley.com.au/library/computations/
+- “Adrift Among Infinite Stars” — https://www.scottbuckley.com.au/library/adrift-among-infinite-stars/
 
-The public site starts the score only after the visitor activates the entry gate. It begins at 75% of the site control and can then be muted or changed to 0/25/50/75/100%. The file uses metadata-only preloading so it does not block useful page content.
+Required attribution for each work follows the format: `'<title>' by Scott Buckley - released under CC-BY 4.0. www.scottbuckley.com.au`.
 
-The Lab keeps the score continuous and changes the mix rather than restarting it: the level rises when simulation begins, falls while paused, opens slightly around generated opportunities, and settles after convergence. No prior interface or micro-sound files are played.
+The system, applications, Lab, simulation, discovery and methodology sections select distinct scores. Audio begins only after the visitor activates the entry gate. The volume control is a 0–100% slider; preferences persist locally. The Lab changes the current score mix rather than restarting it during simulation, pause, ranking and human-review states. No previous interface or micro-sound files are played.
 
 Audio playback respects browser autoplay policy, and the complete Lab remains usable with sound off after entry.

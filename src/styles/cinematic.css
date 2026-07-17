@@ -3,8 +3,10 @@
 .cinematic-field::before { content: ""; position: absolute; z-index: 2; inset: 0; pointer-events: none; background: radial-gradient(circle at 50% 48%, transparent 0 20%, rgb(2 8 15 / 8%) 52%, rgb(2 8 15 / 82%) 100%), linear-gradient(180deg, rgb(2 8 15 / 55%), transparent 22% 70%, #02080f 100%); }
 .cinematic-field::after { content: ""; position: absolute; z-index: 3; inset: 0; opacity: .16; pointer-events: none; background-image: repeating-linear-gradient(90deg, transparent 0 79px, rgb(168 216 239 / 8%) 80px), repeating-linear-gradient(0deg, transparent 0 79px, rgb(168 216 239 / 6%) 80px); mask-image: radial-gradient(circle at center, black, transparent 76%); }
 .sound-control-cluster { display: flex; align-items: center; gap: 2px; }
-.sound-volume select { width: 52px; height: 40px; padding: 0 .25rem; color: #7890a3; background: rgb(255 255 255 / 4%); border: 1px solid rgb(255 255 255 / 12%); font: 600 .52rem var(--font-mono); }
-.sound-volume select:focus-visible { outline: 2px solid #68cdf3; outline-offset: 2px; }
+.sound-volume { min-width: 116px; height: 40px; display: flex; align-items: center; gap: .45rem; padding: 0 .55rem; color: #7890a3; background: rgb(255 255 255 / 4%); border: 1px solid rgb(255 255 255 / 12%); font: 600 .52rem var(--font-mono); }
+.sound-volume input { width: 72px; accent-color: #68cdf3; }
+.sound-volume output { min-width: 26px; color: #a8c5d4; text-align: right; }
+.sound-volume:focus-within { outline: 2px solid #68cdf3; outline-offset: 2px; }
 .cinematic-entry-gate, .lab-audio-gate { position: fixed; z-index: 1000; inset: 0; display: grid; place-items: center; padding: 1.5rem; color: white; background: radial-gradient(circle at 50% 48%, rgb(9 39 64 / 48%), transparent 34%), #02080f; text-align: center; }
 .cinematic-entry-gate::before, .lab-audio-gate::before { content: ""; width: 5px; height: 5px; position: absolute; left: 50%; top: 28%; border-radius: 50%; background: #9ce5ff; box-shadow: 0 0 24px 7px rgb(91 199 239 / 35%); animation: entry-breathe 3.5s ease-in-out infinite; }
 .cinematic-entry-gate > div, .lab-audio-gate > div { width: min(100%, 680px); position: relative; }
@@ -96,7 +98,8 @@ main > section:not(.cinematic-hero):not(.lab-cinematic-hero):not(.lab-live-field
   .lab-live-field-copy { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
-  .sound-volume select { width: 44px; height: 40px; font-size: .47rem; }
+  .sound-volume { min-width: 94px; padding-inline: .35rem; }
+  .sound-volume input { width: 52px; }
   .cinematic-hero-copy { width: min(calc(100% - 28px), 1460px); padding-top: 9rem; padding-bottom: 5rem; }
   .cinematic-hero h1 { font-size: clamp(3.15rem, 17vw, 5rem); }
   .cinematic-hero-lede { max-width: 94%; font-size: .9rem; }

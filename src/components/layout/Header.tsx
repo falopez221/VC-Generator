@@ -93,7 +93,7 @@ export function Header() {
         </nav>
 
         <div className="nav-utilities">
-          <SoundController />
+          <SoundController theme={pathname.startsWith("/applications") ? "applications" : "system"} />
           <Link className="nav-access" href={SITE_LINKS.platform} onClick={closePanel}>Workspace sign-in <span aria-hidden="true">→</span></Link>
           <button
             className="menu-toggle"
