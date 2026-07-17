@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_AR",
     url: SITE_URL,
-    images: [{ url: "/og-public-v2.png", width: 1731, height: 909, alt: "Venture Governance System — cuatro agentes públicos y doce modelos visibles" }],
+    images: [{ url: "/og-public-v2.png", width: 1731, height: 909, alt: "Venture Governance System — cuatro agentes públicos y catorce modelos visibles" }],
   },
   twitter: {
     card: "summary_large_image",

@@ -7,7 +7,8 @@ import {
   calculateTornadoSensitivity,
   calculateValidationPriority,
 } from "../decision-models.ts";
-import type { LabWeights, MonteCarloConfig, Opportunity } from "../types.ts";
+import { calculateDefensibilityLens, calculateMacroeconomicLens } from "../context-lenses.ts";
+import type { LabInput, LabWeights, MonteCarloConfig, Opportunity } from "../types.ts";
 import { MODEL_GUIDES } from "../ux.ts";
 import { ModelIntro, SliderImpact } from "./LabUX.tsx";
 
@@ -37,11 +38,13 @@ export function DecisionModelsDashboard({
   opportunities,
   weights,
   economics,
+  input,
 }: {
   opportunity: Opportunity;
   opportunities: Opportunity[];
   weights: LabWeights;
   economics: MonteCarloConfig;
+  input: LabInput;
 }) {
   const [tornadoStep, setTornadoStep] = useState(10);
   const [addressableCustomers, setAddressableCustomers] = useState(500);
@@ -74,6 +77,8 @@ export function DecisionModelsDashboard({
     () => new Map(opportunities.map((candidate) => [candidate.id, candidate.name])),
     [opportunities],
   );
+  const defensibility = useMemo(() => calculateDefensibilityLens(opportunity, input), [input, opportunity]);
+  const macroeconomics = useMemo(() => calculateMacroeconomicLens(opportunity, input), [input, opportunity]);
 
   return <>
     <article className="lab-model-panel">
@@ -141,6 +146,32 @@ export function DecisionModelsDashboard({
         {validation.items.map((item, index) => <article key={item.agentName}><span>0{index + 1} - {item.agentName}</span><strong>{item.priority}</strong><p>{item.evidenceRequest}</p><small>Gap {item.evidenceGap} - expected gain {item.expectedEvidenceGain} - decision sensitivity {item.decisionSensitivity} - cost penalty {item.costPenalty}</small></article>)}
       </div>
       <div className="lab-chart-reading"><strong>Visible heuristic</strong><p>Priority = 55% expected evidence gain + 45% decision sensitivity - validation-cost penalty, bounded to 0-100. It ranks learning tasks only; it is not monetary EVSI or a claim that the evidence will be obtained.</p></div>
+    </article>
+
+    <article className="lab-model-panel">
+      <header><div><span>13 - DEFENSIBILITY LENS</span><h3>Can the opportunity preserve value after competitors respond?</h3></div><p>A deterministic competitive-resilience lens. It is not a fifth public agent and does not enter the ranking.</p></header>
+      <ModelIntro {...MODEL_GUIDES["Defensibility Lens"]} />
+      <div className="lab-decision-metrics">
+        <ModelMetric label="Resilience score" value={defensibility.score} note="Synthetic composite of advantage, scalability, evidence, novelty and risk." />
+        <ModelMetric label="Imitation exposure" value={defensibility.exposure} note="Higher means the current case is more exposed to imitation or weak switching costs." />
+        <ModelMetric label="Review state" value={defensibility.status} note="A context label for human review, never an approval." />
+      </div>
+      <p className={`lab-model-status ${defensibility.status === "Resilient" ? "is-positive" : "is-warning"}`}><strong>{defensibility.summary}</strong></p>
+      <div className="lab-lens-drivers">{defensibility.drivers.map((driver) => <p key={driver}>{driver}</p>)}</div>
+      <div className="lab-chart-reading"><strong>Evidence still required</strong><p>{defensibility.missingEvidence[0]} {defensibility.assumptions[0]}</p></div>
+    </article>
+
+    <article className="lab-model-panel">
+      <header><div><span>14 - MACROECONOMIC LENS</span><h3>How exposed is the case to conditions outside the venture?</h3></div><p>Financing, demand, currency, supply-chain and horizon exposure. It is not a fifth public agent and does not forecast the economy.</p></header>
+      <ModelIntro {...MODEL_GUIDES["Macroeconomic Lens"]} />
+      <div className="lab-decision-metrics">
+        <ModelMetric label="Resilience score" value={macroeconomics.score} note="Higher indicates more resilience under the visible deterministic assumptions." />
+        <ModelMetric label="Macro exposure" value={macroeconomics.exposure} note="Higher indicates greater sensitivity to broad external shocks." />
+        <ModelMetric label="Review state" value={macroeconomics.status} note="A context label for human review, not a forecast." />
+      </div>
+      <p className={`lab-model-status ${macroeconomics.status === "Resilient" ? "is-positive" : "is-warning"}`}><strong>{macroeconomics.summary}</strong></p>
+      <div className="lab-lens-drivers">{macroeconomics.drivers.map((driver) => <p key={driver}>{driver}</p>)}</div>
+      <div className="lab-chart-reading"><strong>Evidence still required</strong><p>{macroeconomics.missingEvidence[0]} {macroeconomics.assumptions[0]}</p></div>
     </article>
   </>;
 }

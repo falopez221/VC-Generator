@@ -17,7 +17,7 @@ const STORAGE_KEYS = {
 
 const CONTEXT_BY_ROUTE = [
   { match: "/app/missions/new", title: "Mission configuration", items: [["Human gate", "Independent review"], ["Available agents", "4 public specialists"], ["Persistence", "Page-local draft"]] },
-  { match: "/app/models", title: "Model context", items: [["Catalog", "12 public models"], ["Execution", "Deterministic"], ["Validation", "Per-model status"]] },
+  { match: "/app/models", title: "Model context", items: [["Catalog", "14 public models"], ["Execution", "Deterministic"], ["Validation", "Per-model status"]] },
   { match: "/app/agents", title: "Agent context", items: [["Visible agents", "4"], ["Extended network", "Not included"], ["Authority", "Advisory only"]] },
   { match: "/app/governance", title: "Governance context", items: [["Pending gates", "3 synthetic"], ["Named authority", "Required"], ["Autonomous action", "Prohibited"]] },
   { match: "/app/system-health", title: "Runtime context", items: [["Public engine", "Ready"], ["Durable database", "Not connected"], ["Local AI", "Not enabled"]] },

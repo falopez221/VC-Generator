@@ -100,3 +100,62 @@
 @media (max-width: 430px) { .lab-web-research { padding-inline: 1rem; }.lab-web-summary li { grid-template-columns: 1fr; gap: .2rem; } }
 @media (prefers-reduced-motion: reduce) { .lab-app *, .lab-app *::before, .lab-app *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; } }
 @media print { .lab-nav, .lab-footer, .lab-run-actions, .lab-example-row, .lab-human-actions, .lab-evidence-add, .lab-export, .lab-history { display: none !important; }.lab-app, .lab-page, .lab-section, .lab-ranking, .lab-detail { color: #111; background: white !important; }.lab-page { width: 100%; }.lab-panel-heading h2, .lab-app h1, .lab-app h2, .lab-app h3 { color: #111 !important; }.lab-app p, .lab-app span, .lab-app small { color: #333 !important; } }
+.lab-context-lenses {
+  margin-top: 1.25rem;
+  padding: clamp(1rem, 2vw, 1.5rem);
+  border: 1px solid color-mix(in srgb, var(--lab-cyan, #37d7e8) 32%, transparent);
+  background: color-mix(in srgb, var(--lab-cyan, #37d7e8) 5%, transparent);
+}
+
+.lab-context-lenses > header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: end;
+}
+
+.lab-context-lenses > header span,
+.lab-context-lenses article > span {
+  display: block;
+  font-size: .72rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.lab-context-lenses > div {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.lab-context-lenses article {
+  padding: 1rem;
+  border: 1px solid color-mix(in srgb, currentColor 16%, transparent);
+  background: #071a2f;
+}
+
+.lab-context-lenses article > strong {
+  display: block;
+  margin: .35rem 0;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+}
+
+.lab-lens-drivers {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .75rem;
+  margin: 1rem 0;
+}
+
+.lab-lens-drivers p {
+  margin: 0;
+  padding: .8rem;
+  border: 1px solid color-mix(in srgb, currentColor 14%, transparent);
+}
+
+@media (max-width: 760px) {
+  .lab-context-lenses > header { align-items: start; flex-direction: column; }
+  .lab-context-lenses > div,
+  .lab-lens-drivers { grid-template-columns: 1fr; }
+}

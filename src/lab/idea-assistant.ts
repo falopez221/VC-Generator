@@ -4,6 +4,7 @@ import type { LabInput } from "./types.ts";
 type DetectionRule = readonly [RegExp, string];
 
 const INDUSTRY_RULES: DetectionRule[] = [
+  [/defen[cs]e|defensa|military|militar|aerospace|aeroespacial|dual.use|doble uso/i, "Defense and aerospace"],
   [/health|patient|clinic|hospital|salud|paciente|cl[ií]nica/i, "Health technology"],
   [/agricultur|farm|crop|agro|granja|cultivo/i, "Agriculture technology"],
   [/climate|energy|emission|solar|clima|energ[ií]a|emisi[oó]n/i, "Climate and energy"],

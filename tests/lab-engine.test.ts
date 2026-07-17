@@ -7,6 +7,7 @@ import { calculateBreakEven, calculateRankRobustness, calculateTornadoSensitivit
 import { PUBLIC_MODEL_CATALOG, PUBLIC_MODEL_COUNT, PUBLIC_MODEL_VERSION } from "../src/lab/model-catalog.ts";
 import { isAgentResult, isOpportunity, validateLabInput } from "../src/lab/schema.ts";
 import { structureIdea } from "../src/lab/idea-assistant.ts";
+import { calculateDefensibilityLens, calculateMacroeconomicLens } from "../src/lab/context-lenses.ts";
 
 test("validates and bounds the public input", () => {
   const result = validateLabInput({ ...EXAMPLES["Venture Capital"], opportunityCount: 100, seed: -5, problem: "<b>test problem with enough detail</b>" });
@@ -55,6 +56,12 @@ test("normalizes public weights to one hundred percent", () => {
   const normalized = normalizeWeights({ Mathematics: 60, Finance: 20, Strategy: 10, Marketing: 4 });
   const sum = Object.values(normalized).reduce((total, value) => total + value, 0);
   assert.ok(Math.abs(sum - 100) < 0.001);
+});
+
+test("zero and invalid weights fall back to an exact uniform normalization", () => {
+  const normalized = normalizeWeights({ Mathematics: 0, Finance: -5, Strategy: Number.NaN, Marketing: 0 });
+  assert.deepEqual(normalized, { Mathematics: 25, Finance: 25, Strategy: 25, Marketing: 25 });
+  assert.equal(Object.values(normalized).reduce((total, value) => total + value, 0), 100);
 });
 
 test("MCDA is bounded and exposes public adjustments", () => {
@@ -109,6 +116,16 @@ test("Monte Carlo is deterministic and returns requested public statistics", () 
   assert.equal(first.samples.length, 600);
   assert.equal(first.histogram.length, 18);
   assert.ok(first.p10 <= first.median && first.median <= first.p90);
+});
+
+test("Monte Carlo unit economics respond monotonically to price and investment", () => {
+  const opportunity = generateLabRun(EXAMPLES["Venture Capital"]).opportunities[0];
+  const base = { simulations: 800, distribution: "triangular" as const, seed: 44, successThreshold: 20, marketGrowth: 500, adoption: 35, price: 12000, cac: 1800, churn: 12, margin: 65, initialInvestment: 750000 };
+  const baseline = runMonteCarlo(opportunity, base);
+  const higherPrice = runMonteCarlo(opportunity, { ...base, price: base.price * 1.5 });
+  const higherInvestment = runMonteCarlo(opportunity, { ...base, initialInvestment: base.initialInvestment * 1.5 });
+  assert.ok(higherPrice.mean > baseline.mean);
+  assert.ok(higherInvestment.mean < baseline.mean);
 });
 
 test("Bayesian update responds to positive evidence", () => {
@@ -202,8 +219,72 @@ test("validation priority uses only the four public agents and stays ordinal", (
   assert.ok(result.items.every((item, index) => index === 0 || result.items[index - 1].priority >= item.priority));
 });
 
+test("defensibility and macroeconomics are bounded context lenses, not agents", () => {
+  const input = {
+    ...EXAMPLES["Venture Capital"],
+    ideaNarrative: "A dual-use aerospace supplier platform for critical infrastructure with imported hardware and long procurement cycles.",
+    industry: "Defense and aerospace",
+    technology: "Dual-use sensors and software",
+    horizonYears: 9,
+  };
+  const run = generateLabRun(input);
+  const opportunity = run.opportunities[0];
+  const lenses = [calculateDefensibilityLens(opportunity, run.input), calculateMacroeconomicLens(opportunity, run.input)];
+  assert.deepEqual(Object.keys(opportunity.agents), ["Mathematics", "Finance", "Strategy", "Marketing"]);
+  assert.ok(lenses.every((lens) => lens.score >= 0 && lens.score <= 100 && lens.exposure >= 0 && lens.exposure <= 100));
+  assert.equal(lenses[1].name, "Macroeconomics");
+  assert.ok(lenses[1].exposure >= 40);
+});
+
+test("thirty varied input simulations stay finite, reproducible and input-responsive", () => {
+  const cases = [
+    ["Defense and aerospace", "dual-use sensors for critical infrastructure", "Government procurement teams", "Europe"],
+    ["Health technology", "clinical workflow software for hospitals", "Hospital operations teams", "North America"],
+    ["Agriculture technology", "crop sensors and irrigation optimization", "Agricultural producers", "Latin America"],
+    ["Financial technology", "compliance API for cross-border payments", "Regional banks", "Global"],
+    ["Education technology", "adaptive learning platform for schools", "Public schools", "South America"],
+    ["Logistics", "freight marketplace and supply-chain control tower", "Freight operators", "Asia"],
+    ["Industrial technology", "robotics for factory quality inspection", "Manufacturing plants", "Europe"],
+    ["Consumer software", "family budgeting mobile application", "B2C consumers", "Global"],
+    ["Climate and energy", "distributed energy controls for factories", "Industrial operators", "Latin America"],
+    ["Enterprise software", "knowledge graph API for audit evidence", "Enterprise compliance teams", "Global"],
+  ] as const;
+  const signatures = new Set<string>();
+  for (let index = 0; index < 30; index += 1) {
+    const [industry, technology, customerType, region] = cases[index % cases.length];
+    const input = {
+      ...EXAMPLES["Venture Capital"],
+      ideaNarrative: `${customerType} need a safer way to manage ${technology}. The venture would test a narrow workflow before expansion.`,
+      ideaSummary: "",
+      analysisName: `${industry} stress case ${index + 1}`,
+      problem: `${customerType} face repeated operational losses because current tools do not manage ${technology} reliably.`,
+      thesis: `A focused ${technology} product can improve a measurable workflow before broader expansion.`,
+      industry,
+      technology,
+      customerType,
+      region,
+      horizonYears: 1 + index % 15,
+      estimatedCapital: 25_000 + index * 175_000,
+      riskTolerance: (index * 17) % 101,
+      innovationLevel: (index * 29) % 101,
+      availableEvidence: index % 3 === 0 ? "Observed pilot: 18 customer interviews and a 12% conversion test." : "",
+      knownSignals: index % 2 === 0 ? "Supplier concentration and changing customer budgets." : "New software adoption and procurement pressure.",
+      opportunityCount: 6 + index % 7,
+      seed: 10_000 + index,
+    };
+    const first = generateLabRun(input);
+    const second = generateLabRun(input);
+    assert.equal(serializeReproducibleRun(first), serializeReproducibleRun(second));
+    assert.equal(first.opportunities.length, input.opportunityCount);
+    assert.ok(first.opportunities.every((opportunity) => Number.isFinite(opportunity.totalScore) && opportunity.totalScore >= 0 && opportunity.totalScore <= 100));
+    assert.ok(first.opportunities.every((opportunity) => Object.values(opportunity.dimensions).every((value) => Number.isFinite(value) && value >= 0 && value <= 100)));
+    signatures.add(first.opportunities.map((opportunity) => `${opportunity.totalScore}:${opportunity.dimensions.risk}:${opportunity.dimensions.evidenceQuality}`).join("|"));
+  }
+  assert.equal(signatures.size, 30);
+});
+
 test("the model catalog is the single complete public model inventory", () => {
-  assert.equal(PUBLIC_MODEL_COUNT, 12);
+  assert.equal(PUBLIC_MODEL_COUNT, 14);
   assert.equal(new Set(PUBLIC_MODEL_CATALOG.map((model) => model.id)).size, PUBLIC_MODEL_COUNT);
   assert.ok(PUBLIC_MODEL_CATALOG.every((model) => model.limitation.length > 30));
 });

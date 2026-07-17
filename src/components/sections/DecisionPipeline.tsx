@@ -61,7 +61,7 @@ export function DecisionPipeline() {
           <div className="funnel-copy">
             <p className="eyebrow">Flujo público reproducible</p>
             <h3>Acotado, inspeccionable y bajo revisión humana.</h3>
-            <p>Una ejecución pública valida un input, genera de 6 a 12 alternativas, aplica cuatro perspectivas y doce modelos, y conserva el conjunto completo para comparación.</p>
+            <p>Una ejecución pública valida un input, genera de 6 a 12 alternativas, aplica cuatro perspectivas y catorce modelos, y conserva el conjunto completo para comparación.</p>
           </div>
           <div className="operating-funnel" aria-label="Flujo público desde un input humano hasta una revisión humana">
             {OPERATING_FUNNEL.map((step, index) => (

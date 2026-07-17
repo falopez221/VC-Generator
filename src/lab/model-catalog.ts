@@ -1,4 +1,4 @@
-export const PUBLIC_MODEL_VERSION = "2.0.0";
+export const PUBLIC_MODEL_VERSION = "3.0.0";
 
 export const PUBLIC_MODEL_CATALOG = [
   {
@@ -96,6 +96,22 @@ export const PUBLIC_MODEL_CATALOG = [
     shows: "An ordinal value-of-information-style index for the next evidence request from each public agent.",
     matters: "It directs limited validation effort toward evidence most likely to reduce decision uncertainty.",
     limitation: "The index is not monetary EVSI and does not authorize research, spending or investment.",
+  },
+  {
+    id: "defensibility-lens",
+    name: "Defensibility Lens",
+    family: "Competitive resilience",
+    shows: "A transparent view of imitation exposure, switching-cost assumptions and possible structural advantages.",
+    matters: "It tests whether an attractive opportunity could preserve value after competitors respond.",
+    limitation: "It is a deterministic context lens, not a fifth agent or proof that a durable moat exists.",
+  },
+  {
+    id: "macroeconomic-lens",
+    name: "Macroeconomic Lens",
+    family: "External risk",
+    shows: "Sensitivity to financing, demand, currency, supply-chain and time-horizon conditions.",
+    matters: "It makes broad external exposure visible before a human treats one operating case as stable.",
+    limitation: "It does not forecast GDP, inflation, interest rates or foreign exchange and is not financial advice.",
   },
 ] as const;
 

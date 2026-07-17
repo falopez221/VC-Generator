@@ -1,4 +1,5 @@
 import { DEFAULT_WEIGHTS, OPPORTUNITY_BLUEPRINTS } from "./data.ts";
+import { deriveInputSignals } from "./context-lenses.ts";
 import { PUBLIC_MODEL_VERSION } from "./model-catalog.ts";
 import { calculateMCDA, classifyOpportunity, normalizeLabWeights, recalculateRanking } from "./models.ts";
 import { clamp, createRandom, hashString, randomBetween, round } from "./random.ts";
@@ -107,14 +108,18 @@ function buildRisks(random: () => number, evidence: number, risk: number): RiskI
 
 function createOpportunity(input: LabInput, index: number, random: () => number, research?: PublicWebResearch): Opportunity {
   const blueprint = OPPORTUNITY_BLUEPRINTS[(index + Math.floor(random() * OPPORTUNITY_BLUEPRINTS.length)) % OPPORTUNITY_BLUEPRINTS.length];
-  const evidenceSignal = Math.min(18, input.availableEvidence.length / 24);
-  const signalSignal = Math.min(10, input.knownSignals.length / 38);
+  const inputSignals = deriveInputSignals(input);
   const webSources = AGENT_NAMES.flatMap((agentName) => {
     const candidates = research?.sources.filter((source) => source.agentName === agentName) ?? [];
     return candidates.length ? [candidates[index % candidates.length]] : [];
   });
-  const profile = blueprint.profile.map((value, profileIndex) => clamp(value + randomBetween(random, -8, 8) + (profileIndex === 5 ? evidenceSignal : 0) + (profileIndex === 0 ? signalSignal : 0)));
-  const dimensions = Object.fromEntries(DIMENSION_KEYS.map((key, dimensionIndex) => [key, round(profile[dimensionIndex])])) as Opportunity["dimensions"];
+  const profile = blueprint.profile.map((value) => clamp(value + randomBetween(random, -8, 8)));
+  const dimensions = Object.fromEntries(DIMENSION_KEYS.map((key, dimensionIndex) => {
+    const adjusted = key === "evidenceQuality"
+      ? inputSignals.evidenceQuality + randomBetween(random, -4, 4)
+      : profile[dimensionIndex] + inputSignals.dimensionAdjustments[key];
+    return [key, round(clamp(adjusted))];
+  })) as Opportunity["dimensions"];
   dimensions.risk = round(clamp(dimensions.risk + (input.innovationLevel - 50) * 0.14 - (input.riskTolerance - 50) * 0.08));
   const estimatedCapital = Math.round(clamp(input.estimatedCapital * blueprint.capital * randomBetween(random, 0.82, 1.2), 25000, 50000000));
   const base = {
@@ -133,6 +138,8 @@ function createOpportunity(input: LabInput, index: number, random: () => number,
       "The target customer experiences the problem frequently and urgently.",
       "The proposed workflow improves an observable outcome.",
       "A reachable segment will pay enough to support the delivery model.",
+      "The opportunity can sustain an advantage against imitation, substitutes and incumbent distribution.",
+      "Demand, financing, currency and supply shocks remain inside explicit downside tolerances.",
       ...webSources.map((source) => `${source.agentName} must verify the relevance and durability of ${source.id} with primary evidence.`),
     ],
     availableEvidence: [

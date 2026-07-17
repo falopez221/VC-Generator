@@ -4,8 +4,15 @@ import { clamp, createRandom, round, sampleDistribution } from "./random.ts";
 export function normalizeWeights<T extends string>(weights: Record<T, number>): Record<T, number> {
   const keys = Object.keys(weights) as T[];
   const safe = keys.map((key) => Math.max(0, Number(weights[key]) || 0));
-  const total = safe.reduce((sum, value) => sum + value, 0) || keys.length;
-  return Object.fromEntries(keys.map((key, index) => [key, round(safe[index] / total * 100, 4)])) as Record<T, number>;
+  if (keys.length === 0) return {} as Record<T, number>;
+  const total = safe.reduce((sum, value) => sum + value, 0);
+  const basis = total > 0 ? safe : safe.map(() => 1);
+  const basisTotal = basis.reduce((sum, value) => sum + value, 0);
+  const normalized = basis.map((value) => round(value / basisTotal * 100, 4));
+  const drift = round(100 - normalized.reduce((sum, value) => sum + value, 0), 4);
+  const residualIndex = basis.reduce((largest, value, index) => value > basis[largest] ? index : largest, 0);
+  normalized[residualIndex] = round(normalized[residualIndex] + drift, 4);
+  return Object.fromEntries(keys.map((key, index) => [key, normalized[index]])) as Record<T, number>;
 }
 
 export function normalizeLabWeights(weights: LabWeights): LabWeights {
@@ -84,7 +91,7 @@ export function recalculateRanking(opportunities: Opportunity[], weights: LabWei
     const totalScore = round(clamp(mcda.weightedScore * 0.58 + agentScore * 0.42));
     const category = classifyOpportunity(totalScore, opportunity.dimensions.evidenceQuality, opportunity.dimensions.risk, opportunity.uncertainty, opportunity.disagreement);
     return { ...opportunity, totalScore, category, previousRank: opportunity.rank };
-  }).sort((a, b) => b.totalScore - a.totalScore)
+  }).sort((a, b) => b.totalScore - a.totalScore || a.id.localeCompare(b.id))
     .map((opportunity, index) => ({ ...opportunity, rank: index + 1 }));
 
   const deltas: ComparisonDelta[] = recalculated.map((opportunity) => {
@@ -102,22 +109,30 @@ export function recalculateRanking(opportunities: Opportunity[], weights: LabWei
 
 function percentile(values: number[], ratio: number) {
   const sorted = [...values].sort((a, b) => a - b);
-  const index = Math.min(sorted.length - 1, Math.max(0, Math.round((sorted.length - 1) * ratio)));
-  return sorted[index] ?? 0;
+  if (sorted.length === 0) return 0;
+  const position = Math.min(sorted.length - 1, Math.max(0, (sorted.length - 1) * ratio));
+  const lower = Math.floor(position);
+  const upper = Math.ceil(position);
+  if (lower === upper) return sorted[lower] ?? 0;
+  const fraction = position - lower;
+  return (sorted[lower] ?? 0) * (1 - fraction) + (sorted[upper] ?? 0) * fraction;
 }
 
 export function runMonteCarlo(opportunity: Opportunity, config: MonteCarloConfig): MonteCarloResult {
   const simulations = Math.round(clamp(config.simulations, 200, 5000));
   const random = createRandom(config.seed + opportunity.id.split("").reduce((sum, character) => sum + character.charCodeAt(0), 0));
   const samples = Array.from({ length: simulations }, () => {
-    const market = config.marketGrowth * (1 + sampleDistribution(random, config.distribution) * 0.35);
-    const adoption = config.adoption * (1 + sampleDistribution(random, config.distribution) * 0.42);
-    const price = config.price * (1 + sampleDistribution(random, config.distribution) * 0.22);
-    const cac = config.cac * (1 + sampleDistribution(random, config.distribution) * 0.36);
-    const churn = clamp(config.churn * (1 + sampleDistribution(random, config.distribution) * 0.4), 0, 95);
-    const margin = clamp(config.margin * (1 + sampleDistribution(random, config.distribution) * 0.2), 1, 95);
-    const annualRevenue = market * adoption / 100 * price * (1 - churn / 100) * (1 + opportunity.dimensions.scalability / 180);
-    const contribution = annualRevenue * margin / 100 - cac * Math.max(1, adoption / 8);
+    const macroShock = sampleDistribution(random, config.distribution);
+    const addressableCustomers = Math.max(1, config.marketGrowth * (1 + macroShock * 0.22 + sampleDistribution(random, config.distribution) * 0.12));
+    const adoption = clamp(config.adoption * (1 + macroShock * 0.18 + sampleDistribution(random, config.distribution) * 0.28), 0, 100);
+    const price = Math.max(1, config.price * (1 + macroShock * 0.06 + sampleDistribution(random, config.distribution) * 0.16));
+    const cac = Math.max(0, config.cac * (1 - macroShock * 0.12 + sampleDistribution(random, config.distribution) * 0.24));
+    const churn = clamp(config.churn * (1 - macroShock * 0.18 + sampleDistribution(random, config.distribution) * 0.3), 0, 95);
+    const margin = clamp(config.margin * (1 + macroShock * 0.08 + sampleDistribution(random, config.distribution) * 0.14), 1, 95);
+    const acquiredCustomers = addressableCustomers * adoption / 100;
+    const retainedRevenue = acquiredCustomers * price * (1 - churn / 100);
+    const scalableRevenue = retainedRevenue * (0.8 + opportunity.dimensions.scalability / 250);
+    const contribution = scalableRevenue * margin / 100 - acquiredCustomers * cac;
     const normalizedReturn = (contribution - config.initialInvestment) / Math.max(1, config.initialInvestment) * 100;
     return round(Math.max(-100, Math.min(300, normalizedReturn)));
   });

@@ -117,7 +117,7 @@ test("methodology explains how to interpret dashboard results", async () => {
 
 test("public Lab summary is synchronized with the model catalog", async () => {
   const response = await render("/lab");
-  assert.match(renderedText(await response.text()), /12 public models/i);
+  assert.match(renderedText(await response.text()), /14 public models/i);
 });
 
 test("landing is synchronized with public whitepaper v2 and the IP boundary", async () => {
