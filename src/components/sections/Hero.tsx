@@ -1,37 +1,49 @@
+import Link from "next/link";
 import { LinkButton } from "@/src/components/ui/LinkButton";
-import {
-  SITE_LINKS,
-  WHITEPAPER_AVAILABLE,
-} from "@/src/config/site";
+import { SITE_LINKS, WHITEPAPER_AVAILABLE } from "@/src/config/site";
 import { HeroExperience } from "@/src/components/sections/HeroExperience";
+
+const PUBLIC_PROOF = [
+  ["04", "Public specialist agents"],
+  ["12", "Documented quantitative models"],
+  ["6–12", "Reproducible synthetic opportunities"],
+  ["01", "Named Human Gate"],
+] as const;
 
 export function Hero() {
   return (
-    <section className="hero" id="vision">
+    <section className="hero" id="vision" lang="en">
       <div className="hero-grid container">
         <div className="hero-copy">
-          <div className="system-status"><span /> Whitepaper público v2.0 · 4 agentes · Human-in-command</div>
-          <h1>AI Multi-Agent Intelligence <em>for Opportunity Discovery</em></h1>
+          <div className="system-status"><i aria-hidden="true" /> <span lang="es">Whitepaper público v2.0</span> · Multi-agent decision intelligence · Human-in-command</div>
+          <h1>Explore more possibilities. <em>Keep authority visible.</em></h1>
           <p className="hero-tagline">AI explores. Models evaluate. Humans decide.</p>
-          <p className="hero-description">Venture Governance explores large spaces of possible business opportunities, evaluates them through specialized agents and quantitative models, and prioritizes candidates for human review.</p>
+          <p className="hero-description">Venture Governance turns a human mandate into an inspectable network of evidence, specialist agents and quantitative models—then returns prioritized opportunities for human review.</p>
           <div className="hero-actions">
-            <LinkButton href={SITE_LINKS.platform}>Enter Platform</LinkButton>
-            <LinkButton href={SITE_LINKS.demo} variant="secondary">Explore Public Demo</LinkButton>
-            <LinkButton href={SITE_LINKS.secondaryCta} variant="quiet">Architecture</LinkButton>
-            <LinkButton href={SITE_LINKS.whitepaper} variant="quiet" disabled={!WHITEPAPER_AVAILABLE}>Read the Whitepaper</LinkButton>
+            <LinkButton href={SITE_LINKS.demo}>Run the Public Lab</LinkButton>
+            <LinkButton href={SITE_LINKS.platform} variant="secondary">Workspace sign-in</LinkButton>
           </div>
-          <div className="hero-proof" aria-label="Principios del sistema">
-            <div><strong>01</strong><span>Human<br />mandate</span></div>
-            <div><strong>02</strong><span>Explicit<br />uncertainty</span></div>
-            <div><strong>03</strong><span>Human-in-<br />command</span></div>
-          </div>
+          <nav className="hero-secondary-links" aria-label="Further reading">
+            <Link href={SITE_LINKS.secondaryCta}>Explore architecture <span aria-hidden="true">↗</span></Link>
+            {WHITEPAPER_AVAILABLE && <Link href={SITE_LINKS.whitepaper}>Read the whitepaper <span aria-hidden="true">↗</span></Link>}
+          </nav>
         </div>
-        <HeroExperience />
+        <div className="hero-experience-wrap">
+          <HeroExperience />
+          <p className="hero-experience-note">INTERACTIVE SYSTEM SEQUENCE · SELECT AN AGENT TO INSPECT ITS ROLE</p>
+        </div>
+      </div>
+      <div className="hero-proof container" aria-label="Public system scope">
+        {PUBLIC_PROOF.map(([value, label]) => (
+          <div key={label}><strong>{value}</strong><span>{label}</span></div>
+        ))}
       </div>
       <div className="hero-rail container">
-        <span>Designed for</span>
-        <div>VENTURE CAPITAL</div><div>VENTURE STUDIOS</div><div>CORPORATE INNOVATION</div><div>INSTITUTIONAL RESEARCH</div>
-        <LinkButton href={SITE_LINKS.whitepaper} variant="quiet" disabled={!WHITEPAPER_AVAILABLE}>Abrir whitepaper</LinkButton>
+        <span>Built for governed exploration</span>
+        <div>VENTURE CAPITAL</div>
+        <div>VENTURE STUDIOS</div>
+        <div>CORPORATE INNOVATION</div>
+        <div>INSTITUTIONAL RESEARCH</div>
       </div>
     </section>
   );

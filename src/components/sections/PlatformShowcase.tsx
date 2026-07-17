@@ -129,32 +129,38 @@ export function PlatformShowcase() {
   }, [selectedId]);
 
   return (
-    <section className="platform-showcase" aria-labelledby="platform-showcase-title" lang="en">
+    <section className="platform-showcase" id="platform" aria-labelledby="platform-showcase-title" lang="en">
       <div className="container platform-showcase-inner">
         <header className="platform-showcase-heading">
           <div>
-            <p>INSTITUTIONAL WORKSPACE</p>
-            <h2 id="platform-showcase-title">See the decision architecture, not just the answer.</h2>
+            <p>MISSION COMMAND SURFACE</p>
+            <h2 id="platform-showcase-title">One mission. Every dependency visible.</h2>
           </div>
           <div>
-            <p>Venture Governance connects a human mandate to evidence, four public specialist agents, quantitative models and a named Human Gate.</p>
+            <p>Select any component to trace its upstream evidence, downstream effects and path to human authority. The interface changes as one connected system—not as isolated dashboard cards.</p>
             <nav aria-label="Platform showcase actions">
-              <Link href="/app/login">Enter platform <span aria-hidden="true">→</span></Link>
-              <Link href="/applications">Explore applications</Link>
+              <Link href="/lab/demo">Run the Public Lab <span aria-hidden="true">→</span></Link>
+              <Link href="/app/login">Workspace sign-in</Link>
             </nav>
           </div>
         </header>
 
         <div className="platform-showcase-layout">
           <figure className="ps-product-view" aria-labelledby="platform-showcase-title ps-demo-caption">
-            <div className="ps-device">
-              <div className="ps-device-camera" aria-hidden="true" />
+            <div className="ps-command-surface">
               <div className="ps-screen">
                 <header className="ps-screen-topbar">
                   <div className="ps-screen-brand"><i aria-hidden="true" /><span>VENTURE GOVERNANCE<small>MISSION WORKSPACE</small></span></div>
                   <div><span>{SYNTHETIC_MISSION.id}</span><strong>{SYNTHETIC_MISSION.title}</strong></div>
-                  <b>SYNTHETIC DEMONSTRATION</b>
+                  <b>DEPENDENCY VIEW · SYNTHETIC</b>
                 </header>
+
+                <ol className="ps-activity-stream" aria-label="Synthetic mission activity">
+                  <li><i aria-hidden="true" /><span>evidence.received</span><strong>18 traceable items</strong></li>
+                  <li><i aria-hidden="true" /><span>agent.output</span><strong>4 briefs reconciled</strong></li>
+                  <li><i aria-hidden="true" /><span>model.completed</span><strong>1,200 bounded scenarios</strong></li>
+                  <li className="is-review"><i aria-hidden="true" /><span>human.review_required</span><strong>Decision not authorized</strong></li>
+                </ol>
 
                 <div className="ps-screen-workspace">
                   <aside className="ps-screen-rail" aria-label="Workspace preview modules">
@@ -181,6 +187,9 @@ export function PlatformShowcase() {
 
                   <div className="ps-system-map" role="group" aria-labelledby="ps-map-title" aria-describedby="ps-map-summary">
                     <h3 id="ps-map-title" className="sr-only">Interactive synthetic mission dependency map</h3>
+                    <div className="ps-map-lanes" aria-hidden="true">
+                      <span>Evidence</span><span>Mandate</span><span>Agents</span><span>Models</span><span>Authority</span><span>Record</span>
+                    </div>
                     <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
                       <defs><marker id="ps-showcase-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" /></marker></defs>
                       {SYNTHETIC_MISSION.edges.map((edge) => {
@@ -189,6 +198,7 @@ export function PlatformShowcase() {
                         const edgeClassName = [
                           edge.kind === "collaboration" ? "is-collaboration" : "",
                           isDirect ? "is-direct" : isOnPath ? "is-path" : "",
+                          !isDirect && !isOnPath ? "is-muted" : "",
                         ].filter(Boolean).join(" ");
                         return (
                         <line
@@ -217,6 +227,7 @@ export function PlatformShowcase() {
                       <span><i aria-hidden="true" />Decision flow</span>
                       <span><i aria-hidden="true" />Agent exchange</span>
                     </div>
+                    <div className="ps-trace-status"><span>TRACE ACTIVE</span><strong>{selected.label}</strong></div>
                     {SYNTHETIC_MISSION.nodes.map((node) => {
                       const isSelected = selectedId === node.id;
                       const isDirect = graphState.directNodeIds.has(node.id);
@@ -226,6 +237,7 @@ export function PlatformShowcase() {
                         `ps-node--${node.kind}`,
                         isDirect ? "is-direct" : "",
                         isOnPath ? "is-on-path" : "",
+                        !isSelected && !isDirect && !isOnPath ? "is-muted" : "",
                       ].filter(Boolean).join(" ");
 
                       return (
@@ -237,7 +249,6 @@ export function PlatformShowcase() {
                           aria-pressed={isSelected}
                           aria-controls="ps-component-inspector"
                           aria-label={`${node.label}. ${NODE_KIND_LABELS[node.kind]}. ${node.status}. ${isSelected ? "Selected component." : isDirect ? "Directly connected to the selected component." : isOnPath ? "On the selected dependency path." : "Select to inspect its connections."}`}
-                          onFocus={() => setSelectedId(node.id)}
                           onClick={() => setSelectedId(node.id)}
                         >
                           <i aria-hidden="true" />
@@ -277,9 +288,8 @@ export function PlatformShowcase() {
                   </aside>
                 </div>
               </div>
-              <div className="ps-device-base" aria-hidden="true"><i /></div>
             </div>
-            <figcaption id="ps-demo-caption" className="ps-demo-note">Interactive product illustration · bounded synthetic structure · no live organizational data</figcaption>
+            <figcaption id="ps-demo-caption" className="ps-demo-note">Interactive mission command surface · bounded synthetic structure · no live organizational data</figcaption>
           </figure>
 
           <aside className="ps-architecture" aria-labelledby="ps-architecture-title">

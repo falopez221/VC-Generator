@@ -252,10 +252,10 @@ export function HeroExperience() {
         <div className="experience-agent-layer" aria-label="Four interactive public specialist agents">
           {agents.map((agent) => <button type="button" key={agent.id} className={`experience-agent ${agent.public ? "is-public" : "is-secondary"} ${detailAgent?.id === agent.id ? "is-selected" : ""}`} style={{ left: `${agent.x}%`, top: `${agent.y}%`, "--agent-scale": String(.82 + agent.z * .2) } as CSSProperties} aria-pressed={selectedAgent?.id === agent.id} aria-label={`${agent.label}. ${agent.description}`} onPointerEnter={() => setHoveredAgent(agent)} onPointerLeave={() => { if (!selectedAgent) setHoveredAgent(null); }} onFocus={() => setHoveredAgent(agent)} onBlur={() => { if (!selectedAgent) setHoveredAgent(null); }} onClick={() => selectAgent(agent)}><i /><span>{agent.label}</span></button>)}
         </div>
-        <div className="experience-quant"><span>12 VISIBLE MODELS</span><strong>Monte Carlo · Tornado · Break-even · Rank robustness</strong><small>Risk · Evidence · Uncertainty</small></div>
-        <div className="experience-funnel" aria-describedby="hero-funnel-note"><span>1 input</span><i>→</i><span>6–12 opportunities</span><i>→</i><span>4 agents</span><i>→</i><span>12 models</span><i>→</i><strong>human review</strong></div>
-        <small className="experience-funnel-note" id="hero-funnel-note">Deterministic public flow · same validated input, version, weights and seed produce the same run.</small>
-        <article className="experience-candidate">
+        <div className="experience-quant" aria-hidden={phase !== 2}><span>12 VISIBLE MODELS</span><strong>Monte Carlo · Tornado · Break-even · Rank robustness</strong><small>Risk · Evidence · Uncertainty</small></div>
+        <div className="experience-funnel" aria-describedby="hero-funnel-note" aria-hidden={phase !== 2}><span>1 input</span><i>→</i><span>6–12 opportunities</span><i>→</i><span>4 agents</span><i>→</i><span>12 models</span><i>→</i><strong>human review</strong></div>
+        <small className="experience-funnel-note" id="hero-funnel-note" aria-hidden={phase !== 2}>Deterministic public flow · same validated input, version, weights and seed produce the same run.</small>
+        <article className="experience-candidate" aria-hidden={phase < 3}>
           <header><span>TOP-RANKED SYNTHETIC OPPORTUNITY</span><b>Priority for Human Review</b></header>
           <h3>Traceable Finance Operations</h3>
           <dl><div><dt>Problem</dt><dd>Fragmented financial workflows</dd></div><div><dt>Market</dt><dd>B2B financial operations</dd></div><div><dt>Model</dt><dd>AI-enabled infrastructure</dd></div></dl>
@@ -265,7 +265,7 @@ export function HeroExperience() {
       {detailAgent && <aside className="experience-agent-detail" role="status"><span>PUBLIC LAB AGENT</span><strong>{detailAgent.label}</strong><p>{detailAgent.description}</p>{selectedAgent && <button type="button" onClick={() => { setSelectedAgent(null); setHoveredAgent(null); if (!complete) setPlaying(true); }}>Close & resume</button>}</aside>}
       <div className="experience-controls" aria-label="Animation controls">
         {!complete && <button type="button" onClick={skip}>Skip Animation</button>}
-        <button type="button" onClick={replay}>Replay</button>
+        {!staticMode && <button type="button" onClick={replay}>Replay</button>}
         {!complete && !staticMode && <button type="button" aria-pressed={!playing} onClick={() => setPlaying((value) => !value)}>{playing ? "Pause" : "Resume"}</button>}
         <button type="button" data-sound-control className={sound.enabled ? "is-on" : ""} aria-pressed={sound.enabled} onClick={() => requestInterfaceSoundSettings({ enabled: !sound.enabled, volume: sound.volume })}>{sound.enabled ? "Sound enabled" : "Enable sound"}</button>
         <label data-sound-control><span>Volume {sound.volume}%</span><input type="range" min="0" max="100" step="25" value={sound.volume} onChange={(event) => requestInterfaceSoundSettings({ enabled: sound.enabled, volume: Number(event.target.value) })} /></label>

@@ -1,26 +1,48 @@
 import Link from "next/link";
-import { FOOTER_TEXT, NAVIGATION, PROJECT_NAME, SITE_LINKS } from "@/src/config/site";
+import {
+  CONTACT_EMAIL,
+  FOOTER_NAVIGATION,
+  FOOTER_TEXT,
+  PROJECT_NAME,
+  SITE_LINKS,
+} from "@/src/config/site";
 
 export function Footer() {
   return (
-    <footer className="site-footer">
-      <div className="container footer-grid">
+    <footer className="site-footer" lang="en">
+      <div className="container footer-lead">
         <div>
-          <p className="footer-brand">{PROJECT_NAME}</p>
-          <p className="footer-note">{FOOTER_TEXT}</p>
+          <span className="footer-index">VENTURE GOVERNANCE / PUBLIC SYSTEM</span>
+          <h2>Explore broadly.<br />Decide deliberately.</h2>
         </div>
-        <div className="footer-links" aria-label="Enlaces del pie">
-          {NAVIGATION.map((item) => <a href={item.href} key={item.label}>{item.label}</a>)}
-        </div>
-        <div className="footer-links">
-          <a href={SITE_LINKS.email}>Email</a>
-          <Link href="/request-access">Request access</Link>
-          <a href={SITE_LINKS.whitepaper}>Whitepaper</a>
+        <div className="footer-boundary">
+          <span>OPERATING BOUNDARY</span>
+          <p>AI expands the search space and models uncertainty. A named person retains authority, accountability and the final decision.</p>
+          <Link href={SITE_LINKS.demo}>Run the Public Lab <span aria-hidden="true">→</span></Link>
         </div>
       </div>
+
+      <div className="container footer-directory">
+        <div className="footer-identity">
+          <Link className="footer-brand" href="/">
+            <span className="brand-mark" aria-hidden="true"><i /><i /><i /></span>
+            <span>{PROJECT_NAME}</span>
+          </Link>
+          <p lang="es">{FOOTER_TEXT}</p>
+          <a href={SITE_LINKS.email}>{CONTACT_EMAIL}</a>
+        </div>
+        {FOOTER_NAVIGATION.map((group) => (
+          <nav className="footer-links" aria-label={group.label} key={group.label}>
+            <h3>{group.label}</h3>
+            {group.links.map((item) => <Link href={item.href} key={item.label}>{item.label}</Link>)}
+          </nav>
+        ))}
+      </div>
+
       <div className="container footer-bottom">
-        <span>Documento conceptual · 2026</span>
-        <Link href="/#vision">Volver arriba ↑</Link>
+        <span>Venture Governance System™ · Conceptual decision-support system · 2026</span>
+        <span>Synthetic public demo · No financial advice</span>
+        <Link href="/#vision">Back to top ↑</Link>
       </div>
     </footer>
   );

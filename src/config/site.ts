@@ -43,6 +43,76 @@ export const NAVIGATION = [
   { label: "Access", href: PLATFORM_URL },
 ] as const;
 
+export const PRIMARY_NAVIGATION = [
+  { label: "Platform", href: "/#platform" },
+  { label: "Methodology", href: "/lab/methodology" },
+  { label: "Applications", href: "/applications" },
+  { label: "Research", href: "/#whitepaper" },
+] as const;
+
+export const NAVIGATION_GROUPS = [
+  {
+    label: "System",
+    description: "How the governed decision architecture works.",
+    links: [
+      { label: "Mission architecture", href: "/#arquitectura" },
+      { label: "Public agents", href: "/#agentes" },
+      { label: "Quantitative models", href: "/#modelado" },
+      { label: "Decision pipeline", href: "/#metodologia" },
+    ],
+  },
+  {
+    label: "Explore",
+    description: "Inspect the public, bounded product surfaces.",
+    links: [
+      { label: "Applications map", href: "/applications" },
+      { label: "Public Lab", href: "/lab" },
+      { label: "Run a simulation", href: DEMO_URL },
+      { label: "Read the whitepaper", href: WHITEPAPER_URL },
+    ],
+  },
+  {
+    label: "Governance",
+    description: "Understand authority, evidence and limitations.",
+    links: [
+      { label: "Human-in-command", href: "/#solucion" },
+      { label: "Evidence boundary", href: "/#evidencia" },
+      { label: "Risks and limitations", href: "/#riesgos" },
+      { label: "Request access", href: "/request-access" },
+    ],
+  },
+] as const;
+
+export const FOOTER_NAVIGATION = [
+  {
+    label: "Platform",
+    links: [
+      { label: "Architecture", href: "/#arquitectura" },
+      { label: "Agents", href: "/#agentes" },
+      { label: "Models", href: "/#modelado" },
+      { label: "Applications", href: "/applications" },
+    ],
+  },
+  {
+    label: "Public resources",
+    links: [
+      { label: "Public Lab", href: "/lab" },
+      { label: "Methodology", href: "/lab/methodology" },
+      { label: "Whitepaper", href: WHITEPAPER_URL },
+      { label: "Request access", href: "/request-access" },
+    ],
+  },
+  {
+    label: "Governance",
+    links: [
+      { label: "Human-in-command", href: "/#solucion" },
+      { label: "Evidence", href: "/#evidencia" },
+      { label: "Decision pipeline", href: "/#metodologia" },
+      { label: "Limitations", href: "/#riesgos" },
+    ],
+  },
+] as const;
+
 export const SITE_LINKS = {
   whitepaper: WHITEPAPER_URL,
   contact: CONTACT_URL,

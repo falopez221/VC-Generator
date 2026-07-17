@@ -139,7 +139,7 @@ export function SoundController() {
   const toggleSound = () => applySettings({ enabled: !enabledRef.current, volume }, true);
 
   return (
-    <button className={enabled ? "sound-toggle is-on" : "sound-toggle"} type="button" aria-pressed={enabled} aria-label={enabled ? "Silenciar sonidos de interfaz" : "Activar sonidos de interfaz"} title={enabled ? `Sonido activado al ${volume}%` : "Activar sonido"} onClick={toggleSound}>
+    <button className={enabled ? "sound-toggle is-on" : "sound-toggle"} type="button" aria-pressed={enabled} aria-label={enabled ? "Mute interface sounds" : "Enable interface sounds"} title={enabled ? `Interface sound enabled at ${volume}%` : "Enable interface sound"} onClick={toggleSound}>
       <span className="sound-glyph" aria-hidden="true">♪</span>
       <span className="sound-label">{enabled ? "AUDIO ON" : "ENABLE SOUND"}</span>
     </button>
