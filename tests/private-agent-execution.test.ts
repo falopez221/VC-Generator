@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { PRIVATE_AGENT_CATALOG } from "../src/private/agent-registry/catalog.generated.ts";
 import { executePrivateAgentTeam, normalizePrivateAgentRunRequest, PrivateAgentExecutionError } from "../src/private/agent-execution/index.ts";
+import { BoundedJsonRequestError, isSameSiteWrite, readBoundedJson } from "../src/private/request-security.ts";
 
 const selectedAgent = PRIVATE_AGENT_CATALOG[0];
 const mission = "Evaluate the principal risks, evidence gaps and reversible next steps for this venture decision.";
@@ -56,4 +57,27 @@ test("private execution calls the fixed Responses endpoint and returns an inspec
   assert.equal(run.results[0]?.agentId, selectedAgent.id);
   assert.equal(run.results[0]?.confidence, 64);
   assert.match(run.synthesis, /Completed 1 specialist analysis/);
+});
+
+test("private API parsing bounds streamed JSON and rejects browser cross-site writes", async () => {
+  const accepted = new Request("https://venturegovernance.com/api/private/agents/execute", {
+    method: "POST",
+    headers: { "content-type": "application/json", origin: "https://venturegovernance.com", "sec-fetch-site": "same-origin" },
+    body: JSON.stringify({ mission: "bounded" }),
+  });
+  assert.deepEqual(await readBoundedJson(accepted, 100), { mission: "bounded" });
+  assert.equal(isSameSiteWrite(accepted), true);
+
+  const oversized = new Request("https://venturegovernance.com/api/private/agents/execute", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ mission: "this request is intentionally beyond the tiny test limit" }),
+  });
+  await assert.rejects(readBoundedJson(oversized, 10), BoundedJsonRequestError);
+
+  const crossSite = new Request("https://venturegovernance.com/api/private/agents/execute", {
+    method: "POST",
+    headers: { origin: "https://attacker.example", "sec-fetch-site": "cross-site" },
+  });
+  assert.equal(isSameSiteWrite(crossSite), false);
 });

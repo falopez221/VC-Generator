@@ -52,7 +52,7 @@ export const DEMO_AUDIT_EVENTS = [
   { timestamp: "2026-07-17 13:31", actor: "demo.analyst", action: "evidence.labeled", resource: "MIS-014", correlation: "COR-39D1" },
 ] as const;
 
-const BASE_NODES: GraphNode[] = [
+const PRIVATE_BASE_NODES: GraphNode[] = [
   { id: "mission", label: "Active Mission", kind: "mission", cluster: "Mission", x: 50, y: 46, z: 46, detail: "The governed question, scope, owner and decision boundary.", status: "ACTIVE" },
   { id: "registry", label: "Registry · 1,970", kind: "agent", cluster: "Agents", x: 20, y: 25, z: 18, detail: "The authenticated catalog contains 1,970 executable specialist profiles across 51 domains.", status: "ON DEMAND" },
   { id: "router", label: "Domain Router · 51", kind: "domain", cluster: "Orchestration", x: 29, y: 72, z: 30, detail: "Matches mission needs to relevant domains and specialist profiles.", status: "BOUNDED" },
@@ -64,7 +64,7 @@ const BASE_NODES: GraphNode[] = [
   { id: "result", label: "Decision Record", kind: "result", cluster: "Outcome", x: 72, y: 88, z: 10, detail: "Preserves alternatives, rationale, conditions, objections and next review.", status: "OUTPUT" },
 ];
 
-const BASE_EDGES: GraphEdge[] = [
+const PRIVATE_BASE_EDGES: GraphEdge[] = [
   { from: "evidence", to: "mission", label: "grounds" },
   { from: "mission", to: "router", label: "declares capability needs" },
   { from: "registry", to: "router", label: "offers 1,970 profiles" },
@@ -73,6 +73,34 @@ const BASE_EDGES: GraphEdge[] = [
   { from: "team", to: "monte-carlo", label: "contributes ranges" },
   { from: "team", to: "sensitivity", label: "contributes assumptions" },
   { from: "team", to: "gate", label: "submits specialist synthesis" },
+  { from: "monte-carlo", to: "gate", label: "submits scenarios" },
+  { from: "sensitivity", to: "gate", label: "submits drivers" },
+  { from: "gate", to: "result", label: "authorizes record" },
+];
+
+const PUBLIC_BASE_NODES: GraphNode[] = [
+  { id: "mission", label: "Active Mission", kind: "mission", cluster: "Mission", x: 50, y: 46, z: 46, detail: "The governed question, scope, owner and decision boundary.", status: "ACTIVE" },
+  { id: "strategy", label: "Strategy", kind: "agent", cluster: "Agents", x: 25, y: 24, z: 18, detail: "Frames alternatives, timing, differentiation and strategic constraints.", status: "PUBLIC DEMO" },
+  { id: "finance", label: "Finance", kind: "agent", cluster: "Agents", x: 74, y: 25, z: 8, detail: "Evaluates economics, capital exposure and staged commitments.", status: "PUBLIC DEMO" },
+  { id: "mathematics", label: "Mathematics", kind: "agent", cluster: "Agents", x: 20, y: 68, z: 32, detail: "Models uncertainty, sensitivity, robustness and trade-offs.", status: "PUBLIC DEMO" },
+  { id: "marketing", label: "Marketing", kind: "agent", cluster: "Agents", x: 80, y: 69, z: 20, detail: "Evaluates adoption, accessible demand and evidence gaps.", status: "PUBLIC DEMO" },
+  { id: "evidence", label: "Evidence Graph", kind: "evidence", cluster: "Evidence", x: 50, y: 15, z: -6, detail: "Separates sources, assumptions, inferences and missing evidence.", status: "TRACEABLE" },
+  { id: "monte-carlo", label: "Monte Carlo", kind: "model", cluster: "Models", x: 10, y: 45, z: -18, detail: "Explores distributions under visible assumptions and a reproducible seed.", status: "MODEL 2.0" },
+  { id: "sensitivity", label: "Sensitivity", kind: "model", cluster: "Models", x: 90, y: 45, z: -12, detail: "Identifies the assumptions that dominate the conclusion.", status: "MODEL 2.0" },
+  { id: "gate", label: "Human Gate", kind: "gate", cluster: "Governance", x: 50, y: 80, z: 54, detail: "A named person reviews evidence, dissent and authority before continuation.", status: "REQUIRED" },
+  { id: "result", label: "Decision Record", kind: "result", cluster: "Outcome", x: 50, y: 95, z: 10, detail: "Preserves alternatives, rationale, conditions, objections and next review.", status: "OUTPUT" },
+];
+
+const PUBLIC_BASE_EDGES: GraphEdge[] = [
+  { from: "evidence", to: "mission", label: "grounds" },
+  { from: "mission", to: "strategy", label: "routes" },
+  { from: "mission", to: "finance", label: "routes" },
+  { from: "mission", to: "mathematics", label: "routes" },
+  { from: "mission", to: "marketing", label: "routes" },
+  { from: "mathematics", to: "monte-carlo", label: "models" },
+  { from: "finance", to: "monte-carlo", label: "contributes ranges" },
+  { from: "strategy", to: "sensitivity", label: "contributes assumptions" },
+  { from: "marketing", to: "sensitivity", label: "contributes adoption signals" },
   { from: "monte-carlo", to: "gate", label: "submits scenarios" },
   { from: "sensitivity", to: "gate", label: "submits drivers" },
   { from: "gate", to: "result", label: "authorizes record" },
@@ -88,11 +116,13 @@ const VARIANT_COPY: Record<GraphVariant, Partial<Record<string, string>>> = {
   agents: { mission: "Orchestration", evidence: "Bounded Inputs", result: "Inspectable Outputs" },
 };
 
-export function graphFor(variant: GraphVariant): { nodes: GraphNode[]; edges: GraphEdge[] } {
+export function graphFor(variant: GraphVariant, scope: "public" | "private" = "public"): { nodes: GraphNode[]; edges: GraphEdge[] } {
   const labels = VARIANT_COPY[variant];
+  const nodes = scope === "private" ? PRIVATE_BASE_NODES : PUBLIC_BASE_NODES;
+  const edges = scope === "private" ? PRIVATE_BASE_EDGES : PUBLIC_BASE_EDGES;
   return {
-    nodes: BASE_NODES.map((node) => ({ ...node, label: labels[node.id] ?? node.label })),
-    edges: BASE_EDGES,
+    nodes: nodes.map((node) => ({ ...node, label: labels[node.id] ?? node.label })),
+    edges,
   };
 }
 
@@ -103,6 +133,7 @@ export const PLATFORM_MODULES = [
   { href: "/app/decision-lab", label: "Decision Lab", shortLabel: "DL", status: "Private" },
   { href: "/app/missions/new", label: "Mission Builder", shortLabel: "MB", status: "Private" },
   { href: "/app/simulation", label: "Simulation Lab", shortLabel: "SM", status: "Private" },
+  { href: "/app/execution-feasibility", label: "Execution Feasibility", shortLabel: "EF", status: "Private" },
   { href: "/app/scenarios", label: "Scenario Lab", shortLabel: "SC", status: "Private" },
   { href: "/app/research", label: "Research Lab", shortLabel: "RS", status: "Private" },
   { href: "/app/portfolio", label: "Portfolio Lab", shortLabel: "PF", status: "Private" },

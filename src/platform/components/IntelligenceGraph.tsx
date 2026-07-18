@@ -7,11 +7,12 @@ import type { GraphNode, GraphVariant } from "../types";
 
 type Props = {
   variant?: GraphVariant;
+  scope?: "public" | "private";
   compact?: boolean;
   title?: string;
 };
 
-export function IntelligenceGraph({ variant = "overview", compact = false, title = "Living intelligence architecture" }: Props) {
+export function IntelligenceGraph({ variant = "overview", scope, compact = false, title = "Living intelligence architecture" }: Props) {
   const hostRef = useRef<HTMLDivElement>(null);
   const dragRef = useRef<{ x: number; y: number } | null>(null);
   const [ready, setReady] = useState(false);
@@ -22,7 +23,8 @@ export function IntelligenceGraph({ variant = "overview", compact = false, title
   const [selectedId, setSelectedId] = useState("mission");
   const [isolatedCluster, setIsolatedCluster] = useState("");
   const [trace, setTrace] = useState(false);
-  const { nodes, edges } = useMemo(() => graphFor(variant), [variant]);
+  const resolvedScope = scope ?? (variant === "applications" ? "public" : "private");
+  const { nodes, edges } = useMemo(() => graphFor(variant, resolvedScope), [resolvedScope, variant]);
   const selected = nodes.find((node) => node.id === selectedId) ?? nodes[0];
 
   useEffect(() => {

@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { authorizeChatGPTUser, getChatGPTUser } from "@/app/chatgpt-auth";
 import { normalizePrivateResearchRequest } from "@/src/private/research/normalize";
 import { searchPrivateResearch } from "@/src/private/research/service";
+import { isSameSiteWrite } from "@/src/private/request-security";
 
 export const dynamic = "force-dynamic";
 
@@ -9,6 +10,7 @@ const MAX_REQUEST_BYTES = 6_000;
 const WINDOW_MS = 60_000;
 const REQUESTS_PER_WINDOW = 12;
 const MAX_ACTIVE_REQUESTS = 4;
+const MAX_TRACKED_IDENTITIES = 500;
 const windows = new Map<string, { startedAt: number; count: number }>();
 let activeRequests = 0;
 
@@ -23,7 +25,11 @@ function response(body: unknown, status = 200) {
 function rateLimited(email: string, now: number) {
   for (const [key, window] of windows) if (now - window.startedAt >= WINDOW_MS) windows.delete(key);
   const current = windows.get(email);
-  if (!current) { windows.set(email, { startedAt: now, count: 1 }); return false; }
+  if (!current) {
+    if (windows.size >= MAX_TRACKED_IDENTITIES) windows.delete(windows.keys().next().value ?? "");
+    windows.set(email, { startedAt: now, count: 1 });
+    return false;
+  }
   current.count += 1;
   return current.count > REQUESTS_PER_WINDOW;
 }
@@ -55,6 +61,7 @@ export async function POST(request: Request) {
   if (!user) return response({ error: "Authentication is required." }, 401);
   const authorized = authorizeChatGPTUser(user);
   if (!authorized) return response({ error: "This account is not authorized for the private workspace." }, 403);
+  if (!isSameSiteWrite(request)) return response({ error: "Cross-site private requests are not allowed." }, 403);
   if (rateLimited(authorized.email.toLowerCase(), Date.now()) || activeRequests >= MAX_ACTIVE_REQUESTS) {
     return response({ error: "Private research is busy. Try again shortly." }, 429);
   }

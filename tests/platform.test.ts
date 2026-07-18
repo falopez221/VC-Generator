@@ -5,7 +5,7 @@ import { VG_DESIGN_TOKENS } from "../src/platform/design-tokens.ts";
 
 test("authenticated platform graph represents the private registry and bounded execution teams", () => {
   for (const variant of ["overview", "access", "knowledge", "mission", "applications", "simulation", "agents"] as const) {
-    const graph = graphFor(variant);
+    const graph = graphFor(variant, "private");
     const ids = new Set(graph.nodes.map((node) => node.id));
     assert.equal(ids.size, graph.nodes.length);
     assert.deepEqual(graph.nodes.filter((node) => node.kind === "agent").map((node) => node.id).sort(), ["registry", "team"]);
@@ -34,6 +34,12 @@ test("authenticated platform graph represents the private registry and bounded e
     }
     assert.ok(reaches("evidence", "result"), `${variant}: evidence must reach the Decision Record`);
   }
+});
+
+test("public platform graph remains limited to the four public Lab agents", () => {
+  const graph = graphFor("applications");
+  assert.deepEqual(graph.nodes.filter((node) => node.kind === "agent").map((node) => node.label).sort(), ["Finance", "Marketing", "Mathematics", "Strategy"]);
+  assert.doesNotMatch(JSON.stringify(graph), /1,970|Domain Router|Mission Team/i);
 });
 
 test("platform module and fixture metadata remain honest and internally consistent", () => {

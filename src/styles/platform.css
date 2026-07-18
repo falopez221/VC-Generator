@@ -1,5 +1,38 @@
 .platform-shell, .access-page, .request-access-page { --platform-bg: #04111f; --platform-panel: #071b2e; --platform-panel-2: #0a243c; --platform-line: rgb(153 194 218 / 14%); --platform-text: #e8f0f5; --platform-muted: #83a0b3; --platform-accent: #55c5ec; }
 .platform-shell { min-height: 100svh; display: grid; grid-template-columns: 260px minmax(0, 1fr); color: var(--platform-text); background: var(--platform-bg); }
+
+/* Keep native scrolling accessible while matching the authenticated workspace. */
+html:has(.platform-shell),
+.platform-shell,
+.platform-shell * {
+  scrollbar-color: rgb(85 197 236 / 42%) #04111f;
+  scrollbar-width: thin;
+}
+html:has(.platform-shell)::-webkit-scrollbar,
+.platform-shell::-webkit-scrollbar,
+.platform-shell *::-webkit-scrollbar { width: 10px; height: 10px; }
+html:has(.platform-shell)::-webkit-scrollbar-track,
+.platform-shell::-webkit-scrollbar-track,
+.platform-shell *::-webkit-scrollbar-track { background: #04111f; }
+html:has(.platform-shell)::-webkit-scrollbar-thumb,
+.platform-shell::-webkit-scrollbar-thumb,
+.platform-shell *::-webkit-scrollbar-thumb {
+  min-height: 42px;
+  background: rgb(85 197 236 / 42%);
+  background-clip: padding-box;
+  border: 3px solid transparent;
+  border-radius: 999px;
+}
+html:has(.platform-shell)::-webkit-scrollbar-thumb:hover,
+.platform-shell::-webkit-scrollbar-thumb:hover,
+.platform-shell *::-webkit-scrollbar-thumb:hover { background-color: rgb(85 197 236 / 68%); }
+html:has(.platform-shell)::-webkit-scrollbar-button,
+.platform-shell::-webkit-scrollbar-button,
+.platform-shell *::-webkit-scrollbar-button { display: none; width: 0; height: 0; }
+html:has(.platform-shell)::-webkit-scrollbar-corner,
+.platform-shell::-webkit-scrollbar-corner,
+.platform-shell *::-webkit-scrollbar-corner { background: #04111f; }
+
 .platform-sidebar { height: 100svh; position: sticky; top: 0; display: flex; flex-direction: column; padding: 1.1rem .8rem; border-right: 1px solid var(--platform-line); background: #051524; overflow-y: auto; }
 .platform-brand { display: flex; gap: .75rem; align-items: center; padding: .55rem .6rem 1.1rem; border-bottom: 1px solid var(--platform-line); font-size: .7rem; font-weight: 650; }.platform-brand > span:last-child { display: grid; }.platform-brand small { margin-top: .15rem; color: #5f8196; font: 600 .44rem var(--font-mono); letter-spacing: .11em; }
 .platform-sidebar nav { display: grid; gap: .12rem; padding: 1rem 0; }.platform-sidebar nav a { min-height: 38px; display: flex; align-items: center; justify-content: space-between; gap: .5rem; padding: .55rem .65rem; color: #8fa5b4; border: 1px solid transparent; border-radius: 6px; font-size: .66rem; }.platform-sidebar nav a small { color: #527187; font: 600 .43rem var(--font-mono); text-transform: uppercase; }.platform-sidebar nav a:hover, .platform-sidebar nav a.is-active { color: white; background: rgb(85 197 236 / 6%); border-color: rgb(85 197 236 / 18%); }.platform-sidebar nav a.is-active small { color: var(--platform-accent); }
@@ -595,3 +628,133 @@
 .private-simulation__solution dt { color: #6dc9e8; font: 650 .48rem var(--font-mono); letter-spacing: .07em; }
 .private-simulation__solution dd { margin: .35rem 0 0; color: #c0d4dc; font-size: .62rem; line-height: 1.45; }
 @media (max-width: 760px) { .private-simulation__agent-options, .private-simulation__solution dl { grid-template-columns: 1fr; } .private-simulation__routing > header, .private-simulation__solution > header { align-items: stretch; flex-direction: column; } }
+
+/* Execution Feasibility Engine: bounded, deterministic implementation planning. */
+.execution-feasibility { display: grid; gap: .9rem; }
+.execution-feasibility .platform-page-heading { margin-bottom: .2rem; }
+.execution-feasibility__boundary { display: flex; gap: .75rem; align-items: baseline; margin: 0; padding: .75rem .85rem; color: #92aeba; background: rgb(231 174 98 / 6%); border: 1px solid rgb(231 174 98 / 25%); font-size: .63rem; line-height: 1.5; }
+.execution-feasibility__boundary strong { flex: 0 0 auto; color: #e5ad62; font: 700 .5rem var(--font-mono); letter-spacing: .09em; }
+.execution-feasibility__layout { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(300px, .55fr); gap: .85rem; align-items: start; }
+.execution-feasibility__form { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .7rem; padding: 1rem; }
+.execution-feasibility__form > header, .execution-feasibility__form > footer { grid-column: 1 / -1; display: flex; justify-content: space-between; gap: 1rem; align-items: flex-start; }
+.execution-feasibility__form > header span, .execution-feasibility__snapshot > header span, .execution-feasibility__columns .platform-panel > header span, .execution-feasibility__review header span, .execution-feasibility__learning header span { color: #66c9ed; font: 700 .49rem var(--font-mono); letter-spacing: .08em; }
+.execution-feasibility__form > header h2, .execution-feasibility__columns .platform-panel > header h2, .execution-feasibility__review h2, .execution-feasibility__learning h2 { margin: .3rem 0 0; color: #deedf2; font-size: .95rem; }
+.execution-feasibility__form > header small, .execution-feasibility__snapshot > header small { color: #7896a7; font: 600 .49rem var(--font-mono); }
+.execution-feasibility__form label { display: grid; gap: .35rem; color: #92afbd; font: 650 .51rem var(--font-mono); letter-spacing: .05em; text-transform: uppercase; }
+.execution-feasibility__form label.is-wide { grid-column: 1 / -1; }
+.execution-feasibility__form input, .execution-feasibility__form select, .execution-feasibility__form textarea, .execution-feasibility__review textarea { min-width: 0; width: 100%; padding: .58rem .62rem; color: #deedf2; background: #061827; border: 1px solid var(--platform-line); border-radius: 3px; font: 500 .67rem var(--font-sans); text-transform: none; }
+.execution-feasibility__form textarea { min-height: 78px; resize: vertical; line-height: 1.5; }
+.execution-feasibility__form select { height: 34px; }
+.execution-feasibility__range { display: grid; grid-template-columns: minmax(0, 1fr) 34px; gap: .4rem; align-items: center; min-height: 34px; padding: 0 .35rem; background: #061827; border: 1px solid var(--platform-line); }
+.execution-feasibility__range input { min-height: 0; padding: 0; accent-color: #63ccee; background: transparent; border: 0; }
+.execution-feasibility__range output { color: #d8ebf2; text-align: right; }
+.execution-feasibility__form > footer { align-items: center; padding-top: .25rem; }
+.execution-feasibility__form > footer p { max-width: 610px; margin: 0; color: #7694a6; font-size: .58rem; line-height: 1.5; }
+.execution-feasibility__form > footer .platform-primary-link { margin: 0; border: 0; cursor: pointer; }
+.execution-feasibility__snapshot { position: sticky; top: 70px; padding: 1rem; }
+.execution-feasibility__snapshot > header { display: flex; justify-content: space-between; gap: .7rem; }
+.execution-feasibility__snapshot > h2 { margin: .85rem 0 1rem; color: #e1edf2; font-size: 1.15rem; line-height: 1.2; }
+.execution-feasibility__hero-metric { padding: .9rem 0; border-top: 1px solid var(--platform-line); }
+.execution-feasibility__hero-metric span { color: #7192a4; font: 650 .46rem var(--font-mono); letter-spacing: .08em; }
+.execution-feasibility__hero-metric strong { display: block; margin: .45rem 0 .3rem; color: #e5f0f4; font: 500 1.25rem var(--font-mono); }
+.execution-feasibility__hero-metric small { color: #7694a5; font-size: .57rem; line-height: 1.45; }
+.execution-feasibility__snapshot dl { display: grid; grid-template-columns: repeat(3, 1fr); margin: 0; border: 1px solid var(--platform-line); }
+.execution-feasibility__snapshot dl div { min-width: 0; padding: .55rem; border-right: 1px solid var(--platform-line); }
+.execution-feasibility__snapshot dl div:last-child { border: 0; }
+.execution-feasibility__snapshot dt { color: #6f8fa1; font: 650 .43rem var(--font-mono); }
+.execution-feasibility__snapshot dd { margin: .35rem 0 0; overflow-wrap: anywhere; color: #d9e9ef; font: 600 .68rem var(--font-mono); }
+.execution-feasibility__snapshot > p { display: grid; gap: .35rem; margin: .9rem 0 0; color: #87a4b3; font-size: .59rem; line-height: 1.5; }
+.execution-feasibility__snapshot > p strong { color: #6dcbea; font: 650 .46rem var(--font-mono); letter-spacing: .07em; text-transform: uppercase; }
+.execution-feasibility__report-actions { display: grid; grid-template-columns: 1.2fr .8fr; gap: .45rem; margin-top: 1rem; }
+.execution-feasibility__report-actions button, .execution-feasibility__review button { padding: .6rem; color: #c7e0e9; background: rgb(89 197 235 / 7%); border: 1px solid rgb(89 197 235 / 28%); border-radius: 3px; cursor: pointer; font: 650 .53rem var(--font-mono); }
+.execution-feasibility__report-actions button:first-child { color: #051624; background: #65ccee; border-color: #65ccee; }
+.execution-feasibility__tabs { display: flex; overflow-x: auto; border: 1px solid var(--platform-line); background: var(--platform-panel); }
+.execution-feasibility__tabs button { flex: 1 0 auto; padding: .72rem .8rem; color: #7898aa; background: transparent; border: 0; border-right: 1px solid var(--platform-line); cursor: pointer; font: 650 .52rem var(--font-mono); letter-spacing: .04em; }
+.execution-feasibility__tabs button:last-child { border-right: 0; }
+.execution-feasibility__tabs button.is-active { color: #d9edf4; background: rgb(89 197 235 / 10%); box-shadow: inset 0 -2px #63cbee; }
+.execution-feasibility__results { display: grid; gap: .85rem; }
+.execution-feasibility__metrics { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--platform-panel); border: 1px solid var(--platform-line); }
+.execution-feasibility__metrics article { min-width: 0; padding: .9rem; border-right: 1px solid var(--platform-line); }
+.execution-feasibility__metrics article:last-child { border: 0; }
+.execution-feasibility__metrics span { color: #7190a2; font: 650 .46rem var(--font-mono); letter-spacing: .07em; text-transform: uppercase; }
+.execution-feasibility__metrics strong { display: block; margin: .6rem 0 .35rem; overflow-wrap: anywhere; color: #e2eef2; font: 500 clamp(.94rem, 1.5vw, 1.35rem) var(--font-mono); }
+.execution-feasibility__metrics small { color: #7492a4; font-size: .55rem; line-height: 1.4; }
+.execution-feasibility__columns { display: grid; grid-template-columns: 1fr 1fr; gap: .85rem; }
+.execution-feasibility__columns > .platform-panel { padding: 1rem; }
+.execution-feasibility__columns .platform-panel > header { margin-bottom: .9rem; }
+.execution-feasibility__probability { display: grid; gap: .5rem; }
+.execution-feasibility__probability > div { display: grid; grid-template-columns: 62px minmax(0, 1fr) 34px; gap: .6rem; align-items: center; color: #8ca8b7; font: 600 .56rem var(--font-mono); }
+.execution-feasibility__probability i, .execution-feasibility__readiness i { height: 7px; display: block; background: rgb(89 197 235 / 9%); }
+.execution-feasibility__probability i { background: linear-gradient(90deg, #1768c5, #62cbed); }
+.execution-feasibility__drivers { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; counter-reset: driver; }
+.execution-feasibility__drivers li { display: grid; grid-template-columns: 58px 1fr; gap: .25rem .6rem; padding: .55rem 0; border-top: 1px solid var(--platform-line); }
+.execution-feasibility__drivers span { grid-row: 1 / 3; color: #65c9eb; font: 650 .5rem var(--font-mono); }
+.execution-feasibility__drivers strong { color: #bed4dc; font-size: .64rem; }
+.execution-feasibility__drivers small { color: #7896a7; font-size: .54rem; }
+.execution-feasibility__critical { display: grid; gap: .35rem; padding: .85rem; background: rgb(231 174 98 / 6%); border: 1px solid rgb(231 174 98 / 24%); }
+.execution-feasibility__critical span { color: #e1aa60; font: 700 .48rem var(--font-mono); letter-spacing: .08em; }
+.execution-feasibility__critical strong { color: #dce9ee; font: 600 .68rem var(--font-mono); line-height: 1.5; }
+.execution-feasibility__critical small { color: #809aa9; font-size: .56rem; }
+.execution-feasibility__table { min-width: 1180px; }
+.execution-feasibility__table td { max-width: 230px; vertical-align: top; line-height: 1.45; }
+.execution-feasibility__table td strong, .execution-feasibility__table td b { display: block; color: #d7e8ee; }
+.execution-feasibility__table td b { margin-top: .25rem; font-size: .63rem; }
+.execution-feasibility__table td small { display: block; margin-top: .25rem; color: #708fa2; font-size: .52rem; }
+.execution-feasibility__table tr.is-critical td:first-child { box-shadow: inset 3px 0 #e3aa5f; }
+.execution-feasibility__options { min-width: 1420px; }
+.execution-feasibility__options tr.is-preferred { background: rgb(89 197 235 / 6%); }
+.execution-feasibility__cost-list { display: grid; border: 1px solid var(--platform-line); }
+.execution-feasibility__cost-list > div { display: flex; justify-content: space-between; gap: 1rem; padding: .48rem .55rem; border-bottom: 1px solid var(--platform-line); }
+.execution-feasibility__cost-list > div:last-child { border: 0; }
+.execution-feasibility__cost-list span { display: flex; gap: .45rem; color: #9fb7c2; font-size: .6rem; }
+.execution-feasibility__cost-list small { color: #66879a; font: 650 .43rem var(--font-mono); }
+.execution-feasibility__cost-list strong { color: #dcebf0; font: 600 .61rem var(--font-mono); }
+.execution-feasibility__unit-costs { display: grid; grid-template-columns: 1fr 1fr; margin: 0; border: 1px solid var(--platform-line); }
+.execution-feasibility__unit-costs div { padding: .8rem; border-right: 1px solid var(--platform-line); border-bottom: 1px solid var(--platform-line); }
+.execution-feasibility__unit-costs div:nth-child(2n) { border-right: 0; }
+.execution-feasibility__unit-costs div:nth-last-child(-n + 2) { border-bottom: 0; }
+.execution-feasibility__unit-costs dt { color: #7594a6; font: 650 .47rem var(--font-mono); text-transform: uppercase; }
+.execution-feasibility__unit-costs dd { margin: .5rem 0 0; color: #dfecef; font: 600 .8rem var(--font-mono); }
+.execution-feasibility__columns--readiness { grid-template-columns: 1.15fr .85fr; }
+.execution-feasibility__gaps { display: grid; gap: .55rem; }
+.execution-feasibility__gaps > article { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; padding: .75rem; background: rgb(255 255 255 / 2.2%); border: 1px solid var(--platform-line); }
+.execution-feasibility__gaps span { color: #e2ab62; font: 650 .45rem var(--font-mono); letter-spacing: .05em; }
+.execution-feasibility__gaps h3 { margin: .35rem 0; color: #d8e7ed; font-size: .72rem; }
+.execution-feasibility__gaps p { margin: 0; color: #8da7b4; font-size: .59rem; line-height: 1.48; }
+.execution-feasibility__gaps strong { color: #66caeb; font: 650 .46rem var(--font-mono); }
+.execution-feasibility__gaps small { display: block; margin-top: .5rem; color: #718fa0; font-size: .51rem; }
+.execution-feasibility__readiness { display: grid; gap: .6rem; }
+.execution-feasibility__readiness > div { padding-bottom: .55rem; border-bottom: 1px solid var(--platform-line); }
+.execution-feasibility__readiness header { display: flex; justify-content: space-between; gap: .6rem; margin-bottom: .35rem; color: #b8cfd8; font-size: .58rem; }
+.execution-feasibility__readiness header span { display: flex; gap: .45rem; }
+.execution-feasibility__readiness header small { color: #69899c; font: 600 .44rem var(--font-mono); }
+.execution-feasibility__readiness header strong { color: #dcebf0; font: 650 .62rem var(--font-mono); }
+.execution-feasibility__readiness i b { height: 100%; display: block; background: linear-gradient(90deg, #1768c5, #63ccee); }
+.execution-feasibility__readiness p { margin: .35rem 0 0; color: #718fa1; font-size: .51rem; line-height: 1.4; }
+.execution-feasibility__roadmap { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--platform-line); background: var(--platform-panel); }
+.execution-feasibility__roadmap > article { position: relative; min-width: 0; padding: 1rem; border-right: 1px solid var(--platform-line); }
+.execution-feasibility__roadmap > article:last-child { border: 0; }
+.execution-feasibility__roadmap > article::after { content: ""; position: absolute; top: 1.15rem; right: -.22rem; z-index: 1; width: .4rem; height: .4rem; background: #62caec; transform: rotate(45deg); }
+.execution-feasibility__roadmap > article:last-child::after { display: none; }
+.execution-feasibility__roadmap > article > span { color: #65caeb; font: 700 .47rem var(--font-mono); letter-spacing: .08em; }
+.execution-feasibility__roadmap h2 { margin: .8rem 0 .5rem; color: #dfedf2; font-size: 1rem; }
+.execution-feasibility__roadmap p { min-height: 48px; color: #8aa6b4; font-size: .61rem; line-height: 1.5; }
+.execution-feasibility__roadmap dl { display: grid; gap: .5rem; margin: .8rem 0 0; }
+.execution-feasibility__roadmap dl div { padding-top: .45rem; border-top: 1px solid var(--platform-line); }
+.execution-feasibility__roadmap dt { color: #708fa1; font: 650 .43rem var(--font-mono); text-transform: uppercase; }
+.execution-feasibility__roadmap dd { margin: .25rem 0 0; color: #b7cdd6; font-size: .55rem; line-height: 1.4; }
+.execution-feasibility__learning { padding: 1rem; }
+.execution-feasibility__learning > p { max-width: 900px; color: #8da8b5; font-size: .64rem; line-height: 1.55; }
+.execution-feasibility__learning > div { display: flex; flex-wrap: wrap; gap: .4rem; }
+.execution-feasibility__learning > div span { padding: .45rem .55rem; color: #8fb2c0; background: rgb(89 197 235 / 6%); border: 1px solid var(--platform-line); font-size: .53rem; }
+.execution-feasibility__review { display: grid; gap: .75rem; padding: 1rem; }
+.execution-feasibility__review > header { display: flex; justify-content: space-between; gap: 1rem; align-items: flex-start; }
+.execution-feasibility__review > header > strong { color: #e4ae65; font: 650 .58rem var(--font-mono); }
+.execution-feasibility__review label { display: grid; gap: .4rem; color: #8da9b7; font: 650 .5rem var(--font-mono); text-transform: uppercase; }
+.execution-feasibility__review textarea { min-height: 76px; resize: vertical; line-height: 1.5; }
+.execution-feasibility__review > div { display: flex; gap: .5rem; }
+.execution-feasibility__review > p { margin: 0; color: #718fa1; font-size: .55rem; line-height: 1.5; }
+.execution-feasibility__status { margin: 0; color: #7d9eae; font-size: .58rem; line-height: 1.5; }
+@media (max-width: 1180px) { .execution-feasibility__layout { grid-template-columns: 1fr; } .execution-feasibility__snapshot { position: static; } .execution-feasibility__form { grid-template-columns: repeat(3, minmax(0, 1fr)); } .execution-feasibility__roadmap { grid-template-columns: 1fr 1fr; } .execution-feasibility__roadmap > article:nth-child(2) { border-right: 0; } .execution-feasibility__roadmap > article:nth-child(-n + 2) { border-bottom: 1px solid var(--platform-line); } .execution-feasibility__roadmap > article:nth-child(2)::after { display: none; } }
+@media (max-width: 760px) { .execution-feasibility__boundary { align-items: flex-start; flex-direction: column; gap: .3rem; } .execution-feasibility__form { grid-template-columns: 1fr 1fr; } .execution-feasibility__metrics, .execution-feasibility__columns, .execution-feasibility__columns--readiness { grid-template-columns: 1fr; } .execution-feasibility__metrics article { border-right: 0; border-bottom: 1px solid var(--platform-line); } .execution-feasibility__metrics article:last-child { border-bottom: 0; } .execution-feasibility__gaps > article { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .execution-feasibility__form { grid-template-columns: 1fr; } .execution-feasibility__form label.is-wide { grid-column: auto; } .execution-feasibility__form > header, .execution-feasibility__form > footer { grid-column: auto; align-items: stretch; flex-direction: column; } .execution-feasibility__snapshot dl, .execution-feasibility__report-actions, .execution-feasibility__unit-costs, .execution-feasibility__roadmap { grid-template-columns: 1fr; } .execution-feasibility__snapshot dl div, .execution-feasibility__unit-costs div, .execution-feasibility__roadmap > article { border-right: 0; border-bottom: 1px solid var(--platform-line); } .execution-feasibility__roadmap > article::after { display: none; } .execution-feasibility__review > header, .execution-feasibility__review > div { align-items: stretch; flex-direction: column; } }

@@ -11,6 +11,7 @@ type Props = { user: { displayName: string; email: string; role?: string }; chil
 const STORAGE_KEYS = { sidebar: "vg-platform-sidebar-collapsed", context: "vg-platform-context-open", contextWidth: "vg-platform-context-width" } as const;
 const CONTEXT_BY_ROUTE = [
   { match: "/app/missions/new", title: "Mission configuration", items: [["Human gate", "Independent review"], ["Catalog", "Authenticated library"], ["Persistence", "Page-local draft"]] },
+  { match: "/app/execution-feasibility", title: "Execution feasibility", items: [["Schedule", "PERT · CPM · Monte Carlo"], ["Cost model", "CAPEX · OPEX · TCO"], ["Authority", "Human planning gate"]] },
   { match: "/app/models", title: "Model context", items: [["Catalog", "Private models"], ["Execution", "Deterministic"], ["Validation", "Per-model status"]] },
   { match: "/app/agents", title: "Agent context", items: [["Catalogued agents", "1,970"], ["Web research", "Research Lab"], ["Authority", "Human-selected only"]] },
   { match: "/app/governance", title: "Governance context", items: [["Pending gates", "3 synthetic"], ["Named authority", "Required"], ["Autonomous action", "Prohibited"]] },

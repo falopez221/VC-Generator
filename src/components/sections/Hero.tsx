@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { CinematicField } from "@/src/components/experience/CinematicField";
-import { primeEntryVoice, speakEntryGreeting } from "@/src/components/ui/entryVoice";
+import { EntryVoicePicker } from "@/src/components/ui/EntryVoicePicker";
+import { primeEntryVoice, readEntryVoiceChoice, speakEntryGreeting, storeEntryVoiceChoice, type EntryVoiceChoice } from "@/src/components/ui/entryVoice";
 import { LinkButton } from "@/src/components/ui/LinkButton";
 import { requestInterfaceSoundSettings } from "@/src/components/ui/SoundController";
 import { SITE_LINKS } from "@/src/config/site";
@@ -12,14 +13,21 @@ export function Hero() {
   const [active, setActive] = useState(true);
   const [revealed, setRevealed] = useState(false);
   const [entryState, setEntryState] = useState<"locked" | "entering" | "entered">("locked");
+  const [entryVoice, setEntryVoice] = useState<EntryVoiceChoice>("female");
 
   useEffect(() => {
     primeEntryVoice();
+    queueMicrotask(() => setEntryVoice(readEntryVoiceChoice()));
   }, []);
+
+  const chooseEntryVoice = (choice: EntryVoiceChoice) => {
+    setEntryVoice(choice);
+    storeEntryVoiceChoice(choice);
+  };
 
   const enterSystem = () => {
     requestInterfaceSoundSettings({ enabled: true, volume: 35 });
-    void speakEntryGreeting(75).finally(() => requestInterfaceSoundSettings({ enabled: true, volume: 75 }));
+    void speakEntryGreeting(75, entryVoice).finally(() => requestInterfaceSoundSettings({ enabled: true, volume: 75 }));
     setEntryState("entering");
     setRevealed(true);
     window.setTimeout(() => setEntryState("entered"), 850);
@@ -29,7 +37,7 @@ export function Hero() {
     <>
       <section className={`cinematic-hero ${revealed ? "is-revealed" : ""}`} id="vision" lang="en">
         <CinematicField mode="intro" active={entryState !== "locked" && active} />
-        {entryState !== "entered" && <div className={`cinematic-entry-gate ${entryState === "entering" ? "is-entering" : ""}`} role="dialog" aria-modal="true" aria-labelledby="entry-gate-title"><div><span>VENTURE GOVERNANCE SYSTEM™</span><h2 id="entry-gate-title">Knowledge begins in silence.</h2><p>Embrace the future to activate the collective intelligence field and its licensed cinematic score.</p><button type="button" autoFocus disabled={entryState === "entering"} onClick={enterSystem}>EMBRACE THE FUTURE <i aria-hidden="true">→</i></button><small>Sound begins at 75% · mute and volume controls remain available inside</small></div></div>}
+        {entryState !== "entered" && <div className={`cinematic-entry-gate ${entryState === "entering" ? "is-entering" : ""}`} role="dialog" aria-modal="true" aria-labelledby="entry-gate-title"><div><span>VENTURE GOVERNANCE SYSTEM™</span><h2 id="entry-gate-title">Knowledge begins in silence.</h2><p>Embrace the future to activate the collective intelligence field and its licensed cinematic score.</p><EntryVoicePicker value={entryVoice} onChange={chooseEntryVoice} /><button className="entry-primary-action" type="button" autoFocus disabled={entryState === "entering"} onClick={enterSystem}>EMBRACE THE FUTURE <i aria-hidden="true">→</i></button><small>Sound begins at 75% · mute and volume controls remain available inside</small></div></div>}
         <div className="cinematic-sequence" aria-hidden="true"><span>00:70</span><div /><small>collective inference field</small></div>
         <div className="cinematic-controls" aria-label="Experience controls">
           <button type="button" onClick={() => setActive((value) => !value)} aria-pressed={!active}>{active ? "PAUSE FIELD" : "RESUME FIELD"}</button>

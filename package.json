@@ -14,7 +14,7 @@
     "build:vercel": "next build",
     "start:next": "next start",
     "typecheck": "tsc --noEmit",
-    "test:unit": "node --experimental-strip-types --test tests/lab-engine.test.ts tests/applications.test.ts tests/web-research.test.ts tests/platform.test.ts tests/private-agent-registry.test.ts tests/private-agent-execution.test.ts tests/private-registry-request.test.ts tests/private-models.test.ts tests/private-research.test.ts",
+    "test:unit": "node --experimental-strip-types --test tests/lab-engine.test.ts tests/applications.test.ts tests/web-research.test.ts tests/platform.test.ts tests/private-agent-registry.test.ts tests/private-agent-execution.test.ts tests/private-registry-request.test.ts tests/private-models.test.ts tests/private-feasibility.test.ts tests/private-research.test.ts",
     "test:integration": "npm run build && node --test tests/rendered-html.test.mjs",
     "test": "npm run test:unit && npm run test:integration",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
@@ -24,8 +24,7 @@
     "drizzle-orm": "0.45.2",
     "next": "16.2.6",
     "react": "19.2.6",
-    "react-dom": "19.2.6",
-    "xlsx": "^0.18.5"
+    "react-dom": "19.2.6"
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "1.37.1",
@@ -38,12 +37,18 @@
     "drizzle-kit": "0.31.10",
     "eslint": "9.39.4",
     "eslint-config-next": "16.2.6",
+    "exceljs": "^4.4.0",
     "react-server-dom-webpack": "19.2.6",
     "tailwindcss": "4.2.1",
     "typescript": "5.9.3",
     "vinext": "0.0.50",
     "vite": "8.0.13",
     "wrangler": "4.92.0"
+  },
+  "overrides": {
+    "next": {
+      "postcss": "8.5.10"
+    }
   },
   "type": "module"
 }

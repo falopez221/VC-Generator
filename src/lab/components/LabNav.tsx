@@ -4,7 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { PROJECT_NAME, SITE_LINKS } from "@/src/config/site";
-import { primeEntryVoice, speakEntryGreeting } from "@/src/components/ui/entryVoice";
+import { EntryVoicePicker } from "@/src/components/ui/EntryVoicePicker";
+import { primeEntryVoice, readEntryVoiceChoice, speakEntryGreeting, storeEntryVoiceChoice, type EntryVoiceChoice } from "@/src/components/ui/entryVoice";
 import { getAudioSettings, playSound, setAudioSettings, setLabScoreTheme, unlockAudio, type LabScoreTheme } from "../audio.ts";
 import { openLabTour } from "./LabTour.tsx";
 
@@ -20,12 +21,13 @@ export function LabNav() {
   const [volume, setVolume] = useState(25);
   const [menuOpen, setMenuOpen] = useState(false);
   const [entryState, setEntryState] = useState<"locked" | "entering" | "entered">("locked");
+  const [entryVoice, setEntryVoice] = useState<EntryVoiceChoice>("female");
   const pathname = usePathname();
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const settings = getAudioSettings();
-    queueMicrotask(() => { setEnabled(settings.enabled); setVolume(settings.volume); });
+    queueMicrotask(() => { setEnabled(settings.enabled); setVolume(settings.volume); setEntryVoice(readEntryVoiceChoice()); });
     primeEntryVoice();
   }, []);
 
@@ -53,6 +55,11 @@ export function LabNav() {
     if (nextEnabled && nextVolume > 0) playSound("ui.select");
   };
 
+  const chooseEntryVoice = (choice: EntryVoiceChoice) => {
+    setEntryVoice(choice);
+    storeEntryVoiceChoice(choice);
+  };
+
   const openHelp = () => {
     setMenuOpen(false);
     if (window.location.pathname.startsWith("/lab/demo")) openLabTour();
@@ -61,7 +68,7 @@ export function LabNav() {
 
   return (
     <>
-      {entryState !== "entered" && <div className={`lab-audio-gate ${entryState === "entering" ? "is-entering" : ""}`} role="dialog" aria-modal="true" aria-labelledby="lab-entry-title"><div><span>PUBLIC LAB · AUDIOVISUAL MODE</span><h2 id="lab-entry-title">Observe the system think.</h2><p>Embrace the future to activate the licensed score and the live intelligence field.</p><button type="button" autoFocus disabled={entryState === "entering"} onClick={() => { updateAudio(true, 35); void speakEntryGreeting(75).finally(() => updateAudio(true, 75)); setEntryState("entering"); window.setTimeout(() => setEntryState("entered"), 850); }}>EMBRACE THE FUTURE <i aria-hidden="true">→</i></button><small>Sound begins at 75% · you can mute or adjust it after entering</small></div></div>}
+      {entryState !== "entered" && <div className={`lab-audio-gate ${entryState === "entering" ? "is-entering" : ""}`} role="dialog" aria-modal="true" aria-labelledby="lab-entry-title"><div><span>PUBLIC LAB · AUDIOVISUAL MODE</span><h2 id="lab-entry-title">Observe the system think.</h2><p>Embrace the future to activate the licensed score and the live intelligence field.</p><EntryVoicePicker value={entryVoice} onChange={chooseEntryVoice} /><button className="entry-primary-action" type="button" autoFocus disabled={entryState === "entering"} onClick={() => { updateAudio(true, 35); void speakEntryGreeting(75, entryVoice).finally(() => updateAudio(true, 75)); setEntryState("entering"); window.setTimeout(() => setEntryState("entered"), 850); }}>EMBRACE THE FUTURE <i aria-hidden="true">→</i></button><small>Sound begins at 75% · you can mute or adjust it after entering</small></div></div>}
       <header className="lab-nav">
         <div className="lab-nav-shell">
           <Link className="lab-brand" href="/" aria-label={`${PROJECT_NAME}, home`} onClick={() => setMenuOpen(false)}><span className="lab-brand-mark" aria-hidden="true"><i /><i /><i /></span><span className="lab-brand-copy"><strong>{PROJECT_NAME}</strong><small>PUBLIC LAB</small></span></Link>

@@ -11,6 +11,6 @@ Required attribution for each work follows the format: `'<title>' by Scott Buckl
 
 The system, applications, Lab, simulation, discovery and methodology sections select distinct scores. Audio begins only after the visitor activates the entry gate. The volume control is a 0–100% slider and acts on the active score immediately; preferences persist locally. Score changes use a short crossfade. Audio pauses when the document is hidden and stops on page exit. No previous interface or micro-sound files are played.
 
-The entry gate also plays a bundled feminine welcome line, “Embrace the future.” The narration is triggered only by the visitor’s button activation and is packaged with the client bundle so it does not depend on browser speech synthesis or a remote service.
+The entry gate offers bundled feminine and masculine versions of the welcome line, “Embrace the future.” The visitor’s choice persists locally. Narration is triggered only by the entry button and is packaged with the client bundle, so it does not depend on browser speech synthesis or a remote service.
 
 Audio playback respects browser autoplay policy, and the complete Lab remains usable with sound off after entry.
