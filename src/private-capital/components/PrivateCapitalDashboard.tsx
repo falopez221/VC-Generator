@@ -1,9 +1,17 @@
 "use client";
 
 import { useMemo, useState, type FormEvent } from "react";
+import {
+  analyzeInvestmentThesis,
+  type ThesisAnalysis,
+  type ThesisOpportunity,
+  type ThesisRiskPreference,
+  type ThesisHorizon,
+} from "../domain/thesis";
 
 export type PrivateCapitalView =
   | "overview"
+  | "thesis"
   | "portfolio"
   | "builder"
   | "market"
@@ -132,6 +140,7 @@ export type PrivateCapitalDashboardProps = {
 
 const NAV_ITEMS: Array<{ id: PrivateCapitalView; label: string; group: string; glyph: string }> = [
   { id: "overview", label: "Overview", group: "CAPITAL", glyph: "OV" },
+  { id: "thesis", label: "Thesis Lab", group: "CAPITAL", glyph: "TL" },
   { id: "portfolio", label: "My Portfolio", group: "CAPITAL", glyph: "PF" },
   { id: "builder", label: "Portfolio Builder", group: "CAPITAL", glyph: "PB" },
   { id: "market", label: "Market Intelligence", group: "INTELLIGENCE", glyph: "MI" },
@@ -150,6 +159,7 @@ const NAV_ITEMS: Array<{ id: PrivateCapitalView; label: string; group: string; g
 
 const VIEW_META: Record<PrivateCapitalView, { eyebrow: string; title: string; description: string }> = {
   overview: { eyebrow: "CAPITAL COMMAND", title: "Good evening, Alex.", description: "A consolidated decision surface for exposure, liquidity and risk." },
+  thesis: { eyebrow: "IDEA TO OPPORTUNITIES", title: "Investment Thesis Lab", description: "Describe an investment idea, convene the necessary specialists and compare explainable hypotheses and scenarios." },
   portfolio: { eyebrow: "POSITION REGISTRY", title: "My Portfolio", description: "Manually maintained positions, context and investment theses." },
   builder: { eyebrow: "CONSTRAINED ALLOCATION", title: "Portfolio Builder", description: "Compare proposals shaped by limits, scenarios and economic judgment." },
   market: { eyebrow: "VALIDATED CONTEXT", title: "Market Intelligence", description: "Cross-market observations separated from recommendations." },
@@ -343,6 +353,22 @@ export function PrivateCapitalDashboard({ initialData = MOCK_DATA, assetDetails 
     setLiveMessage(`Review state changed to ${state}. This does not authorize or execute a trade.`);
   };
 
+  const queueThesisReview = (opportunity: ThesisOpportunity, analysis: ThesisAnalysis) => {
+    const reviewId = `${analysis.id}-${opportunity.id}`;
+    const review: ReviewItem = {
+      id: reviewId,
+      asset: `${opportunity.ticker} · ${opportunity.name}`,
+      hypothesis: `${opportunity.suggestedAction}: ${opportunity.whyItFits}`,
+      confidence: opportunity.confidence,
+      evidence: opportunity.evidenceFor.join(" "),
+      counterEvidence: opportunity.evidenceAgainst.join(" "),
+      horizon: analysis.assumptions[0] ?? "User-defined horizon",
+      state: "Pending review",
+    };
+    setReviews((current) => current.some((item) => item.id === reviewId) ? current : [review, ...current]);
+    setLiveMessage(`${opportunity.ticker} was sent to Human Review as a hypothesis. No trade was created or authorized.`);
+  };
+
   return <section className={`pc-shell${settings.compact ? " is-compact" : ""}`} aria-label="Private Capital Intelligence">
     <a className="pc-skip" href="#pc-main">Skip to capital workspace</a>
     <aside className="pc-sidebar">
@@ -371,6 +397,7 @@ export function PrivateCapitalDashboard({ initialData = MOCK_DATA, assetDetails 
         <p className="pc-live" role="status" aria-live="polite" aria-atomic="true">{liveMessage}</p>
         <header className="pc-page-head"><div><span>{VIEW_META[view].eyebrow}</span><h1>{VIEW_META[view].title}</h1><p>{VIEW_META[view].description}</p></div><div className="pc-data-stamp"><i /> DATA STATUS<strong>MOCK · VALIDATION REQUIRED</strong><small>{initialData.asOf}</small></div></header>
         {view === "overview" && <OverviewView data={initialData} privacyMode={privacyMode} profile={profile} setProfile={setProfile} derivedProfile={derivedProfile} alerts={alerts} onOpenAlerts={() => changeView("alerts")} />}
+        {view === "thesis" && <ThesisLabView profile={profile} onStatus={setLiveMessage} onQueueReview={queueThesisReview} onOpenReview={() => changeView("review")} />}
         {view === "portfolio" && <PortfolioView holdings={holdings} privacyMode={privacyMode} draft={holdingDraft} setDraft={setHoldingDraft} onSubmit={submitHolding} />}
         {view === "builder" && <BuilderView data={initialData} privacyMode={privacyMode} selected={selectedProposal} setSelected={setSelectedProposal} onStatus={setLiveMessage} />}
         {MARKET_VIEWS[view] && !activeAssetDetails && <MarketView view={view} data={MARKET_VIEWS[view]!} />}
@@ -408,6 +435,105 @@ function OverviewView({ data, privacyMode, profile, setProfile, derivedProfile, 
 
 function RangeControl({ label, value, min, max, suffix, onChange }: { label: string; value: number; min: number; max: number; suffix: string; onChange: (value: number) => void }) {
   return <label className="pc-range"><span>{label}<output>{value}{suffix}</output></span><input type="range" value={value} min={min} max={max} onChange={(event) => onChange(Number(event.target.value))} /></label>;
+}
+
+function ThesisLabView({ profile, onStatus, onQueueReview, onOpenReview }: {
+  profile: Profile;
+  onStatus: (message: string) => void;
+  onQueueReview: (opportunity: ThesisOpportunity, analysis: ThesisAnalysis) => void;
+  onOpenReview: () => void;
+}) {
+  const [draft, setDraft] = useState({
+    idea: "",
+    riskPreference: "balanced" as ThesisRiskPreference,
+    horizon: "3-5y" as ThesisHorizon,
+    referenceCurrency: profile.referenceCurrency,
+  });
+  const [analysis, setAnalysis] = useState<ThesisAnalysis | null>(null);
+  const [selectedId, setSelectedId] = useState("");
+  const [error, setError] = useState("");
+  const selected = analysis?.opportunities.find((item) => item.id === selectedId) ?? analysis?.opportunities[0] ?? null;
+
+  const runAnalysis = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    try {
+      const result = analyzeInvestmentThesis({
+        idea: draft.idea,
+        riskPreference: draft.riskPreference,
+        horizon: draft.horizon,
+        referenceCurrency: draft.referenceCurrency,
+        maximumArgentinaPct: profile.argentinaLimit,
+        maximumBitcoinPct: profile.bitcoinLimit,
+      });
+      setAnalysis(result);
+      setSelectedId(result.opportunities[0]?.id ?? "");
+      setError("");
+      onStatus(`${result.agents.length} specialists produced ${result.opportunities.length} simulated research hypotheses. Human review remains required.`);
+    } catch (caught) {
+      const message = caught instanceof Error ? caught.message : "The thesis could not be analyzed.";
+      setError(message);
+      onStatus(message);
+    }
+  };
+
+  return <div className="pc-view-stack pc-thesis-lab">
+    <section className="pc-thesis-flow" aria-label="Investment thesis workflow">
+      {["Describe thesis", "Select specialists", "Generate hypotheses", "Stress scenarios", "Human review"].map((step, index) => <div key={step}><i>{String(index + 1).padStart(2, "0")}</i><span>{step}</span></div>)}
+    </section>
+
+    <section className="pc-panel pc-thesis-intake">
+      <header><div><span>THESIS INTAKE</span><h2>What do you believe may create an opportunity?</h2></div><small>Your text is treated as data, never as executable instructions</small></header>
+      <form onSubmit={runAnalysis}>
+        <label className="pc-thesis-prompt">Describe the investment idea, why it may matter and what could make it wrong.
+          <textarea required minLength={30} maxLength={1200} value={draft.idea} onChange={(event) => setDraft((current) => ({ ...current, idea: event.target.value }))} placeholder="Example: I want to study whether Argentine energy, international AI infrastructure and dollar liquidity could form a diversified 3–5 year thesis. I want country exposure capped and I can tolerate moderate drawdowns." />
+          <small>{draft.idea.length}/1200 characters · Do not enter credentials, account numbers or private keys.</small>
+        </label>
+        <div className="pc-thesis-controls">
+          <label>Risk preference<select value={draft.riskPreference} onChange={(event) => setDraft((current) => ({ ...current, riskPreference: event.target.value as ThesisRiskPreference }))}><option value="defensive">Defensive</option><option value="balanced">Balanced</option><option value="aggressive">Aggressive</option></select></label>
+          <label>Decision horizon<select value={draft.horizon} onChange={(event) => setDraft((current) => ({ ...current, horizon: event.target.value as ThesisHorizon }))}><option value="under-1y">Under 1 year</option><option value="1-3y">1–3 years</option><option value="3-5y">3–5 years</option><option value="5y-plus">5+ years</option></select></label>
+          <label>Reference currency<select value={draft.referenceCurrency} onChange={(event) => setDraft((current) => ({ ...current, referenceCurrency: event.target.value as "USD" | "ARS" }))}><option>USD</option><option>ARS</option></select></label>
+          <div className="pc-thesis-policy"><span>PROFILE LIMITS</span><b>Argentina {profile.argentinaLimit}% · Bitcoin {profile.bitcoinLimit}%</b><small>Change these in Overview before rerunning.</small></div>
+        </div>
+        {error && <p className="pc-thesis-error" role="alert">{error}</p>}
+        <footer><p>Output is a simulated shortlist for research. It is not individualized financial advice or an instruction to transact.</p><ActionButton tone="primary" type="submit">Convene specialists</ActionButton></footer>
+      </form>
+    </section>
+
+    {!analysis && <section className="pc-thesis-empty">
+      <article><span>01</span><h3>You provide the thesis</h3><p>State the opportunity, time horizon, assumptions and what you think the market may be missing.</p></article>
+      <article><span>02</span><h3>Only relevant specialists join</h3><p>Data validation, risk, portfolio construction and Red Team are mandatory; asset specialists join when the thesis calls for them.</p></article>
+      <article><span>03</span><h3>Hypotheses, not orders</h3><p>The system returns 6–8 candidates, disagreements and scenarios. You decide what enters Human Review.</p></article>
+    </section>}
+
+    {analysis && <>
+      <section className="pc-panel pc-agent-council">
+        <header><div><span>SPECIALIST COUNCIL</span><h2>{analysis.agents.length} agents participated</h2></div><small>Simulated inference · no private prompts exposed</small></header>
+        <div>{analysis.agents.map((agent) => <article key={agent.id} className={`is-${agent.stance}`}><header><i>{agent.label.split(" ").map((word) => word[0]).join("").slice(0, 2)}</i><div><strong>{agent.label}</strong><small>{agent.mandate}</small></div><em>{agent.confidence}%</em></header><p>{agent.conclusion}</p><footer>{agent.stance.toUpperCase()} · SIMULATED INFERENCE</footer></article>)}</div>
+      </section>
+
+      <section className="pc-thesis-disagreements">
+        <div><span>DETECTED THEMES</span><p>{analysis.themes.join(" · ")}</p></div>
+        <div><span>WHERE AGENTS DISAGREE</span><ul>{analysis.disagreements.map((item) => <li key={item}>{item}</li>)}</ul></div>
+      </section>
+
+      <section className="pc-opportunity-workspace">
+        <aside className="pc-opportunity-list" aria-label="Generated investment hypotheses">
+          <header><span>SIMULATED SHORTLIST</span><h2>{analysis.opportunities.length} opportunities to research</h2></header>
+          {analysis.opportunities.map((opportunity) => <button type="button" key={opportunity.id} onClick={() => { setSelectedId(opportunity.id); onStatus(`${opportunity.ticker} hypothesis selected. Data remains simulated.`); }} aria-pressed={selected?.id === opportunity.id}><i>{opportunity.ticker}</i><span><b>{opportunity.name}</b><small>{opportunity.assetClass} · {opportunity.geography}</small></span><em>{opportunity.fitScore}</em></button>)}
+        </aside>
+
+        {selected && <article className="pc-panel pc-opportunity-detail">
+          <header><div><span>{selected.suggestedAction.toUpperCase()} · {selected.dataStatus.toUpperCase()}</span><h2>{selected.ticker} · {selected.name}</h2><p>{selected.whyItFits}</p></div><div className="pc-opportunity-score"><strong>{selected.fitScore}</strong><small>THESIS FIT</small><b>{selected.confidence}% confidence</b></div></header>
+          <div className="pc-opportunity-summary"><dl><div><dt>Portfolio role</dt><dd>{selected.role}</dd></div><div><dt>Maximum consideration</dt><dd>Up to {selected.maximumConsiderationPct}%</dd></div><div><dt>Horizon</dt><dd>{draft.horizon}</dd></div><div><dt>Execution</dt><dd>Not authorized</dd></div></dl></div>
+          <div className="pc-opportunity-evidence"><section><span>EVIDENCE FOR</span><ul>{selected.evidenceFor.map((item) => <li key={item}>{item}</li>)}</ul></section><section><span>EVIDENCE AGAINST</span><ul>{selected.evidenceAgainst.map((item) => <li key={item}>{item}</li>)}</ul></section><section><span>INVALIDATION</span><p>{selected.invalidation}</p></section></div>
+          <section className="pc-opportunity-scenarios"><header><span>SCENARIO RANGE</span><small>Illustrative asset-level shocks · not forecasts</small></header><div role="table" aria-label={`Scenarios for ${selected.ticker}`}><div role="row"><b role="columnheader">Scenario</b><b role="columnheader">Range</b><b role="columnheader">Interpretation</b></div>{selected.scenarios.map((scenario) => <div role="row" key={scenario.name}><span role="cell">{scenario.name}</span><strong role="cell">{scenario.illustrativeRange}</strong><p role="cell">{scenario.narrative}</p></div>)}</div></section>
+          <footer className="pc-governance-footer"><p>Sending this hypothesis to review records interest only. It does not create a broker ticket, recommendation approval or transaction.</p><div><ActionButton tone="primary" onClick={() => onQueueReview(selected, analysis)}>Send to Human Review</ActionButton><ActionButton onClick={onOpenReview}>Open review queue</ActionButton><ActionButton disabled>Execution unavailable</ActionButton></div></footer>
+        </article>}
+      </section>
+
+      <details className="pc-thesis-method"><summary>Assumptions and limitations</summary><div><section><h3>Assumptions</h3><ul>{analysis.assumptions.map((item) => <li key={item}>{item}</li>)}</ul></section><section><h3>Limitations</h3><ul>{analysis.limitations.map((item) => <li key={item}>{item}</li>)}</ul></section></div></details>
+    </>}
+  </div>;
 }
 
 function PortfolioView({ holdings, privacyMode, draft, setDraft, onSubmit }: { holdings: Holding[]; privacyMode: boolean; draft: { ticker: string; name: string; assetClass: string; market: string; quantity: string; averagePrice: string; currency: "USD" | "ARS"; brokerReference: string; purchaseDate: string; fees: string; horizon: string; reviewCondition: string; thesis: string; notes: string }; setDraft: React.Dispatch<React.SetStateAction<typeof draft>>; onSubmit: (event: FormEvent<HTMLFormElement>) => void }) {

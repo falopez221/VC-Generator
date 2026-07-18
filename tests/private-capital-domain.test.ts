@@ -9,6 +9,7 @@ import {
   analyzeArgentineBond,
   analyzeBitcoinPosition,
   analyzeCedear,
+  analyzeInvestmentThesis,
   calculatePortfolioMetrics,
   createExplainableSignal,
   createHumanReview,
@@ -370,4 +371,54 @@ test("Bitcoin analysis enforces the personal cap without authorizing a trade", (
   assert.equal(result.value.limitStatus, "over_limit");
   assert.equal(result.value.executionAuthorized, false);
   assert.match(result.value.reviewGuidance, /Human review/iu);
+});
+
+test("investment thesis analysis is deterministic, bounded and produces six to twelve hypotheses", () => {
+  const input = {
+    idea: "I want to study Argentine energy, international technology and dollar liquidity while keeping country and Bitcoin exposure capped.",
+    riskPreference: "balanced" as const,
+    horizon: "3-5y" as const,
+    referenceCurrency: "USD" as const,
+    maximumArgentinaPct: 25,
+    maximumBitcoinPct: 8,
+  };
+  const first = analyzeInvestmentThesis(input);
+  const second = analyzeInvestmentThesis(input);
+  assert.deepEqual(first, second);
+  assert.ok(first.opportunities.length >= 6 && first.opportunities.length <= 12);
+  assert.ok(first.agents.length >= 5 && first.agents.length <= 8);
+  assert.equal(first.agents.at(-1)?.id, "synthesis");
+  assert.equal(first.executionAuthorized, false);
+  assert.ok(first.opportunities.every((item) => item.executionAuthorized === false));
+  assert.ok(first.opportunities.every((item) => item.confidence <= 72));
+  assert.ok(first.opportunities.every((item) => item.maximumConsiderationPct >= 0));
+  assert.ok(first.opportunities.filter((item) => item.geography === "Argentina").every((item) => item.maximumConsiderationPct <= 25));
+  assert.ok(first.opportunities.filter((item) => item.ticker === "BTC").every((item) => item.maximumConsiderationPct <= 8));
+  assert.ok(first.opportunities.every((item) => item.scenarios.length === 3));
+  assert.match(first.limitations.join(" "), /No live prices/iu);
+});
+
+test("investment thesis retains at least six diversified hypotheses when local and Bitcoin limits are zero", () => {
+  const result = analyzeInvestmentThesis({
+    idea: "I want a diversified defensive international thesis with liquidity and inflation protection over several years.",
+    riskPreference: "defensive",
+    horizon: "5y-plus",
+    referenceCurrency: "USD",
+    maximumArgentinaPct: 0,
+    maximumBitcoinPct: 0,
+  });
+  assert.ok(result.opportunities.length >= 6);
+  assert.ok(result.opportunities.every((item) => item.geography !== "Argentina"));
+  assert.ok(result.opportunities.every((item) => item.ticker !== "BTC"));
+});
+
+test("investment thesis analysis treats short or unsafe text as invalid data", () => {
+  assert.throws(() => analyzeInvestmentThesis({
+    idea: "buy now\u0000",
+    riskPreference: "aggressive",
+    horizon: "under-1y",
+    referenceCurrency: "ARS",
+    maximumArgentinaPct: 100,
+    maximumBitcoinPct: 100,
+  }), /at least 30 characters/iu);
 });

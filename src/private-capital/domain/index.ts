@@ -8,5 +8,6 @@ export * from "./proposals.ts";
 export * from "./review.ts";
 export * from "./signals.ts";
 export * from "./simulation.ts";
+export * from "./thesis.ts";
 export * from "./types.ts";
 export * from "./validation.ts";
