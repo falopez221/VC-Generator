@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "../src/styles/site.css";
 @import "../src/styles/lab.css";
+@import "../src/styles/valuation.css";
 @import "../src/styles/platform.css";
 @import "../src/styles/protected-workflows.css";
 @import "../src/styles/platform-showcase.css";

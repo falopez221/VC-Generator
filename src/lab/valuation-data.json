@@ -1,0 +1,170 @@
+{
+  "asOf": "2026-07-18",
+  "currency": "USD",
+  "classification": "Advanced decision-intelligence prototype with a functional deterministic public Lab and an experimental credential-gated LLM execution layer",
+  "disclaimer": "Illustrative, evidence-bounded valuation analysis. It is not an appraisal, investment advice, a financing offer, or a prediction.",
+  "currentValue": {
+    "economicLowM": 0.8,
+    "economicHighM": 2.0,
+    "economicP50M": 1.35,
+    "financingLowM": 1.5,
+    "financingHighM": 4.0,
+    "financingP50M": 2.2,
+    "label": "Current closest stage: private prototype",
+    "confidence": "Low-medium"
+  },
+  "headlineStages": [
+    { "label": "Current economic / IP value", "lowM": 0.8, "highM": 2.0, "p50M": 1.35, "condition": "Existing reusable code, product design, taxonomy and documentation" },
+    { "label": "Validated MVP", "lowM": 4.0, "highM": 10.0, "p50M": 6.5, "condition": "Measured user value, repeat use and benchmarked quality" },
+    { "label": "First paying customer", "lowM": 7.0, "highM": 16.0, "p50M": 10.0, "condition": "Paid institutional contract and repeatable delivery" },
+    { "label": "Initial product-market fit", "lowM": 25.0, "highM": 75.0, "p50M": 45.0, "condition": "$2m-$5m ARR, GRR >90%, NRR >105% and repeatable acquisition" }
+  ],
+  "evidence": [
+    { "item": "Public product", "state": "Implemented", "detail": "Institutional site, deterministic Lab, 6-12 synthetic opportunities, comparison, exports and human review controls." },
+    { "item": "Public quantitative catalog", "state": "Implemented", "detail": "14 deterministic public models and lenses in code, with explicit assumptions and limitations." },
+    { "item": "Private agent registry", "state": "Partially implemented", "detail": "1,970 documented profiles across 51 domains feed a common bounded executor; individual domain performance is not validated." },
+    { "item": "Private LLM execution", "state": "Prototype", "detail": "Server-side fixed provider call, up to 8 selected profiles, bounded concurrency and structured output when credentials are configured." },
+    { "item": "Deployment intelligence", "state": "Functional demo", "detail": "Visible WBS, PERT, critical path, Monte Carlo, cost decomposition and readiness using synthetic planning assumptions." },
+    { "item": "Enterprise data layer", "state": "Planned", "detail": "No operational multi-tenant mission, evidence, decision or durable audit backend is connected." },
+    { "item": "Commercial traction", "state": "No evidence", "detail": "No repository evidence of customers, pilots, revenue, ARR, retention, contracts or product-market fit." },
+    { "item": "Protected IP and calibration", "state": "No evidence", "detail": "No repository evidence of patents, exclusive datasets, historical outcome calibration or validated data flywheel." }
+  ],
+  "methods": [
+    { "name": "Cost to recreate - current repo", "lowM": 0.65, "highM": 1.25, "p50M": 0.9, "weightPct": 35, "note": "30-55 person-months; replacement cost is not market value." },
+    { "name": "Risk-adjusted commercial option DCF", "lowM": 0.0, "highM": 0.5, "p50M": 0.33, "weightPct": 15, "note": "Limited-liability option value; raw probability-weighted project NPV is negative." },
+    { "name": "Venture capital method", "lowM": 0.5, "highM": 4.8, "p50M": 1.64, "weightPct": 20, "note": "Base pre-money after a $1m raise; highly sensitive to exit, dilution and return hurdle." },
+    { "name": "Correlation-haircut SOTP", "lowM": 0.8, "highM": 2.2, "p50M": 1.4, "weightPct": 15, "note": "Avoids adding correlated product, method and option values at face value." },
+    { "name": "Stage / financing reference", "lowM": 1.5, "highM": 4.0, "p50M": 2.2, "weightPct": 15, "note": "Negotiated pre-money range, not intrinsic value." }
+  ],
+  "stages": [
+    { "stage": "Idea and architecture", "lowM": 0.3, "highM": 1.0, "p50M": 0.6, "p90M": 1.0, "probabilityFromCurrentPct": 100, "capitalM": 0.2, "timeMonths": 0, "evidenceRequired": "Coherent thesis and defensible product boundary" },
+    { "stage": "Public demo", "lowM": 0.8, "highM": 2.0, "p50M": 1.2, "p90M": 2.0, "probabilityFromCurrentPct": 100, "capitalM": 0.35, "timeMonths": 0, "evidenceRequired": "Working reproducible workflow and visible limitations" },
+    { "stage": "Private prototype - current closest", "lowM": 1.5, "highM": 4.0, "p50M": 2.2, "p90M": 4.0, "probabilityFromCurrentPct": 100, "capitalM": 0.75, "timeMonths": 0, "evidenceRequired": "Bounded private workflows and a functioning common executor" },
+    { "stage": "Functional MVP", "lowM": 2.5, "highM": 6.0, "p50M": 3.8, "p90M": 6.0, "probabilityFromCurrentPct": 75, "capitalM": 1.2, "timeMonths": 6, "evidenceRequired": "One complete workflow, durable records, evals and usage metering" },
+    { "stage": "User-validated MVP", "lowM": 4.0, "highM": 10.0, "p50M": 6.5, "p90M": 10.0, "probabilityFromCurrentPct": 50, "capitalM": 1.8, "timeMonths": 9, "evidenceRequired": "Measured time saved, quality gain, repeat use and WTP" },
+    { "stage": "Institutional pilot", "lowM": 5.0, "highM": 12.0, "p50M": 7.5, "p90M": 12.0, "probabilityFromCurrentPct": 35, "capitalM": 2.2, "timeMonths": 12, "evidenceRequired": "Named buyer, paid scope, security review and success metrics" },
+    { "stage": "First paying customer", "lowM": 7.0, "highM": 16.0, "p50M": 10.0, "p90M": 16.0, "probabilityFromCurrentPct": 25, "capitalM": 2.5, "timeMonths": 15, "evidenceRequired": "Signed contract and repeatable delivery without founder-only effort" },
+    { "stage": "$100k ARR", "lowM": 8.0, "highM": 20.0, "p50M": 12.0, "p90M": 20.0, "probabilityFromCurrentPct": 18, "capitalM": 3.0, "timeMonths": 18, "evidenceRequired": "Recurring software revenue separated from services" },
+    { "stage": "$1m ARR", "lowM": 15.0, "highM": 45.0, "p50M": 27.0, "p90M": 45.0, "probabilityFromCurrentPct": 8, "capitalM": 4.5, "timeMonths": 27, "evidenceRequired": "Cohort retention, credible CAC and enterprise reference customers" },
+    { "stage": "Initial product-market fit", "lowM": 25.0, "highM": 75.0, "p50M": 45.0, "p90M": 75.0, "probabilityFromCurrentPct": 5, "capitalM": 5.0, "timeMonths": 30, "evidenceRequired": "$2m-$5m ARR, GRR >90%, NRR >105%, repeatable CAC" },
+    { "stage": "$10m ARR", "lowM": 60.0, "highM": 150.0, "p50M": 90.0, "p90M": 150.0, "probabilityFromCurrentPct": 2, "capitalM": 10.0, "timeMonths": 48, "evidenceRequired": "Efficient growth, strong retention and enterprise controls" },
+    { "stage": "International expansion", "lowM": 80.0, "highM": 250.0, "p50M": 140.0, "p90M": 250.0, "probabilityFromCurrentPct": 1, "capitalM": 15.0, "timeMonths": 60, "evidenceRequired": "Multi-region sales, support, data governance and localization" },
+    { "stage": "Enterprise multi-industry platform", "lowM": 200.0, "highM": 700.0, "p50M": 350.0, "p90M": 700.0, "probabilityFromCurrentPct": 0.3, "capitalM": 30.0, "timeMonths": 84, "evidenceRequired": "$30m-$75m ARR, audited controls and proven cross-vertical repeatability" }
+  ],
+  "dcfScenarios": [
+    { "id": "failure", "label": "Failure", "probabilityPct": 55, "discountRatePct": 55, "terminalGrowthPct": 0, "npvM": -0.63, "year10RevenueM": 0, "revenueM": [0, 0.05, 0.08, 0, 0, 0, 0, 0, 0, 0], "fcffM": [-0.55, -0.5, -0.25, 0, 0, 0, 0, 0, 0, 0] },
+    { "id": "niche", "label": "Conservative niche", "probabilityPct": 25, "discountRatePct": 45, "terminalGrowthPct": 2, "npvM": -0.687, "year10RevenueM": 4.7, "revenueM": [0.05, 0.2, 0.55, 1.1, 1.8, 2.5, 3.2, 3.8, 4.3, 4.7], "fcffM": [-0.6, -0.6, -0.45, -0.25, 0.05, 0.2, 0.45, 0.7, 0.9, 1.05] },
+    { "id": "base", "label": "Base B2B", "probabilityPct": 15, "discountRatePct": 40, "terminalGrowthPct": 3, "npvM": 0.32, "year10RevenueM": 29, "revenueM": [0.05, 0.3, 0.9, 2.2, 4.5, 8, 12, 17, 23, 29], "fcffM": [-0.7, -0.85, -0.9, -0.7, 0, 0.7, 2.1, 3.7, 5.5, 7.3] },
+    { "id": "upside", "label": "Optimistic", "probabilityPct": 4, "discountRatePct": 45, "terminalGrowthPct": 3, "npvM": 4.096, "year10RevenueM": 135, "revenueM": [0.05, 0.45, 1.7, 5, 12, 25, 45, 70, 100, 135], "fcffM": [-0.85, -1.1, -1.2, -0.8, 0.6, 3.5, 9, 16, 25, 35] },
+    { "id": "extraordinary", "label": "Extraordinary platform", "probabilityPct": 1, "discountRatePct": 50, "terminalGrowthPct": 3, "npvM": 11.709, "year10RevenueM": 450, "revenueM": [0.05, 0.5, 2.5, 8, 22, 55, 110, 190, 300, 450], "fcffM": [-1, -1.5, -2, -1.5, 1, 8, 25, 50, 85, 135] }
+  ],
+  "dcfSummary": { "rawProbabilityWeightedNpvM": -0.189, "commercialOptionNpvM": 0.329, "note": "The raw value includes uncommitted future burn. The commercial-option view floors failed paths at zero and must not be added to successful terminal values twice." },
+  "monteCarlo": {
+    "seed": 240719,
+    "draws": 200000,
+    "p10M": 0.19,
+    "p25M": 0.28,
+    "p50M": 0.45,
+    "p75M": 0.78,
+    "p90M": 6.63,
+    "meanM": 4.06,
+    "note": "Risk-adjusted economic option value, not a negotiated financing price. The mean is dominated by a small right tail and should not anchor current value."
+  },
+  "readiness": {
+    "score": 30,
+    "components": [
+      { "name": "Product", "weightPct": 15, "score": 65, "evidence": "Broad working prototype; core enterprise workflow is not complete." },
+      { "name": "Market", "weightPct": 12, "score": 25, "evidence": "Plausible wedge, no validated ICP or willingness to pay." },
+      { "name": "Customers", "weightPct": 12, "score": 0, "evidence": "No evidenced users, pilots or customers." },
+      { "name": "Technology", "weightPct": 12, "score": 60, "evidence": "Deterministic models, bounded execution and tests; limited differentiation." },
+      { "name": "Security", "weightPct": 10, "score": 35, "evidence": "Useful request controls; no enterprise identity, RBAC or durable audit." },
+      { "name": "Team", "weightPct": 10, "score": 15, "evidence": "No evidenced multidisciplinary operating team or delivery capacity." },
+      { "name": "Revenue", "weightPct": 10, "score": 0, "evidence": "No evidenced recurring or services revenue." },
+      { "name": "External validation", "weightPct": 8, "score": 15, "evidence": "No benchmark against analyst plus general AI baseline." },
+      { "name": "IP", "weightPct": 6, "score": 35, "evidence": "Code, taxonomy and know-how exist; legal exclusivity and calibration do not." },
+      { "name": "Scalability", "weightPct": 5, "score": 25, "evidence": "Cloud-compatible surface; no multi-tenancy, metering or operating proof." }
+    ]
+  },
+  "businessUnits": [
+    { "name": "Venture intelligence for CVC and venture studios", "priorityScore": 78, "buyer": "Head of CVC, venture studio or corporate innovation", "price": "$24k-$60k annual workspace after paid pilots", "salesCycle": "2-6 months hypothesis", "margin": "Medium-high after workflow standardization", "risk": "Medium", "timeToRevenue": "Shortest", "status": "Recommended first wedge" },
+    { "name": "Corporate decision intelligence", "priorityScore": 66, "buyer": "Strategy, innovation or capital-allocation leader", "price": "$75k-$200k enterprise hypothesis", "salesCycle": "4-9+ months hypothesis", "margin": "High potential", "risk": "Medium-high", "timeToRevenue": "Medium", "status": "Second vertical after proof" },
+    { "name": "Research / consulting as a service", "priorityScore": 62, "buyer": "Fund, consultancy or strategy team", "price": "$8k-$25k scoped mission", "salesCycle": "1-3 months hypothesis", "margin": "Medium; expert labor intensive", "risk": "Medium", "timeToRevenue": "Fast", "status": "Transitional learning model" },
+    { "name": "University and scientific research intelligence", "priorityScore": 44, "buyer": "Research office, lab or technology-transfer team", "price": "Institutional license; unvalidated", "salesCycle": "6-12 months hypothesis", "margin": "Medium", "risk": "Medium-high", "timeToRevenue": "Slow", "status": "Option after evidence workflow maturity" },
+    { "name": "Enterprise simulation and deployment intelligence", "priorityScore": 42, "buyer": "Transformation or program executive", "price": "Enterprise plus implementation; unvalidated", "salesCycle": "6-12+ months hypothesis", "margin": "Mixed", "risk": "High", "timeToRevenue": "Slow", "status": "Product option" },
+    { "name": "Financial intelligence", "priorityScore": 31, "buyer": "Institutional finance or risk team", "price": "Unvalidated", "salesCycle": "Long", "margin": "High potential", "risk": "High", "timeToRevenue": "Slow", "status": "Option only" },
+    { "name": "Healthcare and life sciences intelligence", "priorityScore": 27, "buyer": "Research or evidence leader", "price": "Unvalidated", "salesCycle": "Long", "margin": "High potential", "risk": "Very high", "timeToRevenue": "Very slow", "status": "Option only; no clinical claims" },
+    { "name": "Government, defense and resilience", "priorityScore": 24, "buyer": "Program, planning or procurement authority", "price": "Contract-based; unvalidated", "salesCycle": "12-24+ months hypothesis", "margin": "Variable", "risk": "Very high", "timeToRevenue": "Very slow", "status": "Option only; safe analytical uses" },
+    { "name": "Agent, model, API and marketplace infrastructure", "priorityScore": 20, "buyer": "Developer or platform team", "price": "Usage / licensing; unvalidated", "salesCycle": "Unknown", "margin": "High potential", "risk": "Very high", "timeToRevenue": "Late", "status": "Defer until evals, rights and demand" }
+  ],
+  "unitEconomics": {
+    "base": { "annualAcvK": 90, "grossMarginPct": 72, "cacK": 45, "cacPaybackMonths": 8.3, "grrPct": 88, "nrrPct": 96, "ltvK": 169, "ltvCac": 3.7 },
+    "downside": { "annualAcvK": 60, "grossMarginPct": 60, "cacK": 70, "cacPaybackMonths": 23.3, "grrPct": 80, "nrrPct": 84, "ltvK": 96, "ltvCac": 1.4 },
+    "note": "Editable planning assumptions only. No observed Venture Governance unit economics exist. Separate software and services margins."
+  },
+  "deployment": [
+    { "state": "Paid design-partner pilot", "timeP50Months": 6, "timeP90Months": 9, "costP50M": 0.75, "costP90M": 1.2, "capitalRangeM": "$0.6m-$1.2m", "gate": "Paid scope, baseline benchmark and named decision owner" },
+    { "state": "Initial production", "timeP50Months": 12, "timeP90Months": 18, "costP50M": 1.8, "costP90M": 2.8, "capitalRangeM": "$1.5m-$3.0m", "gate": "Durable records, enterprise identity, security review and supported operations" },
+    { "state": "Initial product-market fit", "timeP50Months": 24, "timeP90Months": 36, "costP50M": 3.2, "costP90M": 5.0, "capitalRangeM": "$2.0m-$5.0m cumulative", "gate": "Retention, repeatable acquisition, reference customers and measured outcome quality" },
+    { "state": "Enterprise expansion", "timeP50Months": 36, "timeP90Months": 54, "costP50M": 6.5, "costP90M": 10.0, "capitalRangeM": "$6.0m-$10.0m cumulative", "gate": "Multi-tenant controls, integrations, observability and repeatable implementation" }
+  ],
+  "criticalPath": [
+    "Scope and acceptance criteria",
+    "Data provenance and integrations",
+    "Core repeatable workflow",
+    "Threat model, identity and compliance",
+    "Paid pilot validation",
+    "Deployment and operating controls",
+    "Predicted-versus-actual learning"
+  ],
+  "risks": [
+    { "risk": "No validated willingness to pay", "probability": "High", "impact": "Critical", "owner": "Founder / commercial lead", "mitigation": "20-30 ICP interviews, three pricing tests and five paid scoped pilots", "mitigationCostK": 100 },
+    { "risk": "Thin wrapper over general AI", "probability": "High", "impact": "Critical", "owner": "Product and research", "mitigation": "Benchmark against analyst plus general-model baseline; build evidence and outcome workflow", "mitigationCostK": 180 },
+    { "risk": "Founder-heavy services prevent scale", "probability": "High", "impact": "High", "owner": "Delivery lead", "mitigation": "Measure implementation hours and standardize one governed mission", "mitigationCostK": 120 },
+    { "risk": "Broad multi-industry positioning", "probability": "High", "impact": "High", "owner": "CEO / strategy", "mitigation": "Commit to CVC / venture-studio wedge and explicit option gates", "mitigationCostK": 25 },
+    { "risk": "No exclusive data or outcome rights", "probability": "High", "impact": "High", "owner": "Data and legal", "mitigation": "License connectors and contract for governed outcome capture where permitted", "mitigationCostK": 250 },
+    { "risk": "Enterprise security gap", "probability": "High", "impact": "Critical", "owner": "Security lead", "mitigation": "Organizations, RBAC, durable audit, secrets, retention, pen test and incident process", "mitigationCostK": 450 },
+    { "risk": "Agent catalog quality is unvalidated", "probability": "High", "impact": "High", "owner": "Evaluation lead", "mitigation": "Separate documented, runnable, tested, expert-reviewed and validated statuses", "mitigationCostK": 220 },
+    { "risk": "Hallucinated or weak evidence", "probability": "Medium-high", "impact": "Critical", "owner": "Evidence lead", "mitigation": "Source rights, provenance, retrieval evaluation, abstention and human review", "mitigationCostK": 300 },
+    { "risk": "Long enterprise sales cycles", "probability": "High", "impact": "High", "owner": "Commercial lead", "mitigation": "Paid design partners, narrow scope and milestone-based conversions", "mitigationCostK": 150 },
+    { "risk": "Provider dependency and cost variance", "probability": "Medium", "impact": "Medium", "owner": "Engineering", "mitigation": "Metering, budgets, model abstraction, caching and safe fallback", "mitigationCostK": 100 },
+    { "risk": "Regulated-sector overreach", "probability": "Medium", "impact": "Critical", "owner": "Governance / legal", "mitigation": "Keep health, defense, government and finance as gated options", "mitigationCostK": 80 },
+    { "risk": "Insufficient team capacity", "probability": "High", "impact": "High", "owner": "Founder / board", "mitigation": "Build a 6-8 FTE product, security, domain and commercial team in phases", "mitigationCostK": 900 }
+  ],
+  "milestones": [
+    { "window": "Next 90 days", "items": ["Choose CVC / venture studios as the only active wedge", "Run 20-30 buyer interviews and three explicit pricing tests", "Secure five paid scoped design-partner pilots", "Benchmark one mission against analyst plus general AI", "Measure evidence error, time-to-output, expert hours and compute cost"] },
+    { "window": "Next 180 days", "items": ["Convert at least two pilots to annual contracts", "Ship durable mission, evidence, decision and audit records", "Implement organizations, RBAC, usage metering and cost budgets", "Publish agent / workflow evaluation statuses and versioned model records", "Prove a repeatable delivery playbook not dependent on founder-only labor"] },
+    { "window": "Next 365 days", "items": ["Reach $100k-$300k ARR with software and services separated", "Show first GRR, NRR, CAC payback and gross-margin cohorts", "Complete a security assessment and remediate high-severity findings", "Add licensed evidence integrations and governed outcome capture", "Decide with data whether corporate strategy is the second vertical"] }
+  ],
+  "comparables": [
+    { "category": "Private-market intelligence", "examples": "PitchBook; CB Insights; AlphaSense; Tegus / Quid", "strength": "Proprietary data, distribution, workflow and trusted research", "ventureGovernanceGap": "No comparable data breadth, rights, customer base or distribution", "implication": "Complement data systems; do not claim to replace them" },
+    { "category": "Enterprise decision and data platforms", "examples": "Palantir; ServiceNow; Dataiku; Databricks; Snowflake; C3.ai", "strength": "Integrations, ontology, governance, operations and enterprise procurement maturity", "ventureGovernanceGap": "No multi-tenant control plane, production integrations or service history", "implication": "Not valuation comparables at current stage" },
+    { "category": "General AI and internal build", "examples": "Microsoft Copilot; OpenAI API; Google Vertex AI; AWS Bedrock", "strength": "Low marginal model cost, distribution and developer ecosystems", "ventureGovernanceGap": "Generic synthesis and orchestration are easy to reproduce", "implication": "Most dangerous substitute" },
+    { "category": "Open-source agent frameworks", "examples": "LangGraph; AutoGen", "strength": "Durable orchestration and human-in-the-loop primitives", "ventureGovernanceGap": "Agent count and routing alone are not a moat", "implication": "Defend with evidence, outcomes, integrations and institutional history" },
+    { "category": "Consultancies and internal analysts", "examples": "Strategy firms; corporate strategy; data science teams", "strength": "Trust, customization, domain context and accountability", "ventureGovernanceGap": "Current product still needs expert delivery", "implication": "Potential design partners and channel, not only competitors" }
+  ],
+  "market": {
+    "recommendedWedge": "CVC, venture studios and corporate innovation / investment teams",
+    "problem": "Turn a thesis into an evidence-backed shortlist and an investment-committee-ready decision record",
+    "pricingSequence": ["4-6 week paid mission at $8k-$25k", "$24k-$60k annual workspace after repeatability", "$75k-$200k enterprise only after security and integration proof", "API, white label and marketplace only after stable evals, rights and demand"],
+    "illustrativeVcSamM": "$3.6m-$26.9m annual",
+    "illustrativeCvcSamM": "$2.3m-$17.4m annual",
+    "threeYearSomArrM": "$0.45m-$2.0m",
+    "warning": "All ICP filters, ACV, conversion, cycle and retention assumptions are unvalidated and must be replaced with observed funnel data."
+  },
+  "sources": [
+    { "id": "repo-readme", "title": "Repository README", "url": "README.md", "type": "Observed repository evidence" },
+    { "id": "repo-architecture", "title": "Platform architecture and capability labels", "url": "docs/platform-architecture.md", "type": "Observed repository evidence" },
+    { "id": "repo-limitations", "title": "Public Lab limitations", "url": "docs/public-lab-limitations.md", "type": "Observed repository evidence" },
+    { "id": "repo-feasibility", "title": "Execution feasibility engine", "url": "docs/execution-feasibility-engine.md", "type": "Observed repository evidence" },
+    { "id": "nvca", "title": "NVCA 2026 Yearbook", "url": "https://nvca.org/wp-content/uploads/2026/04/NVCA-2026-Yearbook-4.9.26.pdf", "type": "External market evidence" },
+    { "id": "pitchbook", "title": "PitchBook products", "url": "https://pitchbook.com/products", "type": "Competitor primary source" },
+    { "id": "cbinsights", "title": "CB Insights Strategy Terminal", "url": "https://www.cbinsights.com/strategy-terminal/", "type": "Competitor primary source" },
+    { "id": "alphasense", "title": "AlphaSense enterprise deployment", "url": "https://dev-developer.alpha-sense.com/enterprise", "type": "Competitor primary source" },
+    { "id": "palantir", "title": "Palantir 2025 Form 10-K", "url": "https://investors.palantir.com/files/2025%20FY%20PLTR%2010-K.pdf", "type": "Public-company primary source" },
+    { "id": "servicenow", "title": "ServiceNow Strategic Portfolio Management", "url": "https://www.servicenow.com/products/strategic-portfolio-management.html", "type": "Competitor primary source" },
+    { "id": "dataiku", "title": "Dataiku agent governance release", "url": "https://www.dataiku.com/company/news/dataiku-launches-the-platform-for-ai-success", "type": "Competitor primary source" },
+    { "id": "openai", "title": "OpenAI GPT-5.4 API pricing", "url": "https://developers.openai.com/api/docs/models/gpt-5.4", "type": "Provider primary source" },
+    { "id": "langgraph", "title": "LangGraph documentation", "url": "https://langchain-ai.github.io/langgraph/index.html", "type": "Framework primary source" },
+    { "id": "autogen", "title": "Microsoft AutoGen documentation", "url": "https://microsoft.github.io/autogen/", "type": "Framework primary source" }
+  ]
+}
