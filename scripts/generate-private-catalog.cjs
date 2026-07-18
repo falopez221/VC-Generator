@@ -24,7 +24,7 @@ const agents = rows.map((row, index) => {
     capabilitySummary: text(row.Descripción),
     tags: [domain, specialization, "research-web-authorized"],
     catalogStatus: "documented",
-    executionStatus: "not_executable",
+    executionStatus: "available_on_demand",
   };
 });
 

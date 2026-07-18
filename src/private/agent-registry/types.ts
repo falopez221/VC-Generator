@@ -1,9 +1,10 @@
 /**
  * Private registry types. A catalog record is intentionally descriptive: it
  * never contains prompts, credentials, executable code, or a provider config.
+ * Execution is granted by the authenticated runtime, not by spreadsheet data.
  */
 export const CATALOG_STATUS = ["documented"] as const;
-export const EXECUTION_STATUS = ["not_executable"] as const;
+export const EXECUTION_STATUS = ["available_on_demand"] as const;
 export const PROGRESS_STATUS = ["not_started", "in_progress", "needs_review", "blocked", "completed"] as const;
 
 export type CatalogStatus = (typeof CATALOG_STATUS)[number];

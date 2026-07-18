@@ -2,15 +2,24 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { previewBatchProgressImport, previewCatalogImport, previewProgressImport, privateImportSummary, safeCellText } from "../src/private/agent-registry/index.ts";
 import { PRIVATE_AGENT_CATALOG, PRIVATE_AGENT_DOMAINS } from "../src/private/agent-registry/catalog.generated.ts";
+import { recommendPrivateAgents } from "../src/private/agent-registry/recommend.ts";
 
-test("private authenticated catalog preserves the 1,970 documented records and category facets", () => {
+test("private authenticated catalog preserves 1,970 on-demand specialists and category facets", () => {
   assert.equal(PRIVATE_AGENT_CATALOG.length, 1970);
   assert.equal(PRIVATE_AGENT_DOMAINS.length, 51);
-  assert.ok(PRIVATE_AGENT_CATALOG.every((agent) => agent.executionStatus === "not_executable"));
+  assert.ok(PRIVATE_AGENT_CATALOG.every((agent) => agent.executionStatus === "available_on_demand"));
   assert.ok(PRIVATE_AGENT_CATALOG.every((agent) => agent.tags.includes("research-web-authorized")));
 });
 
-test("private catalog preview is deterministic, textual, and never grants execution", () => {
+test("mission prompt and sensitivity lenses route documented agents deterministically", () => {
+  const first = recommendPrivateAgents(PRIVATE_AGENT_CATALOG, "Evaluate energy demand uncertainty and capital needs", ["uncertainty", "capital"]);
+  const second = recommendPrivateAgents(PRIVATE_AGENT_CATALOG, "Evaluate energy demand uncertainty and capital needs", ["uncertainty", "capital"]);
+  assert.deepEqual(first, second);
+  assert.equal(first.length, 3);
+  assert.ok(first.every((agent) => agent.reasons.length > 0));
+});
+
+test("private catalog preview is deterministic and enables only authenticated on-demand execution", () => {
   const rows = [
     { "Código": "M-001", "Nombre agente": "Market Mapper", "Área": "Strategy", "Especialidad": "Market mapping", Etiquetas: "research; market" },
     { "Código": "F-001", "Nombre agente": "=Funding Scout", "Área": "Finance", "Especialidad": "Capital signals", Descripción: "<script>ignore()</script>Public sources" },
@@ -23,7 +32,7 @@ test("private catalog preview is deterministic, textual, and never grants execut
   assert.deepEqual(first, second);
   assert.equal(first.acceptedCount, 2);
   assert.equal(first.rejectedCount, 2);
-  assert.deepEqual(first.agents.map((agent) => agent.executionStatus), ["not_executable", "not_executable"]);
+  assert.deepEqual(first.agents.map((agent) => agent.executionStatus), ["available_on_demand", "available_on_demand"]);
   assert.equal(first.agents[1].displayName, "'=Funding Scout");
   assert.equal(first.agents[1].capabilitySummary, "Public sources");
   assert.ok(first.agents.every((agent) => agent.catalogStatus === "documented"));
@@ -48,7 +57,7 @@ test("progress preview matches only documented catalog records and preserves bou
     { status: "completed", completionPercent: 100 },
   ]);
   assert.match(progress.progress[0].reviewedAt ?? "", /^2026-07-18T00:00:00.000Z$/);
-  assert.equal(privateImportSummary({ agents: catalog, issues: [], acceptedCount: 2, rejectedCount: 0 }, progress).executableAgents, 0);
+  assert.equal(privateImportSummary({ agents: catalog, issues: [], acceptedCount: 2, rejectedCount: 0 }, progress).executableAgents, 2);
 });
 
 test("cell sanitation does not evaluate objects or preserve spreadsheet formulas", () => {
@@ -56,7 +65,7 @@ test("cell sanitation does not evaluate objects or preserve spreadsheet formulas
   assert.equal(safeCellText("@SUM(A1:A2)"), "'@SUM(A1:A2)");
 });
 
-test("batch control rows map deterministic AGT identifiers without enabling catalog entries", () => {
+test("batch control rows map deterministic AGT identifiers without starting catalog entries", () => {
   const catalog = previewCatalogImport([
     { Nombre: "Agente uno", Dominio: "Energía", Subdominio: "Redes" },
     { Nombre: "Agente dos", Dominio: "Energía", Subdominio: "Redes" },
@@ -80,5 +89,5 @@ test("batch control rows map deterministic AGT identifiers without enabling cata
     startedAt: null,
     closedAt: null,
   });
-  assert.equal(catalog[0].executionStatus, "not_executable");
+  assert.equal(catalog[0].executionStatus, "available_on_demand");
 });

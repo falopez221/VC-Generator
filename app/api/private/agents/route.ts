@@ -51,7 +51,7 @@ export async function GET(request: Request) {
       description: agent.capabilitySummary,
       researchAccess: "Available through protected Research Lab",
       status: "Documented · human-selected",
-      execution: "No autonomous execution",
+      execution: agent.executionStatus === "available_on_demand" ? "Available for authenticated, human-started runs" : "Unavailable",
     })),
   });
 }

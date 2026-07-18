@@ -63,7 +63,7 @@ export function previewCatalogImport(rows: readonly unknown[]): CatalogImportPre
       capabilitySummary: readFirst(row, DESCRIPTION, 600),
       tags: splitTags(readFirst(row, TAGS, 600)),
       catalogStatus: "documented",
-      executionStatus: "not_executable",
+      executionStatus: "available_on_demand",
     });
   });
   return { agents, issues, acceptedCount: agents.length, rejectedCount: issues.length };
@@ -79,7 +79,7 @@ function normalizeProgressStatus(value: string): ProgressStatus | null {
   return null;
 }
 
-/** Maps a progress CSV preview to existing catalog records without changing executable status. */
+/** Maps a progress CSV preview to existing catalog records without changing runtime availability. */
 export function previewProgressImport(rows: readonly unknown[], catalog: readonly PrivateCatalogAgent[]): ProgressImportPreview {
   const progress: PrivateAgentProgress[] = [];
   const issues: ImportIssue[] = [];
@@ -127,7 +127,7 @@ export function previewProgressImport(rows: readonly unknown[], catalog: readonl
 
 /**
  * Reads the batch-oriented progreso.csv control file. It records operational
- * status without marking any catalog record executable or generated.
+ * status without starting an execution or changing runtime permissions.
  */
 export function previewBatchProgressImport(rows: readonly unknown[], catalog: readonly PrivateCatalogAgent[]): BatchProgressImportPreview {
   const batches: PrivateProgressBatch[] = [];
@@ -184,6 +184,6 @@ export function privateImportSummary(catalogPreview: CatalogImportPreview, progr
   return {
     catalog: { accepted: catalogPreview.acceptedCount, rejected: catalogPreview.rejectedCount },
     progress: { accepted: progressPreview.acceptedCount, rejected: progressPreview.rejectedCount },
-    executableAgents: 0,
+    executableAgents: catalogPreview.agents.filter((agent) => agent.executionStatus === "available_on_demand").length,
   } as const;
 }

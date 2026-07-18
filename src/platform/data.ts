@@ -26,10 +26,10 @@ export const DEMO_EXECUTION_QUEUE: ExecutionQueueItem[] = [
 
 export const PLATFORM_CAPABILITY_STATUS: CapabilityStatus[] = [
   { id: "engine", label: "Mathematical engine", value: "Ready", state: "ready", detail: "Deterministic public models execute in this repository." },
-  { id: "agents", label: "Public agent index", value: "4 available", state: "ready", detail: "Mathematics, Finance, Strategy and Marketing only." },
+  { id: "agents", label: "Private agent registry", value: "1,970 available", state: "ready", detail: "Authenticated on-demand profiles across 51 domains." },
   { id: "models", label: "Model catalog", value: "12 documented", state: "ready", detail: "All public models expose assumptions and limitations." },
   { id: "database", label: "Durable database", value: "Not connected", state: "unavailable", detail: "Mission and audit fixtures are not persisted server-side." },
-  { id: "provider", label: "Local AI provider", value: "Not enabled", state: "unavailable", detail: "Only the future server-side provider contract exists." },
+  { id: "provider", label: "Private AI runtime", value: "Credential-gated", state: "limited", detail: "Selected teams execute server-side when OPENAI_API_KEY is configured." },
   { id: "resources", label: "CPU · RAM · GPU", value: "Not exposed", state: "limited", detail: "The web runtime does not read host telemetry." },
 ];
 
@@ -54,27 +54,25 @@ export const DEMO_AUDIT_EVENTS = [
 
 const BASE_NODES: GraphNode[] = [
   { id: "mission", label: "Active Mission", kind: "mission", cluster: "Mission", x: 50, y: 46, z: 46, detail: "The governed question, scope, owner and decision boundary.", status: "ACTIVE" },
-  { id: "strategy", label: "Strategy", kind: "agent", cluster: "Agents", x: 25, y: 24, z: 18, detail: "Frames alternatives, timing, differentiation and strategic constraints.", status: "DOCUMENTED" },
-  { id: "finance", label: "Finance", kind: "agent", cluster: "Agents", x: 74, y: 25, z: 8, detail: "Evaluates economics, capital exposure and staged commitments.", status: "DOCUMENTED" },
-  { id: "mathematics", label: "Mathematics", kind: "agent", cluster: "Agents", x: 20, y: 68, z: 32, detail: "Models uncertainty, sensitivity, robustness and trade-offs.", status: "VALIDATED DEMO" },
-  { id: "marketing", label: "Marketing", kind: "agent", cluster: "Agents", x: 80, y: 69, z: 20, detail: "Evaluates adoption, accessible demand and evidence gaps.", status: "DOCUMENTED" },
-  { id: "evidence", label: "Evidence Graph", kind: "evidence", cluster: "Evidence", x: 50, y: 15, z: -6, detail: "Separates sources, assumptions, inferences and missing evidence.", status: "TRACEABLE" },
-  { id: "monte-carlo", label: "Monte Carlo", kind: "model", cluster: "Models", x: 10, y: 45, z: -18, detail: "Explores distributions under visible assumptions and a reproducible seed.", status: "MODEL 2.0" },
-  { id: "sensitivity", label: "Sensitivity", kind: "model", cluster: "Models", x: 90, y: 45, z: -12, detail: "Identifies the assumptions that dominate the conclusion.", status: "MODEL 2.0" },
-  { id: "gate", label: "Human Gate", kind: "gate", cluster: "Governance", x: 50, y: 80, z: 54, detail: "A named person reviews evidence, dissent and authority before continuation.", status: "REQUIRED" },
-  { id: "result", label: "Decision Record", kind: "result", cluster: "Outcome", x: 50, y: 95, z: 10, detail: "Preserves alternatives, rationale, conditions, objections and next review.", status: "OUTPUT" },
+  { id: "registry", label: "Registry · 1,970", kind: "agent", cluster: "Agents", x: 20, y: 25, z: 18, detail: "The authenticated catalog contains 1,970 executable specialist profiles across 51 domains.", status: "ON DEMAND" },
+  { id: "router", label: "Domain Router · 51", kind: "domain", cluster: "Orchestration", x: 29, y: 72, z: 30, detail: "Matches mission needs to relevant domains and specialist profiles.", status: "BOUNDED" },
+  { id: "team", label: "Mission Team · 1–8", kind: "agent", cluster: "Agents", x: 72, y: 47, z: 22, detail: "A human-selected specialist team executes independently and produces inspectable outputs for synthesis.", status: "EXECUTABLE" },
+  { id: "evidence", label: "Evidence Graph", kind: "evidence", cluster: "Evidence", x: 50, y: 13, z: -6, detail: "Separates sources, assumptions, inferences and missing evidence.", status: "TRACEABLE" },
+  { id: "monte-carlo", label: "Monte Carlo", kind: "model", cluster: "Models", x: 86, y: 23, z: -18, detail: "Explores distributions under visible assumptions and a reproducible seed.", status: "MODEL 2.0" },
+  { id: "sensitivity", label: "Sensitivity", kind: "model", cluster: "Models", x: 87, y: 72, z: -12, detail: "Identifies the assumptions that dominate the conclusion.", status: "MODEL 2.0" },
+  { id: "gate", label: "Human Gate", kind: "gate", cluster: "Governance", x: 51, y: 84, z: 54, detail: "A named person reviews evidence, dissent and authority before continuation.", status: "REQUIRED" },
+  { id: "result", label: "Decision Record", kind: "result", cluster: "Outcome", x: 72, y: 88, z: 10, detail: "Preserves alternatives, rationale, conditions, objections and next review.", status: "OUTPUT" },
 ];
 
 const BASE_EDGES: GraphEdge[] = [
   { from: "evidence", to: "mission", label: "grounds" },
-  { from: "mission", to: "strategy", label: "routes" },
-  { from: "mission", to: "finance", label: "routes" },
-  { from: "mission", to: "mathematics", label: "routes" },
-  { from: "mission", to: "marketing", label: "routes" },
-  { from: "mathematics", to: "monte-carlo", label: "models" },
-  { from: "finance", to: "monte-carlo", label: "contributes ranges" },
-  { from: "strategy", to: "sensitivity", label: "contributes assumptions" },
-  { from: "marketing", to: "sensitivity", label: "contributes adoption signals" },
+  { from: "mission", to: "router", label: "declares capability needs" },
+  { from: "registry", to: "router", label: "offers 1,970 profiles" },
+  { from: "router", to: "team", label: "selects bounded team" },
+  { from: "mission", to: "team", label: "bounds execution" },
+  { from: "team", to: "monte-carlo", label: "contributes ranges" },
+  { from: "team", to: "sensitivity", label: "contributes assumptions" },
+  { from: "team", to: "gate", label: "submits specialist synthesis" },
   { from: "monte-carlo", to: "gate", label: "submits scenarios" },
   { from: "sensitivity", to: "gate", label: "submits drivers" },
   { from: "gate", to: "result", label: "authorizes record" },

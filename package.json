@@ -14,7 +14,7 @@
     "build:vercel": "next build",
     "start:next": "next start",
     "typecheck": "tsc --noEmit",
-    "test:unit": "node --experimental-strip-types --test tests/lab-engine.test.ts tests/applications.test.ts tests/web-research.test.ts tests/platform.test.ts tests/private-agent-registry.test.ts tests/private-registry-request.test.ts tests/private-models.test.ts tests/private-research.test.ts",
+    "test:unit": "node --experimental-strip-types --test tests/lab-engine.test.ts tests/applications.test.ts tests/web-research.test.ts tests/platform.test.ts tests/private-agent-registry.test.ts tests/private-agent-execution.test.ts tests/private-registry-request.test.ts tests/private-models.test.ts tests/private-research.test.ts",
     "test:integration": "npm run build && node --test tests/rendered-html.test.mjs",
     "test": "npm run test:unit && npm run test:integration",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",

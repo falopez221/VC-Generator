@@ -3,12 +3,13 @@ import test from "node:test";
 import { DEMO_GOVERNANCE_QUEUE, DEMO_MISSIONS, PLATFORM_CAPABILITY_STATUS, PLATFORM_MODULES, graphFor } from "../src/platform/data.ts";
 import { VG_DESIGN_TOKENS } from "../src/platform/design-tokens.ts";
 
-test("platform graph exposes only the four bounded public agents", () => {
+test("authenticated platform graph represents the private registry and bounded execution teams", () => {
   for (const variant of ["overview", "access", "knowledge", "mission", "applications", "simulation", "agents"] as const) {
     const graph = graphFor(variant);
     const ids = new Set(graph.nodes.map((node) => node.id));
     assert.equal(ids.size, graph.nodes.length);
-    assert.deepEqual(graph.nodes.filter((node) => node.kind === "agent").map((node) => node.label).sort(), ["Finance", "Marketing", "Mathematics", "Strategy"]);
+    assert.deepEqual(graph.nodes.filter((node) => node.kind === "agent").map((node) => node.id).sort(), ["registry", "team"]);
+    assert.match(graph.nodes.find((node) => node.id === "registry")?.detail ?? "", /1,970.*51 domains/i);
     assert.equal(graph.nodes.filter((node) => node.kind === "gate").length, 1);
     assert.equal(graph.nodes.filter((node) => node.kind === "result").length, 1);
     for (const edge of graph.edges) {
@@ -43,8 +44,8 @@ test("platform module and fixture metadata remain honest and internally consiste
   assert.ok(DEMO_MISSIONS.every((mission) => mission.evidenceCoverage >= 0 && mission.evidenceCoverage <= 100));
   assert.ok(DEMO_MISSIONS.every((mission) => mission.progress >= 0 && mission.progress <= 100));
   assert.ok(DEMO_MISSIONS.every((mission) => mission.unresolvedAssumptions >= 0));
-  assert.equal(PLATFORM_CAPABILITY_STATUS.find((item) => item.id === "provider")?.state, "unavailable");
-  assert.equal(PLATFORM_CAPABILITY_STATUS.find((item) => item.id === "agents")?.value, "4 available");
+  assert.equal(PLATFORM_CAPABILITY_STATUS.find((item) => item.id === "provider")?.state, "limited");
+  assert.equal(PLATFORM_CAPABILITY_STATUS.find((item) => item.id === "agents")?.value, "1,970 available");
   assert.equal(Object.keys(VG_DESIGN_TOKENS).length, 12);
 });
 

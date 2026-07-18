@@ -170,7 +170,7 @@
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false,
-          "default": "'not_executable'"
+          "default": "'available_on_demand'"
         },
         "created_at": {
           "name": "created_at",

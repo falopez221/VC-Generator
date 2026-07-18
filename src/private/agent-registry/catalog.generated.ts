@@ -17,7 +17,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0002",
@@ -33,7 +33,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0003",
@@ -49,7 +49,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0004",
@@ -65,7 +65,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0005",
@@ -81,7 +81,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0006",
@@ -97,7 +97,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0007",
@@ -113,7 +113,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0008",
@@ -129,7 +129,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0009",
@@ -145,7 +145,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0010",
@@ -161,7 +161,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0011",
@@ -177,7 +177,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0012",
@@ -193,7 +193,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0013",
@@ -209,7 +209,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0014",
@@ -225,7 +225,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0015",
@@ -241,7 +241,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0016",
@@ -257,7 +257,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0017",
@@ -273,7 +273,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0018",
@@ -289,7 +289,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0019",
@@ -305,7 +305,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0020",
@@ -321,7 +321,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0021",
@@ -337,7 +337,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0022",
@@ -353,7 +353,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0023",
@@ -369,7 +369,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0024",
@@ -385,7 +385,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0025",
@@ -401,7 +401,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0026",
@@ -417,7 +417,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0027",
@@ -433,7 +433,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0028",
@@ -449,7 +449,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0029",
@@ -465,7 +465,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0030",
@@ -481,7 +481,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0031",
@@ -497,7 +497,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0032",
@@ -513,7 +513,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0033",
@@ -529,7 +529,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0034",
@@ -545,7 +545,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0035",
@@ -561,7 +561,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0036",
@@ -577,7 +577,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0037",
@@ -593,7 +593,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0038",
@@ -609,7 +609,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0039",
@@ -625,7 +625,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0040",
@@ -641,7 +641,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0041",
@@ -657,7 +657,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0042",
@@ -673,7 +673,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0043",
@@ -689,7 +689,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0044",
@@ -705,7 +705,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0045",
@@ -721,7 +721,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0046",
@@ -737,7 +737,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0047",
@@ -753,7 +753,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0048",
@@ -769,7 +769,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0049",
@@ -785,7 +785,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0050",
@@ -801,7 +801,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0051",
@@ -817,7 +817,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0052",
@@ -833,7 +833,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0053",
@@ -849,7 +849,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0054",
@@ -865,7 +865,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0055",
@@ -881,7 +881,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0056",
@@ -897,7 +897,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0057",
@@ -913,7 +913,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0058",
@@ -929,7 +929,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0059",
@@ -945,7 +945,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0060",
@@ -961,7 +961,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0061",
@@ -977,7 +977,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0062",
@@ -993,7 +993,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0063",
@@ -1009,7 +1009,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0064",
@@ -1025,7 +1025,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0065",
@@ -1041,7 +1041,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0066",
@@ -1057,7 +1057,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0067",
@@ -1073,7 +1073,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0068",
@@ -1089,7 +1089,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0069",
@@ -1105,7 +1105,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0070",
@@ -1121,7 +1121,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0071",
@@ -1137,7 +1137,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0072",
@@ -1153,7 +1153,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0073",
@@ -1169,7 +1169,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0074",
@@ -1185,7 +1185,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0075",
@@ -1201,7 +1201,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0076",
@@ -1217,7 +1217,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0077",
@@ -1233,7 +1233,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0078",
@@ -1249,7 +1249,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0079",
@@ -1265,7 +1265,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0080",
@@ -1281,7 +1281,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0081",
@@ -1297,7 +1297,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0082",
@@ -1313,7 +1313,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0083",
@@ -1329,7 +1329,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0084",
@@ -1345,7 +1345,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0085",
@@ -1361,7 +1361,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0086",
@@ -1377,7 +1377,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0087",
@@ -1393,7 +1393,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0088",
@@ -1409,7 +1409,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0089",
@@ -1425,7 +1425,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0090",
@@ -1441,7 +1441,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0091",
@@ -1457,7 +1457,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0092",
@@ -1473,7 +1473,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0093",
@@ -1489,7 +1489,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0094",
@@ -1505,7 +1505,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0095",
@@ -1521,7 +1521,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0096",
@@ -1537,7 +1537,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0097",
@@ -1553,7 +1553,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0098",
@@ -1569,7 +1569,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0099",
@@ -1585,7 +1585,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0100",
@@ -1601,7 +1601,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0101",
@@ -1617,7 +1617,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0102",
@@ -1633,7 +1633,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0103",
@@ -1649,7 +1649,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0104",
@@ -1665,7 +1665,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0105",
@@ -1681,7 +1681,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0106",
@@ -1697,7 +1697,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0107",
@@ -1713,7 +1713,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0108",
@@ -1729,7 +1729,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0109",
@@ -1745,7 +1745,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0110",
@@ -1761,7 +1761,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0111",
@@ -1777,7 +1777,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0112",
@@ -1793,7 +1793,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0113",
@@ -1809,7 +1809,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0114",
@@ -1825,7 +1825,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0115",
@@ -1841,7 +1841,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0116",
@@ -1857,7 +1857,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0117",
@@ -1873,7 +1873,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0118",
@@ -1889,7 +1889,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0119",
@@ -1905,7 +1905,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0120",
@@ -1921,7 +1921,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0121",
@@ -1937,7 +1937,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0122",
@@ -1953,7 +1953,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0123",
@@ -1969,7 +1969,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0124",
@@ -1985,7 +1985,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0125",
@@ -2001,7 +2001,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0126",
@@ -2017,7 +2017,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0127",
@@ -2033,7 +2033,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0128",
@@ -2049,7 +2049,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0129",
@@ -2065,7 +2065,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0130",
@@ -2081,7 +2081,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0131",
@@ -2097,7 +2097,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0132",
@@ -2113,7 +2113,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0133",
@@ -2129,7 +2129,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0134",
@@ -2145,7 +2145,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0135",
@@ -2161,7 +2161,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0136",
@@ -2177,7 +2177,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0137",
@@ -2193,7 +2193,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0138",
@@ -2209,7 +2209,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0139",
@@ -2225,7 +2225,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0140",
@@ -2241,7 +2241,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0141",
@@ -2257,7 +2257,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0142",
@@ -2273,7 +2273,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0143",
@@ -2289,7 +2289,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0144",
@@ -2305,7 +2305,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0145",
@@ -2321,7 +2321,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0146",
@@ -2337,7 +2337,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0147",
@@ -2353,7 +2353,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0148",
@@ -2369,7 +2369,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0149",
@@ -2385,7 +2385,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0150",
@@ -2401,7 +2401,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0151",
@@ -2417,7 +2417,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0152",
@@ -2433,7 +2433,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0153",
@@ -2449,7 +2449,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0154",
@@ -2465,7 +2465,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0155",
@@ -2481,7 +2481,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0156",
@@ -2497,7 +2497,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0157",
@@ -2513,7 +2513,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0158",
@@ -2529,7 +2529,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0159",
@@ -2545,7 +2545,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0160",
@@ -2561,7 +2561,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0161",
@@ -2577,7 +2577,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0162",
@@ -2593,7 +2593,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0163",
@@ -2609,7 +2609,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0164",
@@ -2625,7 +2625,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0165",
@@ -2641,7 +2641,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0166",
@@ -2657,7 +2657,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0167",
@@ -2673,7 +2673,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0168",
@@ -2689,7 +2689,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0169",
@@ -2705,7 +2705,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0170",
@@ -2721,7 +2721,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0171",
@@ -2737,7 +2737,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0172",
@@ -2753,7 +2753,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0173",
@@ -2769,7 +2769,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0174",
@@ -2785,7 +2785,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0175",
@@ -2801,7 +2801,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0176",
@@ -2817,7 +2817,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0177",
@@ -2833,7 +2833,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0178",
@@ -2849,7 +2849,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0179",
@@ -2865,7 +2865,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0180",
@@ -2881,7 +2881,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0181",
@@ -2897,7 +2897,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0182",
@@ -2913,7 +2913,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0183",
@@ -2929,7 +2929,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0184",
@@ -2945,7 +2945,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0185",
@@ -2961,7 +2961,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0186",
@@ -2977,7 +2977,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0187",
@@ -2993,7 +2993,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0188",
@@ -3009,7 +3009,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0189",
@@ -3025,7 +3025,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0190",
@@ -3041,7 +3041,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0191",
@@ -3057,7 +3057,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0192",
@@ -3073,7 +3073,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0193",
@@ -3089,7 +3089,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0194",
@@ -3105,7 +3105,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0195",
@@ -3121,7 +3121,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0196",
@@ -3137,7 +3137,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0197",
@@ -3153,7 +3153,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0198",
@@ -3169,7 +3169,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0199",
@@ -3185,7 +3185,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0200",
@@ -3201,7 +3201,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0201",
@@ -3217,7 +3217,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0202",
@@ -3233,7 +3233,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0203",
@@ -3249,7 +3249,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0204",
@@ -3265,7 +3265,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0205",
@@ -3281,7 +3281,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0206",
@@ -3297,7 +3297,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0207",
@@ -3313,7 +3313,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0208",
@@ -3329,7 +3329,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0209",
@@ -3345,7 +3345,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0210",
@@ -3361,7 +3361,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0211",
@@ -3377,7 +3377,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0212",
@@ -3393,7 +3393,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0213",
@@ -3409,7 +3409,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0214",
@@ -3425,7 +3425,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0215",
@@ -3441,7 +3441,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0216",
@@ -3457,7 +3457,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0217",
@@ -3473,7 +3473,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0218",
@@ -3489,7 +3489,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0219",
@@ -3505,7 +3505,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0220",
@@ -3521,7 +3521,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0221",
@@ -3537,7 +3537,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0222",
@@ -3553,7 +3553,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0223",
@@ -3569,7 +3569,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0224",
@@ -3585,7 +3585,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0225",
@@ -3601,7 +3601,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0226",
@@ -3617,7 +3617,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0227",
@@ -3633,7 +3633,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0228",
@@ -3649,7 +3649,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0229",
@@ -3665,7 +3665,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0230",
@@ -3681,7 +3681,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0231",
@@ -3697,7 +3697,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0232",
@@ -3713,7 +3713,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0233",
@@ -3729,7 +3729,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0234",
@@ -3745,7 +3745,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0235",
@@ -3761,7 +3761,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0236",
@@ -3777,7 +3777,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0237",
@@ -3793,7 +3793,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0238",
@@ -3809,7 +3809,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0239",
@@ -3825,7 +3825,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0240",
@@ -3841,7 +3841,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0241",
@@ -3857,7 +3857,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0242",
@@ -3873,7 +3873,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0243",
@@ -3889,7 +3889,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0244",
@@ -3905,7 +3905,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0245",
@@ -3921,7 +3921,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0246",
@@ -3937,7 +3937,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0247",
@@ -3953,7 +3953,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0248",
@@ -3969,7 +3969,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0249",
@@ -3985,7 +3985,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0250",
@@ -4001,7 +4001,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0251",
@@ -4017,7 +4017,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0252",
@@ -4033,7 +4033,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0253",
@@ -4049,7 +4049,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0254",
@@ -4065,7 +4065,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0255",
@@ -4081,7 +4081,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0256",
@@ -4097,7 +4097,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0257",
@@ -4113,7 +4113,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0258",
@@ -4129,7 +4129,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0259",
@@ -4145,7 +4145,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0260",
@@ -4161,7 +4161,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0261",
@@ -4177,7 +4177,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0262",
@@ -4193,7 +4193,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0263",
@@ -4209,7 +4209,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0264",
@@ -4225,7 +4225,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0265",
@@ -4241,7 +4241,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0266",
@@ -4257,7 +4257,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0267",
@@ -4273,7 +4273,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0268",
@@ -4289,7 +4289,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0269",
@@ -4305,7 +4305,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0270",
@@ -4321,7 +4321,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0271",
@@ -4337,7 +4337,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0272",
@@ -4353,7 +4353,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0273",
@@ -4369,7 +4369,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0274",
@@ -4385,7 +4385,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0275",
@@ -4401,7 +4401,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0276",
@@ -4417,7 +4417,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0277",
@@ -4433,7 +4433,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0278",
@@ -4449,7 +4449,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0279",
@@ -4465,7 +4465,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0280",
@@ -4481,7 +4481,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0281",
@@ -4497,7 +4497,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0282",
@@ -4513,7 +4513,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0283",
@@ -4529,7 +4529,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0284",
@@ -4545,7 +4545,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0285",
@@ -4561,7 +4561,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0286",
@@ -4577,7 +4577,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0287",
@@ -4593,7 +4593,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0288",
@@ -4609,7 +4609,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0289",
@@ -4625,7 +4625,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0290",
@@ -4641,7 +4641,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0291",
@@ -4657,7 +4657,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0292",
@@ -4673,7 +4673,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0293",
@@ -4689,7 +4689,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0294",
@@ -4705,7 +4705,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0295",
@@ -4721,7 +4721,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0296",
@@ -4737,7 +4737,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0297",
@@ -4753,7 +4753,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0298",
@@ -4769,7 +4769,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0299",
@@ -4785,7 +4785,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0300",
@@ -4801,7 +4801,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0301",
@@ -4817,7 +4817,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0302",
@@ -4833,7 +4833,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0303",
@@ -4849,7 +4849,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0304",
@@ -4865,7 +4865,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0305",
@@ -4881,7 +4881,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0306",
@@ -4897,7 +4897,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0307",
@@ -4913,7 +4913,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0308",
@@ -4929,7 +4929,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0309",
@@ -4945,7 +4945,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0310",
@@ -4961,7 +4961,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0311",
@@ -4977,7 +4977,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0312",
@@ -4993,7 +4993,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0313",
@@ -5009,7 +5009,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0314",
@@ -5025,7 +5025,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0315",
@@ -5041,7 +5041,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0316",
@@ -5057,7 +5057,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0317",
@@ -5073,7 +5073,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0318",
@@ -5089,7 +5089,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0319",
@@ -5105,7 +5105,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0320",
@@ -5121,7 +5121,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0321",
@@ -5137,7 +5137,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0322",
@@ -5153,7 +5153,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0323",
@@ -5169,7 +5169,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0324",
@@ -5185,7 +5185,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0325",
@@ -5201,7 +5201,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0326",
@@ -5217,7 +5217,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0327",
@@ -5233,7 +5233,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0328",
@@ -5249,7 +5249,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0329",
@@ -5265,7 +5265,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0330",
@@ -5281,7 +5281,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0331",
@@ -5297,7 +5297,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0332",
@@ -5313,7 +5313,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0333",
@@ -5329,7 +5329,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0334",
@@ -5345,7 +5345,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0335",
@@ -5361,7 +5361,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0336",
@@ -5377,7 +5377,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0337",
@@ -5393,7 +5393,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0338",
@@ -5409,7 +5409,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0339",
@@ -5425,7 +5425,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0340",
@@ -5441,7 +5441,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0341",
@@ -5457,7 +5457,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0342",
@@ -5473,7 +5473,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0343",
@@ -5489,7 +5489,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0344",
@@ -5505,7 +5505,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0345",
@@ -5521,7 +5521,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0346",
@@ -5537,7 +5537,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0347",
@@ -5553,7 +5553,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0348",
@@ -5569,7 +5569,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0349",
@@ -5585,7 +5585,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0350",
@@ -5601,7 +5601,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0351",
@@ -5617,7 +5617,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0352",
@@ -5633,7 +5633,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0353",
@@ -5649,7 +5649,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0354",
@@ -5665,7 +5665,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0355",
@@ -5681,7 +5681,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0356",
@@ -5697,7 +5697,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0357",
@@ -5713,7 +5713,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0358",
@@ -5729,7 +5729,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0359",
@@ -5745,7 +5745,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0360",
@@ -5761,7 +5761,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0361",
@@ -5777,7 +5777,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0362",
@@ -5793,7 +5793,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0363",
@@ -5809,7 +5809,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0364",
@@ -5825,7 +5825,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0365",
@@ -5841,7 +5841,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0366",
@@ -5857,7 +5857,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0367",
@@ -5873,7 +5873,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0368",
@@ -5889,7 +5889,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0369",
@@ -5905,7 +5905,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0370",
@@ -5921,7 +5921,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0371",
@@ -5937,7 +5937,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0372",
@@ -5953,7 +5953,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0373",
@@ -5969,7 +5969,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0374",
@@ -5985,7 +5985,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0375",
@@ -6001,7 +6001,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0376",
@@ -6017,7 +6017,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0377",
@@ -6033,7 +6033,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0378",
@@ -6049,7 +6049,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0379",
@@ -6065,7 +6065,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0380",
@@ -6081,7 +6081,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0381",
@@ -6097,7 +6097,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0382",
@@ -6113,7 +6113,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0383",
@@ -6129,7 +6129,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0384",
@@ -6145,7 +6145,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0385",
@@ -6161,7 +6161,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0386",
@@ -6177,7 +6177,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0387",
@@ -6193,7 +6193,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0388",
@@ -6209,7 +6209,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0389",
@@ -6225,7 +6225,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0390",
@@ -6241,7 +6241,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0391",
@@ -6257,7 +6257,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0392",
@@ -6273,7 +6273,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0393",
@@ -6289,7 +6289,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0394",
@@ -6305,7 +6305,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0395",
@@ -6321,7 +6321,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0396",
@@ -6337,7 +6337,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0397",
@@ -6353,7 +6353,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0398",
@@ -6369,7 +6369,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0399",
@@ -6385,7 +6385,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0400",
@@ -6401,7 +6401,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0401",
@@ -6417,7 +6417,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0402",
@@ -6433,7 +6433,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0403",
@@ -6449,7 +6449,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0404",
@@ -6465,7 +6465,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0405",
@@ -6481,7 +6481,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0406",
@@ -6497,7 +6497,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0407",
@@ -6513,7 +6513,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0408",
@@ -6529,7 +6529,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0409",
@@ -6545,7 +6545,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0410",
@@ -6561,7 +6561,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0411",
@@ -6577,7 +6577,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0412",
@@ -6593,7 +6593,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0413",
@@ -6609,7 +6609,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0414",
@@ -6625,7 +6625,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0415",
@@ -6641,7 +6641,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0416",
@@ -6657,7 +6657,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0417",
@@ -6673,7 +6673,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0418",
@@ -6689,7 +6689,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0419",
@@ -6705,7 +6705,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0420",
@@ -6721,7 +6721,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0421",
@@ -6737,7 +6737,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0422",
@@ -6753,7 +6753,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0423",
@@ -6769,7 +6769,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0424",
@@ -6785,7 +6785,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0425",
@@ -6801,7 +6801,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0426",
@@ -6817,7 +6817,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0427",
@@ -6833,7 +6833,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0428",
@@ -6849,7 +6849,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0429",
@@ -6865,7 +6865,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0430",
@@ -6881,7 +6881,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0431",
@@ -6897,7 +6897,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0432",
@@ -6913,7 +6913,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0433",
@@ -6929,7 +6929,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0434",
@@ -6945,7 +6945,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0435",
@@ -6961,7 +6961,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0436",
@@ -6977,7 +6977,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0437",
@@ -6993,7 +6993,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0438",
@@ -7009,7 +7009,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0439",
@@ -7025,7 +7025,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0440",
@@ -7041,7 +7041,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0441",
@@ -7057,7 +7057,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0442",
@@ -7073,7 +7073,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0443",
@@ -7089,7 +7089,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0444",
@@ -7105,7 +7105,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0445",
@@ -7121,7 +7121,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0446",
@@ -7137,7 +7137,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0447",
@@ -7153,7 +7153,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0448",
@@ -7169,7 +7169,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0449",
@@ -7185,7 +7185,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0450",
@@ -7201,7 +7201,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0451",
@@ -7217,7 +7217,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0452",
@@ -7233,7 +7233,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0453",
@@ -7249,7 +7249,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0454",
@@ -7265,7 +7265,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0455",
@@ -7281,7 +7281,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0456",
@@ -7297,7 +7297,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0457",
@@ -7313,7 +7313,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0458",
@@ -7329,7 +7329,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0459",
@@ -7345,7 +7345,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0460",
@@ -7361,7 +7361,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0461",
@@ -7377,7 +7377,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0462",
@@ -7393,7 +7393,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0463",
@@ -7409,7 +7409,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0464",
@@ -7425,7 +7425,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0465",
@@ -7441,7 +7441,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0466",
@@ -7457,7 +7457,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0467",
@@ -7473,7 +7473,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0468",
@@ -7489,7 +7489,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0469",
@@ -7505,7 +7505,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0470",
@@ -7521,7 +7521,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0471",
@@ -7537,7 +7537,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0472",
@@ -7553,7 +7553,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0473",
@@ -7569,7 +7569,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0474",
@@ -7585,7 +7585,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0475",
@@ -7601,7 +7601,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0476",
@@ -7617,7 +7617,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0477",
@@ -7633,7 +7633,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0478",
@@ -7649,7 +7649,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0479",
@@ -7665,7 +7665,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0480",
@@ -7681,7 +7681,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0481",
@@ -7697,7 +7697,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0482",
@@ -7713,7 +7713,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0483",
@@ -7729,7 +7729,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0484",
@@ -7745,7 +7745,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0485",
@@ -7761,7 +7761,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0486",
@@ -7777,7 +7777,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0487",
@@ -7793,7 +7793,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0488",
@@ -7809,7 +7809,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0489",
@@ -7825,7 +7825,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0490",
@@ -7841,7 +7841,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0491",
@@ -7857,7 +7857,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0492",
@@ -7873,7 +7873,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0493",
@@ -7889,7 +7889,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0494",
@@ -7905,7 +7905,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0495",
@@ -7921,7 +7921,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0496",
@@ -7937,7 +7937,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0497",
@@ -7953,7 +7953,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0498",
@@ -7969,7 +7969,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0499",
@@ -7985,7 +7985,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0500",
@@ -8001,7 +8001,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0501",
@@ -8017,7 +8017,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0502",
@@ -8033,7 +8033,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0503",
@@ -8049,7 +8049,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0504",
@@ -8065,7 +8065,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0505",
@@ -8081,7 +8081,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0506",
@@ -8097,7 +8097,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0507",
@@ -8113,7 +8113,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0508",
@@ -8129,7 +8129,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0509",
@@ -8145,7 +8145,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0510",
@@ -8161,7 +8161,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0511",
@@ -8177,7 +8177,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0512",
@@ -8193,7 +8193,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0513",
@@ -8209,7 +8209,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0514",
@@ -8225,7 +8225,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0515",
@@ -8241,7 +8241,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0516",
@@ -8257,7 +8257,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0517",
@@ -8273,7 +8273,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0518",
@@ -8289,7 +8289,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0519",
@@ -8305,7 +8305,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0520",
@@ -8321,7 +8321,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0521",
@@ -8337,7 +8337,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0522",
@@ -8353,7 +8353,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0523",
@@ -8369,7 +8369,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0524",
@@ -8385,7 +8385,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0525",
@@ -8401,7 +8401,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0526",
@@ -8417,7 +8417,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0527",
@@ -8433,7 +8433,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0528",
@@ -8449,7 +8449,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0529",
@@ -8465,7 +8465,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0530",
@@ -8481,7 +8481,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0531",
@@ -8497,7 +8497,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0532",
@@ -8513,7 +8513,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0533",
@@ -8529,7 +8529,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0534",
@@ -8545,7 +8545,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0535",
@@ -8561,7 +8561,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0536",
@@ -8577,7 +8577,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0537",
@@ -8593,7 +8593,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0538",
@@ -8609,7 +8609,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0539",
@@ -8625,7 +8625,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0540",
@@ -8641,7 +8641,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0541",
@@ -8657,7 +8657,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0542",
@@ -8673,7 +8673,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0543",
@@ -8689,7 +8689,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0544",
@@ -8705,7 +8705,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0545",
@@ -8721,7 +8721,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0546",
@@ -8737,7 +8737,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0547",
@@ -8753,7 +8753,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0548",
@@ -8769,7 +8769,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0549",
@@ -8785,7 +8785,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0550",
@@ -8801,7 +8801,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0551",
@@ -8817,7 +8817,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0552",
@@ -8833,7 +8833,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0553",
@@ -8849,7 +8849,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0554",
@@ -8865,7 +8865,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0555",
@@ -8881,7 +8881,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0556",
@@ -8897,7 +8897,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0557",
@@ -8913,7 +8913,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0558",
@@ -8929,7 +8929,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0559",
@@ -8945,7 +8945,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0560",
@@ -8961,7 +8961,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0561",
@@ -8977,7 +8977,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0562",
@@ -8993,7 +8993,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0563",
@@ -9009,7 +9009,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0564",
@@ -9025,7 +9025,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0565",
@@ -9041,7 +9041,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0566",
@@ -9057,7 +9057,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0567",
@@ -9073,7 +9073,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0568",
@@ -9089,7 +9089,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0569",
@@ -9105,7 +9105,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0570",
@@ -9121,7 +9121,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0571",
@@ -9137,7 +9137,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0572",
@@ -9153,7 +9153,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0573",
@@ -9169,7 +9169,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0574",
@@ -9185,7 +9185,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0575",
@@ -9201,7 +9201,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0576",
@@ -9217,7 +9217,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0577",
@@ -9233,7 +9233,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0578",
@@ -9249,7 +9249,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0579",
@@ -9265,7 +9265,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0580",
@@ -9281,7 +9281,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0581",
@@ -9297,7 +9297,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0582",
@@ -9313,7 +9313,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0583",
@@ -9329,7 +9329,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0584",
@@ -9345,7 +9345,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0585",
@@ -9361,7 +9361,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0586",
@@ -9377,7 +9377,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0587",
@@ -9393,7 +9393,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0588",
@@ -9409,7 +9409,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0589",
@@ -9425,7 +9425,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0590",
@@ -9441,7 +9441,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0591",
@@ -9457,7 +9457,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0592",
@@ -9473,7 +9473,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0593",
@@ -9489,7 +9489,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0594",
@@ -9505,7 +9505,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0595",
@@ -9521,7 +9521,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0596",
@@ -9537,7 +9537,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0597",
@@ -9553,7 +9553,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0598",
@@ -9569,7 +9569,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0599",
@@ -9585,7 +9585,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0600",
@@ -9601,7 +9601,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0601",
@@ -9617,7 +9617,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0602",
@@ -9633,7 +9633,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0603",
@@ -9649,7 +9649,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0604",
@@ -9665,7 +9665,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0605",
@@ -9681,7 +9681,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0606",
@@ -9697,7 +9697,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0607",
@@ -9713,7 +9713,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0608",
@@ -9729,7 +9729,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0609",
@@ -9745,7 +9745,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0610",
@@ -9761,7 +9761,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0611",
@@ -9777,7 +9777,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0612",
@@ -9793,7 +9793,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0613",
@@ -9809,7 +9809,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0614",
@@ -9825,7 +9825,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0615",
@@ -9841,7 +9841,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0616",
@@ -9857,7 +9857,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0617",
@@ -9873,7 +9873,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0618",
@@ -9889,7 +9889,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0619",
@@ -9905,7 +9905,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0620",
@@ -9921,7 +9921,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0621",
@@ -9937,7 +9937,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0622",
@@ -9953,7 +9953,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0623",
@@ -9969,7 +9969,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0624",
@@ -9985,7 +9985,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0625",
@@ -10001,7 +10001,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0626",
@@ -10017,7 +10017,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0627",
@@ -10033,7 +10033,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0628",
@@ -10049,7 +10049,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0629",
@@ -10065,7 +10065,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0630",
@@ -10081,7 +10081,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0631",
@@ -10097,7 +10097,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0632",
@@ -10113,7 +10113,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0633",
@@ -10129,7 +10129,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0634",
@@ -10145,7 +10145,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0635",
@@ -10161,7 +10161,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0636",
@@ -10177,7 +10177,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0637",
@@ -10193,7 +10193,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0638",
@@ -10209,7 +10209,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0639",
@@ -10225,7 +10225,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0640",
@@ -10241,7 +10241,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0641",
@@ -10257,7 +10257,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0642",
@@ -10273,7 +10273,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0643",
@@ -10289,7 +10289,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0644",
@@ -10305,7 +10305,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0645",
@@ -10321,7 +10321,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0646",
@@ -10337,7 +10337,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0647",
@@ -10353,7 +10353,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0648",
@@ -10369,7 +10369,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0649",
@@ -10385,7 +10385,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0650",
@@ -10401,7 +10401,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0651",
@@ -10417,7 +10417,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0652",
@@ -10433,7 +10433,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0653",
@@ -10449,7 +10449,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0654",
@@ -10465,7 +10465,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0655",
@@ -10481,7 +10481,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0656",
@@ -10497,7 +10497,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0657",
@@ -10513,7 +10513,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0658",
@@ -10529,7 +10529,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0659",
@@ -10545,7 +10545,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0660",
@@ -10561,7 +10561,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0661",
@@ -10577,7 +10577,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0662",
@@ -10593,7 +10593,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0663",
@@ -10609,7 +10609,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0664",
@@ -10625,7 +10625,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0665",
@@ -10641,7 +10641,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0666",
@@ -10657,7 +10657,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0667",
@@ -10673,7 +10673,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0668",
@@ -10689,7 +10689,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0669",
@@ -10705,7 +10705,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0670",
@@ -10721,7 +10721,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0671",
@@ -10737,7 +10737,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0672",
@@ -10753,7 +10753,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0673",
@@ -10769,7 +10769,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0674",
@@ -10785,7 +10785,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0675",
@@ -10801,7 +10801,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0676",
@@ -10817,7 +10817,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0677",
@@ -10833,7 +10833,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0678",
@@ -10849,7 +10849,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0679",
@@ -10865,7 +10865,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0680",
@@ -10881,7 +10881,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0681",
@@ -10897,7 +10897,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0682",
@@ -10913,7 +10913,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0683",
@@ -10929,7 +10929,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0684",
@@ -10945,7 +10945,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0685",
@@ -10961,7 +10961,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0686",
@@ -10977,7 +10977,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0687",
@@ -10993,7 +10993,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0688",
@@ -11009,7 +11009,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0689",
@@ -11025,7 +11025,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0690",
@@ -11041,7 +11041,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0691",
@@ -11057,7 +11057,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0692",
@@ -11073,7 +11073,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0693",
@@ -11089,7 +11089,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0694",
@@ -11105,7 +11105,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0695",
@@ -11121,7 +11121,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0696",
@@ -11137,7 +11137,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0697",
@@ -11153,7 +11153,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0698",
@@ -11169,7 +11169,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0699",
@@ -11185,7 +11185,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0700",
@@ -11201,7 +11201,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0701",
@@ -11217,7 +11217,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0702",
@@ -11233,7 +11233,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0703",
@@ -11249,7 +11249,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0704",
@@ -11265,7 +11265,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0705",
@@ -11281,7 +11281,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0706",
@@ -11297,7 +11297,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0707",
@@ -11313,7 +11313,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0708",
@@ -11329,7 +11329,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0709",
@@ -11345,7 +11345,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0710",
@@ -11361,7 +11361,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0711",
@@ -11377,7 +11377,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0712",
@@ -11393,7 +11393,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0713",
@@ -11409,7 +11409,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0714",
@@ -11425,7 +11425,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0715",
@@ -11441,7 +11441,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0716",
@@ -11457,7 +11457,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0717",
@@ -11473,7 +11473,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0718",
@@ -11489,7 +11489,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0719",
@@ -11505,7 +11505,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0720",
@@ -11521,7 +11521,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0721",
@@ -11537,7 +11537,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0722",
@@ -11553,7 +11553,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0723",
@@ -11569,7 +11569,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0724",
@@ -11585,7 +11585,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0725",
@@ -11601,7 +11601,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0726",
@@ -11617,7 +11617,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0727",
@@ -11633,7 +11633,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0728",
@@ -11649,7 +11649,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0729",
@@ -11665,7 +11665,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0730",
@@ -11681,7 +11681,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0731",
@@ -11697,7 +11697,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0732",
@@ -11713,7 +11713,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0733",
@@ -11729,7 +11729,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0734",
@@ -11745,7 +11745,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0735",
@@ -11761,7 +11761,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0736",
@@ -11777,7 +11777,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0737",
@@ -11793,7 +11793,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0738",
@@ -11809,7 +11809,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0739",
@@ -11825,7 +11825,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0740",
@@ -11841,7 +11841,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0741",
@@ -11857,7 +11857,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0742",
@@ -11873,7 +11873,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0743",
@@ -11889,7 +11889,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0744",
@@ -11905,7 +11905,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0745",
@@ -11921,7 +11921,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0746",
@@ -11937,7 +11937,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0747",
@@ -11953,7 +11953,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0748",
@@ -11969,7 +11969,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0749",
@@ -11985,7 +11985,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0750",
@@ -12001,7 +12001,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0751",
@@ -12017,7 +12017,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0752",
@@ -12033,7 +12033,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0753",
@@ -12049,7 +12049,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0754",
@@ -12065,7 +12065,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0755",
@@ -12081,7 +12081,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0756",
@@ -12097,7 +12097,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0757",
@@ -12113,7 +12113,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0758",
@@ -12129,7 +12129,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0759",
@@ -12145,7 +12145,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0760",
@@ -12161,7 +12161,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0761",
@@ -12177,7 +12177,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0762",
@@ -12193,7 +12193,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0763",
@@ -12209,7 +12209,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0764",
@@ -12225,7 +12225,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0765",
@@ -12241,7 +12241,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0766",
@@ -12257,7 +12257,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0767",
@@ -12273,7 +12273,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0768",
@@ -12289,7 +12289,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0769",
@@ -12305,7 +12305,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0770",
@@ -12321,7 +12321,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0771",
@@ -12337,7 +12337,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0772",
@@ -12353,7 +12353,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0773",
@@ -12369,7 +12369,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0774",
@@ -12385,7 +12385,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0775",
@@ -12401,7 +12401,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0776",
@@ -12417,7 +12417,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0777",
@@ -12433,7 +12433,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0778",
@@ -12449,7 +12449,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0779",
@@ -12465,7 +12465,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0780",
@@ -12481,7 +12481,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0781",
@@ -12497,7 +12497,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0782",
@@ -12513,7 +12513,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0783",
@@ -12529,7 +12529,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0784",
@@ -12545,7 +12545,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0785",
@@ -12561,7 +12561,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0786",
@@ -12577,7 +12577,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0787",
@@ -12593,7 +12593,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0788",
@@ -12609,7 +12609,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0789",
@@ -12625,7 +12625,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0790",
@@ -12641,7 +12641,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0791",
@@ -12657,7 +12657,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0792",
@@ -12673,7 +12673,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0793",
@@ -12689,7 +12689,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0794",
@@ -12705,7 +12705,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0795",
@@ -12721,7 +12721,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0796",
@@ -12737,7 +12737,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0797",
@@ -12753,7 +12753,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0798",
@@ -12769,7 +12769,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0799",
@@ -12785,7 +12785,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0800",
@@ -12801,7 +12801,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0801",
@@ -12817,7 +12817,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0802",
@@ -12833,7 +12833,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0803",
@@ -12849,7 +12849,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0804",
@@ -12865,7 +12865,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0805",
@@ -12881,7 +12881,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0806",
@@ -12897,7 +12897,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0807",
@@ -12913,7 +12913,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0808",
@@ -12929,7 +12929,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0809",
@@ -12945,7 +12945,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0810",
@@ -12961,7 +12961,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0811",
@@ -12977,7 +12977,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0812",
@@ -12993,7 +12993,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0813",
@@ -13009,7 +13009,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0814",
@@ -13025,7 +13025,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0815",
@@ -13041,7 +13041,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0816",
@@ -13057,7 +13057,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0817",
@@ -13073,7 +13073,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0818",
@@ -13089,7 +13089,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0819",
@@ -13105,7 +13105,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0820",
@@ -13121,7 +13121,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0821",
@@ -13137,7 +13137,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0822",
@@ -13153,7 +13153,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0823",
@@ -13169,7 +13169,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0824",
@@ -13185,7 +13185,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0825",
@@ -13201,7 +13201,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0826",
@@ -13217,7 +13217,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0827",
@@ -13233,7 +13233,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0828",
@@ -13249,7 +13249,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0829",
@@ -13265,7 +13265,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0830",
@@ -13281,7 +13281,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0831",
@@ -13297,7 +13297,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0832",
@@ -13313,7 +13313,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0833",
@@ -13329,7 +13329,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0834",
@@ -13345,7 +13345,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0835",
@@ -13361,7 +13361,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0836",
@@ -13377,7 +13377,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0837",
@@ -13393,7 +13393,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0838",
@@ -13409,7 +13409,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0839",
@@ -13425,7 +13425,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0840",
@@ -13441,7 +13441,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0841",
@@ -13457,7 +13457,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0842",
@@ -13473,7 +13473,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0843",
@@ -13489,7 +13489,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0844",
@@ -13505,7 +13505,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0845",
@@ -13521,7 +13521,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0846",
@@ -13537,7 +13537,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0847",
@@ -13553,7 +13553,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0848",
@@ -13569,7 +13569,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0849",
@@ -13585,7 +13585,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0850",
@@ -13601,7 +13601,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0851",
@@ -13617,7 +13617,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0852",
@@ -13633,7 +13633,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0853",
@@ -13649,7 +13649,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0854",
@@ -13665,7 +13665,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0855",
@@ -13681,7 +13681,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0856",
@@ -13697,7 +13697,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0857",
@@ -13713,7 +13713,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0858",
@@ -13729,7 +13729,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0859",
@@ -13745,7 +13745,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0860",
@@ -13761,7 +13761,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0861",
@@ -13777,7 +13777,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0862",
@@ -13793,7 +13793,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0863",
@@ -13809,7 +13809,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0864",
@@ -13825,7 +13825,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0865",
@@ -13841,7 +13841,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0866",
@@ -13857,7 +13857,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0867",
@@ -13873,7 +13873,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0868",
@@ -13889,7 +13889,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0869",
@@ -13905,7 +13905,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0870",
@@ -13921,7 +13921,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0871",
@@ -13937,7 +13937,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0872",
@@ -13953,7 +13953,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0873",
@@ -13969,7 +13969,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0874",
@@ -13985,7 +13985,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0875",
@@ -14001,7 +14001,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0876",
@@ -14017,7 +14017,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0877",
@@ -14033,7 +14033,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0878",
@@ -14049,7 +14049,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0879",
@@ -14065,7 +14065,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0880",
@@ -14081,7 +14081,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0881",
@@ -14097,7 +14097,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0882",
@@ -14113,7 +14113,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0883",
@@ -14129,7 +14129,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0884",
@@ -14145,7 +14145,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0885",
@@ -14161,7 +14161,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0886",
@@ -14177,7 +14177,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0887",
@@ -14193,7 +14193,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0888",
@@ -14209,7 +14209,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0889",
@@ -14225,7 +14225,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0890",
@@ -14241,7 +14241,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0891",
@@ -14257,7 +14257,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0892",
@@ -14273,7 +14273,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0893",
@@ -14289,7 +14289,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0894",
@@ -14305,7 +14305,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0895",
@@ -14321,7 +14321,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0896",
@@ -14337,7 +14337,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0897",
@@ -14353,7 +14353,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0898",
@@ -14369,7 +14369,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0899",
@@ -14385,7 +14385,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0900",
@@ -14401,7 +14401,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0901",
@@ -14417,7 +14417,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0902",
@@ -14433,7 +14433,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0903",
@@ -14449,7 +14449,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0904",
@@ -14465,7 +14465,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0905",
@@ -14481,7 +14481,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0906",
@@ -14497,7 +14497,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0907",
@@ -14513,7 +14513,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0908",
@@ -14529,7 +14529,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0909",
@@ -14545,7 +14545,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0910",
@@ -14561,7 +14561,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0911",
@@ -14577,7 +14577,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0912",
@@ -14593,7 +14593,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0913",
@@ -14609,7 +14609,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0914",
@@ -14625,7 +14625,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0915",
@@ -14641,7 +14641,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0916",
@@ -14657,7 +14657,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0917",
@@ -14673,7 +14673,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0918",
@@ -14689,7 +14689,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0919",
@@ -14705,7 +14705,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0920",
@@ -14721,7 +14721,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0921",
@@ -14737,7 +14737,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0922",
@@ -14753,7 +14753,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0923",
@@ -14769,7 +14769,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0924",
@@ -14785,7 +14785,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0925",
@@ -14801,7 +14801,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0926",
@@ -14817,7 +14817,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0927",
@@ -14833,7 +14833,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0928",
@@ -14849,7 +14849,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0929",
@@ -14865,7 +14865,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0930",
@@ -14881,7 +14881,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0931",
@@ -14897,7 +14897,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0932",
@@ -14913,7 +14913,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0933",
@@ -14929,7 +14929,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0934",
@@ -14945,7 +14945,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0935",
@@ -14961,7 +14961,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0936",
@@ -14977,7 +14977,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0937",
@@ -14993,7 +14993,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0938",
@@ -15009,7 +15009,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0939",
@@ -15025,7 +15025,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0940",
@@ -15041,7 +15041,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0941",
@@ -15057,7 +15057,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0942",
@@ -15073,7 +15073,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0943",
@@ -15089,7 +15089,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0944",
@@ -15105,7 +15105,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0945",
@@ -15121,7 +15121,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0946",
@@ -15137,7 +15137,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0947",
@@ -15153,7 +15153,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0948",
@@ -15169,7 +15169,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0949",
@@ -15185,7 +15185,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0950",
@@ -15201,7 +15201,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0951",
@@ -15217,7 +15217,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0952",
@@ -15233,7 +15233,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0953",
@@ -15249,7 +15249,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0954",
@@ -15265,7 +15265,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0955",
@@ -15281,7 +15281,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0956",
@@ -15297,7 +15297,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0957",
@@ -15313,7 +15313,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0958",
@@ -15329,7 +15329,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0959",
@@ -15345,7 +15345,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0960",
@@ -15361,7 +15361,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0961",
@@ -15377,7 +15377,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0962",
@@ -15393,7 +15393,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0963",
@@ -15409,7 +15409,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0964",
@@ -15425,7 +15425,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0965",
@@ -15441,7 +15441,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0966",
@@ -15457,7 +15457,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0967",
@@ -15473,7 +15473,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0968",
@@ -15489,7 +15489,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0969",
@@ -15505,7 +15505,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0970",
@@ -15521,7 +15521,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0971",
@@ -15537,7 +15537,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0972",
@@ -15553,7 +15553,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0973",
@@ -15569,7 +15569,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0974",
@@ -15585,7 +15585,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0975",
@@ -15601,7 +15601,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0976",
@@ -15617,7 +15617,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0977",
@@ -15633,7 +15633,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0978",
@@ -15649,7 +15649,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0979",
@@ -15665,7 +15665,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0980",
@@ -15681,7 +15681,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0981",
@@ -15697,7 +15697,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0982",
@@ -15713,7 +15713,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0983",
@@ -15729,7 +15729,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0984",
@@ -15745,7 +15745,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0985",
@@ -15761,7 +15761,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0986",
@@ -15777,7 +15777,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0987",
@@ -15793,7 +15793,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0988",
@@ -15809,7 +15809,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0989",
@@ -15825,7 +15825,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0990",
@@ -15841,7 +15841,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0991",
@@ -15857,7 +15857,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0992",
@@ -15873,7 +15873,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0993",
@@ -15889,7 +15889,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0994",
@@ -15905,7 +15905,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0995",
@@ -15921,7 +15921,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0996",
@@ -15937,7 +15937,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0997",
@@ -15953,7 +15953,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0998",
@@ -15969,7 +15969,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-0999",
@@ -15985,7 +15985,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1000",
@@ -16001,7 +16001,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1001",
@@ -16017,7 +16017,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1002",
@@ -16033,7 +16033,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1003",
@@ -16049,7 +16049,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1004",
@@ -16065,7 +16065,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1005",
@@ -16081,7 +16081,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1006",
@@ -16097,7 +16097,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1007",
@@ -16113,7 +16113,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1008",
@@ -16129,7 +16129,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1009",
@@ -16145,7 +16145,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1010",
@@ -16161,7 +16161,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1011",
@@ -16177,7 +16177,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1012",
@@ -16193,7 +16193,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1013",
@@ -16209,7 +16209,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1014",
@@ -16225,7 +16225,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1015",
@@ -16241,7 +16241,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1016",
@@ -16257,7 +16257,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1017",
@@ -16273,7 +16273,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1018",
@@ -16289,7 +16289,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1019",
@@ -16305,7 +16305,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1020",
@@ -16321,7 +16321,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1021",
@@ -16337,7 +16337,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1022",
@@ -16353,7 +16353,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1023",
@@ -16369,7 +16369,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1024",
@@ -16385,7 +16385,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1025",
@@ -16401,7 +16401,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1026",
@@ -16417,7 +16417,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1027",
@@ -16433,7 +16433,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1028",
@@ -16449,7 +16449,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1029",
@@ -16465,7 +16465,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1030",
@@ -16481,7 +16481,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1031",
@@ -16497,7 +16497,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1032",
@@ -16513,7 +16513,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1033",
@@ -16529,7 +16529,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1034",
@@ -16545,7 +16545,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1035",
@@ -16561,7 +16561,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1036",
@@ -16577,7 +16577,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1037",
@@ -16593,7 +16593,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1038",
@@ -16609,7 +16609,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1039",
@@ -16625,7 +16625,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1040",
@@ -16641,7 +16641,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1041",
@@ -16657,7 +16657,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1042",
@@ -16673,7 +16673,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1043",
@@ -16689,7 +16689,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1044",
@@ -16705,7 +16705,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1045",
@@ -16721,7 +16721,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1046",
@@ -16737,7 +16737,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1047",
@@ -16753,7 +16753,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1048",
@@ -16769,7 +16769,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1049",
@@ -16785,7 +16785,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1050",
@@ -16801,7 +16801,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1051",
@@ -16817,7 +16817,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1052",
@@ -16833,7 +16833,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1053",
@@ -16849,7 +16849,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1054",
@@ -16865,7 +16865,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1055",
@@ -16881,7 +16881,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1056",
@@ -16897,7 +16897,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1057",
@@ -16913,7 +16913,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1058",
@@ -16929,7 +16929,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1059",
@@ -16945,7 +16945,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1060",
@@ -16961,7 +16961,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1061",
@@ -16977,7 +16977,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1062",
@@ -16993,7 +16993,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1063",
@@ -17009,7 +17009,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1064",
@@ -17025,7 +17025,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1065",
@@ -17041,7 +17041,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1066",
@@ -17057,7 +17057,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1067",
@@ -17073,7 +17073,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1068",
@@ -17089,7 +17089,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1069",
@@ -17105,7 +17105,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1070",
@@ -17121,7 +17121,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1071",
@@ -17137,7 +17137,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1072",
@@ -17153,7 +17153,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1073",
@@ -17169,7 +17169,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1074",
@@ -17185,7 +17185,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1075",
@@ -17201,7 +17201,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1076",
@@ -17217,7 +17217,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1077",
@@ -17233,7 +17233,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1078",
@@ -17249,7 +17249,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1079",
@@ -17265,7 +17265,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1080",
@@ -17281,7 +17281,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1081",
@@ -17297,7 +17297,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1082",
@@ -17313,7 +17313,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1083",
@@ -17329,7 +17329,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1084",
@@ -17345,7 +17345,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1085",
@@ -17361,7 +17361,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1086",
@@ -17377,7 +17377,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1087",
@@ -17393,7 +17393,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1088",
@@ -17409,7 +17409,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1089",
@@ -17425,7 +17425,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1090",
@@ -17441,7 +17441,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1091",
@@ -17457,7 +17457,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1092",
@@ -17473,7 +17473,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1093",
@@ -17489,7 +17489,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1094",
@@ -17505,7 +17505,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1095",
@@ -17521,7 +17521,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1096",
@@ -17537,7 +17537,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1097",
@@ -17553,7 +17553,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1098",
@@ -17569,7 +17569,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1099",
@@ -17585,7 +17585,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1100",
@@ -17601,7 +17601,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1101",
@@ -17617,7 +17617,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1102",
@@ -17633,7 +17633,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1103",
@@ -17649,7 +17649,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1104",
@@ -17665,7 +17665,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1105",
@@ -17681,7 +17681,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1106",
@@ -17697,7 +17697,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1107",
@@ -17713,7 +17713,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1108",
@@ -17729,7 +17729,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1109",
@@ -17745,7 +17745,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1110",
@@ -17761,7 +17761,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1111",
@@ -17777,7 +17777,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1112",
@@ -17793,7 +17793,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1113",
@@ -17809,7 +17809,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1114",
@@ -17825,7 +17825,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1115",
@@ -17841,7 +17841,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1116",
@@ -17857,7 +17857,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1117",
@@ -17873,7 +17873,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1118",
@@ -17889,7 +17889,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1119",
@@ -17905,7 +17905,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1120",
@@ -17921,7 +17921,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1121",
@@ -17937,7 +17937,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1122",
@@ -17953,7 +17953,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1123",
@@ -17969,7 +17969,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1124",
@@ -17985,7 +17985,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1125",
@@ -18001,7 +18001,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1126",
@@ -18017,7 +18017,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1127",
@@ -18033,7 +18033,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1128",
@@ -18049,7 +18049,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1129",
@@ -18065,7 +18065,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1130",
@@ -18081,7 +18081,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1131",
@@ -18097,7 +18097,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1132",
@@ -18113,7 +18113,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1133",
@@ -18129,7 +18129,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1134",
@@ -18145,7 +18145,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1135",
@@ -18161,7 +18161,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1136",
@@ -18177,7 +18177,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1137",
@@ -18193,7 +18193,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1138",
@@ -18209,7 +18209,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1139",
@@ -18225,7 +18225,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1140",
@@ -18241,7 +18241,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1141",
@@ -18257,7 +18257,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1142",
@@ -18273,7 +18273,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1143",
@@ -18289,7 +18289,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1144",
@@ -18305,7 +18305,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1145",
@@ -18321,7 +18321,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1146",
@@ -18337,7 +18337,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1147",
@@ -18353,7 +18353,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1148",
@@ -18369,7 +18369,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1149",
@@ -18385,7 +18385,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1150",
@@ -18401,7 +18401,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1151",
@@ -18417,7 +18417,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1152",
@@ -18433,7 +18433,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1153",
@@ -18449,7 +18449,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1154",
@@ -18465,7 +18465,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1155",
@@ -18481,7 +18481,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1156",
@@ -18497,7 +18497,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1157",
@@ -18513,7 +18513,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1158",
@@ -18529,7 +18529,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1159",
@@ -18545,7 +18545,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1160",
@@ -18561,7 +18561,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1161",
@@ -18577,7 +18577,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1162",
@@ -18593,7 +18593,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1163",
@@ -18609,7 +18609,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1164",
@@ -18625,7 +18625,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1165",
@@ -18641,7 +18641,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1166",
@@ -18657,7 +18657,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1167",
@@ -18673,7 +18673,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1168",
@@ -18689,7 +18689,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1169",
@@ -18705,7 +18705,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1170",
@@ -18721,7 +18721,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1171",
@@ -18737,7 +18737,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1172",
@@ -18753,7 +18753,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1173",
@@ -18769,7 +18769,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1174",
@@ -18785,7 +18785,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1175",
@@ -18801,7 +18801,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1176",
@@ -18817,7 +18817,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1177",
@@ -18833,7 +18833,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1178",
@@ -18849,7 +18849,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1179",
@@ -18865,7 +18865,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1180",
@@ -18881,7 +18881,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1181",
@@ -18897,7 +18897,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1182",
@@ -18913,7 +18913,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1183",
@@ -18929,7 +18929,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1184",
@@ -18945,7 +18945,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1185",
@@ -18961,7 +18961,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1186",
@@ -18977,7 +18977,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1187",
@@ -18993,7 +18993,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1188",
@@ -19009,7 +19009,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1189",
@@ -19025,7 +19025,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1190",
@@ -19041,7 +19041,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1191",
@@ -19057,7 +19057,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1192",
@@ -19073,7 +19073,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1193",
@@ -19089,7 +19089,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1194",
@@ -19105,7 +19105,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1195",
@@ -19121,7 +19121,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1196",
@@ -19137,7 +19137,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1197",
@@ -19153,7 +19153,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1198",
@@ -19169,7 +19169,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1199",
@@ -19185,7 +19185,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1200",
@@ -19201,7 +19201,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1201",
@@ -19217,7 +19217,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1202",
@@ -19233,7 +19233,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1203",
@@ -19249,7 +19249,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1204",
@@ -19265,7 +19265,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1205",
@@ -19281,7 +19281,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1206",
@@ -19297,7 +19297,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1207",
@@ -19313,7 +19313,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1208",
@@ -19329,7 +19329,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1209",
@@ -19345,7 +19345,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1210",
@@ -19361,7 +19361,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1211",
@@ -19377,7 +19377,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1212",
@@ -19393,7 +19393,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1213",
@@ -19409,7 +19409,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1214",
@@ -19425,7 +19425,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1215",
@@ -19441,7 +19441,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1216",
@@ -19457,7 +19457,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1217",
@@ -19473,7 +19473,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1218",
@@ -19489,7 +19489,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1219",
@@ -19505,7 +19505,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1220",
@@ -19521,7 +19521,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1221",
@@ -19537,7 +19537,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1222",
@@ -19553,7 +19553,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1223",
@@ -19569,7 +19569,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1224",
@@ -19585,7 +19585,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1225",
@@ -19601,7 +19601,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1226",
@@ -19617,7 +19617,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1227",
@@ -19633,7 +19633,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1228",
@@ -19649,7 +19649,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1229",
@@ -19665,7 +19665,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1230",
@@ -19681,7 +19681,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1231",
@@ -19697,7 +19697,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1232",
@@ -19713,7 +19713,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1233",
@@ -19729,7 +19729,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1234",
@@ -19745,7 +19745,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1235",
@@ -19761,7 +19761,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1236",
@@ -19777,7 +19777,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1237",
@@ -19793,7 +19793,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1238",
@@ -19809,7 +19809,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1239",
@@ -19825,7 +19825,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1240",
@@ -19841,7 +19841,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1241",
@@ -19857,7 +19857,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1242",
@@ -19873,7 +19873,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1243",
@@ -19889,7 +19889,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1244",
@@ -19905,7 +19905,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1245",
@@ -19921,7 +19921,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1246",
@@ -19937,7 +19937,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1247",
@@ -19953,7 +19953,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1248",
@@ -19969,7 +19969,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1249",
@@ -19985,7 +19985,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1250",
@@ -20001,7 +20001,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1251",
@@ -20017,7 +20017,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1252",
@@ -20033,7 +20033,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1253",
@@ -20049,7 +20049,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1254",
@@ -20065,7 +20065,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1255",
@@ -20081,7 +20081,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1256",
@@ -20097,7 +20097,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1257",
@@ -20113,7 +20113,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1258",
@@ -20129,7 +20129,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1259",
@@ -20145,7 +20145,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1260",
@@ -20161,7 +20161,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1261",
@@ -20177,7 +20177,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1262",
@@ -20193,7 +20193,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1263",
@@ -20209,7 +20209,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1264",
@@ -20225,7 +20225,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1265",
@@ -20241,7 +20241,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1266",
@@ -20257,7 +20257,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1267",
@@ -20273,7 +20273,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1268",
@@ -20289,7 +20289,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1269",
@@ -20305,7 +20305,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1270",
@@ -20321,7 +20321,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1271",
@@ -20337,7 +20337,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1272",
@@ -20353,7 +20353,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1273",
@@ -20369,7 +20369,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1274",
@@ -20385,7 +20385,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1275",
@@ -20401,7 +20401,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1276",
@@ -20417,7 +20417,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1277",
@@ -20433,7 +20433,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1278",
@@ -20449,7 +20449,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1279",
@@ -20465,7 +20465,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1280",
@@ -20481,7 +20481,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1281",
@@ -20497,7 +20497,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1282",
@@ -20513,7 +20513,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1283",
@@ -20529,7 +20529,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1284",
@@ -20545,7 +20545,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1285",
@@ -20561,7 +20561,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1286",
@@ -20577,7 +20577,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1287",
@@ -20593,7 +20593,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1288",
@@ -20609,7 +20609,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1289",
@@ -20625,7 +20625,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1290",
@@ -20641,7 +20641,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1291",
@@ -20657,7 +20657,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1292",
@@ -20673,7 +20673,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1293",
@@ -20689,7 +20689,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1294",
@@ -20705,7 +20705,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1295",
@@ -20721,7 +20721,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1296",
@@ -20737,7 +20737,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1297",
@@ -20753,7 +20753,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1298",
@@ -20769,7 +20769,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1299",
@@ -20785,7 +20785,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1300",
@@ -20801,7 +20801,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1301",
@@ -20817,7 +20817,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1302",
@@ -20833,7 +20833,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1303",
@@ -20849,7 +20849,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1304",
@@ -20865,7 +20865,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1305",
@@ -20881,7 +20881,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1306",
@@ -20897,7 +20897,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1307",
@@ -20913,7 +20913,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1308",
@@ -20929,7 +20929,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1309",
@@ -20945,7 +20945,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1310",
@@ -20961,7 +20961,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1311",
@@ -20977,7 +20977,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1312",
@@ -20993,7 +20993,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1313",
@@ -21009,7 +21009,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1314",
@@ -21025,7 +21025,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1315",
@@ -21041,7 +21041,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1316",
@@ -21057,7 +21057,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1317",
@@ -21073,7 +21073,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1318",
@@ -21089,7 +21089,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1319",
@@ -21105,7 +21105,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1320",
@@ -21121,7 +21121,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1321",
@@ -21137,7 +21137,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1322",
@@ -21153,7 +21153,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1323",
@@ -21169,7 +21169,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1324",
@@ -21185,7 +21185,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1325",
@@ -21201,7 +21201,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1326",
@@ -21217,7 +21217,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1327",
@@ -21233,7 +21233,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1328",
@@ -21249,7 +21249,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1329",
@@ -21265,7 +21265,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1330",
@@ -21281,7 +21281,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1331",
@@ -21297,7 +21297,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1332",
@@ -21313,7 +21313,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1333",
@@ -21329,7 +21329,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1334",
@@ -21345,7 +21345,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1335",
@@ -21361,7 +21361,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1336",
@@ -21377,7 +21377,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1337",
@@ -21393,7 +21393,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1338",
@@ -21409,7 +21409,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1339",
@@ -21425,7 +21425,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1340",
@@ -21441,7 +21441,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1341",
@@ -21457,7 +21457,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1342",
@@ -21473,7 +21473,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1343",
@@ -21489,7 +21489,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1344",
@@ -21505,7 +21505,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1345",
@@ -21521,7 +21521,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1346",
@@ -21537,7 +21537,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1347",
@@ -21553,7 +21553,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1348",
@@ -21569,7 +21569,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1349",
@@ -21585,7 +21585,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1350",
@@ -21601,7 +21601,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1351",
@@ -21617,7 +21617,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1352",
@@ -21633,7 +21633,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1353",
@@ -21649,7 +21649,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1354",
@@ -21665,7 +21665,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1355",
@@ -21681,7 +21681,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1356",
@@ -21697,7 +21697,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1357",
@@ -21713,7 +21713,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1358",
@@ -21729,7 +21729,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1359",
@@ -21745,7 +21745,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1360",
@@ -21761,7 +21761,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1361",
@@ -21777,7 +21777,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1362",
@@ -21793,7 +21793,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1363",
@@ -21809,7 +21809,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1364",
@@ -21825,7 +21825,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1365",
@@ -21841,7 +21841,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1366",
@@ -21857,7 +21857,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1367",
@@ -21873,7 +21873,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1368",
@@ -21889,7 +21889,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1369",
@@ -21905,7 +21905,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1370",
@@ -21921,7 +21921,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1371",
@@ -21937,7 +21937,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1372",
@@ -21953,7 +21953,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1373",
@@ -21969,7 +21969,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1374",
@@ -21985,7 +21985,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1375",
@@ -22001,7 +22001,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1376",
@@ -22017,7 +22017,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1377",
@@ -22033,7 +22033,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1378",
@@ -22049,7 +22049,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1379",
@@ -22065,7 +22065,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1380",
@@ -22081,7 +22081,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1381",
@@ -22097,7 +22097,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1382",
@@ -22113,7 +22113,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1383",
@@ -22129,7 +22129,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1384",
@@ -22145,7 +22145,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1385",
@@ -22161,7 +22161,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1386",
@@ -22177,7 +22177,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1387",
@@ -22193,7 +22193,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1388",
@@ -22209,7 +22209,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1389",
@@ -22225,7 +22225,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1390",
@@ -22241,7 +22241,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1391",
@@ -22257,7 +22257,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1392",
@@ -22273,7 +22273,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1393",
@@ -22289,7 +22289,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1394",
@@ -22305,7 +22305,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1395",
@@ -22321,7 +22321,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1396",
@@ -22337,7 +22337,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1397",
@@ -22353,7 +22353,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1398",
@@ -22369,7 +22369,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1399",
@@ -22385,7 +22385,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1400",
@@ -22401,7 +22401,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1401",
@@ -22417,7 +22417,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1402",
@@ -22433,7 +22433,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1403",
@@ -22449,7 +22449,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1404",
@@ -22465,7 +22465,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1405",
@@ -22481,7 +22481,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1406",
@@ -22497,7 +22497,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1407",
@@ -22513,7 +22513,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1408",
@@ -22529,7 +22529,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1409",
@@ -22545,7 +22545,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1410",
@@ -22561,7 +22561,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1411",
@@ -22577,7 +22577,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1412",
@@ -22593,7 +22593,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1413",
@@ -22609,7 +22609,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1414",
@@ -22625,7 +22625,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1415",
@@ -22641,7 +22641,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1416",
@@ -22657,7 +22657,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1417",
@@ -22673,7 +22673,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1418",
@@ -22689,7 +22689,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1419",
@@ -22705,7 +22705,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1420",
@@ -22721,7 +22721,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1421",
@@ -22737,7 +22737,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1422",
@@ -22753,7 +22753,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1423",
@@ -22769,7 +22769,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1424",
@@ -22785,7 +22785,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1425",
@@ -22801,7 +22801,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1426",
@@ -22817,7 +22817,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1427",
@@ -22833,7 +22833,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1428",
@@ -22849,7 +22849,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1429",
@@ -22865,7 +22865,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1430",
@@ -22881,7 +22881,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1431",
@@ -22897,7 +22897,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1432",
@@ -22913,7 +22913,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1433",
@@ -22929,7 +22929,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1434",
@@ -22945,7 +22945,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1435",
@@ -22961,7 +22961,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1436",
@@ -22977,7 +22977,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1437",
@@ -22993,7 +22993,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1438",
@@ -23009,7 +23009,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1439",
@@ -23025,7 +23025,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1440",
@@ -23041,7 +23041,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1441",
@@ -23057,7 +23057,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1442",
@@ -23073,7 +23073,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1443",
@@ -23089,7 +23089,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1444",
@@ -23105,7 +23105,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1445",
@@ -23121,7 +23121,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1446",
@@ -23137,7 +23137,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1447",
@@ -23153,7 +23153,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1448",
@@ -23169,7 +23169,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1449",
@@ -23185,7 +23185,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1450",
@@ -23201,7 +23201,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1451",
@@ -23217,7 +23217,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1452",
@@ -23233,7 +23233,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1453",
@@ -23249,7 +23249,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1454",
@@ -23265,7 +23265,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1455",
@@ -23281,7 +23281,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1456",
@@ -23297,7 +23297,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1457",
@@ -23313,7 +23313,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1458",
@@ -23329,7 +23329,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1459",
@@ -23345,7 +23345,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1460",
@@ -23361,7 +23361,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1461",
@@ -23377,7 +23377,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1462",
@@ -23393,7 +23393,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1463",
@@ -23409,7 +23409,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1464",
@@ -23425,7 +23425,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1465",
@@ -23441,7 +23441,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1466",
@@ -23457,7 +23457,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1467",
@@ -23473,7 +23473,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1468",
@@ -23489,7 +23489,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1469",
@@ -23505,7 +23505,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1470",
@@ -23521,7 +23521,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1471",
@@ -23537,7 +23537,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1472",
@@ -23553,7 +23553,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1473",
@@ -23569,7 +23569,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1474",
@@ -23585,7 +23585,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1475",
@@ -23601,7 +23601,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1476",
@@ -23617,7 +23617,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1477",
@@ -23633,7 +23633,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1478",
@@ -23649,7 +23649,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1479",
@@ -23665,7 +23665,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1480",
@@ -23681,7 +23681,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1481",
@@ -23697,7 +23697,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1482",
@@ -23713,7 +23713,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1483",
@@ -23729,7 +23729,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1484",
@@ -23745,7 +23745,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1485",
@@ -23761,7 +23761,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1486",
@@ -23777,7 +23777,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1487",
@@ -23793,7 +23793,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1488",
@@ -23809,7 +23809,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1489",
@@ -23825,7 +23825,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1490",
@@ -23841,7 +23841,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1491",
@@ -23857,7 +23857,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1492",
@@ -23873,7 +23873,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1493",
@@ -23889,7 +23889,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1494",
@@ -23905,7 +23905,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1495",
@@ -23921,7 +23921,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1496",
@@ -23937,7 +23937,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1497",
@@ -23953,7 +23953,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1498",
@@ -23969,7 +23969,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1499",
@@ -23985,7 +23985,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1500",
@@ -24001,7 +24001,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1501",
@@ -24017,7 +24017,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1502",
@@ -24033,7 +24033,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1503",
@@ -24049,7 +24049,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1504",
@@ -24065,7 +24065,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1505",
@@ -24081,7 +24081,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1506",
@@ -24097,7 +24097,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1507",
@@ -24113,7 +24113,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1508",
@@ -24129,7 +24129,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1509",
@@ -24145,7 +24145,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1510",
@@ -24161,7 +24161,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1511",
@@ -24177,7 +24177,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1512",
@@ -24193,7 +24193,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1513",
@@ -24209,7 +24209,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1514",
@@ -24225,7 +24225,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1515",
@@ -24241,7 +24241,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1516",
@@ -24257,7 +24257,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1517",
@@ -24273,7 +24273,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1518",
@@ -24289,7 +24289,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1519",
@@ -24305,7 +24305,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1520",
@@ -24321,7 +24321,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1521",
@@ -24337,7 +24337,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1522",
@@ -24353,7 +24353,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1523",
@@ -24369,7 +24369,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1524",
@@ -24385,7 +24385,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1525",
@@ -24401,7 +24401,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1526",
@@ -24417,7 +24417,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1527",
@@ -24433,7 +24433,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1528",
@@ -24449,7 +24449,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1529",
@@ -24465,7 +24465,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1530",
@@ -24481,7 +24481,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1531",
@@ -24497,7 +24497,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1532",
@@ -24513,7 +24513,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1533",
@@ -24529,7 +24529,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1534",
@@ -24545,7 +24545,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1535",
@@ -24561,7 +24561,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1536",
@@ -24577,7 +24577,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1537",
@@ -24593,7 +24593,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1538",
@@ -24609,7 +24609,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1539",
@@ -24625,7 +24625,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1540",
@@ -24641,7 +24641,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1541",
@@ -24657,7 +24657,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1542",
@@ -24673,7 +24673,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1543",
@@ -24689,7 +24689,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1544",
@@ -24705,7 +24705,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1545",
@@ -24721,7 +24721,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1546",
@@ -24737,7 +24737,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1547",
@@ -24753,7 +24753,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1548",
@@ -24769,7 +24769,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1549",
@@ -24785,7 +24785,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1550",
@@ -24801,7 +24801,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1551",
@@ -24817,7 +24817,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1552",
@@ -24833,7 +24833,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1553",
@@ -24849,7 +24849,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1554",
@@ -24865,7 +24865,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1555",
@@ -24881,7 +24881,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1556",
@@ -24897,7 +24897,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1557",
@@ -24913,7 +24913,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1558",
@@ -24929,7 +24929,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1559",
@@ -24945,7 +24945,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1560",
@@ -24961,7 +24961,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1561",
@@ -24977,7 +24977,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1562",
@@ -24993,7 +24993,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1563",
@@ -25009,7 +25009,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1564",
@@ -25025,7 +25025,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1565",
@@ -25041,7 +25041,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1566",
@@ -25057,7 +25057,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1567",
@@ -25073,7 +25073,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1568",
@@ -25089,7 +25089,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1569",
@@ -25105,7 +25105,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1570",
@@ -25121,7 +25121,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1571",
@@ -25137,7 +25137,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1572",
@@ -25153,7 +25153,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1573",
@@ -25169,7 +25169,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1574",
@@ -25185,7 +25185,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1575",
@@ -25201,7 +25201,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1576",
@@ -25217,7 +25217,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1577",
@@ -25233,7 +25233,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1578",
@@ -25249,7 +25249,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1579",
@@ -25265,7 +25265,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1580",
@@ -25281,7 +25281,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1581",
@@ -25297,7 +25297,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1582",
@@ -25313,7 +25313,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1583",
@@ -25329,7 +25329,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1584",
@@ -25345,7 +25345,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1585",
@@ -25361,7 +25361,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1586",
@@ -25377,7 +25377,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1587",
@@ -25393,7 +25393,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1588",
@@ -25409,7 +25409,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1589",
@@ -25425,7 +25425,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1590",
@@ -25441,7 +25441,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1591",
@@ -25457,7 +25457,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1592",
@@ -25473,7 +25473,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1593",
@@ -25489,7 +25489,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1594",
@@ -25505,7 +25505,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1595",
@@ -25521,7 +25521,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1596",
@@ -25537,7 +25537,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1597",
@@ -25553,7 +25553,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1598",
@@ -25569,7 +25569,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1599",
@@ -25585,7 +25585,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1600",
@@ -25601,7 +25601,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1601",
@@ -25617,7 +25617,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1602",
@@ -25633,7 +25633,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1603",
@@ -25649,7 +25649,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1604",
@@ -25665,7 +25665,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1605",
@@ -25681,7 +25681,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1606",
@@ -25697,7 +25697,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1607",
@@ -25713,7 +25713,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1608",
@@ -25729,7 +25729,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1609",
@@ -25745,7 +25745,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1610",
@@ -25761,7 +25761,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1611",
@@ -25777,7 +25777,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1612",
@@ -25793,7 +25793,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1613",
@@ -25809,7 +25809,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1614",
@@ -25825,7 +25825,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1615",
@@ -25841,7 +25841,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1616",
@@ -25857,7 +25857,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1617",
@@ -25873,7 +25873,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1618",
@@ -25889,7 +25889,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1619",
@@ -25905,7 +25905,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1620",
@@ -25921,7 +25921,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1621",
@@ -25937,7 +25937,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1622",
@@ -25953,7 +25953,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1623",
@@ -25969,7 +25969,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1624",
@@ -25985,7 +25985,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1625",
@@ -26001,7 +26001,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1626",
@@ -26017,7 +26017,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1627",
@@ -26033,7 +26033,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1628",
@@ -26049,7 +26049,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1629",
@@ -26065,7 +26065,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1630",
@@ -26081,7 +26081,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1631",
@@ -26097,7 +26097,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1632",
@@ -26113,7 +26113,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1633",
@@ -26129,7 +26129,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1634",
@@ -26145,7 +26145,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1635",
@@ -26161,7 +26161,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1636",
@@ -26177,7 +26177,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1637",
@@ -26193,7 +26193,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1638",
@@ -26209,7 +26209,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1639",
@@ -26225,7 +26225,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1640",
@@ -26241,7 +26241,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1641",
@@ -26257,7 +26257,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1642",
@@ -26273,7 +26273,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1643",
@@ -26289,7 +26289,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1644",
@@ -26305,7 +26305,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1645",
@@ -26321,7 +26321,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1646",
@@ -26337,7 +26337,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1647",
@@ -26353,7 +26353,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1648",
@@ -26369,7 +26369,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1649",
@@ -26385,7 +26385,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1650",
@@ -26401,7 +26401,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1651",
@@ -26417,7 +26417,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1652",
@@ -26433,7 +26433,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1653",
@@ -26449,7 +26449,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1654",
@@ -26465,7 +26465,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1655",
@@ -26481,7 +26481,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1656",
@@ -26497,7 +26497,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1657",
@@ -26513,7 +26513,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1658",
@@ -26529,7 +26529,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1659",
@@ -26545,7 +26545,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1660",
@@ -26561,7 +26561,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1661",
@@ -26577,7 +26577,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1662",
@@ -26593,7 +26593,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1663",
@@ -26609,7 +26609,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1664",
@@ -26625,7 +26625,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1665",
@@ -26641,7 +26641,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1666",
@@ -26657,7 +26657,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1667",
@@ -26673,7 +26673,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1668",
@@ -26689,7 +26689,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1669",
@@ -26705,7 +26705,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1670",
@@ -26721,7 +26721,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1671",
@@ -26737,7 +26737,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1672",
@@ -26753,7 +26753,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1673",
@@ -26769,7 +26769,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1674",
@@ -26785,7 +26785,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1675",
@@ -26801,7 +26801,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1676",
@@ -26817,7 +26817,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1677",
@@ -26833,7 +26833,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1678",
@@ -26849,7 +26849,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1679",
@@ -26865,7 +26865,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1680",
@@ -26881,7 +26881,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1681",
@@ -26897,7 +26897,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1682",
@@ -26913,7 +26913,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1683",
@@ -26929,7 +26929,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1684",
@@ -26945,7 +26945,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1685",
@@ -26961,7 +26961,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1686",
@@ -26977,7 +26977,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1687",
@@ -26993,7 +26993,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1688",
@@ -27009,7 +27009,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1689",
@@ -27025,7 +27025,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1690",
@@ -27041,7 +27041,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1691",
@@ -27057,7 +27057,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1692",
@@ -27073,7 +27073,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1693",
@@ -27089,7 +27089,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1694",
@@ -27105,7 +27105,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1695",
@@ -27121,7 +27121,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1696",
@@ -27137,7 +27137,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1697",
@@ -27153,7 +27153,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1698",
@@ -27169,7 +27169,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1699",
@@ -27185,7 +27185,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1700",
@@ -27201,7 +27201,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1701",
@@ -27217,7 +27217,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1702",
@@ -27233,7 +27233,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1703",
@@ -27249,7 +27249,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1704",
@@ -27265,7 +27265,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1705",
@@ -27281,7 +27281,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1706",
@@ -27297,7 +27297,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1707",
@@ -27313,7 +27313,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1708",
@@ -27329,7 +27329,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1709",
@@ -27345,7 +27345,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1710",
@@ -27361,7 +27361,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1711",
@@ -27377,7 +27377,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1712",
@@ -27393,7 +27393,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1713",
@@ -27409,7 +27409,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1714",
@@ -27425,7 +27425,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1715",
@@ -27441,7 +27441,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1716",
@@ -27457,7 +27457,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1717",
@@ -27473,7 +27473,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1718",
@@ -27489,7 +27489,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1719",
@@ -27505,7 +27505,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1720",
@@ -27521,7 +27521,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1721",
@@ -27537,7 +27537,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1722",
@@ -27553,7 +27553,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1723",
@@ -27569,7 +27569,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1724",
@@ -27585,7 +27585,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1725",
@@ -27601,7 +27601,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1726",
@@ -27617,7 +27617,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1727",
@@ -27633,7 +27633,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1728",
@@ -27649,7 +27649,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1729",
@@ -27665,7 +27665,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1730",
@@ -27681,7 +27681,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1731",
@@ -27697,7 +27697,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1732",
@@ -27713,7 +27713,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1733",
@@ -27729,7 +27729,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1734",
@@ -27745,7 +27745,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1735",
@@ -27761,7 +27761,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1736",
@@ -27777,7 +27777,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1737",
@@ -27793,7 +27793,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1738",
@@ -27809,7 +27809,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1739",
@@ -27825,7 +27825,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1740",
@@ -27841,7 +27841,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1741",
@@ -27857,7 +27857,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1742",
@@ -27873,7 +27873,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1743",
@@ -27889,7 +27889,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1744",
@@ -27905,7 +27905,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1745",
@@ -27921,7 +27921,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1746",
@@ -27937,7 +27937,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1747",
@@ -27953,7 +27953,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1748",
@@ -27969,7 +27969,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1749",
@@ -27985,7 +27985,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1750",
@@ -28001,7 +28001,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1751",
@@ -28017,7 +28017,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1752",
@@ -28033,7 +28033,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1753",
@@ -28049,7 +28049,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1754",
@@ -28065,7 +28065,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1755",
@@ -28081,7 +28081,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1756",
@@ -28097,7 +28097,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1757",
@@ -28113,7 +28113,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1758",
@@ -28129,7 +28129,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1759",
@@ -28145,7 +28145,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1760",
@@ -28161,7 +28161,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1761",
@@ -28177,7 +28177,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1762",
@@ -28193,7 +28193,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1763",
@@ -28209,7 +28209,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1764",
@@ -28225,7 +28225,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1765",
@@ -28241,7 +28241,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1766",
@@ -28257,7 +28257,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1767",
@@ -28273,7 +28273,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1768",
@@ -28289,7 +28289,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1769",
@@ -28305,7 +28305,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1770",
@@ -28321,7 +28321,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1771",
@@ -28337,7 +28337,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1772",
@@ -28353,7 +28353,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1773",
@@ -28369,7 +28369,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1774",
@@ -28385,7 +28385,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1775",
@@ -28401,7 +28401,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1776",
@@ -28417,7 +28417,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1777",
@@ -28433,7 +28433,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1778",
@@ -28449,7 +28449,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1779",
@@ -28465,7 +28465,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1780",
@@ -28481,7 +28481,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1781",
@@ -28497,7 +28497,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1782",
@@ -28513,7 +28513,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1783",
@@ -28529,7 +28529,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1784",
@@ -28545,7 +28545,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1785",
@@ -28561,7 +28561,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1786",
@@ -28577,7 +28577,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1787",
@@ -28593,7 +28593,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1788",
@@ -28609,7 +28609,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1789",
@@ -28625,7 +28625,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1790",
@@ -28641,7 +28641,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1791",
@@ -28657,7 +28657,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1792",
@@ -28673,7 +28673,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1793",
@@ -28689,7 +28689,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1794",
@@ -28705,7 +28705,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1795",
@@ -28721,7 +28721,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1796",
@@ -28737,7 +28737,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1797",
@@ -28753,7 +28753,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1798",
@@ -28769,7 +28769,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1799",
@@ -28785,7 +28785,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1800",
@@ -28801,7 +28801,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1801",
@@ -28817,7 +28817,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1802",
@@ -28833,7 +28833,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1803",
@@ -28849,7 +28849,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1804",
@@ -28865,7 +28865,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1805",
@@ -28881,7 +28881,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1806",
@@ -28897,7 +28897,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1807",
@@ -28913,7 +28913,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1808",
@@ -28929,7 +28929,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1809",
@@ -28945,7 +28945,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1810",
@@ -28961,7 +28961,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1811",
@@ -28977,7 +28977,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1812",
@@ -28993,7 +28993,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1813",
@@ -29009,7 +29009,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1814",
@@ -29025,7 +29025,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1815",
@@ -29041,7 +29041,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1816",
@@ -29057,7 +29057,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1817",
@@ -29073,7 +29073,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1818",
@@ -29089,7 +29089,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1819",
@@ -29105,7 +29105,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1820",
@@ -29121,7 +29121,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1821",
@@ -29137,7 +29137,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1822",
@@ -29153,7 +29153,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1823",
@@ -29169,7 +29169,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1824",
@@ -29185,7 +29185,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1825",
@@ -29201,7 +29201,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1826",
@@ -29217,7 +29217,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1827",
@@ -29233,7 +29233,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1828",
@@ -29249,7 +29249,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1829",
@@ -29265,7 +29265,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1830",
@@ -29281,7 +29281,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1831",
@@ -29297,7 +29297,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1832",
@@ -29313,7 +29313,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1833",
@@ -29329,7 +29329,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1834",
@@ -29345,7 +29345,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1835",
@@ -29361,7 +29361,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1836",
@@ -29377,7 +29377,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1837",
@@ -29393,7 +29393,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1838",
@@ -29409,7 +29409,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1839",
@@ -29425,7 +29425,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1840",
@@ -29441,7 +29441,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1841",
@@ -29457,7 +29457,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1842",
@@ -29473,7 +29473,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1843",
@@ -29489,7 +29489,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1844",
@@ -29505,7 +29505,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1845",
@@ -29521,7 +29521,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1846",
@@ -29537,7 +29537,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1847",
@@ -29553,7 +29553,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1848",
@@ -29569,7 +29569,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1849",
@@ -29585,7 +29585,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1850",
@@ -29601,7 +29601,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1851",
@@ -29617,7 +29617,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1852",
@@ -29633,7 +29633,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1853",
@@ -29649,7 +29649,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1854",
@@ -29665,7 +29665,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1855",
@@ -29681,7 +29681,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1856",
@@ -29697,7 +29697,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1857",
@@ -29713,7 +29713,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1858",
@@ -29729,7 +29729,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1859",
@@ -29745,7 +29745,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1860",
@@ -29761,7 +29761,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1861",
@@ -29777,7 +29777,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1862",
@@ -29793,7 +29793,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1863",
@@ -29809,7 +29809,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1864",
@@ -29825,7 +29825,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1865",
@@ -29841,7 +29841,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1866",
@@ -29857,7 +29857,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1867",
@@ -29873,7 +29873,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1868",
@@ -29889,7 +29889,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1869",
@@ -29905,7 +29905,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1870",
@@ -29921,7 +29921,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1871",
@@ -29937,7 +29937,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1872",
@@ -29953,7 +29953,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1873",
@@ -29969,7 +29969,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1874",
@@ -29985,7 +29985,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1875",
@@ -30001,7 +30001,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1876",
@@ -30017,7 +30017,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1877",
@@ -30033,7 +30033,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1878",
@@ -30049,7 +30049,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1879",
@@ -30065,7 +30065,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1880",
@@ -30081,7 +30081,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1881",
@@ -30097,7 +30097,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1882",
@@ -30113,7 +30113,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1883",
@@ -30129,7 +30129,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1884",
@@ -30145,7 +30145,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1885",
@@ -30161,7 +30161,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1886",
@@ -30177,7 +30177,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1887",
@@ -30193,7 +30193,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1888",
@@ -30209,7 +30209,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1889",
@@ -30225,7 +30225,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1890",
@@ -30241,7 +30241,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1891",
@@ -30257,7 +30257,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1892",
@@ -30273,7 +30273,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1893",
@@ -30289,7 +30289,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1894",
@@ -30305,7 +30305,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1895",
@@ -30321,7 +30321,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1896",
@@ -30337,7 +30337,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1897",
@@ -30353,7 +30353,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1898",
@@ -30369,7 +30369,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1899",
@@ -30385,7 +30385,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1900",
@@ -30401,7 +30401,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1901",
@@ -30417,7 +30417,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1902",
@@ -30433,7 +30433,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1903",
@@ -30449,7 +30449,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1904",
@@ -30465,7 +30465,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1905",
@@ -30481,7 +30481,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1906",
@@ -30497,7 +30497,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1907",
@@ -30513,7 +30513,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1908",
@@ -30529,7 +30529,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1909",
@@ -30545,7 +30545,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1910",
@@ -30561,7 +30561,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1911",
@@ -30577,7 +30577,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1912",
@@ -30593,7 +30593,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1913",
@@ -30609,7 +30609,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1914",
@@ -30625,7 +30625,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1915",
@@ -30641,7 +30641,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1916",
@@ -30657,7 +30657,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1917",
@@ -30673,7 +30673,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1918",
@@ -30689,7 +30689,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1919",
@@ -30705,7 +30705,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1920",
@@ -30721,7 +30721,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1921",
@@ -30737,7 +30737,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1922",
@@ -30753,7 +30753,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1923",
@@ -30769,7 +30769,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1924",
@@ -30785,7 +30785,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1925",
@@ -30801,7 +30801,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1926",
@@ -30817,7 +30817,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1927",
@@ -30833,7 +30833,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1928",
@@ -30849,7 +30849,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1929",
@@ -30865,7 +30865,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1930",
@@ -30881,7 +30881,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1931",
@@ -30897,7 +30897,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1932",
@@ -30913,7 +30913,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1933",
@@ -30929,7 +30929,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1934",
@@ -30945,7 +30945,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1935",
@@ -30961,7 +30961,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1936",
@@ -30977,7 +30977,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1937",
@@ -30993,7 +30993,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1938",
@@ -31009,7 +31009,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1939",
@@ -31025,7 +31025,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1940",
@@ -31041,7 +31041,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1941",
@@ -31057,7 +31057,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1942",
@@ -31073,7 +31073,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1943",
@@ -31089,7 +31089,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1944",
@@ -31105,7 +31105,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1945",
@@ -31121,7 +31121,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1946",
@@ -31137,7 +31137,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1947",
@@ -31153,7 +31153,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1948",
@@ -31169,7 +31169,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1949",
@@ -31185,7 +31185,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1950",
@@ -31201,7 +31201,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1951",
@@ -31217,7 +31217,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1952",
@@ -31233,7 +31233,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1953",
@@ -31249,7 +31249,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1954",
@@ -31265,7 +31265,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1955",
@@ -31281,7 +31281,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1956",
@@ -31297,7 +31297,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1957",
@@ -31313,7 +31313,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1958",
@@ -31329,7 +31329,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1959",
@@ -31345,7 +31345,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1960",
@@ -31361,7 +31361,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1961",
@@ -31377,7 +31377,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1962",
@@ -31393,7 +31393,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1963",
@@ -31409,7 +31409,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1964",
@@ -31425,7 +31425,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1965",
@@ -31441,7 +31441,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1966",
@@ -31457,7 +31457,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1967",
@@ -31473,7 +31473,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1968",
@@ -31489,7 +31489,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1969",
@@ -31505,7 +31505,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   },
   {
     "id": "AGT-1970",
@@ -31521,7 +31521,7 @@ export const PRIVATE_AGENT_CATALOG = [
       "research-web-authorized"
     ],
     "catalogStatus": "documented",
-    "executionStatus": "not_executable"
+    "executionStatus": "available_on_demand"
   }
 ] as const satisfies readonly PrivateCatalogAgent[];
 

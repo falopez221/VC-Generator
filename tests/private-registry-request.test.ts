@@ -18,7 +18,7 @@ test("private registry request creates a safe dry-run plan from decoded rows", (
     catalog: { accepted: 2, rejected: 0 },
     progress: { accepted: 0, rejected: 1 },
     batches: { accepted: 1, rejected: 0 },
-    executableAgents: 0,
+    executableAgents: 2,
   });
 });
 

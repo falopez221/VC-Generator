@@ -21,7 +21,7 @@ CREATE TABLE `private_catalog_agents` (
 	`capability_summary` text DEFAULT '' NOT NULL,
 	`tags_json` text DEFAULT '[]' NOT NULL,
 	`catalog_status` text DEFAULT 'documented' NOT NULL,
-	`execution_status` text DEFAULT 'not_executable' NOT NULL,
+	`execution_status` text DEFAULT 'available_on_demand' NOT NULL,
 	`created_at` text NOT NULL,
 	`updated_at` text NOT NULL
 );

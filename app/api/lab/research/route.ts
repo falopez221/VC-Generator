@@ -19,7 +19,9 @@ class ClientRequestError extends Error {
 }
 
 function anonymousRateKey(request: Request) {
-  const raw = request.headers.get("cf-connecting-ip") || request.headers.get("x-real-ip") || "anonymous";
+  // Cloudflare overwrites this header at the edge. Do not accept x-real-ip,
+  // which a browser client can forge to evade the per-client guard.
+  const raw = request.headers.get("cf-connecting-ip") || "anonymous";
   let hash = 2166136261;
   for (let index = 0; index < raw.length; index += 1) {
     hash ^= raw.charCodeAt(index);

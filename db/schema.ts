@@ -15,7 +15,7 @@ export const privateCatalogAgents = sqliteTable("private_catalog_agents", {
   capabilitySummary: text("capability_summary").notNull().default(""),
   tagsJson: text("tags_json").notNull().default("[]"),
   catalogStatus: text("catalog_status").notNull().default("documented"),
-  executionStatus: text("execution_status").notNull().default("not_executable"),
+  executionStatus: text("execution_status").notNull().default("available_on_demand"),
   createdAt: text("created_at").notNull(),
   updatedAt: text("updated_at").notNull(),
 });

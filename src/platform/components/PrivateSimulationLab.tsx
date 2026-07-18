@@ -6,6 +6,13 @@ import type { ScenarioInput } from "@/src/private/models";
 
 type ScenarioField = Exclude<keyof ScenarioInput, "id">;
 type ScenarioDraft = ScenarioInput;
+type SensitivityLens = "uncertainty" | "unit_economics" | "capital" | "market" | "horizon";
+type RecommendedAgent = { id: string; displayName: string; domain: string; specialization: string; capabilitySummary: string; score: number; reasons: string[] };
+
+const SENSITIVITY_LENSES: Array<{ id: SensitivityLens; label: string }> = [
+  { id: "uncertainty", label: "Uncertainty" }, { id: "unit_economics", label: "Unit economics" },
+  { id: "capital", label: "Capital" }, { id: "market", label: "Market demand" }, { id: "horizon", label: "Strategic horizon" },
+];
 
 const INITIAL_SCENARIOS: ScenarioDraft[] = [
   { id: "Adverse", likelihood: 25, annualRevenue: 1_200_000, grossMarginPercent: 42, annualOperatingCost: 760_000, initialCapital: 1_800_000, horizonYears: 5, uncertaintyPercent: 30 },
@@ -34,7 +41,13 @@ export function PrivateSimulationLab() {
   const [discountRatePercent, setDiscountRatePercent] = useState(12);
   const [samples, setSamples] = useState(2_000);
   const [seed, setSeed] = useState(240719);
-  const [hasRun, setHasRun] = useState(true);
+  const [hasRun, setHasRun] = useState(false);
+  const [missionBrief, setMissionBrief] = useState("");
+  const [lenses, setLenses] = useState<SensitivityLens[]>(["uncertainty", "unit_economics"]);
+  const [recommendations, setRecommendations] = useState<RecommendedAgent[]>([]);
+  const [selectedAgent, setSelectedAgent] = useState<RecommendedAgent | null>(null);
+  const [routingNotice, setRoutingNotice] = useState("Describe the mission and choose sensitivity lenses to recommend a documented agent.");
+  const [routingBusy, setRoutingBusy] = useState(false);
 
   const input = useMemo(() => ({ scenarios, discountRatePercent }), [scenarios, discountRatePercent]);
   const analysis = useMemo(() => analyzeScenarios(input), [input]);
@@ -58,7 +71,34 @@ export function PrivateSimulationLab() {
   }
 
   function runModels() {
+    if (!selectedAgent) {
+      setRoutingNotice("Select one recommended agent before confirming the solution package.");
+      setHasRun(false);
+      return;
+    }
     setHasRun(true);
+  }
+
+  async function recommendAgent() {
+    setRoutingBusy(true);
+    setSelectedAgent(null);
+    setHasRun(false);
+    try {
+      const response = await fetch("/api/private/agents/recommend", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ prompt: missionBrief, lenses }) });
+      const body = await response.json() as { recommendations?: RecommendedAgent[]; error?: string };
+      if (!response.ok || !body.recommendations?.length) throw new Error(body.error ?? "No documented agents matched this route.");
+      setRecommendations(body.recommendations);
+      setRoutingNotice("Review the suggested agents, then choose one to attach to this model run.");
+    } catch (error) {
+      setRecommendations([]);
+      setRoutingNotice(error instanceof Error ? error.message : "The agent recommendation could not be prepared.");
+    } finally { setRoutingBusy(false); }
+  }
+
+  function toggleLens(lens: SensitivityLens) {
+    setLenses((current) => current.includes(lens) ? current.filter((item) => item !== lens) : [...current, lens]);
+    setSelectedAgent(null);
+    setHasRun(false);
   }
 
   return <section className="private-simulation" aria-labelledby="private-simulation-title">
@@ -70,6 +110,13 @@ export function PrivateSimulationLab() {
     <div className="private-simulation__layout">
       <form className="platform-panel private-simulation__form" onSubmit={(event) => { event.preventDefault(); runModels(); }}>
         <header><div><span>DECLARED INPUTS</span><h2>Scenario configuration</h2></div><small>All currency values USD</small></header>
+        <section className="private-simulation__routing" aria-labelledby="simulation-routing-title">
+          <header><div><span>MISSION ROUTING</span><h3 id="simulation-routing-title">Prompt and sensitivity select the agent before the solution</h3></div><button className="platform-secondary-button" type="button" disabled={routingBusy} onClick={() => void recommendAgent()}>{routingBusy ? "Matching agents…" : "Recommend agent"}</button></header>
+          <label>Mission brief<textarea maxLength={800} value={missionBrief} onChange={(event) => { setMissionBrief(event.target.value); setSelectedAgent(null); setHasRun(false); }} placeholder="Example: assess a renewable-energy opportunity with uncertain demand, capital needs and a five-year horizon." /></label>
+          <fieldset><legend>Sensitivity lenses</legend><div>{SENSITIVITY_LENSES.map((lens) => <label key={lens.id}><input type="checkbox" checked={lenses.includes(lens.id)} onChange={() => toggleLens(lens.id)} />{lens.label}</label>)}</div></fieldset>
+          <p role="status" aria-live="polite">{routingNotice}</p>
+          {recommendations.length > 0 && <div className="private-simulation__agent-options">{recommendations.map((agent) => <button type="button" key={agent.id} className={selectedAgent?.id === agent.id ? "is-selected" : ""} onClick={() => { setSelectedAgent(agent); setHasRun(false); setRoutingNotice(`${agent.id} selected. Confirm the scenario calculation to produce the solution package.`); }}><span>{agent.id} · {agent.domain}</span><strong>{agent.displayName}</strong><small>{agent.specialization} — {agent.reasons.join("; ")}</small></button>)}</div>}
+        </section>
         <p className="platform-caveat">Likelihoods are relative weights. They are normalized to 100% by the model, even when the entered total differs.</p>
         <div className="private-simulation__global-inputs">
           <label>Discount rate (%)<input type="number" min="0" max="100" step="0.1" value={discountRatePercent} onChange={(event) => { setDiscountRatePercent(numberFromEvent(event.target.value, discountRatePercent)); setHasRun(false); }} /></label>
@@ -109,6 +156,8 @@ export function PrivateSimulationLab() {
       </div>
       <div className="platform-table-wrap"><table className="platform-data-table private-simulation__result-table"><caption className="sr-only">Calculated scenario outcomes</caption><thead><tr><th scope="col">Scenario</th><th scope="col">Normalized weight</th><th scope="col">Annual contribution</th><th scope="col">Net present value</th><th scope="col">Declared range</th></tr></thead><tbody>{analysis.scenarios.map((scenario) => <tr key={scenario.id}><td>{scenario.id}</td><td>{formatPercent(scenario.likelihoodPercent)}</td><td>{formatMoney(scenario.annualContribution)}</td><td>{formatMoney(scenario.netPresentValue)}</td><td>{formatMoney(scenario.lowerNetPresentValue)} to {formatMoney(scenario.upperNetPresentValue)}<small>±{formatPercent(scenario.uncertaintyPercent)} contribution sensitivity</small></td></tr>)}</tbody></table></div>
     </section>
+
+    {hasRun && selectedAgent && <section className="platform-panel private-simulation__solution" aria-labelledby="simulation-solution-title"><header><div><span>SOLUTION PACKAGE · HUMAN REVIEW REQUIRED</span><h2 id="simulation-solution-title">{selectedAgent.id} · {selectedAgent.displayName}</h2></div><small>{selectedAgent.domain} · {selectedAgent.specialization}</small></header><p>The selected agent was routed from the mission brief and chosen sensitivity lenses. It provides an analytical lens for interpreting the calculation; the NPV and sampling equations remain exactly the declared, reproducible model shown above.</p><dl><div><dt>ROUTING REASONS</dt><dd>{selectedAgent.reasons.join(" · ")}</dd></div><div><dt>MODEL OUTPUT</dt><dd>Expected NPV {formatMoney(analysis.expectedNetPresentValue)} · loss probability {formatPercent(analysis.probabilityOfLossPercent)}</dd></div><div><dt>REVIEW NEXT</dt><dd>Validate evidence, challenge assumptions, then record the human decision.</dd></div></dl></section>}
 
     <section className="private-simulation__results" aria-labelledby="monte-carlo-results-title">
       <header><div><span>SEEDED SAMPLING</span><h2 id="monte-carlo-results-title">Monte Carlo outcome range</h2></div><small>{simulation.samples.toLocaleString()} samples · seed {simulation.seed}</small></header>

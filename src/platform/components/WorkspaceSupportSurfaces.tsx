@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useId, useState } from "react";
+import { PrivateDashboardGuide } from "./PrivateDashboardGuide";
 
 type Surface = "overview" | "health" | "settings" | "documentation";
 
@@ -46,15 +47,16 @@ function Overview() {
     <Heading eyebrow="OPERATIONAL OVERVIEW · SESSION" title="A clear starting point for the authenticated workspace." lede="This view reports only what the current browser can inspect. Mission records, queues and organization activity need a connected private data service." />
     <SessionBoundary />
     <p className="sr-only">Decisions, evidence and human gates are governed together in this workspace.</p>
+    <PrivateDashboardGuide />
     <section className="workspace-support-grid" aria-label="Current workspace state">
       <article><span>SESSION OPENED</span><strong>{openedAt}</strong><p>Browser-local timestamp; not an audit event.</p></article>
       <article><span>NETWORK SIGNAL</span><strong>{online === null ? "Checking…" : online ? "Browser online" : "Browser offline"}</strong><p>Connectivity is a browser hint, not a provider health check.</p></article>
-      <article><span>BACKGROUND WORKERS</span><strong>Not connected</strong><p>This workspace does not claim a running job queue.</p></article>
+      <article><span>PRIVATE AGENTS</span><strong>1,970 on demand</strong><p>Select a bounded team in the authenticated Agent Library.</p></article>
       <article><span>HUMAN AUTHORITY</span><strong>Required</strong><p>Models and agent outputs remain advisory.</p></article>
     </section>
     <section className="workspace-support-columns">
       <article className="platform-panel workspace-support-panel"><header><div><span>WORKSPACE ROUTES</span><h2>Start a governed task</h2></div></header><div className="workspace-support-actions"><Link href="/app/missions/new"><strong>Create a mission</strong><small>Scope a question and its review boundary.</small></Link><Link href="/app/research"><strong>Research evidence</strong><small>Use the protected research workflow.</small></Link><Link href="/app/simulation"><strong>Run a simulation</strong><small>Explore bounded assumptions and ranges.</small></Link><Link href="/app/agents"><strong>Inspect the agent registry</strong><small>Search documented capabilities and status.</small></Link></div></article>
-      <article className="platform-panel workspace-support-panel"><header><div><span>WHAT IS NOT CONNECTED</span><h2>Explicit limits</h2></div></header><ul className="workspace-support-list"><li>No durable mission, review or audit store is verified here.</li><li>No live worker, provider or host-resource telemetry is inferred.</li><li>No interface action approves funding, deployment or real-world execution.</li></ul><Link className="platform-primary-link" href="/app/documentation">Read the workspace guide →</Link></article>
+      <article className="platform-panel workspace-support-panel"><header><div><span>EXPLICIT LIMITS</span><h2>What execution does not imply</h2></div></header><ul className="workspace-support-list"><li>No durable mission, review or audit store is verified here.</li><li>Private agent execution requires a server-side model credential; provider and host telemetry are not inferred.</li><li>No interface action approves funding, deployment or real-world execution.</li></ul><Link className="platform-primary-link" href="/app/documentation">Read the workspace guide →</Link></article>
     </section>
   </>;
 }
@@ -73,7 +75,7 @@ function Health() {
     ["Browser network signal", online === null ? "Checking" : online ? "Available" : "Offline", online === null ? "limited" : online ? "ready" : "unavailable", "A browser-level indication only; it does not test an external provider."],
     ["Mathematical demo engine", "Available in this build", "ready", "Deterministic browser-safe calculations can be run from the workspace."],
     ["Durable data service", "Not verified", "unavailable", "This page cannot confirm a connected database or durable audit stream."],
-    ["Background orchestration", "Not connected", "unavailable", "No running worker or queue is represented by this session."],
+    ["Private agent execution", "Available on demand", "limited", "Credential readiness is reported by the authenticated Agent Library without exposing the secret."],
     ["Host CPU, RAM and GPU", "Not exposed", "limited", "The web application does not read device or host telemetry."],
   ] as const;
 

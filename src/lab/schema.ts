@@ -82,7 +82,7 @@ function isSafeExternalResultUrl(url: URL) {
   const ipv4 = hostname.match(/^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/)?.slice(1).map(Number);
   if (!ipv4) return true;
   if (ipv4.some((part) => part > 255)) return false;
-  return !(ipv4[0] === 0 || ipv4[0] === 10 || ipv4[0] === 127 || (ipv4[0] === 169 && ipv4[1] === 254) || (ipv4[0] === 172 && ipv4[1] >= 16 && ipv4[1] <= 31) || (ipv4[0] === 192 && ipv4[1] === 168));
+  return !(ipv4[0] === 0 || ipv4[0] === 10 || ipv4[0] === 127 || ipv4[0] >= 224 || (ipv4[0] === 100 && ipv4[1] >= 64 && ipv4[1] <= 127) || (ipv4[0] === 169 && ipv4[1] === 254) || (ipv4[0] === 172 && ipv4[1] >= 16 && ipv4[1] <= 31) || (ipv4[0] === 192 && (ipv4[1] === 0 || ipv4[1] === 168)) || (ipv4[0] === 198 && (ipv4[1] === 18 || ipv4[1] === 19)));
 }
 
 export function normalizePublicWebResearch(value: unknown): PublicWebResearch | undefined {
