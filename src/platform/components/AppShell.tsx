@@ -5,6 +5,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import { PROJECT_NAME } from "@/src/config/site";
 import { SoundController } from "@/src/components/ui/SoundController";
+import { ActiveMissionProvider, useActiveMission } from "../active-mission";
 import { DEMO_GOVERNANCE_QUEUE, DEMO_MISSIONS, PLATFORM_CAPABILITY_STATUS, PLATFORM_MODULES } from "../data";
 
 type Props = { user: { displayName: string; email: string; role?: string }; children: React.ReactNode };
@@ -20,8 +21,13 @@ const CONTEXT_BY_ROUTE = [
 ] as const;
 
 export function AppShell({ user, children }: Props) {
+  return <ActiveMissionProvider><AppShellWorkspace user={user}>{children}</AppShellWorkspace></ActiveMissionProvider>;
+}
+
+function AppShellWorkspace({ user, children }: Props) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const { mission, ready: missionReady } = useActiveMission();
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [contextOpen, setContextOpen] = useState(false);
   const [contextWidth, setContextWidth] = useState(296);
@@ -63,7 +69,22 @@ export function AppShell({ user, children }: Props) {
       <label className="platform-search"><span className="sr-only">Search workspace</span><input type="search" placeholder="Use Agent Library for catalog search" disabled aria-describedby="workspace-search-status" /><span id="workspace-search-status" className="sr-only">Catalog search is available in the authenticated Agent Library.</span></label>
       <div className="platform-topbar-actions"><details className="platform-status-menu"><summary><i className="is-limited" /> SYSTEM <b>PARTIAL</b></summary><div>{PLATFORM_CAPABILITY_STATUS.slice(0, 4).map((capability) => <p key={capability.id}><span className={`status-dot is-${capability.state}`} />{capability.label}<strong>{capability.value}</strong></p>)}</div></details><details className="platform-status-menu"><summary>PROCESSES <b>0 LIVE</b></summary><div><p><span className="status-dot is-ready" />Deterministic runs<strong>On demand</strong></p><p><span className="status-dot is-unavailable" />Background executor<strong>Not connected</strong></p></div></details><details className="platform-status-menu platform-notifications"><summary>REVIEWS <b>{String(DEMO_GOVERNANCE_QUEUE.length).padStart(2, "0")}</b></summary><div>{DEMO_GOVERNANCE_QUEUE.map((item) => <p key={item.id}>{item.id}<strong>{item.issue}</strong></p>)}</div></details><button className="platform-context-toggle" type="button" onClick={() => setContextOpen((value) => !value)} aria-controls="platform-context" aria-expanded={contextOpen}>{contextOpen ? "Hide context" : "Show context"}</button><SoundController theme="workspace" /></div>
       <details className="platform-user"><summary>{user.displayName}</summary><div><span>{user.email}</span>{user.role && <small>{user.role}</small>}<Link href="/app/documentation">Help and documentation</Link><a href="/signout-with-chatgpt?return_to=%2Fapp%2Flogin">Lock session</a><a href="/signout-with-chatgpt?return_to=%2F">Sign out</a></div></details>
-    </header><main id="platform-main" className="platform-main">{children}</main></div>
+    </header><main id="platform-main" className="platform-main"><ActiveMissionFlow pathname={pathname} missionTitle={mission?.core.title || mission?.core.decision.slice(0, 80) || ""} ready={missionReady} source={mission?.lastSource} />{children}</main></div>
     <aside id="platform-context" className="platform-context" aria-label="Context panel" hidden={!contextOpen}><header><div><span>CONTEXT PANEL</span><strong>{context.title}</strong></div><button type="button" onClick={() => setContextOpen(false)} aria-label="Hide context panel">x</button></header><section><span>ACTIVE MODULE</span><h2>{activeModule.label}</h2><p>{activeModule.status} capability. State is explicit throughout this workspace.</p></section><dl>{context.items.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl><section className="platform-context-control"><label htmlFor="context-width">Panel width <output>{contextWidth}px</output></label><input id="context-width" type="range" min="260" max="380" step="10" value={contextWidth} onChange={(event) => setContextWidth(Number(event.target.value))} /></section><section className="platform-context-boundary"><span>CAPABILITY BOUNDARY</span><p>The authenticated catalog and research workspace retain human control; no interface action grants autonomous real-world authority.</p></section></aside>
   </div>;
+}
+
+const MISSION_FLOW = [
+  ["/app/missions/new", "01", "Mission"],
+  ["/app/simulation", "02", "Simulation"],
+  ["/app/scenarios", "03", "Scenarios"],
+  ["/app/execution-feasibility", "04", "Feasibility"],
+  ["/app/decision-lab", "05", "Decision"],
+] as const;
+
+function ActiveMissionFlow({ pathname, missionTitle, ready, source }: { pathname: string; missionTitle: string; ready: boolean; source?: string }) {
+  return <section className={`active-mission-flow${missionTitle ? " has-mission" : ""}`} aria-label="Active mission flow">
+    <div><span>ACTIVE MISSION · DEVICE-LOCAL</span><strong>{ready ? missionTitle || "No active mission yet" : "Loading mission context…"}</strong><small>{missionTitle ? `Last updated from ${source?.replaceAll("-", " ") ?? "workspace"}. Inputs continue across the planning modules.` : "Start a mission to carry its context through the workspace."}</small></div>
+    <nav aria-label="Mission workflow">{MISSION_FLOW.map(([href, index, label]) => <Link key={href} href={href} className={pathname.startsWith(href) ? "is-active" : undefined} aria-current={pathname.startsWith(href) ? "step" : undefined}><span>{index}</span>{label}</Link>)}</nav>
+  </section>;
 }

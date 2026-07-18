@@ -62,6 +62,16 @@ test("the configured owner can render the protected demo workspace", async () =>
   assert.match(renderedText(html), /AUTHENTICATED WORKSPACE/i);
 });
 
+test("the configured owner can render execution feasibility and its report controls", async () => {
+  const response = await render("/app/execution-feasibility", { "oai-authenticated-user-email": "franciscoariellopez22@gmail.com" });
+  assert.equal(response.status, 200);
+  const text = renderedText(await response.text());
+  for (const expected of ["Determine whether a plan can be executed", "Duration estimate", "Expected cost", "Generate report", "WBS (?:&|&amp;) critical path", "Human review gate"]) {
+    assert.match(text, new RegExp(expected, "i"));
+  }
+  assert.match(text, /Nothing here approves funding, procurement, contracting or deployment/i);
+});
+
 test("robots excludes private and dispatcher-owned routes", async () => {
   const response = await render("/robots.txt");
   assert.equal(response.status, 200);
