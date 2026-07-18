@@ -104,6 +104,30 @@ test("the configured owner can render the protected demo workspace", async () =>
   assert.match(html, /noindex/i);
   assert.doesNotMatch(renderedText(html), /SYSTEM AVAILABLE/i);
   assert.match(renderedText(html), /AUTHENTICATED WORKSPACE/i);
+  assert.match(html, /href="\/app\/private-capital-intelligence"/i);
+  assert.match(renderedText(html), /Private Capital.*Owner only/i);
+});
+
+test("authorized non-owner users do not receive the Private Capital shortcut", async () => {
+  const previous = process.env.VG_AUTHORIZED_EMAILS;
+  process.env.VG_AUTHORIZED_EMAILS = "member@example.test";
+  try {
+    const response = await render("/app", { "oai-authenticated-user-email": "member@example.test" });
+    assert.equal(response.status, 200);
+    assert.doesNotMatch(await response.text(), /href="\/app\/private-capital-intelligence"/i);
+  } finally {
+    if (previous === undefined) delete process.env.VG_AUTHORIZED_EMAILS;
+    else process.env.VG_AUTHORIZED_EMAILS = previous;
+  }
+});
+
+test("the configured owner can open Private Capital and reach the Thesis Lab", async () => {
+  const response = await render("/app/private-capital-intelligence", { "oai-authenticated-user-email": "owner@example.test" });
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(renderedText(html), /Private Capital.*Thesis Lab/i);
+  assert.match(renderedText(html), /Decision-support environment/i);
+  assert.match(html, /noindex/i);
 });
 
 test("the configured owner can render execution feasibility and its report controls", async () => {

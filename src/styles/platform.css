@@ -413,6 +413,10 @@ html:has(.platform-shell)::-webkit-scrollbar-corner,
 .platform-module-copy { min-width: 0; flex: 1; display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
 .platform-module-copy b { overflow: hidden; font-weight: 560; text-overflow: ellipsis; white-space: nowrap; }
 .platform-sidebar nav a.is-active .platform-module-code { color: #dff7ff; background: rgb(85 197 236 / 12%); border-color: var(--platform-line-active); }
+.platform-sidebar nav a.platform-owner-module { margin-top: .55rem; color: #f3d9a4; background: rgb(224 177 91 / 7%); border-color: rgb(224 177 91 / 24%); }
+.platform-sidebar nav a.platform-owner-module:hover { color: #fff4dc; background: rgb(224 177 91 / 12%); border-color: rgb(224 177 91 / 38%); }
+.platform-sidebar nav a.platform-owner-module .platform-module-code { color: #f3d9a4; border-color: rgb(224 177 91 / 28%); }
+.platform-mobile-modules a.platform-owner-module { color: #f3d9a4; border-top: 1px solid rgb(224 177 91 / 24%); }
 .platform-shell.is-sidebar-collapsed .platform-brand > span:last-child,
 .platform-shell.is-sidebar-collapsed .platform-module-copy,
 .platform-shell.is-sidebar-collapsed .platform-sidebar-foot { display: none; }

@@ -43,6 +43,17 @@ test("private capital appears in Apps only after the dedicated owner check", asy
   assert.match(hub, /privateCapitalVisible &&/u);
 });
 
+test("the authenticated shell exposes an owner-only route after server authorization", async () => {
+  const [protectedLayout, shell] = await Promise.all([
+    source("app/app/(protected)/layout.tsx"),
+    source("src/platform/components/AppShell.tsx"),
+  ]);
+  assert.match(protectedLayout, /authorizePrivateCapitalOwner\(user\)/u);
+  assert.match(protectedLayout, /privateCapitalAccess=\{privateCapitalAccess\}/u);
+  assert.match(shell, /privateCapitalAccess\s*&&\s*<Link href="\/app\/private-capital-intelligence"/u);
+  assert.match(shell, /Owner only/u);
+});
+
 test("private capital UI permanently states simulation and human authority boundaries", async () => {
   const dashboard = await source("src/private-capital/components/PrivateCapitalDashboard.tsx");
   assert.match(dashboard, /Decision-support environment/u);
@@ -54,7 +65,7 @@ test("private capital UI permanently states simulation and human authority bound
 test("private capital UI exposes every required internal workspace without public links", async () => {
   const dashboard = await source("src/private-capital/components/PrivateCapitalDashboard.tsx");
   for (const label of [
-    "Overview", "My Portfolio", "Portfolio Builder", "Market Intelligence", "Argentina",
+    "Overview", "Thesis Lab", "My Portfolio", "Portfolio Builder", "Market Intelligence", "Argentina",
     "CEDEARs", "Bonds", "Bitcoin", "Signals", "Rebalancing", "Alerts", "Simulations",
     "Risk Center", "Human Review", "Settings",
   ]) {
@@ -62,6 +73,21 @@ test("private capital UI exposes every required internal workspace without publi
   }
   assert.match(dashboard, /aria-label="Private Capital sections"/u);
   assert.match(dashboard, /pc-mobile-nav/u);
+});
+
+test("thesis lab connects idea intake, specialists, opportunities, scenarios and human review", async () => {
+  const [dashboard, engine] = await Promise.all([
+    source("src/private-capital/components/PrivateCapitalDashboard.tsx"),
+    source("src/private-capital/domain/thesis.ts"),
+  ]);
+  for (const expected of [
+    "Describe thesis", "Select specialists", "Generate hypotheses", "Stress scenarios", "Human review",
+    "Convene specialists", "Generated investment hypotheses", "WHERE AGENTS DISAGREE",
+    "Send to Human Review", "Execution unavailable",
+  ]) assert.match(dashboard, new RegExp(expected, "u"));
+  assert.match(engine, /opportunities\.length|slice\(0, 8\)/u);
+  assert.match(engine, /executionAuthorized:\s*false/u);
+  assert.match(engine, /No live prices/u);
 });
 
 test("private capital controls preserve privacy and human authorization framing", async () => {
