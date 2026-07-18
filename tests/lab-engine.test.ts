@@ -330,7 +330,7 @@ test("thirty varied input simulations stay finite, reproducible and input-respon
 });
 
 test("the model catalog is the single complete public model inventory", () => {
-  assert.equal(PUBLIC_MODEL_COUNT, 14);
+  assert.equal(PUBLIC_MODEL_COUNT, 16);
   assert.equal(new Set(PUBLIC_MODEL_CATALOG.map((model) => model.id)).size, PUBLIC_MODEL_COUNT);
   assert.ok(PUBLIC_MODEL_CATALOG.every((model) => model.limitation.length > 30));
 });

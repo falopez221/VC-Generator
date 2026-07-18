@@ -22,7 +22,7 @@ export function ModelingEvaluation() {
             does="Combina criterios, escenarios, sensibilidad, actualización de evidencia y trade-offs."
             matters="Reemplaza el número único aparentemente preciso por rangos, supuestos y estabilidad de la conclusión."
             how={["Representa cada oportunidad como un vector de dimensiones.", "Aplica pesos y transformaciones visibles.", "Simula escenarios y devuelve intervalos, riesgos y fronteras para revisión."]}
-            technical={["Catálogo versionado de 14 modelos públicos.", "Funciones puras, bounds y semillas reproducibles.", "Mínimos cuadrados sólo como descripción, nunca como causalidad."]}
+            technical={["Catálogo versionado de 16 modelos públicos.", "Funciones puras, bounds y semillas reproducibles.", "Mínimos cuadrados sólo como descripción, nunca como causalidad."]}
             limitations={["Una distribución depende de sus supuestos.", "Más simulaciones no corrigen datos pobres.", "Los modelos públicos son demostrativos y no replican fórmulas propietarias."]}
           />
           <ChartExplainer

@@ -4,7 +4,7 @@ export const ARCHITECTURE_LAYERS = [
   { layer: "Registro y selección de capacidades", modules: ["1.970 perfiles", "51 dominios", "Dependencias", "Enrutamiento"] },
   { layer: "Validación y ejecución", modules: ["Sanitización", "Bounds", "Seed", "Versión"] },
   { layer: "Muestra pública del Lab", modules: ["Mathematics", "Finance", "Strategy", "Marketing"] },
-  { layer: "Biblioteca cuantitativa", modules: ["14 modelos", "Escenarios", "Robustez", "Pareto"] },
+  { layer: "Biblioteca cuantitativa", modules: ["16 modelos", "Escenarios", "Robustez", "Pareto"] },
   { layer: "Evidencia, estado y controles", modules: ["Etiquetas", "Procedencia", "Seguridad", "Accesibilidad"] },
 ] as const;
 

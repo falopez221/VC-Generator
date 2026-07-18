@@ -31,6 +31,7 @@ for (const [pathname, expected] of [
   ["/", "Venture Governance System"],
   ["/lab", "Explore how governed agents"],
   ["/lab/demo", "Run Lab Simulation"],
+  ["/lab/companies", "Estados contables"],
   ["/lab/methodology", "Score is an analytical interface"],
   ["/lab/results/example", "LOADING LOCAL RESULT"],
   ["/applications", "One architecture"],
@@ -181,7 +182,7 @@ test("methodology explains how to interpret dashboard results", async () => {
 
 test("public Lab summary is synchronized with the model catalog", async () => {
   const response = await render("/lab");
-  assert.match(renderedText(await response.text()), /14 public models/i);
+  assert.match(renderedText(await response.text()), /16 public models/i);
 });
 
 test("landing keeps the document private and preserves the public IP boundary", async () => {
@@ -190,7 +191,7 @@ test("landing keeps the document private and preserves the public IP boundary", 
   const text = renderedText(html);
   assert.doesNotMatch(html, /whitepaper|\/documents\/[^"']+\.pdf/i);
   assert.match(text, /4 agentes p[uú]blicos/i);
-  assert.match(text, /14 modelos/i);
+  assert.match(text, /16 modelos/i);
   for (const name of ["Mathematics", "Finance", "Strategy", "Marketing"]) assert.match(text, new RegExp(name, "i"));
   assert.doesNotMatch(text, /20 roles|6 runtimes|1[\.,]000 hip[oó]tesis/i);
   await assert.rejects(access(new URL("../public/documents/venture-governance-system-whitepaper-2026.pdf", import.meta.url)));

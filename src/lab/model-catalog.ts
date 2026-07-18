@@ -113,6 +113,22 @@ export const PUBLIC_MODEL_CATALOG = [
     matters: "It makes broad external exposure visible before a human treats one operating case as stable.",
     limitation: "It does not forecast GDP, inflation, interest rates or foreign exchange and is not financial advice.",
   },
+  {
+    id: "company-fair-value",
+    name: "Company Fair Value",
+    family: "Public-company valuation",
+    shows: "A five-year DCF blended with an EV/EBITDA cross-check from user-supplied figures.",
+    matters: "It makes growth, discount rate, terminal growth and multiple assumptions directly inspectable.",
+    limitation: "It does not verify filings or prices and is not a buy, sell or hold recommendation.",
+  },
+  {
+    id: "negative-beta-screen",
+    name: "Negative Beta Screen",
+    family: "Market sensitivity",
+    shows: "Which records in a disclosed synthetic universe have a beta below zero.",
+    matters: "It illustrates a reproducible filter while keeping benchmark and window limitations visible.",
+    limitation: "Beta is backward-looking and unstable; a negative estimate is not proof of hedging or fair value.",
+  },
 ] as const;
 
 export type PublicModelName = (typeof PUBLIC_MODEL_CATALOG)[number]["name"];
