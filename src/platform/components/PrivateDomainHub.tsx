@@ -15,13 +15,26 @@ const GROUPS: { id: "all" | DomainVisualGroup; label: string }[] = [
   { id: "matrix", label: "Portafolios" },
 ];
 
+const PRIVATE_CAPITAL_SEARCH_TERMS = [
+  "capital intelligence",
+  "private capital",
+  "portfolio",
+  "portafolio",
+  "mercados",
+  "cedears",
+  "bonos",
+  "bitcoin",
+  "riesgo",
+  "simulaciones",
+];
+
 function signalHeight(values: number[], value: number) {
   const min = Math.min(...values);
   const max = Math.max(...values);
   return max === min ? 58 : 18 + ((value - min) / (max - min)) * 82;
 }
 
-export function PrivateDomainHub() {
+export function PrivateDomainHub({ privateCapitalAvailable = false }: { privateCapitalAvailable?: boolean }) {
   const [query, setQuery] = useState("");
   const [group, setGroup] = useState<(typeof GROUPS)[number]["id"]>("all");
   const normalizedQuery = query.trim().toLocaleLowerCase();
@@ -31,12 +44,16 @@ export function PrivateDomainHub() {
     return [workspace.domain, workspace.name, workspace.title, workspace.summary, ...workspace.vocabulary]
       .some((value) => value.toLocaleLowerCase().includes(normalizedQuery));
   }), [group, normalizedQuery]);
+  const privateCapitalVisible = privateCapitalAvailable
+    && (group === "all" || group === "matrix")
+    && (!normalizedQuery || PRIVATE_CAPITAL_SEARCH_TERMS.some((term) => term.includes(normalizedQuery)));
+  const visibleCount = workspaces.length + (privateCapitalVisible ? 1 : 0);
 
   return <div className={styles.hub}>
     <DemoNotice />
     <header className={styles.hubHero}>
       <div>
-        <p>30 MINI-APPS · AREA AUTENTICADA</p>
+        <p>{privateCapitalAvailable ? "30 MINI-APPS + 1 OWNER APP" : "30 MINI-APPS"} · AREA AUTENTICADA</p>
         <h1>Un workspace de decision propio para cada industria.</h1>
         <p>Cada dominio combina KPIs, vocabulario, fuentes, modelos, roles, visualizaciones y simulaciones especificas. Todo el contenido de esta demostracion es sintetico y reproducible.</p>
       </div>
@@ -56,14 +73,24 @@ export function PrivateDomainHub() {
       <div role="group" aria-label="Familia visual">
         {GROUPS.map((item) => <button key={item.id} type="button" aria-pressed={group === item.id} onClick={() => setGroup(item.id)}>{item.label}</button>)}
       </div>
-      <p role="status" aria-live="polite">{workspaces.length} workspaces disponibles</p>
+      <p role="status" aria-live="polite">{visibleCount} apps disponibles</p>
     </section>
 
     <section className={styles.domainGrid} aria-label="Mini-apps por dominio">
+      {privateCapitalVisible && <article className={styles.domainCard} style={{ "--domain-accent": "#54d5dc", "--domain-accent-alt": "#8b80f9" } as CSSProperties} data-visual-group="matrix">
+        <header><span>OWNER APP · RESTRICTED</span><i aria-hidden="true" /></header>
+        <h2>Private Capital Intelligence</h2>
+        <p>Portfolio, market intelligence, simulations, risk and human review in one owner-restricted workspace.</p>
+        <div className={styles.cardSignal} aria-hidden="true">
+          {[42, 68, 54, 82, 72, 94].map((height, index) => <i key={index} style={{ height: `${height}%` }} />)}
+        </div>
+        <ul aria-label="Private Capital Intelligence capabilities"><li>Portfolio</li><li>Market intelligence</li><li>Risk center</li></ul>
+        <footer><span>OWNER ONLY · SIMULATED DATA · HUMAN CONTROL</span><Link href="/app/private-capital-intelligence">Abrir Capital Intelligence <b aria-hidden="true">→</b></Link></footer>
+      </article>}
       {workspaces.map((workspace, index) => {
         const style = { "--domain-accent": workspace.accent, "--domain-accent-alt": workspace.accentAlt } as CSSProperties;
         return <article key={workspace.slug} className={styles.domainCard} style={style} data-visual-group={workspace.visualGroup}>
-          <header><span>{String(index + 1).padStart(2, "0")} · {workspace.visualMode.replaceAll("-", " ")}</span><i aria-hidden="true" /></header>
+          <header><span>{String(index + (privateCapitalVisible ? 2 : 1)).padStart(2, "0")} · {workspace.visualMode.replaceAll("-", " ")}</span><i aria-hidden="true" /></header>
           <h2>{workspace.name}</h2>
           <p>{workspace.title}</p>
           <div className={styles.cardSignal} aria-hidden="true">
@@ -73,7 +100,7 @@ export function PrivateDomainHub() {
           <footer><span>{workspace.kpis.length} KPI · {workspace.models.length} modelos · 1 simulacion</span><Link href={`/app/applications/${workspace.slug}`}>Abrir workspace <b aria-hidden="true">→</b></Link></footer>
         </article>;
       })}
-      {!workspaces.length && <div className={styles.empty}><strong>No encontramos ese workspace.</strong><p>Proba otro termino o restablece la familia visual.</p><button type="button" onClick={() => { setQuery(""); setGroup("all"); }}>Mostrar todos</button></div>}
+      {visibleCount === 0 && <div className={styles.empty}><strong>No encontramos ese workspace.</strong><p>Proba otro termino o restablece la familia visual.</p><button type="button" onClick={() => { setQuery(""); setGroup("all"); }}>Mostrar todos</button></div>}
     </section>
 
     <aside className={styles.boundary}>

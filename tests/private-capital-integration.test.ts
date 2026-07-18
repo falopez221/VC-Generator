@@ -30,6 +30,19 @@ test("private capital route is absent from public discovery surfaces", async () 
   assert.doesNotMatch(modules, /private-capital|Private Capital/u);
 });
 
+test("private capital appears in Apps only after the dedicated owner check", async () => {
+  const [page, hub] = await Promise.all([
+    source("app/app/(protected)/applications/page.tsx"),
+    source("src/platform/components/PrivateDomainHub.tsx"),
+  ]);
+  assert.match(page, /authorizePrivateCapitalOwner\(workspaceIdentity\)/u);
+  assert.match(page, /privateCapitalAvailable=\{privateCapitalAvailable\}/u);
+  assert.match(hub, /privateCapitalAvailable \? "30 MINI-APPS \+ 1 OWNER APP"/u);
+  assert.match(hub, /Private Capital Intelligence/u);
+  assert.match(hub, /href="\/app\/private-capital-intelligence"/u);
+  assert.match(hub, /privateCapitalVisible &&/u);
+});
+
 test("private capital UI permanently states simulation and human authority boundaries", async () => {
   const dashboard = await source("src/private-capital/components/PrivateCapitalDashboard.tsx");
   assert.match(dashboard, /Decision-support environment/u);
