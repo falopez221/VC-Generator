@@ -44,6 +44,10 @@ next-env.d.ts
 /work/
 /tmp/
 
+# generated Windows installer artifacts
+/installer/build/
+/installer/output/
+
 # Local-only reference material and generated desktop installer payloads
 /research/visual-reference/
 /installer/build/

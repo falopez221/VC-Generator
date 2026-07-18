@@ -22,7 +22,7 @@ export default function LabHome() {
         </div>
         <aside className="lab-cinematic-metrics" aria-label="Public Lab scope"><div><strong>6–12</strong><span>SYNTHETIC OPPORTUNITIES</span></div><div><strong>04</strong><span>VISIBLE AGENTS</span></div><div><strong>{PUBLIC_MODEL_COUNT}</strong><span>PUBLIC MODELS</span></div></aside>
       </section>
-      <section className="lab-band" aria-label="Public limitation">The complete Venture Governance architecture is designed for large-scale opportunity exploration. This public lab uses a reduced sample for speed, clarity and intellectual property protection.</section>
+      <section className="lab-band" aria-label="Public limitation">The private capability registry contains 1,970 profiles across 51 domains and is selected by mission. This public Lab shows only four representative specialists for speed, clarity and intellectual-property protection.</section>
       <section className="lab-section">
         <header><p className="lab-kicker">FOUR PUBLIC AGENTS</p><h2>Structured perspectives, visible disagreement.</h2><p>Only outputs, evidence, assumptions, calculations and criticism are shown. Private prompts and internal reasoning are excluded.</p></header>
         <div className="lab-agent-cards">{publicAgents.map(([name, copy], index) => <article key={name}><span>0{index + 1}</span><h3>{name}</h3><p>{copy}</p></article>)}</div>

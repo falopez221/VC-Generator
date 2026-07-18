@@ -1,6 +1,6 @@
 # Venture Governance Public Lab
 
-The Public Lab is a limited, interactive demonstration of the Venture Governance concept. It accepts a human thesis or problem, generates a reduced synthetic opportunity set, runs four public specialist perspectives, applies demonstrative quantitative models, and returns a ranking for human review.
+The Public Lab is a limited, interactive demonstration of the Venture Governance concept. The private registry aggregates 1,970 profiles across 51 domains, but the Lab accepts a human thesis or problem, generates a reduced synthetic opportunity set, runs four public specialist perspectives, applies demonstrative quantitative models, and returns a ranking for human review.
 
 The intake starts with a large free-text idea field. A transparent local assistant can summarize that narrative and suggest editable parameters before the four specialist agents run. This helper is not a fifth agent and does not call an external language model in public mode. The visible nine-stage pipeline is deliberately paced at roughly six seconds so visitors can follow it; the underlying deterministic calculations complete more quickly.
 

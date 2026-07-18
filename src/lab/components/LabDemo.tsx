@@ -408,7 +408,7 @@ export function LabDemo() {
             </label>
             <div className={`lab-research-state is-${researchStatus.toLowerCase()}`} role="status" aria-live="polite"><span>{researchStatus}</span><p>{researchNotice}</p></div>
           </section>
-          {errors.length > 0 && <div className="lab-errors" role="alert">{errors.map((error) => <p key={error}>{error}</p>)}</div>}
+          {errors.length > 0 && <div className="lab-errors" role="alert" aria-atomic="true">{errors.map((error) => <p key={error}>{error}</p>)}</div>}
           <div className="lab-run-actions" data-tour-target="run"><button className="lab-button lab-button--primary" type="submit" disabled={researchStatus === "Searching"}>{researchStatus === "Searching" ? "Agents are searching the web…" : webResearchEnabled ? "Agents Search Web & Run Lab Simulation" : "Run Lab Simulation"}</button>{status === "Running" && <button className="lab-button" type="button" onClick={pause}>Pause</button>}{status === "Paused" && <button className="lab-button" type="button" onClick={resume}>Resume</button>}{run && <button className="lab-button" type="button" onClick={() => void startSimulation(input)}>Run again</button>}<button className="lab-button" type="button" onClick={reset}>Reset</button>{run && <button className="lab-button" type="button" onClick={() => void startSimulation({ ...input, seed: input.seed + 1 })}>Change seed & run</button>}</div>
         </form>
       </section>

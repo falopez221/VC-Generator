@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_AR",
     url: SITE_URL,
-    images: [{ url: "/og-cognitive.png", width: 1731, height: 909, alt: "Venture Governance System — four public specialist fields converging into a governed discovery" }],
+    images: [{ url: "/og-cognitive.png", width: 1731, height: 909, alt: "Venture Governance System — four public specialists representing a larger governed capability registry" }],
   },
   twitter: {
     card: "summary_large_image",

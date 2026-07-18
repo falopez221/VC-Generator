@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="475" height="150" preserveAspectRatio="xMinYMin meet" viewBox="0 0 475 150" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="475" height="150"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-150)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="0" width="475" height="150" rx="8" ry="8" style="stroke: rgb(78%,83%,86%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(96%,97%,98%); fill-rule: evenodd;"/>
+			<text x="14" y="134" style="font-family: VG Mono Bold; font-size: 6.7px;fill: rgb(0%,47%,57%); stroke:none;" transform="translate(0,268) scale(1,-1)">FIGURE 10</text>
+			<text x="75" y="133.5" style="font-family: VG Sans Bold; font-size: 8.2px;fill: rgb(6%,14%,20%); stroke:none;" transform="translate(0,267) scale(1,-1)">Capability Graph</text>
+			<circle cx="238" cy="70" r="26" style="stroke: rgb(0%,65%,77%); stroke-linecap: butt; stroke-width: 1.5; fill: rgb(4%,16%,25%); fill-rule: evenodd;"/>
+			<text x="218.7568359375" y="67.5" style="font-family: VG Mono Bold; font-size: 7px;fill: rgb(100%,100%,100%); stroke:none;" transform="translate(0,135) scale(1,-1)">CAPABILITY</text>
+			<path d="M 238,70 L 406,70 Z" style="stroke: rgb(78%,83%,86%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<circle cx="406.0" cy="70.0" r="15" style="stroke: rgb(0%,47%,57%); stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="393.166650390625" y="67.6" style="font-family: VG Sans Bold; font-size: 5.7px;fill: rgb(6%,14%,20%); stroke:none;" transform="translate(0,135) scale(1,-1)">Research</text>
+			<path d="M 238,70 L 356.793939,101.819805 Z" style="stroke: rgb(78%,83%,86%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<circle cx="356.79393923934" cy="101.81980515339464" r="15" style="stroke: rgb(0%,47%,57%); stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="346.02433474715247" y="99.41980515339463" style="font-family: VG Sans Bold; font-size: 5.7px;fill: rgb(6%,14%,20%); stroke:none;" transform="translate(0,198) scale(1,-1)">Finance</text>
+			<path d="M 238,70 L 238,115 Z" style="stroke: rgb(78%,83%,86%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<circle cx="238.0" cy="115.0" r="15" style="stroke: rgb(0%,47%,57%); stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="231.350927734375" y="112.6" style="font-family: VG Sans Bold; font-size: 5.7px;fill: rgb(6%,14%,20%); stroke:none;" transform="translate(0,225) scale(1,-1)">Math</text>
+			<path d="M 238,70 L 119.206061,101.819805 Z" style="stroke: rgb(78%,83%,86%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<circle cx="119.20606076066002" cy="101.81980515339464" r="15" style="stroke: rgb(0%,47%,57%); stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="107.80188595597252" y="99.41980515339463" style="font-family: VG Sans Bold; font-size: 5.7px;fill: rgb(6%,14%,20%); stroke:none;" transform="translate(0,198) scale(1,-1)">Strategy</text>
+			<path d="M 238,70 L 70,70 Z" style="stroke: rgb(78%,83%,86%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<circle cx="70.0" cy="70.0" r="15" style="stroke: rgb(0%,47%,57%); stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="63.979931640625" y="67.6" style="font-family: VG Sans Bold; font-size: 5.7px;fill: rgb(6%,14%,20%); stroke:none;" transform="translate(0,135) scale(1,-1)">Risk</text>
+			<path d="M 238,70 L 119.206061,38.180195 Z" style="stroke: rgb(78%,83%,86%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<circle cx="119.20606076066" cy="38.18019484660536" r="15" style="stroke: rgb(0%,47%,57%); stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="108.43228146378499" y="35.78019484660536" style="font-family: VG Sans Bold; font-size: 5.7px;fill: rgb(6%,14%,20%); stroke:none;" transform="translate(0,71) scale(1,-1)">Science</text>
+			<path d="M 238,70 L 238,25 Z" style="stroke: rgb(78%,83%,86%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<circle cx="237.99999999999997" cy="25.0" r="15" style="stroke: rgb(0%,47%,57%); stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="229.60446777343748" y="22.6" style="font-family: VG Sans Bold; font-size: 5.7px;fill: rgb(6%,14%,20%); stroke:none;" transform="translate(0,45) scale(1,-1)">Policy</text>
+			<path d="M 238,70 L 356.793939,38.180195 Z" style="stroke: rgb(78%,83%,86%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<circle cx="356.7939392393399" cy="38.18019484660535" r="15" style="stroke: rgb(0%,47%,57%); stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="346.9720154112149" y="35.780194846605355" style="font-family: VG Sans Bold; font-size: 5.7px;fill: rgb(6%,14%,20%); stroke:none;" transform="translate(0,71) scale(1,-1)">Review</text>
+		</g>
+	</g>
+</svg>

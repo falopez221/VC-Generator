@@ -1,6 +1,6 @@
 # Venture Governance System™
 
-Sitio institucional y demostración pública limitada de Venture Governance System™. La portada explica la arquitectura conceptual; el Public Lab permite explorar oportunidades sintéticas con cuatro agentes visibles —Mathematics, Finance, Strategy y Marketing— y modelos cuantitativos demostrativos.
+Sitio institucional y demostración pública limitada de Venture Governance System™. La portada explica una arquitectura con un registro privado agregado de 1.970 perfiles en 51 dominios; el Public Lab permite explorar oportunidades sintéticas con cuatro agentes visibles —Mathematics, Finance, Strategy y Marketing— y modelos cuantitativos demostrativos. Los perfiles individuales del registro no se publican en este repositorio.
 
 ## Rutas principales
 
@@ -62,6 +62,14 @@ npm run lint
 npm test
 npm run build
 npm run build:vercel
+```
+
+## Instalador local de Windows
+
+El instalador autónomo se genera en `installer/output/Venture-Governance-Local-Setup.exe`. Incluye el runtime necesario, instala por usuario sin permisos de administrador, crea accesos directos y registra un desinstalador. La configuración editable está en `installer/config.psd1`; las instrucciones para modificarlo y recompilarlo están en `installer/README.md`.
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\installer\Build-Installer.ps1
 ```
 
 `npm test` ejecuta pruebas unitarias del motor y pruebas de integración de las rutas renderizadas.

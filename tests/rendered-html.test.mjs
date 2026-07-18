@@ -59,7 +59,7 @@ test("the configured owner can render the protected demo workspace", async () =>
   assert.match(renderedText(html), /Decisions, evidence and human gates/i);
   assert.match(html, /noindex/i);
   assert.doesNotMatch(renderedText(html), /SYSTEM AVAILABLE/i);
-  assert.match(renderedText(html), /AUTHORIZED DEMO/i);
+  assert.match(renderedText(html), /AUTHENTICATED WORKSPACE/i);
 });
 
 test("robots excludes private and dispatcher-owned routes", async () => {
@@ -120,15 +120,15 @@ test("public Lab summary is synchronized with the model catalog", async () => {
   assert.match(renderedText(await response.text()), /14 public models/i);
 });
 
-test("landing is synchronized with public whitepaper v2 and the IP boundary", async () => {
+test("landing is synchronized with the 2026 public whitepaper and the IP boundary", async () => {
   const response = await render("/");
   const html = await response.text();
   const text = renderedText(html);
-  assert.match(html, /venture-governance-system-whitepaper-publico-v2\.pdf/i);
-  assert.match(text, /Whitepaper p[uú]blico v2\.0/i);
-  assert.match(text, /26 p[aá]ginas/i);
+  assert.match(html, /venture-governance-system-whitepaper-2026\.pdf/i);
+  assert.match(text, /Whitepaper p[uú]blico 2026\.2/i);
+  assert.match(text, /36 p[aá]ginas/i);
   assert.match(text, /4 agentes p[uú]blicos/i);
-  assert.match(text, /12 modelos/i);
+  assert.match(text, /14 modelos/i);
   for (const name of ["Mathematics", "Finance", "Strategy", "Marketing"]) assert.match(text, new RegExp(name, "i"));
   assert.doesNotMatch(text, /20 roles|6 runtimes|Whitepaper v1\.0|1[\.,]000 hip[oó]tesis/i);
 });

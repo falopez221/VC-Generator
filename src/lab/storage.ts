@@ -1,7 +1,7 @@
 import type { LabRun, LabWeights, SimulationStatus } from "./types.ts";
 import { DEFAULT_WEIGHTS } from "./data.ts";
 import { normalizeLabWeights } from "./models.ts";
-import { isOpportunity, validateLabInput } from "./schema.ts";
+import { isOpportunity, normalizePublicWebResearch, validateLabInput } from "./schema.ts";
 
 const RUNS_KEY = "venture-governance-public-lab-runs-v1";
 const LAST_RUN_KEY = "venture-governance-public-lab-last-run";
@@ -58,6 +58,7 @@ function hydrateStoredRun(value: unknown): LabRun | null {
     status: candidate.status && SIMULATION_STATUSES.has(candidate.status) ? candidate.status : "Completed",
     weights: hydrateWeights(candidate.weights),
     opportunities: candidate.opportunities,
+    webResearch: normalizePublicWebResearch(candidate.webResearch),
     warnings: Array.isArray(candidate.warnings) ? candidate.warnings.filter((item): item is string => typeof item === "string") : [],
     disclosures: Array.isArray(candidate.disclosures) ? candidate.disclosures.filter((item): item is string => typeof item === "string") : [],
   };

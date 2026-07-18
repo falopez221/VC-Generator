@@ -117,7 +117,7 @@ export function Header() {
               <span>SYSTEM DIRECTORY</span>
               <strong>Explore Venture Governance</strong>
             </div>
-            <p>A bounded public view of a larger private architecture. Four visible agents, documented models and named human authority.</p>
+            <p>A bounded public view of a larger private registry: 1,970 profiles across 51 domains, with four visible Lab agents, documented models and named human authority.</p>
           </div>
           <div className="enterprise-navigation-grid">
             {NAVIGATION_GROUPS.map((group, index) => (

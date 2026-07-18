@@ -1,5 +1,7 @@
 # Public Lab architecture
 
+This is the deliberately reduced public execution path. The private registry aggregates 1,970 profiles across 51 domains and mission-based selection separates that registry from any individual run. The public Lab exposes only four representative specialists; individual profiles, prompts and selection logic are not part of the public repository.
+
 ```text
 Human intake
   -> input validation and normalization

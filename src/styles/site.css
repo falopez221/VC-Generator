@@ -663,3 +663,22 @@ button:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visibl
   .footer-directory nav:last-child { grid-column: 1 / -1; }
   .footer-bottom { grid-template-columns: 1fr; gap: .7rem; }
 }
+
+@media (max-width: 480px) {
+  :root { --section-pad: 4.5rem; }
+  html { scroll-padding-top: 68px; }
+  .container { width: calc(100% - 24px); }
+  .nav-shell { width: calc(100% - 20px); gap: .35rem; }
+  .brand { min-width: 0; gap: .45rem; font-size: .66rem; }
+  .brand-mark { flex: 0 0 23px; width: 23px; height: 23px; }
+  .nav-utilities { gap: .1rem; }
+  .nav-utilities .sound-toggle { width: 36px; min-width: 36px; height: 38px; }
+  .menu-toggle { gap: .35rem; padding: .45rem; font-size: .64rem; }
+  .menu-lines i { width: 16px; }
+  .enterprise-navigation { right: -2px; left: -2px; }
+  .enterprise-navigation-intro strong { font-size: 1.15rem; }
+  .enterprise-navigation-foot a { line-height: 1.45; }
+  .footer-directory { grid-template-columns: 1fr; gap: 1.6rem; }
+  .footer-directory nav:last-child, .footer-identity { grid-column: auto; }
+  .footer-bottom { font-size: .5rem; }
+}

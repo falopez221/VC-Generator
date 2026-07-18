@@ -1,2 +1,3 @@
-import { PlatformOverview } from "@/src/platform/components/PlatformOverview";
-export default function PlatformOverviewPage() { return <PlatformOverview />; }
+import { WorkspaceSupportSurface } from "@/src/platform/components/WorkspaceSupportSurfaces";
+
+export default function PlatformOverviewPage() { return <WorkspaceSupportSurface surface="overview" />; }

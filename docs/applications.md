@@ -29,7 +29,7 @@ The canonical type is `ApplicationDefinition` in `src/applications/types.ts`. Ea
 
 ## Public agent boundary
 
-The interactive Lab exposes only four specialist agents:
+The private capability registry aggregates 1,970 profiles across 51 domains. The interactive Lab exposes only these four public specialist agents:
 
 1. Mathematics
 2. Finance
@@ -70,4 +70,3 @@ Durable shared missions would require an approved managed storage design. Until 
 ## Verification
 
 The test suite checks catalog size, uniqueness, bilingual content, connected related applications, safe defense language, 25 cross-domain missions, featured examples, filtering, URL round-trips, mission recommendations, governance behavior, rendered routes, type safety, lint, and production build output.
-

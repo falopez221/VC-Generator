@@ -31,15 +31,15 @@ export const OPERATING_FUNNEL = [
   { value: "1", label: "input humano" },
   { value: "6–12", label: "oportunidades sintéticas" },
   { value: "4", label: "agentes públicos" },
-  { value: "12", label: "modelos visibles" },
+  { value: "14", label: "modelos visibles" },
   { value: "1", label: "ranking comparable" },
   { value: "1", label: "revisión humana" },
 ] as const;
 
 export const WHITEPAPER_DOMAINS = [
   { index: "I", title: "Alcance público", chapters: "Auditoría · Frontera IP · Flujo reproducible" },
-  { index: "II", title: "Cuatro agentes", chapters: "Mathematics · Finance · Strategy · Marketing" },
-  { index: "III", title: "Decisión", chapters: "12 modelos · Gates · Dashboard · Ranking responsable" },
+  { index: "II", title: "Muestra del Lab", chapters: "Mathematics · Finance · Strategy · Marketing" },
+  { index: "III", title: "Decisión", chapters: "14 modelos · Gates · Dashboard · Ranking responsable" },
   { index: "IV", title: "Gobierno", chapters: "Seguridad · Calidad · Roadmap · Trazabilidad" },
 ] as const;
 

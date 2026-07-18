@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="475" height="150" preserveAspectRatio="xMinYMin meet" viewBox="0 0 475 150" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="475" height="150"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-150)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="0" width="475" height="150" rx="8" ry="8" style="stroke: rgb(78%,83%,86%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(96%,97%,98%); fill-rule: evenodd;"/>
+			<text x="14" y="134" style="font-family: VG Mono Bold; font-size: 6.7px;fill: rgb(0%,47%,57%); stroke:none;" transform="translate(0,268) scale(1,-1)">FIGURE 20</text>
+			<text x="75" y="133.5" style="font-family: VG Sans Bold; font-size: 8.2px;fill: rgb(6%,14%,20%); stroke:none;" transform="translate(0,267) scale(1,-1)">Adversarial review loop</text>
+			<rect x="35" y="70" width="76" height="27" rx="5" ry="5" style="stroke: rgb(0%,47%,57%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="64.558251953125" y="81.0" style="font-family: VG Sans Bold; font-size: 6.2px;fill: rgb(6%,14%,20%); stroke:none;" transform="translate(0,162) scale(1,-1)">Claim</text>
+			<rect x="130" y="95" width="76" height="27" rx="5" ry="5" style="stroke: rgb(0%,47%,57%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="158.179296875" y="106.0" style="font-family: VG Sans Bold; font-size: 6.2px;fill: rgb(6%,14%,20%); stroke:none;" transform="translate(0,212) scale(1,-1)">Falsify</text>
+			<path d="M 111,83 L 127,108 Z" style="stroke: rgb(0%,47%,57%); stroke-linecap: butt; stroke-width: 1.2;"/>
+			<polygon points="127 108, 122.6156 105.5964, 126.6537 103.012" style="stroke: rgb(0%,47%,57%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,47%,57%); fill-rule: evenodd;"/>
+			<rect x="225" y="70" width="76" height="27" rx="5" ry="5" style="stroke: rgb(0%,47%,57%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="253.0037109375" y="81.0" style="font-family: VG Sans Bold; font-size: 6.2px;fill: rgb(6%,14%,20%); stroke:none;" transform="translate(0,162) scale(1,-1)">Revise</text>
+			<path d="M 206,108 L 222,83 Z" style="stroke: rgb(0%,47%,57%); stroke-linecap: butt; stroke-width: 1.2;"/>
+			<polygon points="222 83, 221.6537 87.98799, 217.6156 85.40363" style="stroke: rgb(0%,47%,57%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,47%,57%); fill-rule: evenodd;"/>
+			<rect x="130" y="40" width="76" height="27" rx="5" ry="5" style="stroke: rgb(0%,47%,57%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="146.988720703125" y="51.0" style="font-family: VG Sans Bold; font-size: 6.2px;fill: rgb(6%,14%,20%); stroke:none;" transform="translate(0,102) scale(1,-1)">Countermodel</text>
+			<path d="M 301,83 L 127,53 Z" style="stroke: rgb(0%,47%,57%); stroke-linecap: butt; stroke-width: 1.2;"/>
+			<polygon points="127 53, 131.7314 51.38326, 130.9168 56.10781" style="stroke: rgb(0%,47%,57%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,47%,57%); fill-rule: evenodd;"/>
+			<rect x="345" y="70" width="76" height="27" rx="5" ry="5" style="stroke: rgb(0%,47%,57%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(4%,16%,25%); fill-rule: evenodd;"/>
+			<text x="361.98115234375" y="81.0" style="font-family: VG Sans Bold; font-size: 6.2px;fill: rgb(100%,100%,100%); stroke:none;" transform="translate(0,162) scale(1,-1)">Human review</text>
+			<path d="M 206,53 L 342,83 Z" style="stroke: rgb(0%,47%,57%); stroke-linecap: butt; stroke-width: 1.2;"/>
+			<polygon points="342 83, 337.1987 84.39565, 338.2315 79.71395" style="stroke: rgb(0%,47%,57%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,47%,57%); fill-rule: evenodd;"/>
+		</g>
+	</g>
+</svg>

@@ -3,8 +3,8 @@ import { ProgressiveDisclosure } from "@/src/components/ui/ProgressiveDisclosure
 
 const CAPABILITIES = [
   ["01", "Exploración acotada", "Genera entre 6 y 12 oportunidades sintéticas por ejecución reproducible."],
-  ["02", "Cuatro perspectivas", "Mathematics, Finance, Strategy y Marketing entregan evaluaciones estructuradas."],
-  ["03", "Decisión asistida", "Doce modelos exponen robustez, economía, riesgo y la siguiente evidencia útil."],
+  ["02", "Registro escalable", "1.970 perfiles privados agrupados en 51 dominios, seleccionables por misión."],
+  ["03", "Muestra pública", "Mathematics, Finance, Strategy y Marketing hacen visible el flujo del Lab."],
 ] as const;
 
 export function ExecutiveSummary() {
@@ -14,19 +14,19 @@ export function ExecutiveSummary() {
         <SectionHeading
           eyebrow="Resumen ejecutivo"
           title="Un sistema para ampliar el universo de oportunidades."
-          description="Venture Governance System coordina inteligencia especializada para detectar, explicar y priorizar oportunidades que difícilmente surgirían de un análisis tradicional."
+          description="Venture Governance System organiza 1.970 perfiles de capacidades en 51 dominios y selecciona las pertinentes para detectar, explicar y priorizar oportunidades."
         />
         <ProgressiveDisclosure
           what="Un Lab público reproducible para explorar y priorizar oportunidades sintéticas."
           does="Convierte un mandato humano y señales dispersas en hipótesis comparables, riesgos explícitos y próximos experimentos."
           matters="Amplía la cantidad de oportunidades examinadas sin transferir la responsabilidad de inversión a la IA."
-          how={["Coordina perspectivas especializadas.", "Contrasta evidencia, economía, riesgo y estrategia.", "Devuelve candidatos priorizados para revisión humana."]}
-          technical={["Cuatro agentes públicos con un contrato común.", "Doce modelos determinísticos y probabilísticos demostrativos.", "Gates humanos proporcionales al riesgo, evidencia e incertidumbre."]}
+          how={["Selecciona perspectivas especializadas según la misión.", "Contrasta evidencia, economía, riesgo y estrategia.", "Devuelve candidatos priorizados para revisión humana."]}
+          technical={["El Lab usa cuatro agentes públicos como muestra de un registro privado de 1.970 perfiles en 51 dominios.", "Doce modelos determinísticos y probabilísticos demostrativos.", "Gates humanos proporcionales al riesgo, evidencia e incertidumbre."]}
           limitations={["No garantiza resultados ni predice unicornios.", "No reemplaza fundadores, validación comercial o ejecución.", "La demostración pública usa datos y reglas sintéticas."]}
         />
         <div className="executive-layout">
           <div className="executive-copy">
-            <p>Venture Governance System recibe una tesis humana, valida sus límites y genera entre 6 y 12 oportunidades sintéticas. Mathematics, Finance, Strategy y Marketing evalúan cada alternativa mediante contratos estructurados que separan hallazgos, supuestos, riesgos, evidencia faltante, incertidumbre y crítica.</p>
+            <p>Venture Governance System recibe una tesis humana, define sus límites y selecciona las capacidades pertinentes para cada misión. En el Lab público, Mathematics, Finance, Strategy y Marketing representan esa selección mediante contratos estructurados que separan hallazgos, supuestos, riesgos, evidencia faltante, incertidumbre y crítica.</p>
             <p>Doce modelos públicos permiten inspeccionar MCDA, Monte Carlo, sensibilidad, actualización bayesiana, escenarios, riesgo, Pareto, mínimos cuadrados, tornado, break-even, robustez del ranking y prioridad de validación. El sistema compara y sugiere próximos experimentos; no construye una startup completa, no financia, no invierte y no reemplaza la validación comercial ni el juicio humano.</p>
           </div>
           <aside className="executive-boundary">

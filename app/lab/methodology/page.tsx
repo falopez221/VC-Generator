@@ -29,7 +29,7 @@ export default function MethodologyPage() {
       </div></section>
       <section className="lab-section lab-section--dark"><header><p className="lab-kicker">DEMONSTRATIVE MODELS · VERSION {PUBLIC_MODEL_VERSION}</p><h2>Visible mechanics and explicit limits.</h2></header><div className="lab-model-list">{PUBLIC_MODEL_CATALOG.map((model) => <article key={model.id}><span>{model.family}</span><h3>{model.name}</h3><p>{model.shows}</p><small>{model.limitation}</small></article>)}</div></section>
       <section className="lab-warning"><strong>Investment limitation</strong><p>This laboratory produces model-based estimates from assumptions and synthetic or user-provided data. It does not constitute investment advice and does not predict startup success.</p></section>
-      <section className="lab-warning"><strong>Intellectual-property boundary</strong><p>This public lab demonstrates only a limited part of the broader Venture Governance architecture. The complete local system, extended agent network, proprietary orchestration logic and private quantitative models are not included.</p></section>
+      <section className="lab-warning"><strong>Intellectual-property boundary</strong><p>The private registry aggregates 1,970 profiles across 51 domains, selected by mission. This public Lab demonstrates only four representative specialists; individual private profiles, proprietary selection and orchestration logic, and private quantitative models are not included.</p></section>
     </main>
   );
 }

@@ -1,7 +1,7 @@
 # Public Lab limitations
 
 - Uses synthetic templates and user-provided text, not private datasets.
-- Shows four agents, not the complete agent network.
+- Shows four public agents, not the 1,970-profile private registry across 51 domains.
 - Uses fictitious public weights and simplified formulas.
 - Does not contain historical calibration, learning, private scoring, or production orchestration.
 - Produces model-based estimates, not predictions of startup success.
@@ -10,4 +10,3 @@
 - MCPs appear only as an evidence type or early technical artifact concept.
 
 The complete local system, extended agent network, proprietary orchestration logic, private prompts, private models, and datasets are deliberately excluded.
-

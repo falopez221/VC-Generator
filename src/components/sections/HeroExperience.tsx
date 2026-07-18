@@ -245,7 +245,7 @@ export function HeroExperience() {
   return (
     <div ref={shellRef} className={`hero-experience ${staticMode ? "is-static" : ""} phase-${phase} ${complete ? "is-complete" : ""}`} onPointerMove={updatePointer} onPointerLeave={resetPointer}>
       <canvas ref={canvasRef} className="hero-experience-canvas" aria-hidden="true" />
-      <div className="experience-static-flow" aria-hidden="true"><span>Human Thesis</span><i>→</i><span>4 Public Agents</span><i>→</i><span>12+2 Models</span><i>→</i><span>Comparable Ranking</span><i>→</i><span>Human Review</span></div>
+      <div className="experience-static-flow" aria-hidden="true"><span>Human Thesis</span><i>→</i><span>1,970-profile registry</span><i>→</i><span>4 Lab Agents</span><i>→</i><span>Comparable Ranking</span><i>→</i><span>Human Review</span></div>
       <div className="experience-status"><span>{String(phase + 1).padStart(2, "0")} / 05</span><strong aria-live="polite">{phases[phase].label}</strong><small>{phases[phase].message}</small></div>
       <div className="experience-scene">
         <div className="experience-human"><i /><span>{phase >= 4 ? "Human Review" : "Human Thesis"}</span><small>{phase >= 4 ? "Human-in-command" : "market · problem · risk · horizon"}</small></div>
@@ -253,7 +253,7 @@ export function HeroExperience() {
           {agents.map((agent) => <button type="button" key={agent.id} className={`experience-agent ${agent.public ? "is-public" : "is-secondary"} ${detailAgent?.id === agent.id ? "is-selected" : ""}`} style={{ left: `${agent.x}%`, top: `${agent.y}%`, "--agent-scale": String(.82 + agent.z * .2) } as CSSProperties} aria-pressed={selectedAgent?.id === agent.id} aria-label={`${agent.label}. ${agent.description}`} onPointerEnter={() => setHoveredAgent(agent)} onPointerLeave={() => { if (!selectedAgent) setHoveredAgent(null); }} onFocus={() => setHoveredAgent(agent)} onBlur={() => { if (!selectedAgent) setHoveredAgent(null); }} onClick={() => selectAgent(agent)}><i /><span>{agent.label}</span></button>)}
         </div>
         <div className="experience-quant" aria-hidden={phase !== 2}><span>12 CORE MODELS + 2 CONTEXT LENSES</span><strong>Monte Carlo · Tornado · Defensibility · Macroeconomics</strong><small>Risk · Evidence · Uncertainty</small></div>
-        <div className="experience-funnel" aria-describedby="hero-funnel-note" aria-hidden={phase !== 2}><span>1 input</span><i>→</i><span>6–12 opportunities</span><i>→</i><span>4 agents</span><i>→</i><span>14 visible models</span><i>→</i><strong>human review</strong></div>
+        <div className="experience-funnel" aria-describedby="hero-funnel-note" aria-hidden={phase !== 2}><span>1 input</span><i>→</i><span>1,970 private profiles</span><i>→</i><span>4 Lab agents</span><i>→</i><span>14 visible models</span><i>→</i><strong>human review</strong></div>
         <small className="experience-funnel-note" id="hero-funnel-note" aria-hidden={phase !== 2}>Deterministic public flow · same validated input, version, weights and seed produce the same run.</small>
         <article className="experience-candidate" aria-hidden={phase < 3}>
           <header><span>TOP-RANKED SYNTHETIC OPPORTUNITY</span><b>Priority for Human Review</b></header>
@@ -270,7 +270,7 @@ export function HeroExperience() {
         <button type="button" data-sound-control className={sound.enabled ? "is-on" : ""} aria-pressed={sound.enabled} onClick={() => requestInterfaceSoundSettings({ enabled: !sound.enabled, volume: sound.volume })}>{sound.enabled ? "Sound enabled" : "Enable sound"}</button>
         <label data-sound-control><span>Volume {sound.volume}%</span><input type="range" min="0" max="100" step="25" value={sound.volume} onChange={(event) => requestInterfaceSoundSettings({ enabled: sound.enabled, volume: Number(event.target.value) })} /></label>
       </div>
-      <p className="sr-only">A human defines a thesis. Four public agents analyze six to twelve synthetic opportunities, twelve core quantitative models and two context lenses evaluate uncertainty, and a comparable ranking is returned for human review.</p>
+      <p className="sr-only">A human defines a thesis. A private registry aggregates 1,970 profiles across 51 domains; the public Lab shows four representative agents to analyze six to twelve synthetic opportunities. Quantitative models evaluate uncertainty and a comparable ranking is returned for human review.</p>
     </div>
   );
 }

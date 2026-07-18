@@ -2,7 +2,7 @@ export const PIPELINE = [
   { phase: "01", name: "Input humano", detail: "Define problema, tesis, contexto, límites y objetivo de la ejecución.", gate: "Mandato humano" },
   { phase: "02", name: "Validación", detail: "Sanitiza texto, acota números y rechaza configuraciones incompletas.", gate: "Esquema válido" },
   { phase: "03", name: "Generación sintética", detail: "Produce entre 6 y 12 alternativas desde reglas públicas y una semilla.", gate: "Conteo y seed reproducibles" },
-  { phase: "04", name: "Cuatro agentes", detail: "Mathematics, Finance, Strategy y Marketing devuelven contratos estructurados.", gate: "Contrato completo" },
+  { phase: "04", name: "Muestra de cuatro agentes", detail: "En el Lab, Mathematics, Finance, Strategy y Marketing devuelven contratos estructurados; el registro privado agregado se selecciona por misión.", gate: "Contrato completo" },
   { phase: "05", name: "MCDA", detail: "Normaliza pesos y calcula contribuciones, penalizaciones e intervalo visible.", gate: "Pesos suman 100%" },
   { phase: "06", name: "Incertidumbre", detail: "Explora distribuciones y escenarios sin presentar pronósticos como hechos.", gate: "Bounds finitos" },
   { phase: "07", name: "Economía", detail: "Hace visibles contribución, break-even, adopción y payback demostrativos.", gate: "Unidades explícitas" },

@@ -137,7 +137,7 @@ export function PlatformShowcase() {
             <h2 id="platform-showcase-title">One mission. Every dependency visible.</h2>
           </div>
           <div>
-            <p>Select any component to trace its upstream evidence, downstream effects and path to human authority. The interface changes as one connected system—not as isolated dashboard cards.</p>
+            <p>The private registry aggregates 1,970 profiles across 51 domains; this public visualization draws only four representative Lab specialists. Select any component to trace its upstream evidence, downstream effects and path to human authority.</p>
             <nav aria-label="Platform showcase actions">
               <Link href="/lab/demo">Run the Public Lab <span aria-hidden="true">→</span></Link>
               <Link href="/app/login">Workspace sign-in</Link>

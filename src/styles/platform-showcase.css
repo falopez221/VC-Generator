@@ -391,3 +391,25 @@
   .ps-architecture li:nth-child(even) { border-left: 0; }
   .ps-architecture li + li { border-top: 1px solid var(--ps-line); }
 }
+
+@media (max-width: 480px) {
+  .platform-showcase-heading { gap: 1.1rem; }
+  .platform-showcase-heading nav { display: grid; grid-template-columns: 1fr; }
+  .platform-showcase-heading nav a { width: 100%; }
+  .ps-command-surface { margin-inline: -6px; }
+  .ps-screen-topbar { grid-template-columns: minmax(0, 1fr) auto; gap: .55rem; padding: .6rem; }
+  .ps-screen-brand > span { font-size: .58rem; }
+  .ps-screen-brand small { font-size: .54rem; }
+  .ps-screen-topbar > b { max-width: 112px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: .52rem; }
+  .ps-activity-stream { grid-template-columns: 1fr; }
+  .ps-activity-stream li + li { border-top: 1px solid var(--ps-line); border-left: 0; }
+  .ps-system-map { min-height: 0; grid-template-columns: 1fr; padding: .6rem; }
+  .ps-mobile-flow { display: grid; grid-template-columns: 1fr 1fr; gap: .35rem; }
+  .ps-mobile-flow li { min-width: 0; white-space: normal; }
+  .ps-mobile-flow li::after { display: none; }
+  .ps-node--evidence, .ps-node--mission, .ps-node--gate, .ps-node--result { grid-column: auto; }
+  .ps-node { min-height: 52px; padding: .42rem; }
+  .ps-inspector { padding: .75rem; }
+  .ps-inspector dl { grid-template-columns: 1fr; }
+  .ps-demo-note::after { font-size: .58rem; }
+}

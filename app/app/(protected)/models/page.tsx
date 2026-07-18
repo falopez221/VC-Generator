@@ -1,2 +1,2 @@
-import { PlatformModule } from "@/src/platform/components/PlatformModule";
-export default function ModelsPage() { return <PlatformModule kind="models" />; }
+import { ModelWorkbench } from "@/src/platform/components/PrivateAnalysisWorkbenches";
+export default function ModelsPage() { return <ModelWorkbench />; }

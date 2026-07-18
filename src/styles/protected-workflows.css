@@ -1,0 +1,22 @@
+.workflow-stack { display: grid; gap: .75rem; }
+.workflow-status { display: flex; flex-wrap: wrap; gap: .65rem 1rem; align-items: baseline; padding: .7rem .85rem; color: #91aab9; background: rgb(85 197 236 / 5%); border: 1px solid rgb(85 197 236 / 18%); font-size: .58rem; line-height: 1.55; }
+.workflow-status strong { color: var(--platform-accent); font: 650 .47rem var(--font-mono); letter-spacing: .1em; }
+.workflow-tabs { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: .75rem; }
+.workflow-tabs button, .workflow-list button, .workflow-actions button { min-height: 31px; padding: .35rem .55rem; color: #96afbe; background: rgb(255 255 255 / 3%); border: 1px solid var(--platform-line); border-radius: 4px; cursor: pointer; font-size: .54rem; }
+.workflow-tabs button[aria-selected="true"], .workflow-tabs button:hover, .workflow-list button:hover, .workflow-actions button:hover { color: white; background: #0d426a; border-color: #55c5ec; }
+.workflow-list { display: grid; gap: .4rem; }
+.workflow-list > article { display: grid; grid-template-columns: 86px minmax(0, 1fr) auto; gap: .7rem; align-items: center; padding: .75rem; background: rgb(255 255 255 / 2.5%); border: 1px solid transparent; }
+.workflow-list > article:has(button:focus-visible) { border-color: #55c5ec; }
+.workflow-list small, .knowledge-path small { display: block; color: #66879b; font: 650 .43rem var(--font-mono); letter-spacing: .04em; }
+.workflow-list strong { display: block; margin-top: .25rem; color: #d2e0e8; font-size: .68rem; }
+.workflow-list p { margin: .3rem 0 0; color: #7895a7; font-size: .56rem; line-height: 1.5; }
+.workflow-chip { width: fit-content; padding: .25rem .35rem; color: #a4c7d9; border: 1px solid rgb(157 207 230 / 33%); border-radius: 3px; font: 650 .43rem var(--font-mono); text-transform: uppercase; }
+.workflow-chip.is-claim { color: #d5c38e; border-color: rgb(215 190 112 / 40%); }.workflow-chip.is-assumption { color: #cc9bbd; border-color: rgb(210 139 182 / 40%); }.workflow-chip.is-inference { color: #c9b2eb; border-color: rgb(184 143 230 / 40%); }.workflow-chip.is-contradiction, .workflow-chip.is-gate { color: #e7b15c; border-color: rgb(231 177 92 / 50%); }
+.workflow-steps { display: grid; gap: .75rem; margin: 0; padding-left: 1.3rem; color: #96adbb; font-size: .61rem; line-height: 1.55; }
+.workflow-list--compact > article { grid-template-columns: 74px minmax(0, 1fr) auto; }
+.knowledge-path { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; }
+.knowledge-path > div { display: flex; gap: .4rem; align-items: center; }.knowledge-path i { color: #4e748d; font-style: normal; }
+.knowledge-path button { min-width: 132px; display: grid; gap: .35rem; padding: .6rem; color: #b9ceda; text-align: left; background: rgb(255 255 255 / 3%); border: 1px solid var(--platform-line); border-radius: 4px; cursor: pointer; }.knowledge-path button.is-selected { color: white; background: #0b3556; border-color: #55c5ec; }.knowledge-path strong { font-size: .6rem; }
+.workflow-definition { display: grid; gap: .4rem; margin: 0; }.workflow-definition div { padding: .55rem; background: rgb(255 255 255 / 2.5%); }.workflow-definition dt { color: #66879b; font: 650 .43rem var(--font-mono); }.workflow-definition dd { margin: .25rem 0 0; color: #bfd0da; font-size: .57rem; }
+.workflow-actions { display: flex; flex-wrap: wrap; justify-content: end; gap: .35rem; }.workflow-field, .workflow-form label { display: grid; gap: .4rem; color: #9db4c1; font: 650 .48rem var(--font-mono); letter-spacing: .04em; }.workflow-field textarea, .workflow-form input, .workflow-form textarea { width: 100%; min-height: 36px; padding: .55rem .65rem; color: #d3e1e8; background: rgb(255 255 255 / 3%); border: 1px solid var(--platform-line); border-radius: 4px; font: .62rem var(--font-sans); }.workflow-field textarea, .workflow-form textarea { min-height: 110px; resize: vertical; }.workflow-form { display: grid; gap: .75rem; margin-bottom: .8rem; }
+@media (max-width: 760px) { .workflow-list > article, .workflow-list--compact > article { grid-template-columns: 1fr; gap: .5rem; }.workflow-actions { justify-content: start; }.knowledge-path { display: grid; grid-template-columns: 1fr; }.knowledge-path > div { display: grid; grid-template-columns: 1fr; }.knowledge-path i { display: none; }.knowledge-path button { width: 100%; } }

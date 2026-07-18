@@ -23,7 +23,7 @@ const CALLBACK_PATH = "/callback";
 export async function getChatGPTUser(): Promise<ChatGPTUser | null> {
   const requestHeaders = await headers();
   const email = requestHeaders.get(USER_EMAIL_HEADER);
-  if (!email) return localDevelopmentUser();
+  if (!email) return localRuntimeUser();
 
   const encodedFullName = requestHeaders.get(USER_FULL_NAME_HEADER);
   const fullName =
@@ -52,7 +52,9 @@ export function authorizeChatGPTUser(user: ChatGPTUser): AuthorizedChatGPTUser |
   if (process.env.VERCEL === "1") return null;
   const email = user.email.trim().toLowerCase();
   const localEmail = process.env.VG_LOCAL_DEV_USER_EMAIL?.trim().toLowerCase();
-  if (process.env.NODE_ENV === "development" && process.env.VG_LOCAL_DEV_MODE === "1" && localEmail && email === localEmail) {
+  const developmentMode = process.env.NODE_ENV === "development" && process.env.VG_LOCAL_DEV_MODE === "1";
+  const installedMode = process.env.VG_LOCAL_INSTALL_MODE === "1";
+  if ((developmentMode || installedMode) && localEmail && email === localEmail) {
     return { ...user, role: "System Admin" };
   }
   const ownerEmail = process.env.VG_OWNER_EMAIL?.trim().toLowerCase();
@@ -117,10 +119,18 @@ function safeDecodeURIComponent(value: string): string | null {
   }
 }
 
-function localDevelopmentUser(): ChatGPTUser | null {
-  if (process.env.NODE_ENV !== "development" || process.env.VG_LOCAL_DEV_MODE !== "1") return null;
+function localRuntimeUser(): ChatGPTUser | null {
+  const developmentMode = process.env.NODE_ENV === "development" && process.env.VG_LOCAL_DEV_MODE === "1";
+  const installedMode = process.env.VG_LOCAL_INSTALL_MODE === "1" && isLoopbackHost(process.env.VG_LOCAL_BIND_ADDRESS ?? null);
+  if (!developmentMode && !installedMode) return null;
   const email = process.env.VG_LOCAL_DEV_USER_EMAIL?.trim();
   if (!email) return null;
   const fullName = process.env.VG_LOCAL_DEV_USER_NAME?.trim() || "Local Operator";
   return { displayName: fullName, email, fullName };
+}
+
+function isLoopbackHost(value: string | null): boolean {
+  if (!value) return false;
+  const normalized = value.trim().toLowerCase();
+  return normalized === "localhost" || normalized.startsWith("localhost:") || normalized === "127.0.0.1" || normalized.startsWith("127.0.0.1:") || normalized === "[::1]" || normalized.startsWith("[::1]:");
 }

@@ -9,7 +9,7 @@ import { AGENT_NAMES, DIMENSION_KEYS, type AgentName, type AgentResult, type Lab
 const DISCLOSURES = [
   "Public demonstration model. The complete architecture, agent system, scoring logic and local implementation are proprietary and are not included in this demo.",
   "This lab illustrates the Venture Governance concept using simplified agents, synthetic data and demonstrative quantitative models.",
-  "The complete local system, extended agent network, proprietary orchestration logic and private quantitative models are not included.",
+  "The private registry aggregates 1,970 profiles across 51 domains; individual profiles, proprietary orchestration logic and private quantitative models are not included.",
 ];
 
 function scoreSpread(values: number[]) {

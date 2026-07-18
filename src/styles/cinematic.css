@@ -112,6 +112,22 @@ main > section:not(.cinematic-hero):not(.lab-cinematic-hero):not(.lab-live-field
   .lab-cinematic-metrics div:last-child { grid-column: 1 / -1; }
   .lab-live-field { min-height: 380px; }
 }
+@media (max-width: 480px) {
+  .cinematic-entry-gate, .lab-audio-gate { padding: 1rem; }
+  .cinematic-entry-gate::before, .lab-audio-gate::before { top: 18%; }
+  .cinematic-entry-gate h2, .lab-audio-gate h2 { font-size: clamp(2.35rem, 14vw, 3.2rem); }
+  .cinematic-entry-gate p, .lab-audio-gate p { font-size: .9rem; }
+  .cinematic-entry-gate button, .lab-audio-gate button { width: 100%; min-height: 50px; padding-inline: .75rem; }
+  .cinematic-hero-copy { min-height: 100svh; padding-top: 8.5rem; padding-bottom: 4rem; }
+  .cinematic-controls { top: 76px; right: 12px; }
+  .cinematic-controls button { min-height: 32px; padding: .35rem .45rem; font-size: .46rem; }
+  .cinematic-sequence, .cinematic-scroll-cue { display: none; }
+  .lab-cinematic-hero { min-height: 620px; padding-inline: 1rem; }
+  .lab-cinematic-copy h1 { font-size: clamp(2.75rem, 14vw, 4rem); }
+  .lab-cinematic-metrics { grid-template-columns: 1fr; }
+  .lab-cinematic-metrics div:last-child { grid-column: auto; }
+  .lab-live-field, .lab-result-discovery { padding-inline: 1rem; }
+}
 @media (prefers-reduced-motion: reduce) {
   .cinematic-hero-copy > div:first-child, .cinematic-observer, .cinematic-sequence { opacity: 1; transform: none; animation: none; }
   .cinematic-sequence div::after { transform: scaleX(1); animation: none; }

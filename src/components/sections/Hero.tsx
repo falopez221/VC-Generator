@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { CinematicField } from "@/src/components/experience/CinematicField";
+import { primeEntryVoice, speakEntryGreeting } from "@/src/components/ui/entryVoice";
 import { LinkButton } from "@/src/components/ui/LinkButton";
 import { requestInterfaceSoundSettings } from "@/src/components/ui/SoundController";
 import { SITE_LINKS } from "@/src/config/site";
@@ -12,8 +13,13 @@ export function Hero() {
   const [revealed, setRevealed] = useState(false);
   const [entryState, setEntryState] = useState<"locked" | "entering" | "entered">("locked");
 
+  useEffect(() => {
+    primeEntryVoice();
+  }, []);
+
   const enterSystem = () => {
-    requestInterfaceSoundSettings({ enabled: true, volume: 75 });
+    requestInterfaceSoundSettings({ enabled: true, volume: 35 });
+    void speakEntryGreeting(75).finally(() => requestInterfaceSoundSettings({ enabled: true, volume: 75 }));
     setEntryState("entering");
     setRevealed(true);
     window.setTimeout(() => setEntryState("entered"), 850);
@@ -31,7 +37,7 @@ export function Hero() {
         </div>
         <div className="cinematic-hero-copy">
           <div>
-            <p className="cinematic-eyebrow"><i aria-hidden="true" /> Venture Governance System™ · Whitepaper público v2.0 · Public research surface</p>
+            <p className="cinematic-eyebrow"><i aria-hidden="true" /> Venture Governance System™ · Whitepaper público 2026.2 · Public research surface</p>
             <h1>Knowledge begins <span>as possibility.</span></h1>
             <p className="cinematic-hero-lede">A governed intelligence environment that turns a human thesis into inspectable opportunities, visible uncertainty and decisions that remain unmistakably human.</p>
             <div className="cinematic-hero-actions">
@@ -42,7 +48,7 @@ export function Hero() {
           <aside className="cinematic-observer">
             <span>OBSERVED PROCESS · 01</span>
             <strong>Signals are organizing into specialist perspectives.</strong>
-            <p>Four public agents. Synthetic data. Deterministic models. Human authority remains the final gate.</p>
+            <p>1,970 private profiles across 51 domains. Four public Lab agents. Human authority remains the final gate.</p>
           </aside>
         </div>
         <Link className="cinematic-scroll-cue" href="#platform">Enter system</Link>
@@ -53,7 +59,7 @@ export function Hero() {
           <span className="experience-threshold-index">CHAPTER 01 · THE SEARCH SPACE</span>
           <div>
             <h2 id="threshold-title">Not a stream of answers. <em>A visible field of competing possibilities.</em></h2>
-            <p>The public experience reveals the architecture in layers: human intent, four specialist perspectives, quantitative stress tests, evidence boundaries and a named human decision. The complete private system remains outside this repository.</p>
+            <p>The public experience reveals the architecture in layers: human intent, an aggregated private registry of 1,970 profiles across 51 domains, four visible Lab perspectives, quantitative stress tests and a named human decision. Individual private profiles remain outside this repository.</p>
           </div>
         </div>
       </section>

@@ -8,16 +8,16 @@ export function Architecture() {
       <div className="container">
         <SectionHeading
           eyebrow="04 · Arquitectura conceptual"
-          title="Seis planos para razonar, observar y gobernar."
-          description="Cuatro agentes públicos trabajan sobre contratos estructurados; validación, generación, ranking, persistencia y revisión permanecen como módulos deterministas y auditables."
+          title="Siete planos para seleccionar capacidades y gobernar decisiones."
+          description="La arquitectura separa un registro privado agregado de 1.970 perfiles en 51 dominios de la ejecución. El Lab muestra cuatro especialistas representativos; no define el tamaño de la red privada."
         />
         <ProgressiveDisclosure
-          what="Una arquitectura conceptual organizada en seis planos operativos y controles transversales."
-          does="Separa descubrimiento, diseño, evaluación, validación y decisión para que cada entrega pueda inspeccionarse."
-          matters="La separación reduce acoplamiento, hace visibles las responsabilidades y permite escalar sólo donde aporta calidad."
-          how={["El orquestador activa capacidades según dependencias.", "Cada plano produce artefactos versionados.", "Memoria, observabilidad, seguridad y supervisión atraviesan todo el flujo."]}
-          technical={["4 agentes públicos y catálogo versionado de 12 modelos.", "Funciones puras, seed reproducible y persistencia local validada.", "Contratos tipados separan interfaz, dominio y modelos."]}
-          limitations={["Es la arquitectura del demostrador público, no la red privada.", "No incluye APIs pagas, autenticación ni datos remotos.", "Los resultados son sintéticos hasta que una etiqueta indique evidencia aportada."]}
+          what="Una arquitectura conceptual organizada en siete planos operativos y controles transversales."
+          does="Separa misión, registro de capacidades, selección, validación, ejecución y decisión para que cada entrega pueda inspeccionarse."
+          matters="La separación reduce acoplamiento y permite ampliar el catálogo sin convertir todos los perfiles en participantes de cada misión."
+          how={["La misión selecciona sólo las capacidades pertinentes según alcance y dependencias.", "Cada plano produce artefactos versionados.", "Memoria, observabilidad, seguridad y supervisión atraviesan todo el flujo."]}
+          technical={["El registro privado reúne 1.970 perfiles en 51 dominios; el Lab expone sólo 4 agentes representativos.", "Funciones puras, seed reproducible y persistencia local validada.", "Contratos tipados separan interfaz, dominio, capacidades y modelos."]}
+          limitations={["Esta visualización muestra sólo el agregado del registro: no publica perfiles, prompts ni lógica privada de selección.", "El Lab no incluye APIs pagas, autenticación ni datos remotos por defecto.", "Los resultados son sintéticos hasta que una etiqueta indique evidencia aportada."]}
         />
         <div className="architecture-layout">
           <div className="layer-stack" aria-label="Arquitectura de software por capas">
@@ -38,7 +38,7 @@ export function Architecture() {
           </aside>
         </div>
         <div className="architecture-principles">
-          <span>4 AGENTES PÚBLICOS</span><span>12 MODELOS V2</span><span>FLUJO DETERMINISTA</span><span>LOCAL-FIRST</span><span>HUMAN-IN-COMMAND</span>
+          <span>1.970 PERFILES · 51 DOMINIOS</span><span>SELECCIÓN POR MISIÓN</span><span>4 AGENTES EN EL LAB</span><span>FLUJO DETERMINISTA</span><span>HUMAN-IN-COMMAND</span>
         </div>
       </div>
     </section>

@@ -1,2 +1,2 @@
-import { PlatformModule } from "@/src/platform/components/PlatformModule";
-export default function ScenariosPage() { return <PlatformModule kind="scenarios" />; }
+import { ScenarioWorkbench } from "@/src/platform/components/PrivateAnalysisWorkbenches";
+export default function ScenariosPage() { return <ScenarioWorkbench />; }

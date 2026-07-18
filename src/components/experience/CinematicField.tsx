@@ -174,5 +174,5 @@ export function CinematicField({ mode = "intro", state = "idle", stage = 0, oppo
     return () => { window.cancelAnimationFrame(frame); canvas.removeEventListener("pointermove", onPointerMove); document.removeEventListener("visibilitychange", onVisibility); };
   }, [active, mode, opportunityCount, signals, stage, state]);
 
-  return <div className={`cinematic-field cinematic-field--${mode} cinematic-field--${state} ${className}`} style={{ "--field-stage": stage } as CSSProperties}><canvas ref={canvasRef} aria-hidden="true" /><p className="sr-only">A deterministic visualization of information signals organizing around the four public specialist agents: Mathematics, Finance, Strategy and Marketing. The animation is illustrative and does not expose private reasoning.</p></div>;
+  return <div className={`cinematic-field cinematic-field--${mode} cinematic-field--${state} ${className}`} style={{ "--field-stage": stage } as CSSProperties}><canvas ref={canvasRef} aria-hidden="true" /><p className="sr-only">A deterministic visualization of information signals organizing around four public specialist agents: Mathematics, Finance, Strategy and Marketing. They are a limited Lab sample of a private registry containing 1,970 profiles across 51 domains. The animation is illustrative and does not expose private reasoning.</p></div>;
 }

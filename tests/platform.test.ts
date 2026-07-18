@@ -38,7 +38,7 @@ test("platform graph exposes only the four bounded public agents", () => {
 test("platform module and fixture metadata remain honest and internally consistent", () => {
   const hrefs = PLATFORM_MODULES.map((module) => module.href);
   assert.equal(new Set(hrefs).size, hrefs.length);
-  assert.ok(PLATFORM_MODULES.every((module) => ["Demo", "Prototype", "Preview", "Planned"].includes(module.status)));
+  assert.ok(PLATFORM_MODULES.every((module) => ["Demo", "Prototype", "Preview", "Planned", "Private"].includes(module.status)));
   assert.equal(DEMO_GOVERNANCE_QUEUE.length, 3);
   assert.ok(DEMO_MISSIONS.every((mission) => mission.evidenceCoverage >= 0 && mission.evidenceCoverage <= 100));
   assert.ok(DEMO_MISSIONS.every((mission) => mission.progress >= 0 && mission.progress <= 100));

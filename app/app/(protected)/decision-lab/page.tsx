@@ -1,2 +1,2 @@
-import { PlatformModule } from "@/src/platform/components/PlatformModule";
-export default function DecisionLabPage() { return <PlatformModule kind="decision" />; }
+import { DecisionRecordLab } from "@/src/platform/components/DecisionRecordLab";
+export default function DecisionLabPage() { return <DecisionRecordLab />; }

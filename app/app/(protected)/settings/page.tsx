@@ -1,2 +1,3 @@
-import { PlatformModule } from "@/src/platform/components/PlatformModule";
-export default function SettingsPage() { return <PlatformModule kind="settings" />; }
+import { WorkspaceSupportSurface } from "@/src/platform/components/WorkspaceSupportSurfaces";
+
+export default function SettingsPage() { return <WorkspaceSupportSurface surface="settings" />; }

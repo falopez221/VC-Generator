@@ -61,7 +61,7 @@ High-impact actions must be checked again on the server. Hiding a button is neve
 
 ## Public IP boundary
 
-Only Mathematics, Finance, Strategy and Marketing appear as public specialist agents. New public agents may not be added without changing `AGENTS.md` and reviewing the public/private product boundary. New public models belong in `src/lab/model-catalog.ts` and must state purpose, interpretation, assumptions and limitations. Private prompts, weights, scoring, calibration, datasets and orchestration do not belong in this repository.
+Only Mathematics, Finance, Strategy and Marketing appear as public specialist agents. They are a deliberately reduced Lab sample, not a claim about the size of the broader capability registry, which aggregates 1,970 profiles across 51 domains. The private architecture is designed to govern that mission-selectable catalog without activating every profile in a run. New public agents may not be added without changing `AGENTS.md` and reviewing the public/private product boundary. New public models belong in `src/lab/model-catalog.ts` and must state purpose, interpretation, assumptions and limitations. Private prompts, weights, scoring, calibration, datasets and orchestration do not belong in this repository.
 
 ## Security notes
 
