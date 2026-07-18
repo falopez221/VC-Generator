@@ -2,6 +2,7 @@
 
 import { useMemo, useState, type CSSProperties } from "react";
 import Link from "next/link";
+import { RegistryField } from "./RegistryField";
 
 type ShowcaseSummaryKey = "evidence" | "outputs" | "models" | "governance";
 
@@ -32,41 +33,60 @@ const SYNTHETIC_MISSION = {
   id: "VG-021",
   title: "Energy Transition Portfolio",
   nodes: [
-    { id: "evidence", label: "Evidence Graph", kind: "evidence", status: "Traceable inputs", detail: "Keeps sources, assumptions, inferences and evidence gaps visibly separated.", summaryKey: "evidence", x: 9.5, y: 50 },
-    { id: "mission", label: "Mission VG-021", kind: "mission", status: "Human mandate", detail: "Defines the decision, scope, owner, constraints and authority boundary.", summaryKey: "governance", x: 27.5, y: 50 },
-    { id: "mathematics", label: "Mathematics", kind: "agent", status: "Public agent", detail: "Models uncertainty, sensitivity, robustness and trade-offs.", summaryKey: "outputs", x: 45, y: 17 },
-    { id: "finance", label: "Finance", kind: "agent", status: "Public agent", detail: "Evaluates economics, capital exposure and staged commitment.", summaryKey: "outputs", x: 45, y: 39 },
-    { id: "strategy", label: "Strategy", kind: "agent", status: "Public agent", detail: "Frames alternatives, timing, differentiation and strategic constraints.", summaryKey: "outputs", x: 45, y: 61 },
-    { id: "marketing", label: "Marketing", kind: "agent", status: "Public agent", detail: "Evaluates adoption, accessible demand and evidence gaps.", summaryKey: "outputs", x: 45, y: 83 },
-    { id: "monte-carlo", label: "Monte Carlo", kind: "model", status: "Demonstrative model", detail: "Explores bounded distributions under visible assumptions and a reproducible seed.", summaryKey: "models", x: 61, y: 33 },
-    { id: "sensitivity", label: "Sensitivity", kind: "model", status: "Demonstrative model", detail: "Identifies which assumptions most strongly influence the comparison.", summaryKey: "models", x: 61, y: 67 },
-    { id: "human-gate", label: "Human Gate", kind: "gate", status: "Named authority", detail: "Requires a named person to review evidence, objections and limitations.", summaryKey: "governance", x: 76, y: 50 },
-    { id: "decision-record", label: "Decision Record", kind: "result", status: "Review package", detail: "Preserves alternatives, rationale, conditions, dissent and the next review point.", summaryKey: "governance", x: 91, y: 50 },
+    { id: "evidence", label: "Evidence Graph", kind: "evidence", status: "Traceable inputs", detail: "Keeps sources, assumptions, inferences and evidence gaps visibly separated.", summaryKey: "evidence", x: 7, y: 50 },
+    { id: "mission", label: "Mission VG-021", kind: "mission", status: "Human mandate", detail: "Defines the decision, scope, owner, constraints and authority boundary.", summaryKey: "governance", x: 20, y: 50 },
+    { id: "mathematics", label: "Mathematics", kind: "agent", status: "Public agent", detail: "Models uncertainty, sensitivity, robustness and trade-offs.", summaryKey: "outputs", x: 39, y: 23 },
+    { id: "finance", label: "Finance", kind: "agent", status: "Public agent", detail: "Evaluates economics, capital exposure and staged commitment.", summaryKey: "outputs", x: 39, y: 41 },
+    { id: "strategy", label: "Strategy", kind: "agent", status: "Public agent", detail: "Frames alternatives, timing, differentiation and strategic constraints.", summaryKey: "outputs", x: 39, y: 59 },
+    { id: "marketing", label: "Marketing", kind: "agent", status: "Public agent", detail: "Evaluates adoption, accessible demand and evidence gaps.", summaryKey: "outputs", x: 39, y: 77 },
+    { id: "monte-carlo", label: "Monte Carlo", kind: "model", status: "Demonstrative model", detail: "Explores bounded distributions under visible assumptions and a reproducible seed.", summaryKey: "models", x: 58, y: 20 },
+    { id: "bayesian", label: "Bayesian update", kind: "model", status: "Demonstrative model", detail: "Shows how declared evidence can update a bounded prior without claiming certainty.", summaryKey: "models", x: 66, y: 34 },
+    { id: "mcda", label: "MCDA", kind: "model", status: "Visible weights", detail: "Compares alternatives using fictitious, normalized and inspectable public weights.", summaryKey: "models", x: 58, y: 47 },
+    { id: "scenario", label: "Scenario analysis", kind: "model", status: "Bounded cases", detail: "Compares declared downside, base and upside cases without forecasting outcomes.", summaryKey: "models", x: 66, y: 60 },
+    { id: "sensitivity", label: "Sensitivity", kind: "model", status: "Demonstrative model", detail: "Identifies which assumptions most strongly influence the comparison.", summaryKey: "models", x: 58, y: 73 },
+    { id: "pareto", label: "Pareto frontier", kind: "model", status: "Trade-off view", detail: "Surfaces non-dominated alternatives without converting trade-offs into approval.", summaryKey: "models", x: 66, y: 86 },
+    { id: "human-gate", label: "Human Gate", kind: "gate", status: "Named authority", detail: "Requires a named person to review evidence, objections and limitations.", summaryKey: "governance", x: 81, y: 50 },
+    { id: "decision-record", label: "Decision Record", kind: "result", status: "Review package", detail: "Preserves alternatives, rationale, conditions, dissent and the next review point.", summaryKey: "governance", x: 94, y: 50 },
   ] satisfies ShowcaseNode[],
   edges: [
-    { id: "evidence-mission", from: "evidence", to: "mission", x1: 14.5, y1: 50, x2: 21.8, y2: 50, label: "Evidence grounds the mission" },
-    { id: "mission-mathematics", from: "mission", to: "mathematics", x1: 32.5, y1: 48, x2: 38.7, y2: 19, label: "Mission routes work to Mathematics" },
-    { id: "mission-finance", from: "mission", to: "finance", x1: 32.5, y1: 49, x2: 38.7, y2: 39, label: "Mission routes work to Finance" },
-    { id: "mission-strategy", from: "mission", to: "strategy", x1: 32.5, y1: 51, x2: 38.7, y2: 61, label: "Mission routes work to Strategy" },
-    { id: "mission-marketing", from: "mission", to: "marketing", x1: 32.5, y1: 52, x2: 38.7, y2: 81, label: "Mission routes work to Marketing" },
-    { id: "mathematics-monte-carlo", from: "mathematics", to: "monte-carlo", x1: 50.5, y1: 18, x2: 54.7, y2: 31, label: "Mathematics configures Monte Carlo" },
-    { id: "finance-monte-carlo", from: "finance", to: "monte-carlo", x1: 50.5, y1: 39, x2: 54.7, y2: 34, label: "Finance contributes economic ranges" },
-    { id: "strategy-sensitivity", from: "strategy", to: "sensitivity", x1: 50.5, y1: 61, x2: 54.7, y2: 66, label: "Strategy contributes decision assumptions" },
-    { id: "marketing-sensitivity", from: "marketing", to: "sensitivity", x1: 50.5, y1: 82, x2: 54.7, y2: 69, label: "Marketing contributes adoption assumptions" },
-    { id: "mathematics-finance", from: "mathematics", to: "finance", x1: 45, y1: 26, x2: 45, y2: 30, label: "Mathematics shares uncertainty ranges with Finance", kind: "collaboration" },
-    { id: "finance-strategy", from: "finance", to: "strategy", x1: 45, y1: 48, x2: 45, y2: 52, label: "Finance and Strategy reconcile economics with positioning", kind: "collaboration" },
-    { id: "strategy-marketing", from: "strategy", to: "marketing", x1: 45, y1: 70, x2: 45, y2: 74, label: "Strategy sends positioning assumptions to Marketing", kind: "collaboration" },
-    { id: "monte-carlo-human-gate", from: "monte-carlo", to: "human-gate", x1: 66.5, y1: 34, x2: 69.7, y2: 48, label: "Scenario ranges enter human review" },
-    { id: "sensitivity-human-gate", from: "sensitivity", to: "human-gate", x1: 66.5, y1: 66, x2: 69.7, y2: 52, label: "Sensitivity findings enter human review" },
-    { id: "human-gate-decision-record", from: "human-gate", to: "decision-record", x1: 81.5, y1: 50, x2: 84.7, y2: 50, label: "Named authority creates a decision record" },
+    { id: "evidence-mission", from: "evidence", to: "mission", x1: 11.5, y1: 50, x2: 15.2, y2: 50, label: "Evidence grounds the mission" },
+    { id: "mission-mathematics", from: "mission", to: "mathematics", x1: 25, y1: 48, x2: 33.8, y2: 24, label: "Mission routes work to Mathematics" },
+    { id: "mission-finance", from: "mission", to: "finance", x1: 25, y1: 49, x2: 33.8, y2: 41, label: "Mission routes work to Finance" },
+    { id: "mission-strategy", from: "mission", to: "strategy", x1: 25, y1: 51, x2: 33.8, y2: 59, label: "Mission routes work to Strategy" },
+    { id: "mission-marketing", from: "mission", to: "marketing", x1: 25, y1: 52, x2: 33.8, y2: 76, label: "Mission routes work to Marketing" },
+    { id: "mathematics-monte-carlo", from: "mathematics", to: "monte-carlo", x1: 44, y1: 23, x2: 52.8, y2: 20, label: "Mathematics configures Monte Carlo" },
+    { id: "mathematics-bayesian", from: "mathematics", to: "bayesian", x1: 44, y1: 25, x2: 60.8, y2: 34, label: "Mathematics bounds the Bayesian update" },
+    { id: "finance-mcda", from: "finance", to: "mcda", x1: 44, y1: 41, x2: 52.8, y2: 47, label: "Finance contributes normalized comparison criteria" },
+    { id: "finance-scenario", from: "finance", to: "scenario", x1: 44, y1: 43, x2: 60.8, y2: 59, label: "Finance contributes bounded economic cases" },
+    { id: "strategy-scenario", from: "strategy", to: "scenario", x1: 44, y1: 59, x2: 60.8, y2: 60, label: "Strategy frames alternative cases" },
+    { id: "strategy-sensitivity", from: "strategy", to: "sensitivity", x1: 44, y1: 61, x2: 52.8, y2: 72, label: "Strategy contributes decision assumptions" },
+    { id: "marketing-sensitivity", from: "marketing", to: "sensitivity", x1: 44, y1: 76, x2: 52.8, y2: 73, label: "Marketing contributes adoption assumptions" },
+    { id: "marketing-pareto", from: "marketing", to: "pareto", x1: 44, y1: 78, x2: 60.8, y2: 85, label: "Marketing contributes demand trade-offs" },
+    { id: "mathematics-finance", from: "mathematics", to: "finance", x1: 39, y1: 28, x2: 39, y2: 35, label: "Mathematics shares uncertainty ranges with Finance", kind: "collaboration" },
+    { id: "finance-strategy", from: "finance", to: "strategy", x1: 39, y1: 46, x2: 39, y2: 53, label: "Finance and Strategy reconcile economics with positioning", kind: "collaboration" },
+    { id: "strategy-marketing", from: "strategy", to: "marketing", x1: 39, y1: 64, x2: 39, y2: 71, label: "Strategy sends positioning assumptions to Marketing", kind: "collaboration" },
+    { id: "monte-carlo-human-gate", from: "monte-carlo", to: "human-gate", x1: 63, y1: 20, x2: 75.7, y2: 47, label: "Scenario distributions enter human review" },
+    { id: "bayesian-human-gate", from: "bayesian", to: "human-gate", x1: 71, y1: 34, x2: 75.7, y2: 48, label: "Evidence updates enter human review" },
+    { id: "mcda-human-gate", from: "mcda", to: "human-gate", x1: 63, y1: 47, x2: 75.7, y2: 49, label: "Weighted comparisons enter human review" },
+    { id: "scenario-human-gate", from: "scenario", to: "human-gate", x1: 71, y1: 60, x2: 75.7, y2: 51, label: "Scenario cases enter human review" },
+    { id: "sensitivity-human-gate", from: "sensitivity", to: "human-gate", x1: 63, y1: 73, x2: 75.7, y2: 52, label: "Sensitivity findings enter human review" },
+    { id: "pareto-human-gate", from: "pareto", to: "human-gate", x1: 71, y1: 86, x2: 75.7, y2: 53, label: "Trade-off frontiers enter human review" },
+    { id: "human-gate-decision-record", from: "human-gate", to: "decision-record", x1: 86.2, y1: 50, x2: 89.2, y2: 50, label: "Named authority creates a decision record" },
   ] satisfies ShowcaseEdge[],
   summary: [
     { id: "evidence", label: "Evidence", value: "18 items", detail: "12 observed · 4 inferred · 2 gaps" },
-    { id: "outputs", label: "Agent outputs", value: "4 briefs", detail: "One per visible public agent" },
-    { id: "models", label: "Model runs", value: "2 models", detail: "1,200 bounded scenarios" },
+    { id: "outputs", label: "Synthetic agent field", value: "1,920 profiles", detail: "Aggregate signals · 4 public specialists" },
+    { id: "models", label: "Model runs", value: "6 models", detail: "1,200 bounded scenarios" },
     { id: "governance", label: "Governance", value: "Human review", detail: "Decision not authorized" },
   ] satisfies Array<{ id: ShowcaseSummaryKey; label: string; value: string; detail: string }>,
 } as const;
+
+const CAPABILITY_CLUSTERS = [
+  ["Data & evidence", 8, 18], ["Engineering", 22, 10], ["Science", 39, 10],
+  ["Economics", 57, 11], ["Capital", 75, 12], ["Operations", 91, 20],
+  ["Risk", 94, 72], ["Policy", 79, 86], ["Product", 61, 90],
+  ["Markets", 42, 89], ["Organizations", 24, 86], ["Delivery", 7, 70],
+] as const;
 
 function collectGraphPath(startId: string, edges: readonly ShowcaseEdge[], direction: "upstream" | "downstream") {
   const nodeIds = new Set<string>([startId]);
@@ -137,7 +157,7 @@ export function PlatformShowcase() {
             <h2 id="platform-showcase-title">One mission. Every dependency visible.</h2>
           </div>
           <div>
-            <p>The private registry aggregates 1,970 profiles across 51 domains; this public visualization draws only four representative Lab specialists. Select any component to trace its upstream evidence, downstream effects and path to human authority.</p>
+            <p>This enlarged deterministic field renders 1,920 synthetic profile signals around the most important decision path. Only Mathematics, Finance, Strategy and Marketing expand into public agents; the surrounding clusters stay aggregated and illustrative.</p>
             <nav aria-label="Platform showcase actions">
               <Link href="/lab/demo">Run the Public Lab <span aria-hidden="true">→</span></Link>
               <Link href="/app/login">Workspace sign-in</Link>
@@ -152,13 +172,13 @@ export function PlatformShowcase() {
                 <header className="ps-screen-topbar">
                   <div className="ps-screen-brand"><i aria-hidden="true" /><span>VENTURE GOVERNANCE<small>MISSION WORKSPACE</small></span></div>
                   <div><span>{SYNTHETIC_MISSION.id}</span><strong>{SYNTHETIC_MISSION.title}</strong></div>
-                  <b>DEPENDENCY VIEW · SYNTHETIC</b>
+                  <b>1,920-NODE FIELD · SYNTHETIC</b>
                 </header>
 
                 <ol className="ps-activity-stream" aria-label="Synthetic mission activity">
                   <li><i aria-hidden="true" /><span>evidence.received</span><strong>18 traceable items</strong></li>
-                  <li><i aria-hidden="true" /><span>agent.output</span><strong>4 briefs reconciled</strong></li>
-                  <li><i aria-hidden="true" /><span>model.completed</span><strong>1,200 bounded scenarios</strong></li>
+                  <li><i aria-hidden="true" /><span>field.routed</span><strong>1,920 synthetic profiles</strong></li>
+                  <li><i aria-hidden="true" /><span>model.completed</span><strong>6 models · 1,200 scenarios</strong></li>
                   <li className="is-review"><i aria-hidden="true" /><span>human.review_required</span><strong>Decision not authorized</strong></li>
                 </ol>
 
@@ -187,12 +207,21 @@ export function PlatformShowcase() {
 
                   <div className="ps-system-map" role="group" aria-labelledby="ps-map-title" aria-describedby="ps-map-summary">
                     <h3 id="ps-map-title" className="sr-only">Interactive synthetic mission dependency map</h3>
+                    <RegistryField />
                     <div className="ps-map-lanes" aria-hidden="true">
-                      <span>Evidence</span><span>Mandate</span><span>Agents</span><span>Models</span><span>Authority</span><span>Record</span>
+                      <span>Evidence</span><span>Mandate</span><span>Public agents</span><span>Models</span><span>Authority</span><span>Record</span>
+                    </div>
+                    <div className="ps-capability-clusters" aria-hidden="true">
+                      {CAPABILITY_CLUSTERS.map(([label, x, y]) => (
+                        <span key={label} style={{ "--ps-cluster-x": `${x}%`, "--ps-cluster-y": `${y}%` } as CSSProperties}>{label}</span>
+                      ))}
                     </div>
                     <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-                      <defs><marker id="ps-showcase-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" /></marker></defs>
-                      {SYNTHETIC_MISSION.edges.map((edge) => {
+                      <defs>
+                        <marker id="ps-showcase-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" /></marker>
+                        <filter id="ps-blue-glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.7" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
+                      </defs>
+                      {SYNTHETIC_MISSION.edges.map((edge, index) => {
                         const isDirect = edge.from === selectedId || edge.to === selectedId;
                         const isOnPath = graphState.pathEdgeIds.has(edge.id);
                         const edgeClassName = [
@@ -201,15 +230,25 @@ export function PlatformShowcase() {
                           !isDirect && !isOnPath ? "is-muted" : "",
                         ].filter(Boolean).join(" ");
                         return (
-                        <line
-                          key={edge.id}
-                          x1={edge.x1}
-                          y1={edge.y1}
-                          x2={edge.x2}
-                          y2={edge.y2}
-                          className={edgeClassName || undefined}
-                          markerEnd="url(#ps-showcase-arrow)"
-                        />
+                        <g key={edge.id}>
+                          <line
+                            x1={edge.x1}
+                            y1={edge.y1}
+                            x2={edge.x2}
+                            y2={edge.y2}
+                            className={edgeClassName || undefined}
+                            markerEnd="url(#ps-showcase-arrow)"
+                          />
+                          <line
+                            x1={edge.x1}
+                            y1={edge.y1}
+                            x2={edge.x2}
+                            y2={edge.y2}
+                            pathLength="100"
+                            className={`ps-light-route ${edge.kind === "collaboration" ? "is-collaboration" : ""} ${isDirect ? "is-direct" : isOnPath ? "is-path" : "is-muted"}`}
+                            style={{ "--ps-delay": `${-(index % 7) * .24}s` } as CSSProperties}
+                          />
+                        </g>
                         );
                       })}
                     </svg>
@@ -218,7 +257,7 @@ export function PlatformShowcase() {
                         "Evidence",
                         "Mission",
                         "Four agents",
-                        "Two models",
+                        "Six models",
                         "Human Gate",
                         "Decision record",
                       ].map((stage) => <li key={stage}>{stage}</li>)}
@@ -257,7 +296,7 @@ export function PlatformShowcase() {
                         </button>
                       );
                     })}
-                    <p id="ps-map-summary" className="sr-only">Evidence grounds a human-defined mission. Mathematics, Finance, Strategy and Marketing contribute in parallel, exchange assumptions and challenge adjacent specialist outputs. Monte Carlo and sensitivity models evaluate uncertainty. A named Human Gate returns an inspectable decision record. Select a component, then review its visible inputs and outputs below.</p>
+                    <p id="ps-map-summary" className="sr-only">An illustrative field of 1,920 synthetic profile signals is grouped into twelve capability clusters. Only Mathematics, Finance, Strategy and Marketing appear as public specialist agents. They contribute in parallel to six demonstrative quantitative models. A named Human Gate returns an inspectable decision record. The field is deterministic, aggregated and does not expose private profiles or orchestration.</p>
                   </div>
 
                   <aside id="ps-component-inspector" className="ps-inspector" aria-labelledby="ps-inspector-title" aria-live="polite" aria-atomic="true">
@@ -289,7 +328,7 @@ export function PlatformShowcase() {
                 </div>
               </div>
             </div>
-            <figcaption id="ps-demo-caption" className="ps-demo-note">Interactive mission command surface · bounded synthetic structure · no live organizational data</figcaption>
+            <figcaption id="ps-demo-caption" className="ps-demo-note">1,920 deterministic synthetic signals · 4 visible public agents · no live organizational data</figcaption>
           </figure>
 
           <aside className="ps-architecture" aria-labelledby="ps-architecture-title">
