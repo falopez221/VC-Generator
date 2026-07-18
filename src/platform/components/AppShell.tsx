@@ -17,6 +17,7 @@ const CONTEXT_BY_ROUTE = [
   { match: "/app/applications", title: "Industry workspace library", items: [["Domains", "30 distinct workspaces"], ["Runtime", "Read-only demonstration"], ["Private logic", "Not embedded"]] },
   { match: "/app/models", title: "Model context", items: [["Catalog", "Public demo models"], ["Execution", "Deterministic"], ["Validation", "Per-model status"]] },
   { match: "/app/agents", title: "Agent context", items: [["Embedded private profiles", "0"], ["Aggregate documentation", "1,970 external"], ["Authority", "Human review only"]] },
+  { match: "/app/human-review", title: "Human review context", items: [["Opportunity queue", "8 simulated"], ["Industry filters", "Available"], ["Material decisions", "Explicit human confirmation"]] },
   { match: "/app/governance", title: "Governance context", items: [["Pending gates", "3 synthetic"], ["Named authority", "Required"], ["Autonomous action", "Prohibited"]] },
   { match: "/app/system-health", title: "Runtime context", items: [["Private workspace", "Authenticated"], ["Durable database", "Not connected"], ["Local AI", "Not enabled"]] },
   { match: "/app", title: "Operational context", items: [["Workspace", "Authenticated"], ["Human gates", "Required"], ["Live processes", "0"]] },

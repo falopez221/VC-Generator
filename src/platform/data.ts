@@ -142,6 +142,7 @@ export const PLATFORM_MODULES = [
   { href: "/app/agents", label: "Agent Library", shortLabel: "AG", status: "Private" },
   { href: "/app/models", label: "Model Library", shortLabel: "MD", status: "Private" },
   { href: "/app/evidence", label: "Evidence Library", shortLabel: "EV", status: "Private" },
+  { href: "/app/human-review", label: "Human Review Board", shortLabel: "HR", status: "Private" },
   { href: "/app/governance", label: "Governance", shortLabel: "GV", status: "Private" },
   { href: "/app/audit", label: "Audit", shortLabel: "AU", status: "Private" },
   { href: "/app/system-health", label: "System Health", shortLabel: "SH", status: "Private" },

@@ -49,7 +49,8 @@ function scoreTone(score: number) {
   return "is-weak";
 }
 
-export function HumanReviewBoard() {
+export function HumanReviewBoard({ surface = "public" }: { surface?: "public" | "private" }) {
+  const isPrivate = surface === "private";
   const [opportunities, setOpportunities] = useState<ReviewOpportunity[]>([]);
   const [selectedId, setSelectedId] = useState("");
   const [query, setQuery] = useState("");
@@ -65,13 +66,13 @@ export function HumanReviewBoard() {
 
   useEffect(() => {
     queueMicrotask(() => {
-      const source = buildReviewOpportunities(loadLastRun());
-      const merged = mergeReviewRecords(source, loadReviewRecords());
+      const source = buildReviewOpportunities(isPrivate ? null : loadLastRun());
+      const merged = mergeReviewRecords(source, loadReviewRecords(surface));
       setOpportunities(merged);
       setSelectedId(merged[0]?.id ?? "");
       setDraft(emptyDraft(merged[0]));
     });
-  }, []);
+  }, [isPrivate, surface]);
 
   const selected = opportunities.find((item) => item.id === selectedId) ?? opportunities[0];
 
@@ -163,7 +164,7 @@ export function HumanReviewBoard() {
       }, ...item.audit],
     });
     setOpportunities(next);
-    saveReviewRecords(next);
+    saveReviewRecords(next, surface);
     setDraft((current) => ({ ...current, decision: "", comment: "", justification: "" }));
     setConfirming(false);
     setMessage(`${selected.name} updated to ${newState}. No execution or investment action was triggered.`);
@@ -180,19 +181,21 @@ export function HumanReviewBoard() {
   };
 
   if (!opportunities.length) {
-    return <main id="lab-content" className="lab-page hrb-page"><div className="hrb-loading" role="status">Preparing the human review environment...</div></main>;
+    const LoadingRoot = isPrivate ? "div" : "main";
+    return <LoadingRoot id={isPrivate ? "private-review-content" : "lab-content"} className={`hrb-page${isPrivate ? " hrb-page--private" : " lab-page"}`}><div className="hrb-loading" role="status">Preparing the human review environment...</div></LoadingRoot>;
   }
 
+  const Root = isPrivate ? "div" : "main";
   return (
-    <main id="lab-content" className="lab-page hrb-page">
+    <Root id={isPrivate ? "private-review-content" : "lab-content"} className={`hrb-page${isPrivate ? " hrb-page--private" : " lab-page"}`}>
       <header className="hrb-header">
         <div>
-          <p className="lab-kicker">Venture Governance / Human-in-Command</p>
+          <p className="lab-kicker">{isPrivate ? "Private workspace / Human-in-Command" : "Venture Governance / Human-in-Command"}</p>
           <h1>Human Review Board</h1>
           <p>Evaluate generated opportunities, record accountable judgments and preserve an auditable decision history.</p>
         </div>
         <div className="hrb-environment" role="note">
-          <span>Review environment - simulated data</span>
+          <span>{isPrivate ? "Authenticated workspace - simulated data" : "Review environment - simulated data"}</span>
           <strong>Decision support only</strong>
           <p>Venture Governance provides analytical decision support. All material decisions require explicit human authorization.</p>
         </div>
@@ -263,6 +266,7 @@ export function HumanReviewBoard() {
           <div className="hrb-facts">
             <div><span>Industry</span><strong>{selected.industry}</strong></div><div><span>Risk</span><strong>{riskLabel(selected.risk)} / {selected.risk}%</strong></div><div><span>Market potential</span><strong>{selected.marketPotential}/100</strong></div><div><span>Horizon</span><strong>{selected.horizon}</strong></div><div><span>Current state</span><strong>{selected.state}</strong></div><div><span>Generated</span><strong>{formatDate(selected.generatedAt)}</strong></div>
           </div>
+          <div className="hrb-agent-strip"><span>Participating review capabilities</span><div>{selected.agents.map((agent) => <strong key={agent}>{agent}</strong>)}</div></div>
 
           <div className="hrb-detail-grid">
             <section><span>Problem</span><p>{selected.problem}</p></section>
@@ -304,6 +308,6 @@ export function HumanReviewBoard() {
           </section>
         </article>}
       </section>
-    </main>
+    </Root>
   );
 }

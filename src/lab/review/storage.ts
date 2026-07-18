@@ -1,6 +1,9 @@
 import { REVIEW_DECISIONS, REVIEW_STATES, type ReviewAuditEntry, type ReviewOpportunity, type ReviewPriority } from "./types";
 
-const REVIEW_KEY = "venture-governance-human-review-v1";
+const REVIEW_KEYS = {
+  public: "venture-governance-human-review-v1",
+  private: "venture-governance-private-human-review-v1",
+} as const;
 const MAX_RECORDS = 80;
 const MAX_LENGTH = 1_500_000;
 const REVIEW_PRIORITIES = new Set<ReviewPriority>(["Low", "Medium", "High", "Critical"]);
@@ -20,11 +23,11 @@ function isAuditEntry(value: unknown): value is ReviewAuditEntry {
     && REVIEW_STATES.includes(item.newState as (typeof REVIEW_STATES)[number]);
 }
 
-export function loadReviewRecords(): ReviewOpportunity[] {
+export function loadReviewRecords(scope: keyof typeof REVIEW_KEYS = "public"): ReviewOpportunity[] {
   const target = storage();
   if (!target) return [];
   try {
-    const raw = target.getItem(REVIEW_KEY);
+    const raw = target.getItem(REVIEW_KEYS[scope]);
     if (!raw || raw.length > MAX_LENGTH) return [];
     const parsed = JSON.parse(raw) as unknown;
     if (!Array.isArray(parsed)) return [];
@@ -43,12 +46,12 @@ export function loadReviewRecords(): ReviewOpportunity[] {
   } catch { return []; }
 }
 
-export function saveReviewRecords(records: ReviewOpportunity[]) {
+export function saveReviewRecords(records: ReviewOpportunity[], scope: keyof typeof REVIEW_KEYS = "public") {
   const target = storage();
   if (!target) return;
   try {
     const serialized = JSON.stringify(records.slice(0, MAX_RECORDS));
-    if (serialized.length <= MAX_LENGTH) target.setItem(REVIEW_KEY, serialized);
+    if (serialized.length <= MAX_LENGTH) target.setItem(REVIEW_KEYS[scope], serialized);
   } catch { /* The current review remains available in memory. */ }
 }
 
