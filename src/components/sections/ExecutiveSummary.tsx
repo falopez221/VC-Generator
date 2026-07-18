@@ -9,7 +9,7 @@ const CAPABILITIES = [
 
 export function ExecutiveSummary() {
   return (
-    <section className="section executive-summary" id="resumen">
+    <section className="section section--ink executive-summary" id="resumen">
       <div className="container">
         <SectionHeading
           eyebrow="Resumen ejecutivo"
