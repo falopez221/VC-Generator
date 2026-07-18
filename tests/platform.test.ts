@@ -3,6 +3,7 @@ import test from "node:test";
 import { DEMO_GOVERNANCE_QUEUE, DEMO_MISSIONS, PLATFORM_CAPABILITY_STATUS, PLATFORM_MODULES, graphFor } from "../src/platform/data.ts";
 import { VG_DESIGN_TOKENS } from "../src/platform/design-tokens.ts";
 import { purgeForeignPrivateSessionData } from "../src/platform/session-storage.ts";
+import { INSTITUTIONAL_APPS, analyzeInstitutionalPrompt } from "../src/platform/institutional-command.ts";
 
 test("authenticated platform graph represents only the external private-product boundary", () => {
   for (const variant of ["overview", "access", "knowledge", "mission", "applications", "simulation", "agents"] as const) {
@@ -82,4 +83,33 @@ test("identity switch purges foreign private session keys without touching publi
 test("platform public data does not expose private agent roles or guarantees", () => {
   const serialized = JSON.stringify({ graph: graphFor("overview"), missions: DEMO_MISSIONS, modules: PLATFORM_MODULES });
   assert.doesNotMatch(serialized, /private prompt|chain of thought|investment approved|future unicorn confirmed|tokenomics agent|red team agent/i);
+});
+
+test("institutional command apps expose distinct metrics and governed routes", () => {
+  assert.equal(INSTITUTIONAL_APPS.length, 5);
+  assert.equal(new Set(INSTITUTIONAL_APPS.map((app) => app.id)).size, INSTITUTIONAL_APPS.length);
+  assert.ok(INSTITUTIONAL_APPS.every((app) => app.route.startsWith("/app/")));
+  assert.ok(INSTITUTIONAL_APPS.every((app) => app.metrics.length === 4));
+  assert.ok(INSTITUTIONAL_APPS.flatMap((app) => app.metrics).every((metric) => metric.value.length > 0 && metric.detail.length > 0));
+});
+
+test("institutional opportunity search is deterministic, bounded and uses only four public agents", () => {
+  const prompt = "Buscar oportunidades para reducir costos energéticos industriales con evidencia verificable en 90 días.";
+  const first = analyzeInstitutionalPrompt(prompt);
+  const second = analyzeInstitutionalPrompt(prompt);
+  assert.deepEqual(first, second);
+  assert.ok(first);
+  assert.equal(first.opportunities.length, 6);
+  assert.deepEqual(first.agents.map((agent) => agent.name).sort(), ["Finance", "Marketing", "Mathematics", "Strategy"]);
+  for (const opportunity of first.opportunities) {
+    assert.ok(opportunity.score >= 0 && opportunity.score <= 100);
+    assert.ok(opportunity.evidence >= 0 && opportunity.evidence <= 100);
+    assert.ok(opportunity.uncertainty >= 0 && opportunity.uncertainty <= 100);
+    if (opportunity.classification === "Promising") {
+      assert.ok(opportunity.score >= 78);
+      assert.ok(opportunity.evidence >= 68);
+      assert.ok(opportunity.uncertainty <= 42);
+    }
+  }
+  assert.equal(analyzeInstitutionalPrompt("short"), null);
 });

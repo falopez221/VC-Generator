@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useId, useState } from "react";
-import { PrivateDashboardGuide } from "./PrivateDashboardGuide";
+import { InstitutionalCommandCenter } from "./InstitutionalCommandCenter";
 
 type Surface = "overview" | "health" | "settings" | "documentation";
 
@@ -29,36 +29,7 @@ function SessionBoundary() {
 }
 
 function Overview() {
-  const [openedAt, setOpenedAt] = useState<string>("Checking this browser session…");
-  const [online, setOnline] = useState<boolean | null>(null);
-
-  useEffect(() => {
-    const sync = () => setOnline(navigator.onLine);
-    queueMicrotask(() => {
-      setOpenedAt(new Intl.DateTimeFormat(undefined, { hour: "2-digit", minute: "2-digit", second: "2-digit" }).format(new Date()));
-      sync();
-    });
-    window.addEventListener("online", sync);
-    window.addEventListener("offline", sync);
-    return () => { window.removeEventListener("online", sync); window.removeEventListener("offline", sync); };
-  }, []);
-
-  return <>
-    <Heading eyebrow="OPERATIONAL OVERVIEW · SESSION" title="A clear starting point for the authenticated workspace." lede="This view reports only what the current browser can inspect. Mission records, queues and organization activity need a connected private data service." />
-    <SessionBoundary />
-    <p className="sr-only">Decisions, evidence and human gates are governed together in this workspace.</p>
-    <PrivateDashboardGuide />
-    <section className="workspace-support-grid" aria-label="Current workspace state">
-      <article><span>SESSION OPENED</span><strong>{openedAt}</strong><p>Browser-local timestamp; not an audit event.</p></article>
-      <article><span>NETWORK SIGNAL</span><strong>{online === null ? "Checking…" : online ? "Browser online" : "Browser offline"}</strong><p>Connectivity is a browser hint, not a provider health check.</p></article>
-      <article><span>PRIVATE AGENTS</span><strong>0 embedded</strong><p>Only aggregate external-product documentation is shown.</p></article>
-      <article><span>HUMAN AUTHORITY</span><strong>Required</strong><p>Models and agent outputs remain advisory.</p></article>
-    </section>
-    <section className="workspace-support-columns">
-      <article className="platform-panel workspace-support-panel"><header><div><span>WORKSPACE ROUTES</span><h2>Start a governed task</h2></div></header><div className="workspace-support-actions"><Link href="/app/missions/new"><strong>Create a mission</strong><small>Scope a question and its review boundary.</small></Link><Link href="/app/research"><strong>Research evidence</strong><small>Use the protected research workflow.</small></Link><Link href="/app/simulation"><strong>Run a simulation</strong><small>Explore bounded assumptions and ranges.</small></Link><Link href="/app/agents"><strong>Inspect the agent registry</strong><small>Search documented capabilities and status.</small></Link></div></article>
-      <article className="platform-panel workspace-support-panel"><header><div><span>EXPLICIT LIMITS</span><h2>What execution does not imply</h2></div></header><ul className="workspace-support-list"><li>No durable mission, review or audit store is verified here.</li><li>Private profiles, prompts, credentials and execution are not embedded; the boundary fails closed.</li><li>No interface action approves funding, deployment or real-world execution.</li></ul><Link className="platform-primary-link" href="/app/documentation">Read the workspace guide →</Link></article>
-    </section>
-  </>;
+  return <InstitutionalCommandCenter />;
 }
 
 function Health() {

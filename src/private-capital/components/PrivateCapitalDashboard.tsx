@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, type FormEvent } from "react";
+import { useEffect, useMemo, useRef, useState, type FormEvent, type KeyboardEvent as ReactKeyboardEvent } from "react";
 import {
   analyzeInvestmentThesis,
   type ThesisAnalysis,
@@ -176,6 +176,16 @@ const VIEW_META: Record<PrivateCapitalView, { eyebrow: string; title: string; de
   settings: { eyebrow: "PERSONAL POLICY", title: "Settings", description: "Display, notification and analysis preferences for this device." },
 };
 
+const TOUR_STORAGE_KEY = "vg-private-capital-tour-v1";
+const TOUR_STEPS: Array<{ view: PrivateCapitalView; eyebrow: string; title: string; description: string; points: string[] }> = [
+  { view: "overview", eyebrow: "01 · EMPEZÁ POR TU POLÍTICA", title: "Definí primero tus límites.", description: "Overview resume el patrimonio simulado, la liquidez y el riesgo. Ajustá horizonte, pérdida tolerable y topes antes de interpretar cualquier propuesta.", points: ["Los importes son simulados hasta que los cargues manualmente.", "Privacy mode oculta cifras sensibles en pantalla.", "Los límites personales condicionan el resto del análisis."] },
+  { view: "thesis", eyebrow: "02 · DE IDEA A HIPÓTESIS", title: "Usá Thesis Lab para formular la pregunta.", description: "Describí una tesis de inversión como hipótesis, elegí especialistas y compará oportunidades explicables. El resultado no es una orden ni una recomendación automática.", points: ["Indicá horizonte, contexto y restricciones.", "Revisá evidencia a favor, en contra y desacuerdos.", "Enviá solo las hipótesis útiles a Human Review."] },
+  { view: "portfolio", eyebrow: "03 · CONTEXTO DEL PORTAFOLIO", title: "Registrá posiciones sin conectar cuentas.", description: "My Portfolio permite cargar posiciones y su tesis de forma manual. No conecta brokers, custodios, billeteras ni cuentas bancarias.", points: ["Nunca ingreses claves, seed phrases ni credenciales.", "Agregá condición de revisión e horizonte.", "Verificá precios y cantidades con una fuente aprobada."] },
+  { view: "market", eyebrow: "04 · INTELIGENCIA, NO SEÑALES CIEGAS", title: "Separá observaciones de inferencias.", description: "Market Intelligence organiza contexto global, Argentina, CEDEARs, bonos y Bitcoin. Cada dato declara si es simulado, supuesto o no disponible.", points: ["Unavailable significa que no se inventó un dato.", "Contrastá procedencia, latencia y confianza.", "Una observación de mercado no autoriza una transacción."] },
+  { view: "simulations", eyebrow: "05 · PROBÁ EL PEOR CASO", title: "Simulá shocks antes de decidir.", description: "Simulations muestra cómo podría responder el portafolio a shocks de acciones, soberano, moneda y Bitcoin bajo reglas determinísticas visibles.", points: ["Modificá un supuesto por vez para entender su impacto.", "Compará el resultado con tu pérdida tolerable.", "Usá Risk Center para revisar concentración y liquidez."] },
+  { view: "review", eyebrow: "06 · AUTORIDAD HUMANA", title: "Cerrá siempre en Human Review.", description: "Human Review permite aceptar una hipótesis para seguimiento, pedir más investigación o rechazarla. Ninguna opción ejecuta, financia ni transmite una orden.", points: ["Leé evidencia y contraevidencia juntas.", "Registrar una hipótesis no equivale a aprobar una inversión.", "La decisión material permanece fuera de esta interfaz."] },
+];
+
 const MOCK_DATA: PrivateCapitalViewData = {
   asOf: "18 Jul 2026 · 18:42 ART",
   totalAssets: 248750,
@@ -279,6 +289,8 @@ function AllocationBar({ items, compact = false }: { items: Array<{ label: strin
 
 export function PrivateCapitalDashboard({ initialData = MOCK_DATA, assetDetails = MOCK_ASSET_DETAILS, ownerLabel = "Private owner", initialView = "overview", onHoldingCreate, onReviewStateChange }: PrivateCapitalDashboardProps) {
   const [view, setView] = useState<PrivateCapitalView>(initialView);
+  const [tourStep, setTourStep] = useState<number | null>(null);
+  const tourPanelRef = useRef<HTMLElement>(null);
   const [privacyMode, setPrivacyMode] = useState(false);
   const [holdings, setHoldings] = useState(initialData.holdings);
   const [alerts, setAlerts] = useState(initialData.alerts);
@@ -289,6 +301,28 @@ export function PrivateCapitalDashboard({ initialData = MOCK_DATA, assetDetails 
   const [scenario, setScenario] = useState({ fxShock: 18, equityShock: -20, sovereignShock: -28, bitcoinShock: -35, contribution: 1500 });
   const [settings, setSettings] = useState({ compact: false, quietHours: true, groupAlerts: true });
   const [holdingDraft, setHoldingDraft] = useState({ ticker: "", name: "", assetClass: "CEDEAR", market: "BYMA", quantity: "", averagePrice: "", currency: "USD" as "USD" | "ARS", brokerReference: "", purchaseDate: "", fees: "", horizon: "", reviewCondition: "", thesis: "", notes: "" });
+
+  useEffect(() => {
+    try {
+      if (window.localStorage.getItem(TOUR_STORAGE_KEY) !== "seen") {
+        setTourStep(0);
+        setView(TOUR_STEPS[0].view);
+      }
+    } catch { /* The tour remains available from its visible button without storage. */ }
+  }, []);
+
+  useEffect(() => {
+    if (tourStep === null) return;
+    tourPanelRef.current?.focus();
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      try { window.localStorage.setItem(TOUR_STORAGE_KEY, "seen"); } catch { /* Optional preference only. */ }
+      setTourStep(null);
+      setLiveMessage("Guided tour closed. Use the Tour button to open it again.");
+    };
+    document.addEventListener("keydown", closeOnEscape);
+    return () => document.removeEventListener("keydown", closeOnEscape);
+  }, [tourStep]);
 
   const unreadCount = alerts.filter((alert) => !alert.read && !alert.archived).length;
   const activeAssetDetails = view === "cedears" ? assetDetails.cedears : view === "bonds" ? assetDetails.bonds : view === "bitcoin" ? assetDetails.bitcoin : null;
@@ -307,6 +341,35 @@ export function PrivateCapitalDashboard({ initialData = MOCK_DATA, assetDetails 
   const changeView = (next: PrivateCapitalView) => {
     setView(next);
     setLiveMessage(`${VIEW_META[next].title} view selected.`);
+  };
+
+  const openTour = () => {
+    setView(TOUR_STEPS[0].view);
+    setTourStep(0);
+    setLiveMessage(`Guided tour opened at step 1 of ${TOUR_STEPS.length}.`);
+  };
+
+  const goToTourStep = (next: number) => {
+    const bounded = Math.min(TOUR_STEPS.length - 1, Math.max(0, next));
+    setTourStep(bounded);
+    setView(TOUR_STEPS[bounded].view);
+    setLiveMessage(`Guided tour step ${bounded + 1} of ${TOUR_STEPS.length}: ${TOUR_STEPS[bounded].title}`);
+  };
+
+  const closeTour = (completed = false) => {
+    try { window.localStorage.setItem(TOUR_STORAGE_KEY, "seen"); } catch { /* Optional preference only. */ }
+    setTourStep(null);
+    setLiveMessage(completed ? "Guided tour completed. Human review remains required." : "Guided tour closed. Use the Tour button to open it again.");
+  };
+
+  const trapTourFocus = (event: ReactKeyboardEvent<HTMLElement>) => {
+    if (event.key !== "Tab") return;
+    const controls = Array.from(event.currentTarget.querySelectorAll<HTMLElement>("button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex='-1'])"));
+    if (!controls.length) return;
+    const first = controls[0];
+    const last = controls[controls.length - 1];
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+    if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
   };
 
   const submitHolding = (event: FormEvent<HTMLFormElement>) => {
@@ -384,6 +447,7 @@ export function PrivateCapitalDashboard({ initialData = MOCK_DATA, assetDetails 
         <label className="pc-mobile-nav"><span>Section</span><select value={view} onChange={(event) => changeView(event.target.value as PrivateCapitalView)}>{NAV_ITEMS.map((item) => <option value={item.id} key={item.id}>{item.label}</option>)}</select></label>
         <div className="pc-context"><span>PRIVATE / CAPITAL INTELLIGENCE</span><small>Snapshot · {initialData.asOf}</small></div>
         <div className="pc-system-state"><i /> SIMULATED FEED</div>
+        <button className="pc-tour-trigger" type="button" onClick={openTour} aria-haspopup="dialog"><span aria-hidden="true">?</span>Tour guiado</button>
         <button className="pc-privacy" type="button" onClick={() => { setPrivacyMode((current) => !current); setLiveMessage(privacyMode ? "Sensitive amounts are visible." : "Privacy mode enabled. Sensitive amounts are hidden."); }} aria-pressed={privacyMode} aria-label={privacyMode ? "Show sensitive amounts" : "Hide sensitive amounts"}><span aria-hidden="true">{privacyMode ? "◉" : "◎"}</span>{privacyMode ? "Show amounts" : "Privacy mode"}</button>
         <div className="pc-owner"><i aria-hidden="true">AC</i><span><b>{ownerLabel}</b><small>private_capital_owner</small></span></div>
       </header>
@@ -411,6 +475,14 @@ export function PrivateCapitalDashboard({ initialData = MOCK_DATA, assetDetails 
         {view === "settings" && <SettingsView settings={settings} setSettings={setSettings} />}
       </main>
     </div>
+    {tourStep !== null && <div className="pc-tour-backdrop">
+      <section className="pc-tour" role="dialog" aria-modal="true" aria-labelledby="pc-tour-title" aria-describedby="pc-tour-description" ref={tourPanelRef} tabIndex={-1} onKeyDown={trapTourFocus}>
+        <header className="pc-tour__header"><div><span>RECORRIDO DE CAPITAL INTELLIGENCE</span><strong>Paso {tourStep + 1} de {TOUR_STEPS.length}</strong></div><button type="button" onClick={() => closeTour()} aria-label="Cerrar tour">×</button></header>
+        <nav className="pc-tour__progress" aria-label="Pasos del tour">{TOUR_STEPS.map((step, index) => <button type="button" key={step.view} onClick={() => goToTourStep(index)} aria-current={index === tourStep ? "step" : undefined} aria-label={`Ir al paso ${index + 1}: ${step.title}`}><i /><span>{String(index + 1).padStart(2, "0")}</span></button>)}</nav>
+        <div className="pc-tour__body"><div className="pc-tour__number" aria-hidden="true">{String(tourStep + 1).padStart(2, "0")}</div><div><span>{TOUR_STEPS[tourStep].eyebrow}</span><h2 id="pc-tour-title">{TOUR_STEPS[tourStep].title}</h2><p id="pc-tour-description">{TOUR_STEPS[tourStep].description}</p><ul>{TOUR_STEPS[tourStep].points.map((point) => <li key={point}>{point}</li>)}</ul><small>La sección correspondiente ya está abierta detrás de este panel.</small></div></div>
+        <footer className="pc-tour__footer"><button type="button" onClick={() => closeTour()}>Saltar tour</button><div>{tourStep > 0 && <button type="button" onClick={() => goToTourStep(tourStep - 1)}>Anterior</button>}{tourStep < TOUR_STEPS.length - 1 ? <button type="button" className="is-primary" onClick={() => goToTourStep(tourStep + 1)}>Siguiente</button> : <button type="button" className="is-primary" onClick={() => closeTour(true)}>Finalizar</button>}</div></footer>
+      </section>
+    </div>}
   </section>;
 }
 

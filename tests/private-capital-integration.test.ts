@@ -103,6 +103,23 @@ test("private capital controls preserve privacy and human authorization framing"
   assert.match(dashboard, /role="status"/u);
 });
 
+test("private capital offers an accessible, repeatable guided tour", async () => {
+  const [dashboard, styles] = await Promise.all([
+    source("src/private-capital/components/PrivateCapitalDashboard.tsx"),
+    source("src/styles/private-capital.css"),
+  ]);
+  assert.match(dashboard, /TOUR_STORAGE_KEY/u);
+  assert.match(dashboard, /aria-haspopup="dialog"/u);
+  assert.match(dashboard, /role="dialog" aria-modal="true"/u);
+  assert.match(dashboard, /Paso \{tourStep \+ 1\} de \{TOUR_STEPS\.length\}/u);
+  assert.match(dashboard, /Saltar tour/u);
+  assert.match(dashboard, /Finalizar/u);
+  assert.match(dashboard, /event\.key !== "Escape"/u);
+  assert.match(dashboard, /trapTourFocus/u);
+  assert.match(styles, /\.pc-tour-backdrop/u);
+  assert.match(styles, /@media \(max-width: 540px\)/u);
+});
+
 test("private capital manual entry and risk profile inputs are bounded and explicit", async () => {
   const dashboard = await source("src/private-capital/components/PrivateCapitalDashboard.tsx");
   for (const field of [
