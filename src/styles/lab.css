@@ -157,6 +157,8 @@
 }
 @media (max-width: 430px) {
   .lab-brand-copy strong { max-width: 118px; }
+  .lab-app .lab-sound { font-size: 0; overflow: hidden; }
+  .lab-sound > span[aria-hidden="true"] { display: none; }
   .lab-volume { display: none; }
   .lab-mobile-volume { min-height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .55rem 1rem; color: #8ea6b7; background: #071c31; border-top: 1px solid rgb(255 255 255 / 8%); font-size: .67rem; }
   .lab-mobile-volume input { width: min(52vw, 180px); }
