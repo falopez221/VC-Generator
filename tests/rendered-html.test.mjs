@@ -35,7 +35,7 @@ for (const [pathname, expected] of [
   ["/lab/results/example", "LOADING LOCAL RESULT"],
   ["/applications", "One architecture"],
   ["/applications/energy-prioritize", "Prioritized portfolio"],
-  ["/app/login", "Authorized Platform Access"],
+  ["/app/login", "Enter the protected command layer"],
   ["/request-access", "Request an authorized workspace"],
 ]) {
   test(`server renders ${pathname}`, async () => {
