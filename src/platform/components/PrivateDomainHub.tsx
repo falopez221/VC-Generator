@@ -16,6 +16,7 @@ const GROUPS: { id: "all" | DomainVisualGroup; label: string }[] = [
 ];
 
 const PRIVATE_CAPITAL_SEARCH_TERMS = [
+  "quantitative personal capital",
   "capital intelligence",
   "private capital",
   "portfolio",
@@ -79,13 +80,13 @@ export function PrivateDomainHub({ privateCapitalAvailable = false }: { privateC
     <section className={styles.domainGrid} aria-label="Mini-apps por dominio">
       {privateCapitalVisible && <article className={styles.domainCard} style={{ "--domain-accent": "#54d5dc", "--domain-accent-alt": "#8b80f9" } as CSSProperties} data-visual-group="matrix">
         <header><span>OWNER APP · RESTRICTED</span><i aria-hidden="true" /></header>
-        <h2>Private Capital Intelligence</h2>
+        <h2>Quantitative Personal Capital</h2>
         <p>Portfolio, market intelligence, simulations, risk and human review in one owner-restricted workspace.</p>
         <div className={styles.cardSignal} aria-hidden="true">
           {[42, 68, 54, 82, 72, 94].map((height, index) => <i key={index} style={{ height: `${height}%` }} />)}
         </div>
-        <ul aria-label="Private Capital Intelligence capabilities"><li>Portfolio</li><li>Market intelligence</li><li>Risk center</li></ul>
-        <footer><span>OWNER ONLY · SIMULATED DATA · HUMAN CONTROL</span><Link href="/app/private-capital-intelligence">Abrir Capital Intelligence <b aria-hidden="true">→</b></Link></footer>
+        <ul aria-label="Quantitative Personal Capital capabilities"><li>Portfolio</li><li>Market intelligence</li><li>Risk center</li></ul>
+        <footer><span>OWNER ONLY · SIMULATED DATA · HUMAN CONTROL</span><Link href="/app/private-capital-intelligence">Abrir Quantitative Personal Capital <b aria-hidden="true">→</b></Link></footer>
       </article>}
       {workspaces.map((workspace, index) => {
         const style = { "--domain-accent": workspace.accent, "--domain-accent-alt": workspace.accentAlt } as CSSProperties;

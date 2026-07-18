@@ -38,7 +38,7 @@ test("private capital appears in Apps only after the dedicated owner check", asy
   assert.match(page, /authorizePrivateCapitalOwner\(workspaceIdentity\)/u);
   assert.match(page, /privateCapitalAvailable=\{privateCapitalAvailable\}/u);
   assert.match(hub, /privateCapitalAvailable \? "30 MINI-APPS \+ 1 OWNER APP"/u);
-  assert.match(hub, /Private Capital Intelligence/u);
+  assert.match(hub, /Quantitative Personal Capital/u);
   assert.match(hub, /href="\/app\/private-capital-intelligence"/u);
   assert.match(hub, /privateCapitalVisible &&/u);
 });
@@ -71,7 +71,7 @@ test("private capital UI exposes every required internal workspace without publi
   ]) {
     assert.match(dashboard, new RegExp(`label: "${label}"`, "u"));
   }
-  assert.match(dashboard, /aria-label="Private Capital sections"/u);
+  assert.match(dashboard, /aria-label="Quantitative Personal Capital sections"/u);
   assert.match(dashboard, /pc-mobile-nav/u);
 });
 

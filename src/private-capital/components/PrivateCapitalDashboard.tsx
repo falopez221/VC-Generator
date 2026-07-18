@@ -296,7 +296,7 @@ export function PrivateCapitalDashboard({ initialData = MOCK_DATA, assetDetails 
   const [alerts, setAlerts] = useState(initialData.alerts);
   const [reviews, setReviews] = useState(initialData.reviews);
   const [selectedProposal, setSelectedProposal] = useState(initialData.proposals[1]?.id ?? initialData.proposals[0]?.id ?? "");
-  const [liveMessage, setLiveMessage] = useState("Private Capital Intelligence loaded with simulated data.");
+  const [liveMessage, setLiveMessage] = useState("Quantitative Personal Capital loaded with simulated data.");
   const [profile, setProfile] = useState({ capital: initialData.totalAssets, referenceCurrency: initialData.currency, horizon: 7, liquidityNeed: 20, maxLoss: 22, argentinaLimit: 25, bitcoinLimit: 10, assetLimit: 25, sectorLimit: 35, rebalanceMonths: 6, style: "Balanced" });
   const [scenario, setScenario] = useState({ fxShock: 18, equityShock: -20, sovereignShock: -28, bitcoinShock: -35, contribution: 1500 });
   const [settings, setSettings] = useState({ compact: false, quietHours: true, groupAlerts: true });
@@ -432,11 +432,11 @@ export function PrivateCapitalDashboard({ initialData = MOCK_DATA, assetDetails 
     setLiveMessage(`${opportunity.ticker} was sent to Human Review as a hypothesis. No trade was created or authorized.`);
   };
 
-  return <section className={`pc-shell${settings.compact ? " is-compact" : ""}`} aria-label="Private Capital Intelligence">
+  return <section className={`pc-shell${settings.compact ? " is-compact" : ""}`} aria-label="Quantitative Personal Capital">
     <a className="pc-skip" href="#pc-main">Skip to capital workspace</a>
     <aside className="pc-sidebar">
-      <div className="pc-brand"><span aria-hidden="true"><i /><i /><i /></span><div><strong>PRIVATE CAPITAL</strong><small>INTELLIGENCE · OWNER ACCESS</small></div></div>
-      <nav aria-label="Private Capital sections">
+      <div className="pc-brand"><span aria-hidden="true"><i /><i /><i /></span><div><strong>QUANTITATIVE</strong><small>PERSONAL CAPITAL · OWNER ACCESS</small></div></div>
+      <nav aria-label="Quantitative Personal Capital sections">
         {[...new Set(NAV_ITEMS.map((item) => item.group))].map((group) => <div className="pc-nav-group" key={group}><span>{group}</span>{NAV_ITEMS.filter((item) => item.group === group).map((item) => <button type="button" key={item.id} onClick={() => changeView(item.id)} aria-current={view === item.id ? "page" : undefined}><i aria-hidden="true">{item.glyph}</i><b>{item.label}</b>{item.id === "alerts" && unreadCount > 0 && <em aria-label={`${unreadCount} unread alerts`}>{unreadCount}</em>}</button>)}</div>)}
       </nav>
       <div className="pc-sidebar__boundary"><span>DECISION SUPPORT ONLY</span><p>Owner-restricted interface. No broker connection, custody, transfer or execution capability.</p></div>
@@ -445,7 +445,7 @@ export function PrivateCapitalDashboard({ initialData = MOCK_DATA, assetDetails 
     <div className="pc-workspace">
       <header className="pc-topbar">
         <label className="pc-mobile-nav"><span>Section</span><select value={view} onChange={(event) => changeView(event.target.value as PrivateCapitalView)}>{NAV_ITEMS.map((item) => <option value={item.id} key={item.id}>{item.label}</option>)}</select></label>
-        <div className="pc-context"><span>PRIVATE / CAPITAL INTELLIGENCE</span><small>Snapshot · {initialData.asOf}</small></div>
+        <div className="pc-context"><span>QUANTITATIVE / PERSONAL CAPITAL</span><small>Snapshot · {initialData.asOf}</small></div>
         <div className="pc-system-state"><i /> SIMULATED FEED</div>
         <button className="pc-tour-trigger" type="button" onClick={openTour} aria-haspopup="dialog"><span aria-hidden="true">?</span>Tour guiado</button>
         <button className="pc-privacy" type="button" onClick={() => { setPrivacyMode((current) => !current); setLiveMessage(privacyMode ? "Sensitive amounts are visible." : "Privacy mode enabled. Sensitive amounts are hidden."); }} aria-pressed={privacyMode} aria-label={privacyMode ? "Show sensitive amounts" : "Hide sensitive amounts"}><span aria-hidden="true">{privacyMode ? "◉" : "◎"}</span>{privacyMode ? "Show amounts" : "Privacy mode"}</button>
@@ -477,7 +477,7 @@ export function PrivateCapitalDashboard({ initialData = MOCK_DATA, assetDetails 
     </div>
     {tourStep !== null && <div className="pc-tour-backdrop">
       <section className="pc-tour" role="dialog" aria-modal="true" aria-labelledby="pc-tour-title" aria-describedby="pc-tour-description" ref={tourPanelRef} tabIndex={-1} onKeyDown={trapTourFocus}>
-        <header className="pc-tour__header"><div><span>RECORRIDO DE CAPITAL INTELLIGENCE</span><strong>Paso {tourStep + 1} de {TOUR_STEPS.length}</strong></div><button type="button" onClick={() => closeTour()} aria-label="Cerrar tour">×</button></header>
+        <header className="pc-tour__header"><div><span>RECORRIDO DE QUANTITATIVE PERSONAL CAPITAL</span><strong>Paso {tourStep + 1} de {TOUR_STEPS.length}</strong></div><button type="button" onClick={() => closeTour()} aria-label="Cerrar tour">×</button></header>
         <nav className="pc-tour__progress" aria-label="Pasos del tour">{TOUR_STEPS.map((step, index) => <button type="button" key={step.view} onClick={() => goToTourStep(index)} aria-current={index === tourStep ? "step" : undefined} aria-label={`Ir al paso ${index + 1}: ${step.title}`}><i /><span>{String(index + 1).padStart(2, "0")}</span></button>)}</nav>
         <div className="pc-tour__body"><div className="pc-tour__number" aria-hidden="true">{String(tourStep + 1).padStart(2, "0")}</div><div><span>{TOUR_STEPS[tourStep].eyebrow}</span><h2 id="pc-tour-title">{TOUR_STEPS[tourStep].title}</h2><p id="pc-tour-description">{TOUR_STEPS[tourStep].description}</p><ul>{TOUR_STEPS[tourStep].points.map((point) => <li key={point}>{point}</li>)}</ul><small>La sección correspondiente ya está abierta detrás de este panel.</small></div></div>
         <footer className="pc-tour__footer"><button type="button" onClick={() => closeTour()}>Saltar tour</button><div>{tourStep > 0 && <button type="button" onClick={() => goToTourStep(tourStep - 1)}>Anterior</button>}{tourStep < TOUR_STEPS.length - 1 ? <button type="button" className="is-primary" onClick={() => goToTourStep(tourStep + 1)}>Siguiente</button> : <button type="button" className="is-primary" onClick={() => closeTour(true)}>Finalizar</button>}</div></footer>
