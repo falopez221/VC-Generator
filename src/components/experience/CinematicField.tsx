@@ -15,6 +15,63 @@ const hash = (value: number) => {
 };
 const ease = (value: number) => { const safe = Math.max(0, Math.min(1, value)); return safe * safe * (3 - 2 * safe); };
 
+function drawVentureMark(context: CanvasRenderingContext2D, x: number, y: number, size: number, time: number, active: boolean) {
+  context.save();
+  context.translate(x, y);
+  const glow = context.createRadialGradient(0, 0, 0, 0, 0, size * 1.9);
+  glow.addColorStop(0, active ? "rgba(154,226,255,.36)" : "rgba(119,209,244,.24)");
+  glow.addColorStop(.48, "rgba(50,174,226,.08)");
+  glow.addColorStop(1, "rgba(50,174,226,0)");
+  context.fillStyle = glow;
+  context.beginPath();
+  context.arc(0, 0, size * 1.9, 0, Math.PI * 2);
+  context.fill();
+
+  context.strokeStyle = "rgba(151,222,249,.42)";
+  context.lineWidth = 1;
+  for (let ring = 0; ring < 3; ring += 1) {
+    context.save();
+    context.rotate(time * (.08 + ring * .025) + ring * Math.PI / 3);
+    context.scale(1, .58 + ring * .08);
+    context.beginPath();
+    context.ellipse(0, 0, size * (.72 + ring * .28), size * (.72 + ring * .28), 0, 0, Math.PI * 2);
+    context.stroke();
+    context.restore();
+  }
+
+  context.fillStyle = "rgba(8,21,34,.72)";
+  context.strokeStyle = "rgba(192,238,255,.72)";
+  context.lineWidth = 1.2;
+  context.beginPath();
+  context.arc(0, 0, size * .58, 0, Math.PI * 2);
+  context.fill();
+  context.stroke();
+
+  const bars = [
+    { offset: -.22, height: .5, tilt: .35 },
+    { offset: 0, height: .72, tilt: 0 },
+    { offset: .22, height: .42, tilt: -.38 },
+  ];
+  context.fillStyle = "#9fe8ff";
+  bars.forEach((bar) => {
+    context.save();
+    context.translate(size * bar.offset, size * .18);
+    context.rotate(bar.tilt);
+    const width = Math.max(2, size * .09);
+    const height = size * bar.height;
+    context.beginPath();
+    context.roundRect(-width / 2, -height, width, height, width / 2);
+    context.fill();
+    context.restore();
+  });
+
+  context.fillStyle = "rgba(222,247,255,.88)";
+  context.beginPath();
+  context.arc(0, 0, Math.max(1.7, size * .05), 0, Math.PI * 2);
+  context.fill();
+  context.restore();
+}
+
 function makeSignals(count: number): Signal[] {
   return Array.from({ length: count }, (_, index) => ({
     group: index % 4,
@@ -140,6 +197,18 @@ export function CinematicField({ mode = "intro", state = "idle", stage = 0, oppo
           context.fillStyle = "rgba(208,241,255,.9)"; context.beginPath(); context.arc(x, y, running && stage % 4 === index ? 2.8 : 1.8, 0, Math.PI * 2); context.fill();
           if (!mobile) { context.fillStyle = "rgba(174,204,221,.58)"; context.font = "500 9px ui-monospace, SFMono-Regular, monospace"; context.fillText(SPECIALISTS[index].toUpperCase(), x + 10, y - 9); }
         });
+      }
+
+      if (phase >= 1 || mode !== "intro") {
+        const markSize = mobile ? 34 : completed ? 54 : 48;
+        drawVentureMark(context, width * .5, height * .52, markSize, time, running || completed);
+        if (!mobile && phase >= 3) {
+          context.fillStyle = "rgba(191,229,243,.62)";
+          context.font = "650 10px ui-monospace, SFMono-Regular, monospace";
+          context.textAlign = "center";
+          context.fillText("VENTURE GOVERNANCE", width * .5, height * .52 + markSize * 1.65);
+          context.textAlign = "start";
+        }
       }
 
       if (phase >= 2 && !mobile) {
