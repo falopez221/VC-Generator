@@ -63,7 +63,7 @@ export function SoundController({ theme = "system" }: { theme?: ScoreTheme }) {
     if (!unlockedRef.current || requestedVolume <= 0) return;
     const target = targetVolume(requestedVolume);
     if (!scoreRef.current) {
-      const score = new Audio(SCORE_PATHS[theme]);
+      const score = new Audio(SCORE_PATHS[activeThemeRef.current]);
       score.loop = true;
       score.preload = "metadata";
       score.volume = 0;
@@ -75,7 +75,7 @@ export function SoundController({ theme = "system" }: { theme?: ScoreTheme }) {
     cancelFade();
     scoreRef.current.volume = target;
     void scoreRef.current.play().catch(() => undefined);
-  }, [cancelFade, crossfade, targetVolume, theme]);
+  }, [cancelFade, crossfade, targetVolume]);
 
   const applySettings = useCallback((next: { enabled: boolean; volume: number }) => {
     const safeVolume = normalizeVolume(next.volume);
