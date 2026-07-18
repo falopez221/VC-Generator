@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { APPLICATION_CATALOG } from "@/src/applications/catalog";
 import { filterApplications } from "@/src/applications/engine";
 import { EMPTY_FILTERS } from "@/src/applications/engine";
 import type { ApplicationDefinition, ApplicationFilters } from "@/src/applications/types";
 import { DemoNotice } from "./DemoNotice";
+import { useActiveMission } from "../active-mission";
 import styles from "./PrivateApplicationsWorkspace.module.css";
 
 const MAX_APPLICATIONS = 3;
@@ -19,6 +20,8 @@ function readableGovernance(level: ApplicationDefinition["governanceLevel"]) {
 }
 
 export function PrivateApplicationsWorkspace() {
+  const { mission, ready, saveCore } = useActiveMission();
+  const restored = useRef(false);
   const [filters, setFilters] = useState<ApplicationFilters>(EMPTY_FILTERS);
   const [selectedSlugs, setSelectedSlugs] = useState<string[]>([]);
   const [question, setQuestion] = useState("");
@@ -29,6 +32,19 @@ export function PrivateApplicationsWorkspace() {
   const visible = useMemo(() => filterApplications(APPLICATION_CATALOG, filters).slice(0, 18), [filters]);
   const selected = useMemo(() => selectedSlugs.map((slug) => APPLICATION_CATALOG.find((item) => item.slug === slug)).filter(Boolean) as ApplicationDefinition[], [selectedSlugs]);
   const governance = selected.some((item) => item.governanceLevel === "mandatory-authorization") ? "mandatory authorization" : selected.some((item) => item.governanceLevel === "independent-review") ? "independent review" : selected.some((item) => item.governanceLevel === "required") ? "required review" : "recommended review";
+
+  useEffect(() => {
+    let active = true;
+    queueMicrotask(() => {
+      if (!active || !ready || restored.current) return;
+      restored.current = true;
+      if (!mission) return;
+      setQuestion(mission.core.decision);
+      setSelectedSlugs(mission.core.applicationSlugs.filter((slug) => APPLICATION_CATALOG.some((item) => item.slug === slug)).slice(0, MAX_APPLICATIONS));
+      setNotice("Active mission context restored from this device.");
+    });
+    return () => { active = false; };
+  }, [mission, ready]);
 
   const updateFilter = <K extends keyof ApplicationFilters>(key: K, value: ApplicationFilters[K]) => setFilters((current) => ({ ...current, [key]: value }));
   const toggle = (application: ApplicationDefinition) => {
@@ -46,7 +62,18 @@ export function PrivateApplicationsWorkspace() {
   };
   const saveDraft = () => {
     window.localStorage.setItem(DRAFT_KEY, JSON.stringify({ question: question.trim(), selectedSlugs } satisfies LocalDraft));
-    setNotice("Local mission draft saved in this browser. It has not started a mission or authorized any action.");
+    const evidenceInputs = [...new Set(selected.flatMap((item) => item.evidenceInputs))].slice(0, 8);
+    saveCore({
+      title: selected.length === 1 ? selected[0].title.en : selected.length > 1 ? `${selected[0].title.en} + ${selected.length - 1} alternatives` : question.trim().slice(0, 120),
+      decision: question.trim(),
+      domain: [...new Set(selected.map((item) => item.primaryDomain))].join(" · "),
+      evidence: evidenceInputs.join(" · "),
+      capabilities: selected.length ? ["Mathematical analysis", "Strategic analysis"] : [],
+      risk: selected.some((item) => item.governanceLevel === "mandatory-authorization") ? "critical" : selected.some((item) => item.governanceLevel === "independent-review") ? "high-impact" : "elevated",
+      gate: governance,
+      applicationSlugs: selectedSlugs,
+    }, "applications");
+    setNotice("Active mission context saved on this device. Continue to Mission Builder without re-entering the question or selected applications.");
   };
 
   return <>
@@ -91,7 +118,7 @@ export function PrivateApplicationsWorkspace() {
         <label>Mission question<textarea maxLength={1200} value={question} onChange={(event) => setQuestion(event.target.value)} placeholder="What decision should this mission help a named human review?" /></label>
         <div className={styles.selectionList}>{selected.length ? selected.map((application) => <article key={application.id}><span>{application.primaryDomain}</span><strong>{application.title.en}</strong><small>{application.outputs.slice(0, 2).join(" · ")}</small><button type="button" onClick={() => toggle(application)} aria-label={`Remove ${application.title.en}`}>Remove</button></article>) : <p>Select one to three configurations. The draft will keep their evidence, model and governance constraints visible.</p>}</div>
         <dl className={styles.draftDefinition}><div><dt>Required review</dt><dd>{governance}</dd></div><div><dt>Evidence inputs</dt><dd>{selected.length ? [...new Set(selected.flatMap((item) => item.evidenceInputs))].slice(0, 5).join(" · ") : "Selected configurations will define inputs."}</dd></div><div><dt>Boundaries</dt><dd>Local browser draft only. No automated execution or decision authority.</dd></div></dl>
-        <div className={styles.actions}><button type="button" onClick={saveDraft} disabled={!question.trim() && !selected.length}>Save local draft</button><Link href="/app/missions/new" aria-disabled={!question.trim() && !selected.length}>Continue in Mission Builder →</Link></div>
+        <div className={styles.actions}><button type="button" onClick={saveDraft} disabled={!question.trim() && !selected.length}>Save active context</button><Link href="/app/missions/new" aria-disabled={!question.trim() && !selected.length} onClick={() => { if (question.trim() || selected.length) saveDraft(); }}>Save & continue to Mission Builder →</Link></div>
         <p className={styles.notice} role="status" aria-live="polite">{notice}</p>
       </aside>
     </section>

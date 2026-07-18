@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useRef, useState } from "react";
 import type { FeasibilityInput } from "@/src/private/feasibility";
 import type { ScenarioInput } from "@/src/private/models";
 
@@ -125,19 +125,26 @@ function createMission(core: Partial<MissionCore>, source: MissionSource): Activ
 
 export function ActiveMissionProvider({ children }: { children: React.ReactNode }) {
   const [mission, setMission] = useState<ActiveMission | null>(null);
+  const missionRef = useRef<ActiveMission | null>(null);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const stored = window.localStorage.getItem(STORAGE_KEY);
-    if (stored) {
-      try { setMission(sanitizeMission(JSON.parse(stored))); }
-      catch { window.localStorage.removeItem(STORAGE_KEY); }
-    }
-    setReady(true);
+    let active = true;
+    queueMicrotask(() => {
+      if (!active) return;
+      const stored = window.localStorage.getItem(STORAGE_KEY);
+      if (stored) {
+        try { const restored = sanitizeMission(JSON.parse(stored)); missionRef.current = restored; setMission(restored); }
+        catch { window.localStorage.removeItem(STORAGE_KEY); }
+      }
+      setReady(true);
+    });
+    return () => { active = false; };
   }, []);
 
   function commit(next: ActiveMission) {
     const sanitized = sanitizeMission(next) ?? next;
+    missionRef.current = sanitized;
     setMission(sanitized);
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(sanitized));
   }
@@ -146,15 +153,15 @@ export function ActiveMissionProvider({ children }: { children: React.ReactNode 
     mission,
     ready,
     saveCore(core, source) {
-      const current = mission ?? createMission(core, source);
+      const current = missionRef.current ?? createMission(core, source);
       commit({ ...current, updatedAt: new Date().toISOString(), lastSource: source, core: sanitizeCore({ ...current.core, ...core }) });
     },
     saveScenarioPlan(plan, source = "simulation") {
-      const current = mission ?? createMission({}, source);
+      const current = missionRef.current ?? createMission({}, source);
       commit({ ...current, updatedAt: new Date().toISOString(), lastSource: source, scenarioPlan: plan });
     },
     saveFeasibilityPlan(plan) {
-      const current = mission ?? createMission({ title: plan.proposalName, decision: plan.proposalSummary }, "execution-feasibility");
+      const current = missionRef.current ?? createMission({ title: plan.proposalName, decision: plan.proposalSummary }, "execution-feasibility");
       const scenarioPlan = current.scenarioPlan ? { ...current.scenarioPlan, samples: plan.samples, seed: plan.seed } : undefined;
       commit({ ...current, updatedAt: new Date().toISOString(), lastSource: "execution-feasibility", feasibilityPlan: plan, scenarioPlan });
     },
@@ -168,4 +175,3 @@ export function useActiveMission() {
   if (!context) throw new Error("useActiveMission must be used inside ActiveMissionProvider");
   return context;
 }
-

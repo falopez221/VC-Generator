@@ -1,9 +1,11 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import Link from "next/link";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { aggregateMission, analyzeScenarios, PRIVATE_MODEL_DISCLOSURE } from "@/src/private/models";
 import { PUBLIC_MODEL_CATALOG } from "@/src/lab/model-catalog";
 import type { MissionCandidateInput, ScenarioInput } from "@/src/private/models/types";
+import { useActiveMission } from "../active-mission";
 
 const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
 const pct = new Intl.NumberFormat("en-US", { maximumFractionDigits: 1 });
@@ -24,15 +26,32 @@ function Metric({ label, value, detail }: { label: string; value: string; detail
 }
 
 export function ScenarioWorkbench() {
+  const { mission, ready, saveScenarioPlan } = useActiveMission();
+  const restored = useRef(false);
   const [scenarios, setScenarios] = useState(DEFAULT_SCENARIOS);
   const [rate, setRate] = useState(12);
   const [recorded, setRecorded] = useState(false);
   const result = useMemo(() => analyzeScenarios({ scenarios, discountRatePercent: rate }), [scenarios, rate]);
-  const change = (row: number, field: keyof ScenarioInput, value: string) => setScenarios(current => current.map((item, index) => index === row ? { ...item, [field]: field === "id" ? value.slice(0, 48) : n(value, Number(item[field]) || 0) } : item));
+  useEffect(() => {
+    let active = true;
+    queueMicrotask(() => {
+      if (!active || !ready || restored.current) return;
+      restored.current = true;
+      if (!mission?.scenarioPlan) return;
+      setScenarios(mission.scenarioPlan.scenarios);
+      setRate(mission.scenarioPlan.discountRatePercent);
+    });
+    return () => { active = false; };
+  }, [mission, ready]);
+  const persist = (nextScenarios: ScenarioInput[], nextRate: number) => saveScenarioPlan({ scenarios: nextScenarios, discountRatePercent: nextRate, samples: mission?.scenarioPlan?.samples ?? 2_000, seed: mission?.scenarioPlan?.seed ?? 240_719, selectedAgentId: mission?.scenarioPlan?.selectedAgentId }, "scenarios");
+  const change = (row: number, field: keyof ScenarioInput, value: string) => {
+    const next = scenarios.map((item, index) => index === row ? { ...item, [field]: field === "id" ? value.slice(0, 48) : n(value, Number(item[field]) || 0) } : item);
+    setScenarios(next); persist(next, rate); setRecorded(false);
+  };
   return <section className="private-workbench"><Heading eyebrow="SCENARIO LAB" title="Compare declared operating conditions." lede="Discounted scenario analysis is deterministic and bounded. It compares supplied assumptions; it does not forecast performance or authorize capital." />
-    <div className="private-workbench__split"><form className="platform-panel" onSubmit={event => { event.preventDefault(); setRecorded(true); }}><header><div><span>ASSUMPTION SET</span><h2>Three-condition comparison</h2></div><label>Discount rate (%)<input type="number" min="0" max="100" step=".1" value={rate} onChange={e => { setRate(n(e.target.value, rate)); setRecorded(false); }} /></label></header><div className="private-workbench__table"><table><caption className="sr-only">Editable scenario assumptions</caption><thead><tr><th>Scenario</th><th>Weight</th><th>Revenue</th><th>Margin</th><th>Costs</th><th>Capital</th><th>Years</th><th>Range</th></tr></thead><tbody>{scenarios.map((s, index) => <tr key={index}>{(["id", "likelihood", "annualRevenue", "grossMarginPercent", "annualOperatingCost", "initialCapital", "horizonYears", "uncertaintyPercent"] as const).map(field => <td key={field}><input aria-label={`${s.id} ${field}`} type={field === "id" ? "text" : "number"} min={field === "horizonYears" ? 1 : 0} max={field === "grossMarginPercent" || field === "uncertaintyPercent" ? 100 : undefined} value={s[field] ?? ""} onChange={e => { change(index, field, e.target.value); setRecorded(false); }} /></td>)}</tr>)}</tbody></table></div><div className="private-workbench__action"><small>Weights normalize to 100% automatically. Currency values are USD.</small><button className="platform-primary-link">Confirm calculation</button></div><p className="sr-only" aria-live="polite">{recorded ? "Scenario calculation confirmed for human review." : "Assumptions changed; calculation is not confirmed."}</p></form>
+    <div className="private-workbench__split"><form className="platform-panel" onSubmit={event => { event.preventDefault(); persist(scenarios, rate); setRecorded(true); }}><header><div><span>ASSUMPTION SET</span><h2>Three-condition comparison</h2></div><label>Discount rate (%)<input type="number" min="0" max="100" step=".1" value={rate} onChange={e => { const next = n(e.target.value, rate); setRate(next); persist(scenarios, next); setRecorded(false); }} /></label></header><div className="private-workbench__table"><table><caption className="sr-only">Editable scenario assumptions</caption><thead><tr><th>Scenario</th><th>Weight</th><th>Revenue</th><th>Margin</th><th>Costs</th><th>Capital</th><th>Years</th><th>Range</th></tr></thead><tbody>{scenarios.map((s, index) => <tr key={index}>{(["id", "likelihood", "annualRevenue", "grossMarginPercent", "annualOperatingCost", "initialCapital", "horizonYears", "uncertaintyPercent"] as const).map(field => <td key={field}><input aria-label={`${s.id} ${field}`} type={field === "id" ? "text" : "number"} min={field === "horizonYears" ? 1 : 0} max={field === "grossMarginPercent" || field === "uncertaintyPercent" ? 100 : undefined} value={s[field] ?? ""} onChange={e => change(index, field, e.target.value)} /></td>)}</tr>)}</tbody></table></div><div className="private-workbench__action"><small>Changes are carried into Simulation and Feasibility on this device. Weights normalize to 100% automatically.</small><button className="platform-primary-link">Confirm calculation</button></div><p className="sr-only" aria-live="polite">{recorded ? "Scenario calculation confirmed for human review." : "Assumptions changed; calculation is not confirmed."}</p></form>
       <aside className="platform-panel"><header><div><span>INTERPRETATION BOUNDARY</span><h2>Required review</h2></div></header><ul className="platform-rule-list">{PRIVATE_MODEL_DISCLOSURE.assumptions.slice(0, 3).map(item => <li key={item}>{item}</li>)}</ul><p className="platform-caveat">A positive expected value with weak evidence, uncertain demand, or untested constraints must remain under human review.</p></aside></div>
-    <section className="platform-panel"><header><div><span>COMPARISON OUTPUT</span><h2>Expected discounted outcome</h2></div><small>{recorded ? "confirmed calculation" : "assumption preview"}</small></header><div className="private-simulation__metrics"><Metric label="Expected NPV" value={money.format(result.expectedNetPresentValue)} detail={`Declared sensitivity ${money.format(result.lowerExpectedNetPresentValue)} to ${money.format(result.upperExpectedNetPresentValue)}`} /><Metric label="Loss probability" value={`${pct.format(result.probabilityOfLossPercent)}%`} detail="Weighted supplied scenarios" /><Metric label="P10 / Median / P90" value={`${money.format(result.p10NetPresentValue)} / ${money.format(result.medianNetPresentValue)} / ${money.format(result.p90NetPresentValue)}`} detail="Discrete scenario distribution" /></div><div className="platform-table-wrap"><table className="platform-data-table"><thead><tr><th>Condition</th><th>Normalized weight</th><th>Annual contribution</th><th>NPV</th><th>Declared sensitivity</th></tr></thead><tbody>{result.scenarios.map(s => <tr key={s.id}><td>{s.id}</td><td>{pct.format(s.likelihoodPercent)}%</td><td>{money.format(s.annualContribution)}</td><td>{money.format(s.netPresentValue)}</td><td>{money.format(s.lowerNetPresentValue)} to {money.format(s.upperNetPresentValue)}</td></tr>)}</tbody></table></div></section></section>;
+    <section className="platform-panel"><header><div><span>COMPARISON OUTPUT</span><h2>Expected discounted outcome</h2></div><small>{recorded ? "confirmed calculation" : "assumption preview"}</small></header><div className="private-simulation__metrics"><Metric label="Expected NPV" value={money.format(result.expectedNetPresentValue)} detail={`Declared sensitivity ${money.format(result.lowerExpectedNetPresentValue)} to ${money.format(result.upperExpectedNetPresentValue)}`} /><Metric label="Loss probability" value={`${pct.format(result.probabilityOfLossPercent)}%`} detail="Weighted supplied scenarios" /><Metric label="P10 / Median / P90" value={`${money.format(result.p10NetPresentValue)} / ${money.format(result.medianNetPresentValue)} / ${money.format(result.p90NetPresentValue)}`} detail="Discrete scenario distribution" /></div><div className="platform-table-wrap"><table className="platform-data-table"><thead><tr><th>Condition</th><th>Normalized weight</th><th>Annual contribution</th><th>NPV</th><th>Declared sensitivity</th></tr></thead><tbody>{result.scenarios.map(s => <tr key={s.id}><td>{s.id}</td><td>{pct.format(s.likelihoodPercent)}%</td><td>{money.format(s.annualContribution)}</td><td>{money.format(s.netPresentValue)}</td><td>{money.format(s.lowerNetPresentValue)} to {money.format(s.upperNetPresentValue)}</td></tr>)}</tbody></table></div><div className="private-flow-actions"><Link href="/app/simulation">Refine in Simulation Lab</Link><Link href="/app/execution-feasibility">Continue to Execution Feasibility →</Link></div></section></section>;
 }
 
 const INITIAL_PORTFOLIO: MissionCandidateInput[] = [

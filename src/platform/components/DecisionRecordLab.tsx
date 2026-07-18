@@ -1,6 +1,9 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { analyzeScenarios } from "@/src/private/models";
+import { estimateExecutionFeasibility } from "@/src/private/feasibility";
+import { useActiveMission } from "../active-mission";
 
 const ITEM_TYPES = ["Evidence", "Assumption", "Inference", "Hypothesis", "Model output"] as const;
 type ItemType = (typeof ITEM_TYPES)[number];
@@ -9,6 +12,8 @@ type Outcome = "No conclusion yet" | "Proceed with conditions" | "Return for rev
 type DecisionItem = { id: number; type: ItemType; statement: string; source: string; limitation: string };
 
 export function DecisionRecordLab() {
+  const { mission, ready } = useActiveMission();
+  const restored = useRef(false);
   const [question, setQuestion] = useState("");
   const [itemType, setItemType] = useState<ItemType>("Evidence");
   const [statement, setStatement] = useState("");
@@ -27,6 +32,28 @@ export function DecisionRecordLab() {
   const recordEnabled = question.trim().length >= 20 && items.length > 0 && outcome !== "No conclusion yet" && authority.trim().length >= 2 && rationale.trim().length >= 20 && (!needsConditions || conditions.trim().length >= 8) && acknowledged;
   const counts = useMemo(() => ITEM_TYPES.map((type) => [type, items.filter((item) => item.type === type).length] as const), [items]);
 
+  useEffect(() => {
+    let active = true;
+    queueMicrotask(() => {
+      if (!active || !ready || restored.current) return;
+      restored.current = true;
+      if (!mission) return;
+      setQuestion(mission.core.decision);
+      setAuthority(mission.core.reviewer || mission.core.owner);
+      const inherited: DecisionItem[] = [];
+      if (mission.scenarioPlan) {
+        const result = analyzeScenarios({ scenarios: mission.scenarioPlan.scenarios, discountRatePercent: mission.scenarioPlan.discountRatePercent });
+        inherited.push({ id: Date.now(), type: "Model output", statement: `Scenario analysis produced an expected NPV of ${Math.round(result.expectedNetPresentValue).toLocaleString("en-US")} USD and a declared loss probability of ${result.probabilityOfLossPercent.toFixed(1)}%.`, source: `Scenario Lab · seed ${mission.scenarioPlan.seed}`, limitation: "Result depends only on declared scenario weights, cash-flow assumptions and bounded uncertainty; it is not a forecast." });
+      }
+      if (mission.feasibilityPlan) {
+        const result = estimateExecutionFeasibility(mission.feasibilityPlan);
+        inherited.push({ id: Date.now() + 1, type: "Model output", statement: `Execution feasibility estimates a P50 duration of ${result.durationMonths.p50} months, expected cost of ${Math.round(result.cost.expected).toLocaleString("en-US")} USD and readiness of ${result.readiness.score}/100.`, source: `Execution Feasibility · seed ${mission.feasibilityPlan.seed}`, limitation: "Synthetic planning estimate without supplier quotes, organizational calibration or authorization to execute." });
+      }
+      setItems(inherited);
+    });
+    return () => { active = false; };
+  }, [mission, ready]);
+
   function addItem() {
     if (!addEnabled) return;
     setItems((current) => [...current, { id: Date.now(), type: itemType, statement: statement.trim(), source: source.trim(), limitation: limitation.trim() }]);
@@ -37,7 +64,7 @@ export function DecisionRecordLab() {
 
   return <>
     <header className="platform-page-heading"><div><p>DECISION LAB · LOCAL RECORD</p><h1>Keep observations, models and human judgment distinct.</h1></div><p>Create a bounded decision package in the current browser view. It is not an approval system and does not persist evidence, conclusions, or user identity.</p></header>
-    <div className="private-workflow-notice" role="status"><strong>NOT PERSISTED</strong><span>Items and conclusions remain local to this page. A named human authority is still required for every conclusion.</span></div>
+    <div className="private-workflow-notice" role="status"><strong>ACTIVE CONTEXT RECEIVED</strong><span>The mission question and confirmed model outputs are carried forward on this device. The final conclusion remains page-local and still requires a named human authority.</span></div>
     <div className="decision-record-grid">
       <section className="platform-panel decision-record-form" aria-labelledby="decision-question-title">
         <header><div><span>01 · DECISION QUESTION</span><h2 id="decision-question-title">Set the boundary</h2></div></header>

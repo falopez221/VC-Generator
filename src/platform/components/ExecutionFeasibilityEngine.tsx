@@ -1,7 +1,9 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { DEFAULT_FEASIBILITY_INPUT, estimateExecutionFeasibility, type FeasibilityInput, type FeasibilityResult } from "@/src/private/feasibility";
+import { useActiveMission } from "../active-mission";
 
 type Tab = "summary" | "wbs" | "costs" | "capabilities" | "options" | "roadmap";
 type ReviewState = "Not reviewed" | "Return for revision" | "Advance with conditions";
@@ -49,6 +51,8 @@ function download(content: string, type: string, name: string) {
 }
 
 export function ExecutionFeasibilityEngine() {
+  const { mission, ready, saveFeasibilityPlan } = useActiveMission();
+  const restored = useRef(false);
   const [draft, setDraft] = useState<FeasibilityInput>(DEFAULT_FEASIBILITY_INPUT);
   const [committed, setCommitted] = useState<FeasibilityInput>(DEFAULT_FEASIBILITY_INPUT);
   const [tab, setTab] = useState<Tab>("summary");
@@ -60,7 +64,21 @@ export function ExecutionFeasibilityEngine() {
   useEffect(() => {
     let active = true;
     queueMicrotask(() => {
-      if (!active) return;
+      if (!active || !ready || restored.current) return;
+      restored.current = true;
+      if (mission) {
+        const inherited: FeasibilityInput = {
+          ...DEFAULT_FEASIBILITY_INPUT,
+          ...mission.feasibilityPlan,
+          proposalName: mission.core.title || mission.feasibilityPlan?.proposalName || DEFAULT_FEASIBILITY_INPUT.proposalName,
+          proposalSummary: [mission.core.decision, mission.core.constraints ? `Constraints: ${mission.core.constraints}` : ""].filter(Boolean).join("\n").slice(0, 1200) || mission.feasibilityPlan?.proposalSummary || DEFAULT_FEASIBILITY_INPUT.proposalSummary,
+          samples: mission.scenarioPlan?.samples ?? mission.feasibilityPlan?.samples ?? DEFAULT_FEASIBILITY_INPUT.samples,
+          seed: mission.scenarioPlan?.seed ?? mission.feasibilityPlan?.seed ?? DEFAULT_FEASIBILITY_INPUT.seed,
+        };
+        setDraft(inherited); setCommitted(inherited);
+        setStatus("Active mission, scenario sampling and reproducible seed restored from the shared device context.");
+        return;
+      }
       const stored = window.localStorage.getItem(STORAGE_KEY);
       if (!stored) return;
       try {
@@ -72,12 +90,17 @@ export function ExecutionFeasibilityEngine() {
       } catch { window.localStorage.removeItem(STORAGE_KEY); }
     });
     return () => { active = false; };
-  }, []);
+  }, [mission, ready]);
 
-  function update<K extends keyof FeasibilityInput>(key: K, value: FeasibilityInput[K]) { setDraft((current) => ({ ...current, [key]: value })); }
+  function update<K extends keyof FeasibilityInput>(key: K, value: FeasibilityInput[K]) {
+    const next = { ...draft, [key]: value };
+    setDraft(next);
+    saveFeasibilityPlan(next);
+  }
   function runEstimate() {
     const next = { ...draft, proposalName: draft.proposalName.slice(0, 80), proposalSummary: draft.proposalSummary.slice(0, 1200) };
     setCommitted(next); setReview("Not reviewed"); setReviewNote("");
+    saveFeasibilityPlan(next);
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify({ input: next, review: "Not reviewed", note: "" }));
     setStatus(`Estimate recalculated with ${next.samples.toLocaleString()} deterministic samples and seed ${next.seed}.`);
   }
@@ -133,6 +156,7 @@ export function ExecutionFeasibilityEngine() {
     {tab === "roadmap" && <Roadmap result={result} />}
 
     <section className="platform-panel execution-feasibility__review" aria-labelledby="feasibility-review-title"><header><div><span>HUMAN REVIEW GATE</span><h2 id="feasibility-review-title">Record a planning disposition</h2></div><strong>{review}</strong></header><label>Conditions and rationale<textarea maxLength={1000} value={reviewNote} onChange={(event) => setReviewNote(event.target.value)} placeholder="Record evidence gaps, conditions, ownership or reasons to revise." /></label><div><button type="button" onClick={() => recordReview("Return for revision")}>Return for revision</button><button type="button" onClick={() => recordReview("Advance with conditions")}>Advance with conditions</button></div><p>This state is stored only on this device. “Advance” means continue planning; it does not authorize investment or execution.</p></section>
+    <div className="private-flow-actions"><Link href="/app/scenarios">Return to scenario assumptions</Link><Link href="/app/decision-lab">Continue to the human Decision Lab →</Link></div>
     <p className="execution-feasibility__status" role="status" aria-live="polite">{status}</p>
   </section>;
 }

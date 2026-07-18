@@ -1,8 +1,10 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import Link from "next/link";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { analyzeScenarios, PRIVATE_MODEL_DISCLOSURE, simulateScenarioOutcomes } from "@/src/private/models";
 import type { ScenarioInput } from "@/src/private/models";
+import { useActiveMission } from "../active-mission";
 
 type ScenarioField = Exclude<keyof ScenarioInput, "id">;
 type ScenarioDraft = ScenarioInput;
@@ -37,6 +39,8 @@ function numberFromEvent(value: string, fallback: number) {
 }
 
 export function PrivateSimulationLab() {
+  const { mission, ready, saveCore, saveScenarioPlan } = useActiveMission();
+  const restored = useRef(false);
   const [scenarios, setScenarios] = useState<ScenarioDraft[]>(INITIAL_SCENARIOS);
   const [discountRatePercent, setDiscountRatePercent] = useState(12);
   const [samples, setSamples] = useState(2_000);
@@ -53,6 +57,25 @@ export function PrivateSimulationLab() {
   const analysis = useMemo(() => analyzeScenarios(input), [input]);
   const simulation = useMemo(() => simulateScenarioOutcomes(input, { samples, seed }), [input, samples, seed]);
   const likelihoodTotal = scenarios.reduce((total, scenario) => total + scenario.likelihood, 0);
+
+  useEffect(() => {
+    let active = true;
+    queueMicrotask(() => {
+      if (!active || !ready || restored.current) return;
+      restored.current = true;
+      if (!mission) return;
+      const core = mission.core;
+      setMissionBrief([core.title, core.decision, core.domain ? `Context: ${core.domain}.` : "", core.constraints ? `Constraints: ${core.constraints}` : ""].filter(Boolean).join("\n").slice(0, 800));
+      if (mission.scenarioPlan) {
+        setScenarios(mission.scenarioPlan.scenarios);
+        setDiscountRatePercent(mission.scenarioPlan.discountRatePercent);
+        setSamples(mission.scenarioPlan.samples);
+        setSeed(mission.scenarioPlan.seed);
+        setRoutingNotice("Active mission assumptions restored. Recommend and select an agent to confirm a new run.");
+      }
+    });
+    return () => { active = false; };
+  }, [mission, ready]);
 
   function updateScenario(index: number, field: ScenarioField, rawValue: string) {
     setScenarios((current) => current.map((scenario, scenarioIndex) => scenarioIndex === index
@@ -76,6 +99,11 @@ export function PrivateSimulationLab() {
       setHasRun(false);
       return;
     }
+    saveCore({
+      title: mission?.core.title || missionBrief.trim().split(/[.!?\n]/)[0].slice(0, 120),
+      decision: mission?.core.decision || missionBrief.trim(),
+    }, "simulation");
+    saveScenarioPlan({ scenarios, discountRatePercent, samples, seed, selectedAgentId: selectedAgent.id }, "simulation");
     setHasRun(true);
   }
 
@@ -157,7 +185,7 @@ export function PrivateSimulationLab() {
       <div className="platform-table-wrap"><table className="platform-data-table private-simulation__result-table"><caption className="sr-only">Calculated scenario outcomes</caption><thead><tr><th scope="col">Scenario</th><th scope="col">Normalized weight</th><th scope="col">Annual contribution</th><th scope="col">Net present value</th><th scope="col">Declared range</th></tr></thead><tbody>{analysis.scenarios.map((scenario) => <tr key={scenario.id}><td>{scenario.id}</td><td>{formatPercent(scenario.likelihoodPercent)}</td><td>{formatMoney(scenario.annualContribution)}</td><td>{formatMoney(scenario.netPresentValue)}</td><td>{formatMoney(scenario.lowerNetPresentValue)} to {formatMoney(scenario.upperNetPresentValue)}<small>±{formatPercent(scenario.uncertaintyPercent)} contribution sensitivity</small></td></tr>)}</tbody></table></div>
     </section>
 
-    {hasRun && selectedAgent && <section className="platform-panel private-simulation__solution" aria-labelledby="simulation-solution-title"><header><div><span>SOLUTION PACKAGE · HUMAN REVIEW REQUIRED</span><h2 id="simulation-solution-title">{selectedAgent.id} · {selectedAgent.displayName}</h2></div><small>{selectedAgent.domain} · {selectedAgent.specialization}</small></header><p>The selected agent was routed from the mission brief and chosen sensitivity lenses. It provides an analytical lens for interpreting the calculation; the NPV and sampling equations remain exactly the declared, reproducible model shown above.</p><dl><div><dt>ROUTING REASONS</dt><dd>{selectedAgent.reasons.join(" · ")}</dd></div><div><dt>MODEL OUTPUT</dt><dd>Expected NPV {formatMoney(analysis.expectedNetPresentValue)} · loss probability {formatPercent(analysis.probabilityOfLossPercent)}</dd></div><div><dt>REVIEW NEXT</dt><dd>Validate evidence, challenge assumptions, then record the human decision.</dd></div></dl></section>}
+    {hasRun && selectedAgent && <section className="platform-panel private-simulation__solution" aria-labelledby="simulation-solution-title"><header><div><span>SOLUTION PACKAGE · HUMAN REVIEW REQUIRED</span><h2 id="simulation-solution-title">{selectedAgent.id} · {selectedAgent.displayName}</h2></div><small>{selectedAgent.domain} · {selectedAgent.specialization}</small></header><p>The selected agent was routed from the mission brief and chosen sensitivity lenses. It provides an analytical lens for interpreting the calculation; the NPV and sampling equations remain exactly the declared, reproducible model shown above.</p><dl><div><dt>ROUTING REASONS</dt><dd>{selectedAgent.reasons.join(" · ")}</dd></div><div><dt>MODEL OUTPUT</dt><dd>Expected NPV {formatMoney(analysis.expectedNetPresentValue)} · loss probability {formatPercent(analysis.probabilityOfLossPercent)}</dd></div><div><dt>REVIEW NEXT</dt><dd>Validate evidence, challenge assumptions, then record the human decision.</dd></div></dl><div className="private-flow-actions"><Link href="/app/scenarios">Continue with these inputs in Scenario Lab →</Link><Link href="/app/execution-feasibility">Continue to Execution Feasibility →</Link></div></section>}
 
     <section className="private-simulation__results" aria-labelledby="monte-carlo-results-title">
       <header><div><span>SEEDED SAMPLING</span><h2 id="monte-carlo-results-title">Monte Carlo outcome range</h2></div><small>{simulation.samples.toLocaleString()} samples · seed {simulation.seed}</small></header>
