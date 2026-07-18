@@ -25,14 +25,18 @@ internal static class Bootstrapper
             ExtractResource("config.psd1", Path.Combine(tempRoot, "config.psd1"));
 
             string script = Path.Combine(tempRoot, "Install.ps1");
+            string windowsDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Windows);
+            string powershellPath = Path.Combine(windowsDirectory, "System32", "WindowsPowerShell", "v1.0", "powershell.exe");
+            if (!File.Exists(powershellPath)) throw new FileNotFoundException("The trusted Windows PowerShell executable is unavailable.", powershellPath);
             string powershellArguments = "-NoProfile -ExecutionPolicy Bypass -File \"" + script + "\"";
             if (!string.IsNullOrWhiteSpace(testInstallRoot))
             {
-                powershellArguments += " -InstallRoot \"" + testInstallRoot.Replace("\"", "") + "\" -SkipShortcuts -SkipRegistry -NoLaunch";
+                string encodedInstallRoot = Convert.ToBase64String(Encoding.UTF8.GetBytes(testInstallRoot));
+                powershellArguments += " -EncodedInstallRoot " + encodedInstallRoot + " -SkipShortcuts -SkipRegistry -NoLaunch";
             }
             var startInfo = new ProcessStartInfo
             {
-                FileName = "powershell.exe",
+                FileName = powershellPath,
                 Arguments = powershellArguments,
                 WorkingDirectory = tempRoot,
                 UseShellExecute = false,

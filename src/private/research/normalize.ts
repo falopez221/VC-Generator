@@ -16,7 +16,7 @@ function plainText(value: unknown, maxLength: number) {
     .replace(/https?:\/\/\S+/gi, " ")
     .replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1\s*>/gi, " ")
     .replace(/<[^>]*>/g, " ")
-    .replace(/[\u0000-\u001f\u007f]/g, " ")
+    .replace(/[\u0000-\u001f\u007f-\u009f\u061c\u200b-\u200f\u202a-\u202e\u2060\u2066-\u2069\ufeff]/gu, " ")
     .replace(/\s+/g, " ")
     .trim()
     .slice(0, maxLength);

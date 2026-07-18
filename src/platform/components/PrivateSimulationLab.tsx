@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { analyzeScenarios, PRIVATE_MODEL_DISCLOSURE, simulateScenarioOutcomes } from "@/src/private/models";
-import type { ScenarioInput } from "@/src/private/models";
+import { analyzeScenarios, DEMO_MODEL_DISCLOSURE, simulateScenarioOutcomes } from "@/src/platform/demo-models";
+import type { ScenarioInput } from "@/src/platform/demo-models";
 import { useActiveMission } from "../active-mission";
 
 type ScenarioField = Exclude<keyof ScenarioInput, "id">;
@@ -21,6 +21,26 @@ const INITIAL_SCENARIOS: ScenarioDraft[] = [
   { id: "Base", likelihood: 50, annualRevenue: 2_400_000, grossMarginPercent: 55, annualOperatingCost: 1_050_000, initialCapital: 1_800_000, horizonYears: 5, uncertaintyPercent: 18 },
   { id: "Favorable", likelihood: 25, annualRevenue: 4_100_000, grossMarginPercent: 63, annualOperatingCost: 1_500_000, initialCapital: 1_800_000, horizonYears: 5, uncertaintyPercent: 24 },
 ];
+
+const PUBLIC_DEMO_AGENTS: Omit<RecommendedAgent, "score" | "reasons">[] = [
+  { id: "PUBLIC-MATHEMATICS", displayName: "Mathematics", domain: "Public Lab", specialization: "Uncertainty and sensitivity", capabilitySummary: "Applies transparent demonstrative models to declared ranges." },
+  { id: "PUBLIC-FINANCE", displayName: "Finance", domain: "Public Lab", specialization: "Economics and capital", capabilitySummary: "Examines bounded economics and staged capital assumptions." },
+  { id: "PUBLIC-STRATEGY", displayName: "Strategy", domain: "Public Lab", specialization: "Alternatives and horizon", capabilitySummary: "Frames alternatives, timing and strategic constraints." },
+  { id: "PUBLIC-MARKETING", displayName: "Marketing", domain: "Public Lab", specialization: "Demand and adoption", capabilitySummary: "Examines demand, adoption and market-evidence gaps." },
+];
+
+function recommendPublicDemoAgents(brief: string, lenses: readonly SensitivityLens[]): RecommendedAgent[] {
+  const normalized = brief.toLocaleLowerCase();
+  return PUBLIC_DEMO_AGENTS.map((agent) => {
+    const reasons: string[] = [];
+    let score = 1;
+    if (agent.displayName === "Mathematics" && (lenses.includes("uncertainty") || /risk|uncertain|probab|sensitiv/.test(normalized))) { score += 4; reasons.push("uncertainty lens"); }
+    if (agent.displayName === "Finance" && (lenses.includes("capital") || lenses.includes("unit_economics") || /capital|cost|margin|revenue/.test(normalized))) { score += 4; reasons.push("economics lens"); }
+    if (agent.displayName === "Strategy" && (lenses.includes("horizon") || /strateg|horizon|timing|alternative/.test(normalized))) { score += 4; reasons.push("strategic-horizon lens"); }
+    if (agent.displayName === "Marketing" && (lenses.includes("market") || /market|demand|customer|adoption/.test(normalized))) { score += 4; reasons.push("market-demand lens"); }
+    return { ...agent, score, reasons: reasons.length ? reasons : ["fallback public-demo coverage"] };
+  }).sort((left, right) => right.score - left.score || left.displayName.localeCompare(right.displayName));
+}
 
 const MONEY_FORMATTER = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
 const PERCENT_FORMATTER = new Intl.NumberFormat("en-US", { maximumFractionDigits: 1 });
@@ -50,8 +70,7 @@ export function PrivateSimulationLab() {
   const [lenses, setLenses] = useState<SensitivityLens[]>(["uncertainty", "unit_economics"]);
   const [recommendations, setRecommendations] = useState<RecommendedAgent[]>([]);
   const [selectedAgent, setSelectedAgent] = useState<RecommendedAgent | null>(null);
-  const [routingNotice, setRoutingNotice] = useState("Describe the mission and choose sensitivity lenses to recommend a documented agent.");
-  const [routingBusy, setRoutingBusy] = useState(false);
+  const [routingNotice, setRoutingNotice] = useState("Describe the mission and choose sensitivity lenses to rank the four public demo agents.");
 
   const input = useMemo(() => ({ scenarios, discountRatePercent }), [scenarios, discountRatePercent]);
   const analysis = useMemo(() => analyzeScenarios(input), [input]);
@@ -71,7 +90,7 @@ export function PrivateSimulationLab() {
         setDiscountRatePercent(mission.scenarioPlan.discountRatePercent);
         setSamples(mission.scenarioPlan.samples);
         setSeed(mission.scenarioPlan.seed);
-        setRoutingNotice("Active mission assumptions restored. Recommend and select an agent to confirm a new run.");
+        setRoutingNotice("Active mission assumptions restored. Rank and select one public demo agent to label the new run.");
       }
     });
     return () => { active = false; };
@@ -107,20 +126,16 @@ export function PrivateSimulationLab() {
     setHasRun(true);
   }
 
-  async function recommendAgent() {
-    setRoutingBusy(true);
+  function recommendAgent() {
     setSelectedAgent(null);
     setHasRun(false);
-    try {
-      const response = await fetch("/api/private/agents/recommend", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ prompt: missionBrief, lenses }) });
-      const body = await response.json() as { recommendations?: RecommendedAgent[]; error?: string };
-      if (!response.ok || !body.recommendations?.length) throw new Error(body.error ?? "No documented agents matched this route.");
-      setRecommendations(body.recommendations);
-      setRoutingNotice("Review the suggested agents, then choose one to attach to this model run.");
-    } catch (error) {
+    if (missionBrief.trim().length < 20) {
       setRecommendations([]);
-      setRoutingNotice(error instanceof Error ? error.message : "The agent recommendation could not be prepared.");
-    } finally { setRoutingBusy(false); }
+      setRoutingNotice("Describe the mission in at least 20 characters before ranking the public demo agents.");
+      return;
+    }
+    setRecommendations(recommendPublicDemoAgents(missionBrief, lenses));
+    setRoutingNotice("Transparent local rules ranked Mathematics, Finance, Strategy and Marketing. Choose one as the interpretive label for this model run.");
   }
 
   function toggleLens(lens: SensitivityLens) {
@@ -131,7 +146,7 @@ export function PrivateSimulationLab() {
 
   return <section className="private-simulation" aria-labelledby="private-simulation-title">
     <header className="platform-page-heading">
-      <div><p>SIMULATION LAB · PRIVATE PLANNING</p><h1 id="private-simulation-title">Make uncertainty visible before a human decision.</h1></div>
+      <div><p>SIMULATION LAB · PUBLIC DEMO MODELS</p><h1 id="private-simulation-title">Make uncertainty visible before a human decision.</h1></div>
       <p>Bounded scenario planning with declared assumptions. Identical inputs and seed produce identical demonstrative results; this is not a forecast, valuation, or investment recommendation.</p>
     </header>
 
@@ -139,7 +154,7 @@ export function PrivateSimulationLab() {
       <form className="platform-panel private-simulation__form" onSubmit={(event) => { event.preventDefault(); runModels(); }}>
         <header><div><span>DECLARED INPUTS</span><h2>Scenario configuration</h2></div><small>All currency values USD</small></header>
         <section className="private-simulation__routing" aria-labelledby="simulation-routing-title">
-          <header><div><span>MISSION ROUTING</span><h3 id="simulation-routing-title">Prompt and sensitivity select the agent before the solution</h3></div><button className="platform-secondary-button" type="button" disabled={routingBusy} onClick={() => void recommendAgent()}>{routingBusy ? "Matching agents…" : "Recommend agent"}</button></header>
+          <header><div><span>TRANSPARENT PUBLIC ROUTING</span><h3 id="simulation-routing-title">Declared lenses rank the four visible demo agents</h3></div><button className="platform-secondary-button" type="button" onClick={recommendAgent}>Rank public agents</button></header>
           <label>Mission brief<textarea maxLength={800} value={missionBrief} onChange={(event) => { setMissionBrief(event.target.value); setSelectedAgent(null); setHasRun(false); }} placeholder="Example: assess a renewable-energy opportunity with uncertain demand, capital needs and a five-year horizon." /></label>
           <fieldset><legend>Sensitivity lenses</legend><div>{SENSITIVITY_LENSES.map((lens) => <label key={lens.id}><input type="checkbox" checked={lenses.includes(lens.id)} onChange={() => toggleLens(lens.id)} />{lens.label}</label>)}</div></fieldset>
           <p role="status" aria-live="polite">{routingNotice}</p>
@@ -169,9 +184,9 @@ export function PrivateSimulationLab() {
 
       <aside className="platform-panel private-simulation__method">
         <header><div><span>MODEL BOUNDARY</span><h2>What this calculates</h2></div></header>
-        <ul className="platform-rule-list">{PRIVATE_MODEL_DISCLOSURE.assumptions.map((item) => <li key={item}>{item}</li>)}</ul>
+        <ul className="platform-rule-list">{DEMO_MODEL_DISCLOSURE.assumptions.map((item) => <li key={item}>{item}</li>)}</ul>
         <h3>Limits</h3>
-        <ul className="platform-rule-list">{PRIVATE_MODEL_DISCLOSURE.limitations.map((item) => <li key={item}>{item}</li>)}</ul>
+        <ul className="platform-rule-list">{DEMO_MODEL_DISCLOSURE.limitations.map((item) => <li key={item}>{item}</li>)}</ul>
       </aside>
     </div>
 
@@ -185,7 +200,7 @@ export function PrivateSimulationLab() {
       <div className="platform-table-wrap"><table className="platform-data-table private-simulation__result-table"><caption className="sr-only">Calculated scenario outcomes</caption><thead><tr><th scope="col">Scenario</th><th scope="col">Normalized weight</th><th scope="col">Annual contribution</th><th scope="col">Net present value</th><th scope="col">Declared range</th></tr></thead><tbody>{analysis.scenarios.map((scenario) => <tr key={scenario.id}><td>{scenario.id}</td><td>{formatPercent(scenario.likelihoodPercent)}</td><td>{formatMoney(scenario.annualContribution)}</td><td>{formatMoney(scenario.netPresentValue)}</td><td>{formatMoney(scenario.lowerNetPresentValue)} to {formatMoney(scenario.upperNetPresentValue)}<small>±{formatPercent(scenario.uncertaintyPercent)} contribution sensitivity</small></td></tr>)}</tbody></table></div>
     </section>
 
-    {hasRun && selectedAgent && <section className="platform-panel private-simulation__solution" aria-labelledby="simulation-solution-title"><header><div><span>SOLUTION PACKAGE · HUMAN REVIEW REQUIRED</span><h2 id="simulation-solution-title">{selectedAgent.id} · {selectedAgent.displayName}</h2></div><small>{selectedAgent.domain} · {selectedAgent.specialization}</small></header><p>The selected agent was routed from the mission brief and chosen sensitivity lenses. It provides an analytical lens for interpreting the calculation; the NPV and sampling equations remain exactly the declared, reproducible model shown above.</p><dl><div><dt>ROUTING REASONS</dt><dd>{selectedAgent.reasons.join(" · ")}</dd></div><div><dt>MODEL OUTPUT</dt><dd>Expected NPV {formatMoney(analysis.expectedNetPresentValue)} · loss probability {formatPercent(analysis.probabilityOfLossPercent)}</dd></div><div><dt>REVIEW NEXT</dt><dd>Validate evidence, challenge assumptions, then record the human decision.</dd></div></dl><div className="private-flow-actions"><Link href="/app/scenarios">Continue with these inputs in Scenario Lab →</Link><Link href="/app/execution-feasibility">Continue to Execution Feasibility →</Link></div></section>}
+    {hasRun && selectedAgent && <section className="platform-panel private-simulation__solution" aria-labelledby="simulation-solution-title"><header><div><span>DEMO MODEL PACKAGE · HUMAN REVIEW REQUIRED</span><h2 id="simulation-solution-title">{selectedAgent.id} · {selectedAgent.displayName}</h2></div><small>{selectedAgent.domain} · {selectedAgent.specialization}</small></header><p>The selected public demo agent is an interpretive label chosen by transparent local rules; no private profile or language model executed. The NPV and sampling equations remain exactly the declared, reproducible model shown above.</p><dl><div><dt>ROUTING REASONS</dt><dd>{selectedAgent.reasons.join(" · ")}</dd></div><div><dt>MODEL OUTPUT</dt><dd>Expected NPV {formatMoney(analysis.expectedNetPresentValue)} · loss probability {formatPercent(analysis.probabilityOfLossPercent)}</dd></div><div><dt>REVIEW NEXT</dt><dd>Validate evidence, challenge assumptions, then record the human decision.</dd></div></dl><div className="private-flow-actions"><Link href="/app/scenarios">Continue with these inputs in Scenario Lab →</Link><Link href="/app/execution-feasibility">Continue to Execution Feasibility →</Link></div></section>}
 
     <section className="private-simulation__results" aria-labelledby="monte-carlo-results-title">
       <header><div><span>SEEDED SAMPLING</span><h2 id="monte-carlo-results-title">Monte Carlo outcome range</h2></div><small>{simulation.samples.toLocaleString()} samples · seed {simulation.seed}</small></header>

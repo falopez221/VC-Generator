@@ -3,12 +3,21 @@ import http from "node:http";
 import path from "node:path";
 import { spawn } from "node:child_process";
 import { fileURLToPath } from "node:url";
+import {
+  LOCAL_HEALTH_PATH,
+  LOOPBACK_HOST,
+  createRestrictedChildEnv,
+  isMatchingLocalInstanceResponse,
+  parseLocalInstanceToken,
+  parsePublicPort,
+} from "./local-proxy-security.mjs";
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 const settingsText = fs.readFileSync(path.join(root, "local-settings.json"), "utf8").replace(/^\uFEFF/, "");
 const settings = JSON.parse(settingsText);
-const port = Number(settings.port) || 34731;
-const host = "127.0.0.1";
+const port = parsePublicPort(settings.port);
+const localInstanceToken = parseLocalInstanceToken(settings.localInstanceToken);
+const host = LOOPBACK_HOST;
 const url = `http://${host}:${port}/app`;
 const runtime = path.join(root, "runtime", "node.exe");
 const localServer = path.join(root, "local-server.mjs");
@@ -17,9 +26,22 @@ const logsDir = path.join(root, "logs");
 
 function probe() {
   return new Promise((resolve) => {
-    const request = http.get(url, { timeout: 800 }, (response) => {
+    const request = http.get({
+      host,
+      port,
+      path: LOCAL_HEALTH_PATH,
+      headers: {
+        host: `${host}:${port}`,
+        "x-vg-local-instance": localInstanceToken,
+      },
+      timeout: 800,
+    }, (response) => {
       response.resume();
-      resolve(response.statusCode === 200);
+      resolve(isMatchingLocalInstanceResponse(
+        response.statusCode,
+        response.headers["x-vg-local-instance"],
+        localInstanceToken,
+      ));
     });
     request.on("timeout", () => { request.destroy(); resolve(false); });
     request.on("error", () => resolve(false));
@@ -39,10 +61,11 @@ async function main() {
       detached: true,
       windowsHide: true,
       stdio: ["ignore", stdout, stderr],
-      env: {
-        ...process.env,
+      env: createRestrictedChildEnv(process.env, {
         NEXT_TELEMETRY_DISABLED: "1",
-      },
+        VG_LOCAL_INSTALL_MODE: "1",
+        VG_LOCAL_BIND_ADDRESS: host,
+      }),
     });
     child.unref();
     fs.writeFileSync(pidFile, String(child.pid), "utf8");
@@ -53,7 +76,15 @@ async function main() {
   }
 
   if (ready && process.env.VG_NO_OPEN !== "1") {
-    const opener = spawn("explorer.exe", [url], { detached: true, windowsHide: true, stdio: "ignore" });
+    const windowsRoot = process.env.SystemRoot ?? process.env.WINDIR;
+    if (!windowsRoot || !path.win32.isAbsolute(windowsRoot)) throw new Error("The Windows directory could not be resolved.");
+    const explorer = path.join(windowsRoot, "explorer.exe");
+    const opener = spawn(explorer, [url], {
+      detached: true,
+      windowsHide: true,
+      stdio: "ignore",
+      env: createRestrictedChildEnv(process.env),
+    });
     opener.unref();
   }
   if (!ready) process.exitCode = 1;

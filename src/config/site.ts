@@ -9,11 +9,6 @@ export const PROJECT_TAGLINE = "Knowledge begins as possibility.";
 export const PROJECT_DESCRIPTION =
   "A governed intelligence environment that turns a human thesis into inspectable opportunities, visible uncertainty and human review.";
 
-// Ruta central del whitepaper maestro dentro de /public/documents/.
-export const WHITEPAPER_URL = "/documents/venture-governance-system-whitepaper-2026.pdf";
-// Cambiá a false si retirás temporalmente el documento.
-export const WHITEPAPER_AVAILABLE = true;
-
 // Reemplazá estos datos de contacto antes de publicar.
 export const CONTACT_EMAIL = "franciscoariellopez22@gmail.com";
 export const CONTACT_URL = "#contacto";
@@ -38,7 +33,6 @@ export const NAVIGATION = [
   { label: "Architecture", href: "/#arquitectura" },
   { label: "Methodology", href: "/lab/methodology" },
   { label: "Applications", href: "/applications" },
-  { label: "Whitepaper", href: "/#whitepaper", disabled: !WHITEPAPER_AVAILABLE },
   { label: "Lab", href: "/lab" },
   { label: "Access", href: PLATFORM_URL },
 ] as const;
@@ -47,7 +41,7 @@ export const PRIMARY_NAVIGATION = [
   { label: "Platform", href: "/#platform" },
   { label: "Methodology", href: "/lab/methodology" },
   { label: "Applications", href: "/applications" },
-  { label: "Research", href: "/#whitepaper" },
+  { label: "Research", href: "/#evidencia" },
 ] as const;
 
 export const NAVIGATION_GROUPS = [
@@ -68,7 +62,7 @@ export const NAVIGATION_GROUPS = [
       { label: "Applications map", href: "/applications" },
       { label: "Public Lab", href: "/lab" },
       { label: "Run a simulation", href: DEMO_URL },
-      { label: "Read the whitepaper", href: WHITEPAPER_URL },
+      { label: "Evidence boundary", href: "/#evidencia" },
     ],
   },
   {
@@ -98,7 +92,7 @@ export const FOOTER_NAVIGATION = [
     links: [
       { label: "Public Lab", href: "/lab" },
       { label: "Methodology", href: "/lab/methodology" },
-      { label: "Whitepaper", href: WHITEPAPER_URL },
+      { label: "Applications", href: "/applications" },
       { label: "Request access", href: "/request-access" },
     ],
   },
@@ -114,7 +108,6 @@ export const FOOTER_NAVIGATION = [
 ] as const;
 
 export const SITE_LINKS = {
-  whitepaper: WHITEPAPER_URL,
   contact: CONTACT_URL,
   email: `mailto:${CONTACT_EMAIL}`,
   linkedin: LINKEDIN_URL,

@@ -51,6 +51,7 @@ export function MissionBuilder() {
       setTitle(core.title); setDecision(core.decision); setOwner(core.owner); setDomain(core.domain); setHorizon(core.horizon);
       setConstraints(core.constraints); setEvidence(core.evidence); setCapabilities(core.capabilities); setRisk(core.risk);
       setReviewer(core.reviewer); setGate(core.gate);
+      setCreated(true);
     });
     return () => { active = false; };
   }, [mission, ready]);
@@ -68,9 +69,9 @@ export function MissionBuilder() {
   return <>
     <header className="platform-page-heading">
       <div><p>MISSION BUILDER · LOCAL DRAFT</p><h1>Frame a bounded mission before any analysis begins.</h1></div>
-      <p>This workflow runs only in the current browser view. It does not save a mission, contact agents, run research, or authorize a real-world action.</p>
+      <p>Unconfirmed fields remain in this browser view. Confirming saves an identity-scoped, expiring browser-tab draft; it does not contact agents, run research, or authorize a real-world action.</p>
     </header>
-    <div className="private-workflow-notice" role="status"><strong>ACTIVE CONTEXT · DEVICE-LOCAL</strong><span>The confirmed draft continues into Simulation, Scenarios and Feasibility on this device. Durable organizational storage and permissions are not connected.</span></div>
+    <div className="private-workflow-notice" role="status"><strong>ACTIVE CONTEXT · SESSION-LOCAL</strong><span>The confirmed draft continues into Simulation, Scenarios and Feasibility in this browser tab until it expires. Durable organizational storage and permissions are not connected.</span></div>
     <div className="builder-shell">
       <nav aria-label="Mission builder steps">
         {STEPS.map((item, index) => <button type="button" key={item} onClick={() => setStep(index)} aria-current={step === index ? "step" : undefined}>
@@ -102,10 +103,10 @@ export function MissionBuilder() {
           <div className="builder-callout"><span>HUMAN CONTROL</span><p>This draft remains blocked until the named human gate reviews evidence, assumptions, alternatives and objections. No autonomous approval is available here.</p></div>
         </div>}
         {step === 4 && <div className="builder-review">
-          <span>LOCAL MISSION DRAFT · NOT PERSISTED</span><h2>{title || "Complete the decision step before creating this draft."}</h2>
+          <span>{created ? "LOCAL MISSION DRAFT · TAB-LOCAL CONTEXT SAVED" : "LOCAL MISSION DRAFT · NOT YET SAVED"}</span><h2>{title || "Complete the decision step before creating this draft."}</h2>
           <dl><div><dt>DECISION</dt><dd>{decision || "Missing"}</dd></div><div><dt>OWNER</dt><dd>{owner || "Missing"}</dd></div><div><dt>DOMAIN</dt><dd>{domain || "Missing"}</dd></div><div><dt>HORIZON</dt><dd>{horizon}</dd></div><div><dt>CONSTRAINTS</dt><dd>{constraints || "Missing"}</dd></div><div><dt>EVIDENCE</dt><dd>{evidence || "Missing"}</dd></div><div><dt>CAPABILITIES</dt><dd>{capabilities.join(" · ") || "None selected"}</dd></div><div><dt>RISK</dt><dd>{risk}</dd></div><div><dt>HUMAN GATE</dt><dd>{gate} — {reviewer || "Missing authority"}</dd></div></dl>
           {!validSteps.every(Boolean) && <p role="status">Complete all required fields and confirm the human-control boundary before creating the local draft.</p>}
-          {created && <p className="private-workflow-success" role="status">Active mission context saved on this device. Continue to the simulation without re-entering the decision, domain or evidence.</p>}
+          {created && <p className="private-workflow-success" role="status">Active mission context saved for this browser tab. Continue to the simulation without re-entering the decision, domain or evidence.</p>}
         </div>}
         <footer><button type="button" onClick={() => setStep((value) => Math.max(0, value - 1))} disabled={step === 0}>Back</button>{step < STEPS.length - 1 ? <button type="button" onClick={() => setStep((value) => Math.min(STEPS.length - 1, value + 1))} disabled={!canContinue}>Continue</button> : <button type="button" onClick={createLocalDraft} disabled={!canContinue}>Create local draft</button>}</footer>
       </section>

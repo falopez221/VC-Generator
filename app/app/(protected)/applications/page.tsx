@@ -1,5 +1,5 @@
-import { PrivateApplicationsWorkspace } from "@/src/platform/components/PrivateApplicationsWorkspace";
+import { PrivateDomainHub } from "@/src/platform/components/PrivateDomainHub";
 
 export default function ApplicationsPage() {
-  return <PrivateApplicationsWorkspace />;
+  return <PrivateDomainHub />;
 }

@@ -1,0 +1,14 @@
+.env*
+.git/
+.github/
+.next/
+.openai/
+.sites-*
+assets/
+installer/build/
+installer/output/
+output/
+outputs/
+tmp/
+valuation/
+work/

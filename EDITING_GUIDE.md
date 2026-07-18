@@ -13,7 +13,6 @@ Ahí podés cambiar:
 - `PROJECT_DESCRIPTION`: descripción general y metadata.
 - `CONTACT_EMAIL` y `CONTACT_URL`: contacto.
 - `PRIMARY_CTA_URL` y `SECONDARY_CTA_URL`: CTA principales.
-- `WHITEPAPER_URL`: ruta o URL del PDF.
 - `LINKEDIN_URL`, `GITHUB_URL`, `CALENDAR_URL` y `DEMO_URL`: enlaces externos.
 - `SITE_URL`: dominio para canonical y sitemap.
 - `NAVIGATION`: textos y destinos del menú.
@@ -35,15 +34,9 @@ El contenido editable está separado por tema:
 
 Los titulares narrativos cortos viven en cada archivo de sección bajo `src/components/sections/`.
 
-## Reemplazar el PDF
+## Documentos públicos
 
-1. Copiá el PDF final como:
-
-   `public/documents/venture-governance-system-whitepaper-publico-v2.pdf`
-
-2. Verificá `WHITEPAPER_URL` en `src/config/site.ts`.
-3. Cambiá `WHITEPAPER_AVAILABLE` a `true`.
-4. Ejecutá `npm run build` para verificar la descarga.
+Los documentos maestros y whitepapers retirados no deben copiarse a `public/`, `output/` ni a un paquete de despliegue. Cualquier documento público futuro requiere una revisión independiente de seguridad e IP antes de incorporarlo.
 
 ## Mantener los agentes públicos
 

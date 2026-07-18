@@ -26,10 +26,10 @@ export const DEMO_EXECUTION_QUEUE: ExecutionQueueItem[] = [
 
 export const PLATFORM_CAPABILITY_STATUS: CapabilityStatus[] = [
   { id: "engine", label: "Mathematical engine", value: "Ready", state: "ready", detail: "Deterministic public models execute in this repository." },
-  { id: "agents", label: "Private agent registry", value: "1,970 available", state: "ready", detail: "Authenticated on-demand profiles across 51 domains." },
+  { id: "agents", label: "Private agent registry", value: "External catalog", state: "unavailable", detail: "Only aggregate documentation is public; individual profiles are not embedded in this repository." },
   { id: "models", label: "Model catalog", value: "12 documented", state: "ready", detail: "All public models expose assumptions and limitations." },
   { id: "database", label: "Durable database", value: "Not connected", state: "unavailable", detail: "Mission and audit fixtures are not persisted server-side." },
-  { id: "provider", label: "Private AI runtime", value: "Credential-gated", state: "limited", detail: "Selected teams execute server-side when OPENAI_API_KEY is configured." },
+  { id: "provider", label: "Private AI runtime", value: "Not embedded", state: "unavailable", detail: "Execution requires a separately governed private runtime outside this repository." },
   { id: "resources", label: "CPU · RAM · GPU", value: "Not exposed", state: "limited", detail: "The web runtime does not read host telemetry." },
 ];
 
@@ -54,9 +54,9 @@ export const DEMO_AUDIT_EVENTS = [
 
 const PRIVATE_BASE_NODES: GraphNode[] = [
   { id: "mission", label: "Active Mission", kind: "mission", cluster: "Mission", x: 50, y: 46, z: 46, detail: "The governed question, scope, owner and decision boundary.", status: "ACTIVE" },
-  { id: "registry", label: "Registry · 1,970", kind: "agent", cluster: "Agents", x: 20, y: 25, z: 18, detail: "The authenticated catalog contains 1,970 executable specialist profiles across 51 domains.", status: "ON DEMAND" },
+  { id: "registry", label: "Registry · 1,970", kind: "agent", cluster: "Agents", x: 20, y: 25, z: 18, detail: "Aggregate documentation records 1,970 private-product profiles across 51 domains; individual profiles are not bundled here.", status: "EXTERNAL" },
   { id: "router", label: "Domain Router · 51", kind: "domain", cluster: "Orchestration", x: 29, y: 72, z: 30, detail: "Matches mission needs to relevant domains and specialist profiles.", status: "BOUNDED" },
-  { id: "team", label: "Mission Team · 1–8", kind: "agent", cluster: "Agents", x: 72, y: 47, z: 22, detail: "A human-selected specialist team executes independently and produces inspectable outputs for synthesis.", status: "EXECUTABLE" },
+  { id: "team", label: "Mission Team", kind: "agent", cluster: "Agents", x: 72, y: 47, z: 22, detail: "A future external private runtime may assemble bounded teams; this public build does not execute them.", status: "NOT EMBEDDED" },
   { id: "evidence", label: "Evidence Graph", kind: "evidence", cluster: "Evidence", x: 50, y: 13, z: -6, detail: "Separates sources, assumptions, inferences and missing evidence.", status: "TRACEABLE" },
   { id: "monte-carlo", label: "Monte Carlo", kind: "model", cluster: "Models", x: 86, y: 23, z: -18, detail: "Explores distributions under visible assumptions and a reproducible seed.", status: "MODEL 2.0" },
   { id: "sensitivity", label: "Sensitivity", kind: "model", cluster: "Models", x: 87, y: 72, z: -12, detail: "Identifies the assumptions that dominate the conclusion.", status: "MODEL 2.0" },
@@ -67,7 +67,7 @@ const PRIVATE_BASE_NODES: GraphNode[] = [
 const PRIVATE_BASE_EDGES: GraphEdge[] = [
   { from: "evidence", to: "mission", label: "grounds" },
   { from: "mission", to: "router", label: "declares capability needs" },
-  { from: "registry", to: "router", label: "offers 1,970 profiles" },
+  { from: "registry", to: "router", label: "documents external boundary" },
   { from: "router", to: "team", label: "selects bounded team" },
   { from: "mission", to: "team", label: "bounds execution" },
   { from: "team", to: "monte-carlo", label: "contributes ranges" },

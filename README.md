@@ -1,10 +1,10 @@
 # Venture Governance System™
 
-Sitio institucional y demostración pública limitada de Venture Governance System™. La portada explica una arquitectura con un registro privado agregado de 1.970 perfiles en 51 dominios; el Public Lab permite explorar oportunidades sintéticas con cuatro agentes visibles —Mathematics, Finance, Strategy y Marketing— y modelos cuantitativos demostrativos. Los perfiles individuales del registro no se publican en este repositorio.
+Sitio institucional y demostración pública limitada de Venture Governance System™. El Public Lab permite explorar oportunidades sintéticas con cuatro agentes visibles —Mathematics, Finance, Strategy y Marketing— y modelos cuantitativos demostrativos. Los perfiles, prompts, datasets, pesos y lógica de ejecución del producto privado no se publican en este repositorio.
 
 ## Rutas principales
 
-- `/`: landing institucional y whitepaper.
+- `/`: landing institucional.
 - `/lab`: alcance de la demostración pública.
 - `/lab/demo`: simulación interactiva reproducible por semilla y, si se habilita investigación pública, por snapshot guardado.
 - `/lab/results/[id]`: resultado guardado localmente.
@@ -17,7 +17,7 @@ Sitio institucional y demostración pública limitada de Venture Governance Syst
 ## Qué incluye el Public Lab
 
 - Generación determinista de 6 a 12 oportunidades sintéticas.
-- Catálogo v2.0.0 de 12 modelos: MCDA, Monte Carlo, sensibilidad, actualización bayesiana, escenarios, matriz de riesgo, Pareto, mínimos cuadrados, tornado, break-even, robustez del ranking y prioridad de validación.
+- Catálogo v3.0.0 de 14 modelos: MCDA, Monte Carlo, sensibilidad, actualización bayesiana, escenarios, matriz de riesgo, Pareto, mínimos cuadrados, tornado, break-even, robustez del ranking, prioridad de validación, Defensibility Lens y Macroeconomic Lens.
 - Comparación de hasta tres oportunidades, decisiones humanas y evidencia adicional.
 - Persistencia únicamente en `localStorage`, exportación JSON/CSV e impresión.
 - Sonido opcional después de una interacción del usuario, con volumen configurable.
@@ -40,7 +40,7 @@ npm install
 npm run dev
 ```
 
-No se requieren variables de entorno para el sitio o el Lab determinista. La preview autenticada falla de forma segura hasta configurar `VG_OWNER_EMAIL` en el servidor y admite una allowlist server-side opcional mediante `VG_AUTHORIZED_EMAILS`. Estas variables nunca deben exponerse en el cliente ni derivarse del email público de contacto.
+No se requieren variables de entorno para el sitio o el Lab determinista. La preview autenticada falla de forma segura hasta configurar `VG_OWNER_EMAIL` en el servidor y admite una allowlist server-side opcional mediante `VG_AUTHORIZED_EMAILS`. En Sites también se deben configurar `VG_TRUST_CHATGPT_AUTH_HEADERS=1` y `VG_TRUSTED_SITES_HOSTS` con el hostname exacto de producción; no se deben incluir previews, `workers.dev`, Vercel ni proxies no confiables. Estas variables nunca deben exponerse en el cliente ni derivarse del email público de contacto.
 
 ### Abrir el workspace protegido en desarrollo local
 
@@ -87,7 +87,6 @@ src/styles/lab.css           Sistema visual responsive del Lab
 src/components/              Landing institucional
 src/config/site.ts           Identidad, URLs y navegación
 docs/public-lab*.md          Arquitectura, modelos, límites y audio
-public/documents/            Whitepaper público
 .openai/hosting.json         Proyecto de Sites existente
 AGENTS.md                    Reglas de alcance y protección de IP
 ```
@@ -110,8 +109,8 @@ AGENTS.md                    Reglas de alcance y protección de IP
 - [Revisión de originalidad del workspace](./docs/ORIGINALITY_REVIEW.md)
 - [Guía de edición](./EDITING_GUIDE.md)
 
-El whitepaper público v2 se genera de forma reproducible con `scripts/generate_public_whitepaper.py` y se publica en `public/documents/venture-governance-system-whitepaper-publico-v2.pdf`.
+Los documentos maestros y whitepapers retirados no forman parte del árbol público ni de los artefactos de producción.
 
 ## Despliegue
 
-El proyecto está vinculado a Sites mediante `.openai/hosting.json`. Para Vercel, `vercel.json` usa `npm run build:vercel`. La demo no necesita base de datos ni servicios externos.
+El proyecto está vinculado a Sites mediante `.openai/hosting.json`. Para Vercel, `vercel.json` usa `npm run build:vercel`, pero `/app` se mantiene denegado hasta integrar una identidad compatible. La demo pública no necesita base de datos ni servicios externos, y el catálogo/runtime privado no está incluido en este repositorio.

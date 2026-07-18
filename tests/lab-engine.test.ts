@@ -8,13 +8,59 @@ import { PUBLIC_MODEL_CATALOG, PUBLIC_MODEL_COUNT, PUBLIC_MODEL_VERSION } from "
 import { isAgentResult, isOpportunity, validateLabInput } from "../src/lab/schema.ts";
 import { structureIdea } from "../src/lab/idea-assistant.ts";
 import { calculateDefensibilityLens, calculateMacroeconomicLens } from "../src/lab/context-lenses.ts";
+import { buildCsv, csvCell } from "../src/lab/export.ts";
+import { hydrateStoredRun, listRuns } from "../src/lab/storage.ts";
 
 test("validates and bounds the public input", () => {
-  const result = validateLabInput({ ...EXAMPLES["Venture Capital"], opportunityCount: 100, seed: -5, problem: "<b>test problem with enough detail</b>" });
+  const result = validateLabInput({ ...EXAMPLES["Venture Capital"], opportunityCount: 100, seed: -5, problem: "<b>test \u202eproblem\u2066 with enough detail</b>" });
   assert.equal(result.success, true);
   assert.equal(result.data.opportunityCount, 12);
   assert.equal(result.data.seed, 1);
   assert.doesNotMatch(result.data.problem, /[<>]/);
+  assert.doesNotMatch(result.data.problem, /[\u202e\u2066]/u);
+});
+
+test("CSV export neutralizes spreadsheet formulas while preserving quoting", () => {
+  assert.equal(csvCell("=HYPERLINK(\"https://example.invalid\")"), '"\'=HYPERLINK(""https://example.invalid"")"');
+  assert.equal(csvCell("  +1+1"), '"\'  +1+1"');
+  assert.equal(csvCell("ordinary, text"), '"ordinary, text"');
+  assert.equal(buildCsv([["name", "value"], ["safe", "@SUM(A1:A2)"]]), '"name","value"\r\n"safe","\'@SUM(A1:A2)"');
+});
+
+test("stored run hydration rejects deeply corrupt or unbounded opportunity state", () => {
+  const run = generateLabRun(EXAMPLES["Venture Capital"]);
+  assert.ok(hydrateStoredRun(run));
+  const createdAt = Date.parse(run.createdAt);
+  assert.equal(hydrateStoredRun(run, createdAt + 30 * 24 * 60 * 60 * 1_000 + 1), null);
+  assert.equal(hydrateStoredRun(run, createdAt - 6 * 60 * 1_000), null);
+  const oversized = structuredClone(run);
+  oversized.opportunities[0].agents.Mathematics.findings = Array.from({ length: 100 }, () => "unbounded");
+  assert.equal(hydrateStoredRun(oversized), null);
+  const outOfBounds = structuredClone(run);
+  outOfBounds.opportunities[0].risks[0].probability = 101;
+  assert.equal(hydrateStoredRun(outOfBounds), null);
+});
+
+test("listing physically removes expired public runs from browser storage", () => {
+  const run = generateLabRun(EXAMPLES["Venture Capital"]);
+  const expired = { ...run, createdAt: new Date(Date.now() - 31 * 24 * 60 * 60 * 1_000).toISOString() };
+  const values = new Map<string, string>([
+    ["venture-governance-public-lab-runs-v1", JSON.stringify([expired])],
+    ["venture-governance-public-lab-last-run", expired.id],
+  ]);
+  const localStorage = {
+    getItem(key: string) { return values.get(key) ?? null; },
+    setItem(key: string, value: string) { values.set(key, value); },
+    removeItem(key: string) { values.delete(key); },
+  };
+  Object.defineProperty(globalThis, "window", { configurable: true, value: { localStorage } });
+  try {
+    assert.deepEqual(listRuns(), []);
+    assert.equal(values.has("venture-governance-public-lab-runs-v1"), false);
+    assert.equal(values.has("venture-governance-public-lab-last-run"), false);
+  } finally {
+    Reflect.deleteProperty(globalThis, "window");
+  }
 });
 
 test("idea intake assistant summarizes Spanish text and suggests editable parameters", () => {

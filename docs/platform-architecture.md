@@ -4,7 +4,7 @@ Venture Governance now separates the public institutional surface from an authen
 
 ## Surfaces and routes
 
-- Public: `/`, `/applications`, `/lab`, `/lab/demo`, `/lab/methodology`, the public whitepaper and `/request-access`.
+- Public: `/`, `/applications`, `/lab`, `/lab/demo`, `/lab/methodology` and `/request-access`.
 - Access: `/app/login`, using Sites dispatch-owned Sign in with ChatGPT.
 - Protected preview: `/app` and its Missions, Mission Builder, Applications, Decision Lab, Simulation, Scenarios, Research, Portfolio, bounded Red Team review, Knowledge Graph, Agent Library, Model Library, Evidence Library, Governance, Audit, System Health, Documentation and Settings routes.
 
@@ -14,12 +14,12 @@ The protected routes are server-rendered and check both identity and authorizati
 
 Authentication and authorization are intentionally separate:
 
-1. Sign in with ChatGPT identifies the current user through trusted Sites dispatcher headers.
+1. Sign in with ChatGPT identifies the current user through Sites dispatcher headers only when the server operator explicitly sets `VG_TRUST_CHATGPT_AUTH_HEADERS=1` and allowlists the exact production authority in `VG_TRUSTED_SITES_HOSTS`.
 2. `authorizeChatGPTUser()` checks the normalized email against a server-side allowlist.
 3. The owner email in `src/config/site.ts` is authorized as `System Admin` for the controlled demo.
 4. The owner identity is supplied through the server-only `VG_OWNER_EMAIL` environment value. It is deliberately separate from public contact configuration.
 5. Additional demo users can be supplied through the server-only `VG_AUTHORIZED_EMAILS` environment value as a comma-separated list.
-5. An authenticated account that is not allowed is redirected to `/app/login?reason=not-authorized` and sees the request-access path.
+6. An authenticated account that is not allowed is redirected to `/app/login?reason=not-authorized` and sees the request-access path.
 
 This is a bounded allowlist, not a complete invitation product. It has no invitation codes, expiration, usage limits, organization membership, revocation audit or RBAC database. Those capabilities require D1 or another approved persistent backend.
 
@@ -35,11 +35,11 @@ Manage `VG_OWNER_EMAIL` and `VG_AUTHORIZED_EMAILS` through Sites runtime configu
 
 ### Deployment boundary
 
-The `/app` authentication path is Sites-only because `/signin-with-chatgpt`, `/signout-with-chatgpt` and `/callback` are owned by the Sites dispatcher. The public Next.js build can still be validated for portability, but Vercel must not be presented as an equivalent authenticated deployment. Authorization explicitly denies the Vercel runtime until a compatible identity provider is designed.
+The `/app` authentication path is Sites-only because `/signin-with-chatgpt`, `/signout-with-chatgpt` and `/callback` are owned by the Sites dispatcher. A Sites deployment must set `VG_TRUST_CHATGPT_AUTH_HEADERS=1` and an exact `VG_TRUSTED_SITES_HOSTS` production allowlist; its dispatcher and Worker must strip or overwrite all inbound `oai-authenticated-user-*` headers before adding verified identity. Mismatched forwarding headers, preview hosts and direct origins fail closed. The public Next.js build can still be validated for portability, but Vercel must not be presented as an equivalent authenticated deployment. Authorization explicitly denies the Vercel runtime until a compatible identity provider is designed.
 
 ## Current capability status
 
-- **Demo:** Overview, Missions, Mission Builder, Agent Library, Model Library and Documentation.
+- **Demo:** Overview, Missions, Mission Builder, the aggregate Agent Library boundary, Model Library and Documentation.
 - **Prototype:** Applications, Decision Lab, Knowledge Graph and Governance.
 - **Preview:** Simulation, Scenarios, Research, Portfolio, Red Team review, Evidence Library and Audit.
 - **Demo status:** System Health reports the repository's actual capability configuration and explicitly marks unavailable host telemetry.
@@ -61,7 +61,7 @@ High-impact actions must be checked again on the server. Hiding a button is neve
 
 ## Public IP boundary
 
-Only Mathematics, Finance, Strategy and Marketing appear as public specialist agents. They are a deliberately reduced Lab sample, not a claim about the size of the broader capability registry, which aggregates 1,970 profiles across 51 domains. The private architecture is designed to govern that mission-selectable catalog without activating every profile in a run. New public agents may not be added without changing `AGENTS.md` and reviewing the public/private product boundary. New public models belong in `src/lab/model-catalog.ts` and must state purpose, interpretation, assumptions and limitations. Private prompts, weights, scoring, calibration, datasets and orchestration do not belong in this repository.
+Only Mathematics, Finance, Strategy and Marketing appear as public specialist agents. They are a deliberately reduced Lab sample, not a claim about the size of the broader capability registry, whose aggregate documentation records 1,970 profiles across 51 domains. Individual profiles, private prompts and execution code are not embedded here; the public Agent Library fails closed and displays only that boundary. New public agents may not be added without changing `AGENTS.md` and reviewing the public/private product boundary. New public models belong in `src/lab/model-catalog.ts` and must state purpose, interpretation, assumptions and limitations. Private prompts, weights, scoring, calibration, datasets and orchestration do not belong in this repository.
 
 ## Security notes
 

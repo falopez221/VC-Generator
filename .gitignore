@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/node_modules.incomplete/
 /.pnp
 .pnp.*
 .yarn/*
@@ -41,8 +42,17 @@ next-env.d.ts
 /dist/
 /.wrangler/
 /outputs/
+/output/
 /work/
 /tmp/
+/valuation/
+
+# local packaging and deployment staging
+/.sites-package-stage/
+/.sites-publish-index
+/.sites-deploy*.tar.gz
+/*.tar.gz
+/staging/
 
 # generated Windows installer artifacts
 /installer/build/
@@ -50,5 +60,4 @@ next-env.d.ts
 
 # Local-only reference material and generated desktop installer payloads
 /research/visual-reference/
-/installer/build/
 /installer/dist/

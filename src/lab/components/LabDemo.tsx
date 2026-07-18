@@ -6,7 +6,7 @@ import { BayesianChart, HistogramChart, LeastSquaresChart, ParetoChart, RadarCha
 import { DEFAULT_WEIGHTS, EXAMPLES, OBJECTIVES, PRESETS, STAGES } from "../data.ts";
 import { bayesianUpdate, calculateMCDA, calculateScenarios, leastSquaresTrend, normalizeWeights, paretoFront, runMonteCarlo } from "../models.ts";
 import { getAudioSettings, playSound, unlockAudio } from "../audio.ts";
-import { duplicateRun, listRuns, loadLastRun, saveRun } from "../storage.ts";
+import { clearRuns, duplicateRun, listRuns, loadLastRun, saveRun } from "../storage.ts";
 import { normalizePublicWebResearch, validateLabInput } from "../schema.ts";
 import { structureIdea } from "../idea-assistant.ts";
 import { AGENT_NAMES, DIMENSION_KEYS, type AgentName, type HumanDecision, type LabInput, type LabRun, type MonteCarloConfig, type Opportunity, type PublicWebResearch } from "../types.ts";
@@ -16,9 +16,21 @@ import { LabTour } from "./LabTour.tsx";
 import { DecisionModelsDashboard } from "./DecisionModelsDashboard.tsx";
 import { calculateDefensibilityLens, calculateMacroeconomicLens } from "../context-lenses.ts";
 import { PUBLIC_MODEL_COUNT } from "../model-catalog.ts";
+import { buildCsv } from "../export.ts";
 import { CinematicField } from "@/src/components/experience/CinematicField";
+import { APPLICATION_LAB_HANDOFF_KEY, parseApplicationLabHandoff } from "@/src/applications/lab-handoff";
 
 const PUBLIC_STAGE_DELAY_MS = 650;
+
+function consumeApplicationHandoff() {
+  try {
+    const raw = window.sessionStorage.getItem(APPLICATION_LAB_HANDOFF_KEY);
+    window.sessionStorage.removeItem(APPLICATION_LAB_HANDOFF_KEY);
+    return parseApplicationLabHandoff(raw);
+  } catch {
+    return null;
+  }
+}
 
 const EMPTY_INPUT: LabInput = {
   ideaNarrative: "",
@@ -62,10 +74,6 @@ function download(filename: string, content: string, type: string) {
   anchor.download = filename;
   anchor.click();
   URL.revokeObjectURL(url);
-}
-
-function csvCell(value: unknown) {
-  return `"${String(value ?? "").replace(/"/g, '""')}"`;
 }
 
 async function requestPublicWebResearch(input: LabInput) {
@@ -121,10 +129,11 @@ export function LabDemo() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const mission = params.get("mission")?.slice(0, 1200) ?? "";
-    const domain = params.get("domain")?.slice(0, 120) ?? "";
-    const horizon = Math.max(1, Math.min(25, Number(params.get("horizon")) || 5));
-    const riskParam = params.get("risk") ?? "";
+    const handoff = params.get("handoff") === "applications" ? consumeApplicationHandoff() : null;
+    const mission = handoff?.mission ?? params.get("mission")?.slice(0, 1200) ?? "";
+    const domain = handoff?.domain ?? params.get("domain")?.slice(0, 120) ?? "";
+    const horizon = handoff?.horizonYears ?? Math.max(1, Math.min(25, Number(params.get("horizon")) || 5));
+    const riskParam = handoff?.risk ?? params.get("risk") ?? "";
     const risk = riskParam === "critical" ? 20 : riskParam === "high-impact" ? 35 : riskParam === "elevated" ? 50 : Number(riskParam) || 50;
     const previous = loadLastRun();
     const settings = getAudioSettings();
@@ -333,7 +342,7 @@ export function LabDemo() {
     if (!run) return;
     const header = ["rank", "id", "opportunity", "score", ...AGENT_NAMES, "risk", "evidence", "confidence", "uncertainty", "category", "humanDecision"];
     const rows = run.opportunities.map((opportunity) => [opportunity.rank, opportunity.id, opportunity.name, opportunity.totalScore, ...AGENT_NAMES.map((name) => opportunity.agents[name].score), opportunity.dimensions.risk, opportunity.dimensions.evidenceQuality, opportunity.confidence, opportunity.uncertainty, opportunity.category, opportunity.humanDecision]);
-    download(`${run.id}.csv`, [header, ...rows].map((row) => row.map(csvCell).join(",")).join("\n"), "text/csv");
+    download(`${run.id}.csv`, buildCsv([header, ...rows]), "text/csv;charset=utf-8");
   };
 
   return (
@@ -376,7 +385,7 @@ export function LabDemo() {
         <form onSubmit={(event) => { event.preventDefault(); void startSimulation(); }}>
           <section className="lab-idea-assistant" aria-labelledby="idea-assistant-title">
             <header><div><span>AI-READY IDEA INTAKE · PUBLIC MODE</span><h3 id="idea-assistant-title">Explain the complete idea in your own words.</h3></div><small>Local structuring assistant · not a fifth specialist agent</small></header>
-            <label className="lab-field"><span>Put your full idea here / Poner idea aquí</span><textarea className="lab-idea-textarea" value={input.ideaNarrative} maxLength={4000} placeholder="Put your idea here / Poner idea aquí. Explain the problem, proposed solution, customer, market, technology, business model, evidence, risks and anything else that matters." onChange={(event) => { setInput((current) => ({ ...current, ideaNarrative: event.target.value, ideaSummary: "" })); setAssistantNotice(""); }} /></label>
+            <label className="lab-field"><span>Put your full idea here / Poner idea aquí</span><textarea className="lab-idea-textarea" value={input.ideaNarrative} maxLength={4000} placeholder="Put your idea here / Poner idea aquí. Explain the problem, proposed solution, customer, market, technology, business model, evidence, risks and anything else that matters." onChange={(event) => { setInput((current) => ({ ...current, ideaNarrative: event.target.value, ideaSummary: "" })); setAssistantNotice(""); }} /><small>Do not enter confidential or personal information. Completed runs are stored in this browser for up to 30 days unless you clear them.</small></label>
             <div className="lab-assistant-actions"><button className="lab-button lab-button--primary" type="button" onClick={() => runIdeaAssistant()}>Summarize idea & suggest parameters</button><span aria-live="polite">{assistantNotice || "Structuring stays local. If live research is enabled, only the reviewed market fields are sent to the server-side public search."}</span></div>
             {input.ideaSummary && <label className="lab-field"><span>Assistant summary · editable</span><textarea className="lab-summary-textarea" value={input.ideaSummary} maxLength={900} onChange={(event) => updateInput("ideaSummary", event.target.value)} /></label>}
             <p>This assistant prepares the intake for Mathematics, Finance, Strategy and Marketing. It does not add another public agent, and its suggested parameters remain editable.</p>
@@ -548,7 +557,7 @@ export function LabDemo() {
           <DecisionModelsDashboard opportunity={selectedOpportunity} opportunities={run.opportunities} weights={run.weights} economics={mcConfig} input={run.input} />
         </section>}
 
-        <section className="lab-history"><div className="lab-panel-heading"><div><p className="lab-kicker">LOCAL PERSISTENCE</p><h2>Repeat and compare public runs.</h2></div><span>Stored only in this browser</span></div><PanelIntro shows="The analyses created in this browser, including their reproducible seed and generated opportunity set." useful="It lets you return to an earlier run or duplicate it before testing different assumptions." /><div>{history.map((item) => <article key={item.id}><span>{new Date(item.createdAt).toLocaleString()}</span><h3>{item.input.analysisName}</h3><p>Seed {item.input.seed} · {item.opportunities.length} opportunities</p><button type="button" onClick={() => { setRun(item); setInput({ ...EMPTY_INPUT, ...item.input }); setSelectedId(item.opportunities[0]?.id ?? null); setStatus("Completed"); }}>Load</button><button type="button" onClick={() => { const copy = duplicateRun(item); setRun(copy); setHistory(listRuns()); }}>Duplicate</button></article>)}</div></section>
+        <section className="lab-history"><div className="lab-panel-heading"><div><p className="lab-kicker">LOCAL PERSISTENCE</p><h2>Repeat and compare public runs.</h2></div><span>Browser-only · 30-day maximum</span></div><PanelIntro shows="The analyses created in this browser, including their reproducible seed and generated opportunity set." useful="It lets you return to an earlier run or duplicate it before testing different assumptions." /><button type="button" onClick={() => { clearRuns(); setHistory([]); setRun(null); setSelectedId(null); setStatus("Ready"); }}>Clear all saved runs</button><div>{history.map((item) => <article key={item.id}><span>{new Date(item.createdAt).toLocaleString()}</span><h3>{item.input.analysisName}</h3><p>Seed {item.input.seed} · {item.opportunities.length} opportunities</p><button type="button" onClick={() => { setRun(item); setInput({ ...EMPTY_INPUT, ...item.input }); setSelectedId(item.opportunities[0]?.id ?? null); setStatus("Completed"); }}>Load</button><button type="button" onClick={() => { const copy = duplicateRun(item); setRun(copy); setHistory(listRuns()); }}>Duplicate</button></article>)}</div></section>
       </>}
 
       <section className="lab-warning"><strong>Public demonstration model</strong><p>The complete architecture, agent system, scoring logic and local implementation are proprietary and are not included in this demo. This Lab uses simplified agents, synthetic data and demonstrative quantitative models. It does not constitute investment advice or predict startup success.</p></section>

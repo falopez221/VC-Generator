@@ -1,7 +1,7 @@
 {
   "asOf": "2026-07-18",
   "currency": "USD",
-  "classification": "Advanced decision-intelligence prototype with a functional deterministic public Lab and an experimental credential-gated LLM execution layer",
+  "classification": "Advanced decision-intelligence prototype with a functional deterministic public Lab and an external, non-embedded private-product boundary",
   "disclaimer": "Illustrative, evidence-bounded valuation analysis. It is not an appraisal, investment advice, a financing offer, or a prediction.",
   "currentValue": {
     "economicLowM": 0.8,
@@ -22,8 +22,8 @@
   "evidence": [
     { "item": "Public product", "state": "Implemented", "detail": "Institutional site, deterministic Lab, 6-12 synthetic opportunities, comparison, exports and human review controls." },
     { "item": "Public quantitative catalog", "state": "Implemented", "detail": "14 deterministic public models and lenses in code, with explicit assumptions and limitations." },
-    { "item": "Private agent registry", "state": "Partially implemented", "detail": "1,970 documented profiles across 51 domains feed a common bounded executor; individual domain performance is not validated." },
-    { "item": "Private LLM execution", "state": "Prototype", "detail": "Server-side fixed provider call, up to 8 selected profiles, bounded concurrency and structured output when credentials are configured." },
+    { "item": "Private agent registry", "state": "External boundary", "detail": "Only aggregate documentation of 1,970 profiles across 51 domains remains public; individual profiles are not embedded or validated here." },
+    { "item": "Private LLM execution", "state": "Not embedded", "detail": "The public repository fails closed and requires a separately governed private runtime for any specialist execution." },
     { "item": "Deployment intelligence", "state": "Functional demo", "detail": "Visible WBS, PERT, critical path, Monte Carlo, cost decomposition and readiness using synthetic planning assumptions." },
     { "item": "Enterprise data layer", "state": "Planned", "detail": "No operational multi-tenant mission, evidence, decision or durable audit backend is connected." },
     { "item": "Commercial traction", "state": "No evidence", "detail": "No repository evidence of customers, pilots, revenue, ARR, retention, contracts or product-market fit." },
@@ -39,7 +39,7 @@
   "stages": [
     { "stage": "Idea and architecture", "lowM": 0.3, "highM": 1.0, "p50M": 0.6, "p90M": 1.0, "probabilityFromCurrentPct": 100, "capitalM": 0.2, "timeMonths": 0, "evidenceRequired": "Coherent thesis and defensible product boundary" },
     { "stage": "Public demo", "lowM": 0.8, "highM": 2.0, "p50M": 1.2, "p90M": 2.0, "probabilityFromCurrentPct": 100, "capitalM": 0.35, "timeMonths": 0, "evidenceRequired": "Working reproducible workflow and visible limitations" },
-    { "stage": "Private prototype - current closest", "lowM": 1.5, "highM": 4.0, "p50M": 2.2, "p90M": 4.0, "probabilityFromCurrentPct": 100, "capitalM": 0.75, "timeMonths": 0, "evidenceRequired": "Bounded private workflows and a functioning common executor" },
+    { "stage": "Authenticated preview - current closest", "lowM": 1.5, "highM": 4.0, "p50M": 2.2, "p90M": 4.0, "probabilityFromCurrentPct": 100, "capitalM": 0.75, "timeMonths": 0, "evidenceRequired": "Bounded preview workflows; the private catalog and executor remain external" },
     { "stage": "Functional MVP", "lowM": 2.5, "highM": 6.0, "p50M": 3.8, "p90M": 6.0, "probabilityFromCurrentPct": 75, "capitalM": 1.2, "timeMonths": 6, "evidenceRequired": "One complete workflow, durable records, evals and usage metering" },
     { "stage": "User-validated MVP", "lowM": 4.0, "highM": 10.0, "p50M": 6.5, "p90M": 10.0, "probabilityFromCurrentPct": 50, "capitalM": 1.8, "timeMonths": 9, "evidenceRequired": "Measured time saved, quality gain, repeat use and WTP" },
     { "stage": "Institutional pilot", "lowM": 5.0, "highM": 12.0, "p50M": 7.5, "p90M": 12.0, "probabilityFromCurrentPct": 35, "capitalM": 2.2, "timeMonths": 12, "evidenceRequired": "Named buyer, paid scope, security review and success metrics" },

@@ -9,6 +9,7 @@ const SECURITY_HEADERS = [
   { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
   { key: "Cross-Origin-Resource-Policy", value: "same-origin" },
   { key: "X-Permitted-Cross-Domain-Policies", value: "none" },
+  { key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains" },
 ] as const;
 
 const nextConfig: NextConfig = {
@@ -16,7 +17,10 @@ const nextConfig: NextConfig = {
   // continues to use the Vinext/Vite build configured in vite.config.ts.
   output: "standalone",
   async headers() {
-    return [{ source: "/:path*", headers: [...SECURITY_HEADERS] }];
+    return [
+      { source: "/:path*", headers: [...SECURITY_HEADERS] },
+      { source: "/app/:path*", headers: [{ key: "Cache-Control", value: "private, no-store, max-age=0" }] },
+    ];
   },
 };
 

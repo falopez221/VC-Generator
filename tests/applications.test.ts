@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { APPLICATION_CATALOG, APPLICATION_DOMAINS, CROSS_DOMAIN_MISSIONS, validateApplicationCatalog } from "../src/applications/catalog.ts";
 import { buildMission, classifyMissionRisk, diversifyApplications, EMPTY_FILTERS, filterApplications, filtersFromSearchParams, filtersToSearchParams, recommendAgents, recommendModels } from "../src/applications/engine.ts";
+import { createApplicationLabHandoff, parseApplicationLabHandoff } from "../src/applications/lab-handoff.ts";
 
 test("catalog exposes 150 bilingual, unique and connected applications", () => {
   assert.equal(APPLICATION_CATALOG.length, 150);
@@ -58,4 +59,22 @@ test("defense catalog remains analytical and non-offensive", () => {
   const text = JSON.stringify(APPLICATION_CATALOG.filter((item) => item.primaryDomain === "Defense"));
   assert.doesNotMatch(text, /targeting|weapons design|autonomous lethal|attack optimization|evasion system/i);
   assert.match(text, /resilience/i);
+});
+
+test("application mission handoff is bounded, short-lived and excludes URL data", () => {
+  const now = Date.parse("2026-07-18T12:00:00.000Z");
+  const raw = createApplicationLabHandoff({
+    question: "\u0000 Assess a governed \u202eenergy\u2066 transition ",
+    domain: "Energy",
+    horizon: "3–10 years",
+    risk: "elevated",
+  }, now);
+  assert.deepEqual(parseApplicationLabHandoff(raw, now + 1), {
+    mission: "Assess a governed energy transition",
+    domain: "Energy",
+    horizonYears: 3,
+    risk: "elevated",
+  });
+  assert.equal(parseApplicationLabHandoff(raw, now + 10 * 60 * 1000), null);
+  assert.equal(parseApplicationLabHandoff(JSON.stringify({ version: 1, expiresAt: now + 1, mission: "x".repeat(5_000) }), now), null);
 });

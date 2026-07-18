@@ -6,9 +6,9 @@
   InstallFolderName = "Venture Governance Local"
   InstallerFileName = "Venture-Governance-Local-Setup.exe"
   Port = 34731
-  # Must match an authorized account in src/config/site.ts for this public preview.
-  LocalUserEmail = "franciscoariellopez22@gmail.com"
-  LocalUserName = "Francisco"
+  # Reserved, non-deliverable local identity. Do not replace it with personal data.
+  LocalUserEmail = "local-owner@venture-governance.invalid"
+  LocalUserName = "Local Owner"
   CreateDesktopShortcut = $true
   CreateStartMenuShortcut = $true
   LaunchAfterInstall = $true

@@ -35,7 +35,7 @@ export function PrivateResearchConsole() {
 
   return <section className="platform-panel" aria-labelledby="private-research-title">
     <header><div><span>PRIVATE RESEARCH SERVICE</span><h2 id="private-research-title">Search approved public sources from the authorized workspace</h2></div></header>
-    <p>Queries remain server-side, use the fixed approved provider, and never fetch a URL supplied by the user. Results are context for human review, not proof or an automatic model input.</p>
+    <p>Bounded topic terms are sent by the server to the fixed Google News provider; do not enter confidential information. The service never fetches a URL supplied by the user. Results are context for human review, not proof or an automatic model input.</p>
     <div className="platform-grid">
       <label>Research topic<input value={topic} maxLength={240} onChange={(event) => setTopic(event.target.value)} /></label>
       <label>Mission context<textarea value={context} maxLength={1_200} onChange={(event) => setContext(event.target.value)} /></label>

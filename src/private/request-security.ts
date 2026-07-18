@@ -9,9 +9,13 @@ export class BoundedJsonRequestError extends Error {
   }
 }
 
-/** Reads an API body without allowing chunked requests to bypass the size limit. */
-export async function readBoundedJson(request: Request, maximumBytes: number): Promise<unknown> {
-  if (!request.headers.get("content-type")?.toLowerCase().startsWith(JSON_CONTENT_TYPE)) {
+/** Reads an API body without allowing chunked or slow requests to bypass limits. */
+export async function readBoundedJson(
+  request: Request,
+  maximumBytes: number,
+  timeoutMilliseconds = 5_000,
+): Promise<unknown> {
+  if (request.headers.get("content-type")?.trim().toLowerCase() !== JSON_CONTENT_TYPE) {
     throw new BoundedJsonRequestError(415, "Content-Type must be application/json.");
   }
   const declaredLength = Number(request.headers.get("content-length") ?? 0);
@@ -22,11 +26,27 @@ export async function readBoundedJson(request: Request, maximumBytes: number): P
 
   const reader = request.body.getReader();
   const decoder = new TextDecoder();
+  const deadline = Date.now() + Math.max(1, Math.min(timeoutMilliseconds, 30_000));
   let bytes = 0;
   let text = "";
   try {
     while (true) {
-      const { done, value } = await reader.read();
+      const remaining = deadline - Date.now();
+      if (remaining <= 0) throw new BoundedJsonRequestError(408, "Request body timed out.");
+      let timer: ReturnType<typeof setTimeout> | undefined;
+      const timeout = new Promise<never>((_, reject) => {
+        timer = setTimeout(
+          () => reject(new BoundedJsonRequestError(408, "Request body timed out.")),
+          remaining,
+        );
+      });
+      let chunk: ReadableStreamReadResult<Uint8Array>;
+      try {
+        chunk = await Promise.race([reader.read(), timeout]);
+      } finally {
+        if (timer) clearTimeout(timer);
+      }
+      const { done, value } = chunk;
       if (done) break;
       bytes += value.byteLength;
       if (bytes > maximumBytes) {
@@ -36,6 +56,9 @@ export async function readBoundedJson(request: Request, maximumBytes: number): P
       text += decoder.decode(value, { stream: true });
     }
     text += decoder.decode();
+  } catch (error) {
+    await reader.cancel().catch(() => undefined);
+    throw error;
   } finally {
     reader.releaseLock();
   }
@@ -49,18 +72,70 @@ export async function readBoundedJson(request: Request, maximumBytes: number): P
 
 /** Reject browser cross-site writes before they can spend private provider capacity. */
 export function isSameSiteWrite(request: Request): boolean {
-  const fetchSite = request.headers.get("sec-fetch-site");
-  if (fetchSite === "cross-site") return false;
+  const rawFetchSite = request.headers.get("sec-fetch-site");
+  const fetchSite = rawFetchSite?.trim().toLowerCase();
+  if (rawFetchSite !== null && fetchSite !== "same-origin") return false;
 
   const origin = request.headers.get("origin");
   if (!origin) return true;
   try {
-    const originUrl = new URL(origin);
-    const targetUrl = new URL(request.url);
+    const originUrl = parseHttpOrigin(origin);
+    const targetUrl = requestTargetOrigin(request);
+    if (!originUrl || !targetUrl) return false;
+
+    if (originUrl.origin === targetUrl.origin) return true;
+
     // The installer proxies a public loopback port to an internal loopback port.
-    // Comparing protocol and hostname retains CSRF protection without breaking it.
-    return originUrl.protocol === targetUrl.protocol && originUrl.hostname === targetUrl.hostname;
+    // A browser-supplied same-origin Fetch Metadata value lets those two ports
+    // differ without extending the exception to any non-loopback deployment.
+    const loopbackOrigin = normalizeLoopbackHostname(originUrl.hostname);
+    const loopbackTarget = normalizeLoopbackHostname(targetUrl.hostname);
+    return fetchSite === "same-origin"
+      && originUrl.protocol === targetUrl.protocol
+      && loopbackOrigin !== null
+      && loopbackOrigin === loopbackTarget;
   } catch {
     return false;
   }
+}
+
+function requestTargetOrigin(request: Request): URL | null {
+  const requestUrl = parseHttpUrl(request.url);
+  if (!requestUrl) return null;
+
+  const forwardedHost = request.headers.get("x-forwarded-host");
+  const forwardedProto = request.headers.get("x-forwarded-proto");
+  if (forwardedHost === null && forwardedProto === null) return requestUrl;
+
+  const host = forwardedHost === null ? requestUrl.host : forwardedHost.trim();
+  const protocol = forwardedProto === null ? requestUrl.protocol.slice(0, -1) : forwardedProto.trim().toLowerCase();
+  if (!isSafeForwardedHost(host) || (protocol !== "http" && protocol !== "https")) return null;
+
+  return parseHttpUrl(`${protocol}://${host}`);
+}
+
+function parseHttpOrigin(value: string): URL | null {
+  const url = parseHttpUrl(value);
+  if (!url || url.username || url.password || url.pathname !== "/" || url.search || url.hash) return null;
+  return url;
+}
+
+function parseHttpUrl(value: string): URL | null {
+  try {
+    const url = new URL(value);
+    return url.protocol === "http:" || url.protocol === "https:" ? url : null;
+  } catch {
+    return null;
+  }
+}
+
+function isSafeForwardedHost(value: string): boolean {
+  return value.length > 0
+    && value.length <= 255
+    && !/[\u0000-\u0020\u007f,\\/@?#]/u.test(value);
+}
+
+function normalizeLoopbackHostname(value: string): string | null {
+  const hostname = value.toLowerCase().replace(/^\[|\]$/g, "");
+  return hostname === "localhost" || hostname === "127.0.0.1" || hostname === "::1" ? hostname : null;
 }

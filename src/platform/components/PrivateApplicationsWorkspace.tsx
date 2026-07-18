@@ -11,9 +11,6 @@ import { useActiveMission } from "../active-mission";
 import styles from "./PrivateApplicationsWorkspace.module.css";
 
 const MAX_APPLICATIONS = 3;
-const DRAFT_KEY = "vg-private-application-mission-draft";
-
-type LocalDraft = { question: string; selectedSlugs: string[] };
 
 function readableGovernance(level: ApplicationDefinition["governanceLevel"]) {
   return level.replaceAll("-", " ");
@@ -41,7 +38,7 @@ export function PrivateApplicationsWorkspace() {
       if (!mission) return;
       setQuestion(mission.core.decision);
       setSelectedSlugs(mission.core.applicationSlugs.filter((slug) => APPLICATION_CATALOG.some((item) => item.slug === slug)).slice(0, MAX_APPLICATIONS));
-      setNotice("Active mission context restored from this device.");
+      setNotice("Active mission context restored for this browser tab.");
     });
     return () => { active = false; };
   }, [mission, ready]);
@@ -61,7 +58,6 @@ export function PrivateApplicationsWorkspace() {
     setNotice(`${application.title.en} added to the local mission draft.`);
   };
   const saveDraft = () => {
-    window.localStorage.setItem(DRAFT_KEY, JSON.stringify({ question: question.trim(), selectedSlugs } satisfies LocalDraft));
     const evidenceInputs = [...new Set(selected.flatMap((item) => item.evidenceInputs))].slice(0, 8);
     saveCore({
       title: selected.length === 1 ? selected[0].title.en : selected.length > 1 ? `${selected[0].title.en} + ${selected.length - 1} alternatives` : question.trim().slice(0, 120),
@@ -73,7 +69,7 @@ export function PrivateApplicationsWorkspace() {
       gate: governance,
       applicationSlugs: selectedSlugs,
     }, "applications");
-    setNotice("Active mission context saved on this device. Continue to Mission Builder without re-entering the question or selected applications.");
+    setNotice("Active mission context saved for this browser tab. Continue to Mission Builder without re-entering the question or selected applications.");
   };
 
   return <>
@@ -117,7 +113,7 @@ export function PrivateApplicationsWorkspace() {
         <header><div><span>LOCAL MISSION DRAFT</span><h2 id="local-draft-title">Review before handoff</h2></div><small>{selected.length}/{MAX_APPLICATIONS} selected</small></header>
         <label>Mission question<textarea maxLength={1200} value={question} onChange={(event) => setQuestion(event.target.value)} placeholder="What decision should this mission help a named human review?" /></label>
         <div className={styles.selectionList}>{selected.length ? selected.map((application) => <article key={application.id}><span>{application.primaryDomain}</span><strong>{application.title.en}</strong><small>{application.outputs.slice(0, 2).join(" · ")}</small><button type="button" onClick={() => toggle(application)} aria-label={`Remove ${application.title.en}`}>Remove</button></article>) : <p>Select one to three configurations. The draft will keep their evidence, model and governance constraints visible.</p>}</div>
-        <dl className={styles.draftDefinition}><div><dt>Required review</dt><dd>{governance}</dd></div><div><dt>Evidence inputs</dt><dd>{selected.length ? [...new Set(selected.flatMap((item) => item.evidenceInputs))].slice(0, 5).join(" · ") : "Selected configurations will define inputs."}</dd></div><div><dt>Boundaries</dt><dd>Local browser draft only. No automated execution or decision authority.</dd></div></dl>
+        <dl className={styles.draftDefinition}><div><dt>Required review</dt><dd>{governance}</dd></div><div><dt>Evidence inputs</dt><dd>{selected.length ? [...new Set(selected.flatMap((item) => item.evidenceInputs))].slice(0, 5).join(" · ") : "Selected configurations will define inputs."}</dd></div><div><dt>Boundaries</dt><dd>Expiring browser-tab draft only. No automated execution or decision authority.</dd></div></dl>
         <div className={styles.actions}><button type="button" onClick={saveDraft} disabled={!question.trim() && !selected.length}>Save active context</button><Link href="/app/missions/new" aria-disabled={!question.trim() && !selected.length} onClick={() => { if (question.trim() || selected.length) saveDraft(); }}>Save & continue to Mission Builder →</Link></div>
         <p className={styles.notice} role="status" aria-live="polite">{notice}</p>
       </aside>

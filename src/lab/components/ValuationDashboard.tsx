@@ -20,6 +20,16 @@ const stateClass: Record<string, string> = {
 
 const money = (value: number) => formatUsdMillions(value, value < 1 ? 2 : value < 10 ? 1 : 0);
 
+function validatedHttpsUrl(value: string) {
+  try {
+    if (value.length > 2_048) return null;
+    const url = new URL(value);
+    return url.protocol === "https:" && Boolean(url.hostname) && !url.username && !url.password ? url.toString() : null;
+  } catch {
+    return null;
+  }
+}
+
 export function ValuationDashboard() {
   const [scenarioId, setScenarioId] = useState("base");
   const initialScenario = valuationData.dcfScenarios.find((scenario) => scenario.id === scenarioId) ?? valuationData.dcfScenarios[2];
@@ -104,7 +114,7 @@ export function ValuationDashboard() {
         </div>
         <aside className="valuation-audit-note">
           <strong>Agent registry finding</strong>
-          <p>The 1,970 records are documented specialist profiles across 51 domains that feed one common bounded executor. They are not 1,970 independently implemented, benchmarked or certified agents.</p>
+          <p>The 1,970 figure is aggregate external-product documentation across 51 domains. Individual records and their executor are not embedded, benchmarked or validated in this public repository.</p>
         </aside>
       </section>
 
@@ -260,7 +270,7 @@ export function ValuationDashboard() {
       </section>
 
       <section className="valuation-section valuation-deployment" aria-labelledby="deployment-title">
-        <header><p className="lab-kicker">DEPLOYMENT INTELLIGENCE</p><h2 id="deployment-title">Capital and time to make the option real.</h2><p>Finance overlays are intentionally wider than the repository's synthetic demo cost distribution.</p></header>
+        <header><p className="lab-kicker">DEPLOYMENT INTELLIGENCE</p><h2 id="deployment-title">Capital and time to make the option real.</h2><p>Finance overlays are intentionally wider than the repository&apos;s synthetic demo cost distribution.</p></header>
         <div className="valuation-table-wrap" tabIndex={0} role="region" aria-label="Deployment time and cost table">
           <table>
             <thead><tr><th>Target state</th><th>Time P50 / P90</th><th>Cost P50 / P90</th><th>Capital</th><th>Evidence gate</th></tr></thead>
@@ -296,7 +306,7 @@ export function ValuationDashboard() {
         <header><p className="lab-kicker">METHODS, ASSUMPTIONS & SOURCES</p><h2 id="methodology-title">Auditable inputs, explicit limits.</h2></header>
         <div className="valuation-methods-grid">{valuationData.methods.map((method) => <article key={method.name}><span>{method.weightPct}% triangulation weight</span><h3>{method.name}</h3><strong>{money(method.lowM)}–{money(method.highM)}</strong><p>{method.note}</p></article>)}</div>
         <details><summary>Unit-economics assumptions</summary><div className="valuation-assumption-grid"><p><strong>Base:</strong> ${valuationData.unitEconomics.base.annualAcvK}k ACV, {valuationData.unitEconomics.base.grossMarginPct}% GM, ${valuationData.unitEconomics.base.cacK}k CAC, {valuationData.unitEconomics.base.cacPaybackMonths} month payback, {valuationData.unitEconomics.base.nrrPct}% NRR.</p><p><strong>Downside:</strong> ${valuationData.unitEconomics.downside.annualAcvK}k ACV, {valuationData.unitEconomics.downside.grossMarginPct}% GM, ${valuationData.unitEconomics.downside.cacK}k CAC, {valuationData.unitEconomics.downside.cacPaybackMonths} month payback.</p><p>{valuationData.unitEconomics.note}</p></div></details>
-        <details><summary>Source register</summary><ul className="valuation-sources">{valuationData.sources.map((source) => <li key={source.id}><span>{source.type}</span>{source.url.startsWith("http") ? <a href={source.url} target="_blank" rel="noreferrer">{source.title}</a> : <b>{source.title} · {source.url}</b>}</li>)}</ul></details>
+        <details><summary>Source register</summary><ul className="valuation-sources">{valuationData.sources.map((source) => { const safeUrl = validatedHttpsUrl(source.url); return <li key={source.id}><span>{source.type}</span>{safeUrl ? <a href={safeUrl} target="_blank" rel="noopener noreferrer">{source.title}</a> : <b>{source.title} · offline repository evidence</b>}</li>; })}</ul></details>
       </section>
     </main>
   );

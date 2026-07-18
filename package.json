@@ -7,48 +7,53 @@
   },
   "scripts": {
     "dev": "vinext dev",
-    "dev:local": "vinext dev --hostname 127.0.0.1",
+    "dev:local": "node scripts/dev-local.mjs",
     "build": "vinext build",
     "start": "vinext start",
     "dev:next": "next dev",
     "build:vercel": "next build",
     "start:next": "next start",
+    "security:check": "node scripts/security-boundary-check.mjs --tracked",
+    "security:artifacts": "node scripts/security-boundary-check.mjs --artifacts",
+    "prepack": "node scripts/security-boundary-check.mjs --package",
     "typecheck": "tsc --noEmit",
-    "test:unit": "node --experimental-strip-types --test tests/lab-engine.test.ts tests/applications.test.ts tests/web-research.test.ts tests/platform.test.ts tests/private-agent-registry.test.ts tests/private-agent-execution.test.ts tests/private-registry-request.test.ts tests/private-models.test.ts tests/private-feasibility.test.ts tests/private-research.test.ts tests/valuation.test.ts",
+    "test:unit": "node --experimental-strip-types --test tests/installer-local-proxy.test.mjs tests/installer-local-server.test.mjs tests/installer-path-security.test.mjs tests/local-runtime-health.test.ts tests/local-runtime-trust.test.ts tests/sites-auth-trust.test.ts tests/lab-engine.test.ts tests/applications.test.ts tests/domain-workspaces.test.ts tests/web-research.test.ts tests/platform.test.ts tests/private-agent-registry.test.ts tests/private-agent-execution.test.ts tests/demo-models.test.ts tests/demo-feasibility.test.ts tests/private-research.test.ts tests/valuation.test.ts",
     "test:integration": "npm run build && node --test tests/rendered-html.test.mjs",
     "test": "npm run test:unit && npm run test:integration",
-    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern node_modules.*",
-    "db:generate": "drizzle-kit generate"
+    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern node_modules.*"
   },
   "dependencies": {
-    "drizzle-orm": "0.45.2",
-    "next": "16.2.6",
-    "react": "19.2.6",
-    "react-dom": "19.2.6"
+    "next": "16.2.10",
+    "react": "19.2.7",
+    "react-dom": "19.2.7"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "1.37.1",
+    "@cloudflare/vite-plugin": "1.45.1",
     "@tailwindcss/postcss": "4.2.1",
     "@types/node": "22.19.19",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "6.0.2",
     "@vitejs/plugin-rsc": "0.5.26",
-    "drizzle-kit": "0.31.10",
     "eslint": "9.39.4",
-    "eslint-config-next": "16.2.6",
-    "exceljs": "^4.4.0",
-    "react-server-dom-webpack": "19.2.6",
+    "eslint-config-next": "16.2.10",
+    "react-server-dom-webpack": "19.2.7",
     "tailwindcss": "4.2.1",
     "typescript": "5.9.3",
     "vinext": "0.0.50",
-    "vite": "8.0.13",
-    "wrangler": "4.92.0"
+    "vite": "8.1.5",
+    "wrangler": "4.112.0"
   },
   "overrides": {
+    "@babel/core": "7.29.7",
+    "esbuild": "0.28.1",
+    "js-yaml": "5.2.1",
     "next": {
       "postcss": "8.5.10"
-    }
+    },
+    "undici": "7.28.0",
+    "uuid": "11.1.1",
+    "ws": "8.21.1"
   },
   "type": "module"
 }

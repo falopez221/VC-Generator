@@ -13,13 +13,13 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_AR",
     url: SITE_URL,
-    images: [{ url: "/og-cognitive.png", width: 1731, height: 909, alt: "Venture Governance System — four public specialists representing a larger governed capability registry" }],
+    images: [{ url: "/og-agent-field.png", width: 1731, height: 909, alt: "Venture Governance System — 1,920 synthetic signals routed through four public specialists to human authority" }],
   },
   twitter: {
     card: "summary_large_image",
     title: SITE_METADATA.title,
     description: SITE_METADATA.description,
-    images: ["/og-cognitive.png"],
+    images: ["/og-agent-field.png"],
   },
   icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
 };

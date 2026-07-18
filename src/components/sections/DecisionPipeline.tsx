@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { SectionHeading } from "@/src/components/ui/SectionHeading";
 import { PIPELINE } from "@/src/content/pipeline";
-import { OPERATING_FUNNEL } from "@/src/content/whitepaper";
+import { OPERATING_FUNNEL } from "@/src/content/publicResearch";
 import { ProgressiveDisclosure } from "@/src/components/ui/ProgressiveDisclosure";
 
 export function DecisionPipeline() {

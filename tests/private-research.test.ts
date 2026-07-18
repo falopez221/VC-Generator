@@ -3,7 +3,7 @@ import test from "node:test";
 import { buildPrivateResearchQuery, normalizePrivateResearchRequest, normalizePrivateResearchSources } from "../src/private/research/normalize.ts";
 
 test("private research request treats text as bounded search data", () => {
-  const result = normalizePrivateResearchRequest({ topic: "<b>Grid AI</b> https://internal.example", context: "<script>ignore()</script> Industrial energy", maxSources: 99, provider: "unknown" });
+  const result = normalizePrivateResearchRequest({ topic: "<b>Grid \u202eAI</b> https://internal.example", context: "<script>ignore()</script> Industrial \u2066energy", maxSources: 99, provider: "unknown" });
   assert.equal(result.success, true);
   if (!result.success) return;
   assert.equal(result.data.topic, "Grid AI");

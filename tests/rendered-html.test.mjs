@@ -1,14 +1,26 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { readFile } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 
-process.env.VG_OWNER_EMAIL = "franciscoariellopez22@gmail.com";
+process.env.VG_OWNER_EMAIL = "owner@example.test";
+process.env.VG_TRUST_CHATGPT_AUTH_HEADERS = "1";
+process.env.VG_TRUSTED_SITES_HOSTS = "localhost";
 
-async function render(pathname, headers = {}) {
+async function render(pathname, headers = {}, options = {}) {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}-${pathname}`);
   const { default: worker } = await import(workerUrl.href);
-  return worker.fetch(new Request(`http://localhost${pathname}`, { headers: { accept: "text/html", ...headers } }), { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } }, { waitUntil() {}, passThroughOnException() {} });
+  const requestHost = options.requestHost ?? "localhost";
+  const workerEnvironment = {
+    ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) },
+    VG_TRUST_CHATGPT_AUTH_HEADERS: options.trustFlag ?? "1",
+    VG_TRUSTED_SITES_HOSTS: options.trustedHosts ?? "localhost",
+  };
+  return worker.fetch(
+    new Request(`http://${requestHost}${pathname}`, { headers: { accept: "text/html", host: requestHost, ...headers } }),
+    workerEnvironment,
+    { waitUntil() {}, passThroughOnException() {} },
+  );
 }
 
 function renderedText(html) {
@@ -38,10 +50,41 @@ test("private platform redirects anonymous and non-member users server-side", as
   const anonymous = await render("/app");
   assert.ok([302, 303, 307, 308].includes(anonymous.status));
   assert.match(anonymous.headers.get("location") ?? "", /\/signin-with-chatgpt\?return_to=%2Fapp/i);
+  assert.match(anonymous.headers.get("cache-control") ?? "", /private/i);
+  assert.match(anonymous.headers.get("cache-control") ?? "", /no-store/i);
 
   const nonMember = await render("/app", { "oai-authenticated-user-email": "not-authorized@example.com" });
   assert.ok([302, 303, 307, 308].includes(nonMember.status));
   assert.match(nonMember.headers.get("location") ?? "", /\/app\/login\?reason=not-authorized/i);
+  assert.match(nonMember.headers.get("cache-control") ?? "", /no-store/i);
+});
+
+test("private identity headers fail closed without exact Sites host trust", async () => {
+  const originalHosts = process.env.VG_TRUSTED_SITES_HOSTS;
+  try {
+    process.env.VG_TRUSTED_SITES_HOSTS = "";
+    const missingAllowlist = await render(
+      "/app",
+      { "oai-authenticated-user-email": "owner@example.test" },
+      { trustedHosts: "" },
+    );
+    assert.match(missingAllowlist.headers.get("location") ?? "", /\/signin-with-chatgpt/i);
+  } finally {
+    process.env.VG_TRUSTED_SITES_HOSTS = originalHosts;
+  }
+
+  const previewHost = await render(
+    "/app",
+    { "oai-authenticated-user-email": "owner@example.test" },
+    { requestHost: "preview.example.test", trustedHosts: "localhost" },
+  );
+  assert.match(previewHost.headers.get("location") ?? "", /\/signin-with-chatgpt/i);
+
+  const contradictoryForwarding = await render("/app", {
+    "oai-authenticated-user-email": "owner@example.test",
+    "x-forwarded-host": "attacker.example.test",
+  });
+  assert.match(contradictoryForwarding.headers.get("location") ?? "", /\/signin-with-chatgpt/i);
 });
 
 test("private platform preserves a requested deep link through sign-in", async () => {
@@ -53,8 +96,9 @@ test("private platform preserves a requested deep link through sign-in", async (
 });
 
 test("the configured owner can render the protected demo workspace", async () => {
-  const response = await render("/app", { "oai-authenticated-user-email": "franciscoariellopez22@gmail.com" });
+  const response = await render("/app", { "oai-authenticated-user-email": "owner@example.test" });
   assert.equal(response.status, 200);
+  assert.match(response.headers.get("cache-control") ?? "", /no-store/i);
   const html = await response.text();
   assert.match(renderedText(html), /Decisions, evidence and human gates/i);
   assert.match(html, /noindex/i);
@@ -63,13 +107,23 @@ test("the configured owner can render the protected demo workspace", async () =>
 });
 
 test("the configured owner can render execution feasibility and its report controls", async () => {
-  const response = await render("/app/execution-feasibility", { "oai-authenticated-user-email": "franciscoariellopez22@gmail.com" });
+  const response = await render("/app/execution-feasibility", { "oai-authenticated-user-email": "owner@example.test" });
   assert.equal(response.status, 200);
   const text = renderedText(await response.text());
   for (const expected of ["Determine whether a plan can be executed", "Duration estimate", "Expected cost", "Generate report", "WBS (?:&|&amp;) critical path", "Human review gate"]) {
     assert.match(text, new RegExp(expected, "i"));
   }
   assert.match(text, /Nothing here approves funding, procurement, contracting or deployment/i);
+});
+
+test("the configured owner can render a domain-specific private mini-app", async () => {
+  const response = await render("/app/applications/agriculture", { "oai-authenticated-user-email": "owner@example.test" });
+  assert.equal(response.status, 200);
+  const text = renderedText(await response.text());
+  for (const expected of ["Field Yield Command", "Rendimiento, agua y riesgo agronomico", "SIMULACION PROPIA", "Agronomy Analyst", "Sintetico"]) {
+    assert.match(text, new RegExp(expected, "i"));
+  }
+  assert.doesNotMatch(text, /autonomous investment approval|real patient data/i);
 });
 
 test("robots excludes private and dispatcher-owned routes", async () => {
@@ -130,17 +184,17 @@ test("public Lab summary is synchronized with the model catalog", async () => {
   assert.match(renderedText(await response.text()), /14 public models/i);
 });
 
-test("landing is synchronized with the 2026 public whitepaper and the IP boundary", async () => {
+test("landing keeps the document private and preserves the public IP boundary", async () => {
   const response = await render("/");
   const html = await response.text();
   const text = renderedText(html);
-  assert.match(html, /venture-governance-system-whitepaper-2026\.pdf/i);
-  assert.match(text, /Whitepaper p[uú]blico 2026\.2/i);
-  assert.match(text, /36 p[aá]ginas/i);
+  assert.doesNotMatch(html, /whitepaper|\/documents\/[^"']+\.pdf/i);
   assert.match(text, /4 agentes p[uú]blicos/i);
   assert.match(text, /14 modelos/i);
   for (const name of ["Mathematics", "Finance", "Strategy", "Marketing"]) assert.match(text, new RegExp(name, "i"));
-  assert.doesNotMatch(text, /20 roles|6 runtimes|Whitepaper v1\.0|1[\.,]000 hip[oó]tesis/i);
+  assert.doesNotMatch(text, /20 roles|6 runtimes|1[\.,]000 hip[oó]tesis/i);
+  await assert.rejects(access(new URL("../public/documents/venture-governance-system-whitepaper-2026.pdf", import.meta.url)));
+  await assert.rejects(access(new URL("../public/documents/venture-governance-system-whitepaper-publico-v2.pdf", import.meta.url)));
 });
 
 test("Lab audio has no autoplay markup", async () => {

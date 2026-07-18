@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { DEFAULT_FEASIBILITY_INPUT, estimateExecutionFeasibility, type FeasibilityInput, type FeasibilityResult } from "@/src/private/feasibility";
-import { useActiveMission } from "../active-mission";
+import { DEFAULT_FEASIBILITY_INPUT, estimateExecutionFeasibility, type FeasibilityInput, type FeasibilityResult } from "@/src/platform/demo-feasibility";
+import { normalizeFeasibilityInput, PRIVATE_STORAGE_TTL_MS, useActiveMission } from "../active-mission";
 
 type Tab = "summary" | "wbs" | "costs" | "capabilities" | "options" | "roadmap";
 type ReviewState = "Not reviewed" | "Return for revision" | "Advance with conditions";
 
-const STORAGE_KEY = "vg-execution-feasibility-draft-v1";
+const MAX_STORED_FEASIBILITY_LENGTH = 24_000;
 const MONEY = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
 const MONEY_PRECISE = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 2 });
 const TABS: Array<{ id: Tab; label: string }> = [
@@ -21,6 +21,46 @@ function formatPreciseMoney(value: number) { return MONEY_PRECISE.format(value);
 function escapeHtml(value: string) { return value.replace(/[&<>"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;" })[character] ?? character); }
 function reportFileName(name: string) { return `${name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 48) || "implementation"}-feasibility-report.html`; }
 
+function normalizeReview(value: unknown): ReviewState {
+  return value === "Return for revision" || value === "Advance with conditions" ? value : "Not reviewed";
+}
+
+function normalizeReviewNote(value: unknown) {
+  return typeof value === "string" ? value.replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/g, " ").slice(0, 1000) : "";
+}
+
+function readStoredFeasibility(storageKey: string) {
+  try {
+    const raw = window.sessionStorage.getItem(storageKey);
+    if (!raw) return null;
+    if (raw.length > MAX_STORED_FEASIBILITY_LENGTH) throw new Error("Stored feasibility draft is too large.");
+    const envelope = JSON.parse(raw) as { version?: unknown; expiresAt?: unknown; value?: unknown };
+    const expiresAt = typeof envelope.expiresAt === "number" ? envelope.expiresAt : Number.NaN;
+    if (envelope.version !== 1 || !Number.isFinite(expiresAt) || expiresAt <= Date.now() || expiresAt > Date.now() + PRIVATE_STORAGE_TTL_MS) throw new Error("Stored feasibility draft expired.");
+    if (!envelope.value || typeof envelope.value !== "object" || Array.isArray(envelope.value)) throw new Error("Stored feasibility draft is invalid.");
+    const value = envelope.value as { input?: unknown; review?: unknown; note?: unknown };
+    if (!value.input || typeof value.input !== "object" || Array.isArray(value.input)) throw new Error("Stored feasibility input is invalid.");
+    return {
+      input: normalizeFeasibilityInput(value.input, DEFAULT_FEASIBILITY_INPUT),
+      review: normalizeReview(value.review),
+      note: normalizeReviewNote(value.note),
+    };
+  } catch {
+    try { window.sessionStorage.removeItem(storageKey); } catch { /* Storage may be unavailable. */ }
+    return null;
+  }
+}
+
+function writeStoredFeasibility(storageKey: string, input: FeasibilityInput, review: ReviewState, note: string) {
+  try {
+    window.sessionStorage.setItem(storageKey, JSON.stringify({
+      version: 1,
+      expiresAt: Date.now() + PRIVATE_STORAGE_TTL_MS,
+      value: { input: normalizeFeasibilityInput(input, DEFAULT_FEASIBILITY_INPUT), review, note: normalizeReviewNote(note) },
+    }));
+  } catch { /* The estimate remains available in memory if storage is unavailable. */ }
+}
+
 function buildReport(result: FeasibilityResult, input: FeasibilityInput, review: ReviewState, note: string) {
   const rows = (values: string[][]) => values.map((cells) => `<tr>${cells.map((cell) => `<td>${escapeHtml(cell)}</td>`).join("")}</tr>`).join("");
   const list = (values: string[]) => `<ul>${values.map((value) => `<li>${escapeHtml(value)}</li>`).join("")}</ul>`;
@@ -30,7 +70,7 @@ function buildReport(result: FeasibilityResult, input: FeasibilityInput, review:
   const options = result.options.map((item) => [item.label, `${item.timeP50Months} months`, formatMoney(item.expectedCost), item.control, item.risk, item.lockIn, item.intellectualProperty]);
   const gaps = result.capabilities.map((item) => [item.capability, item.required, item.status, item.action, `${item.scheduleImpactWeeks} weeks`]);
   const roadmap = result.roadmap.map((item) => [item.label, item.outcome, item.owner, item.gate, item.metric, `M${item.p50Month} / M${item.p90Month}`]);
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>${escapeHtml(input.proposalName)} — Execution Feasibility Report</title><style>
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; font-src 'none'; connect-src 'none'; object-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><meta name="viewport" content="width=device-width"><title>${escapeHtml(input.proposalName)} — Execution Feasibility Report</title><style>
   :root{font-family:Inter,Arial,sans-serif;color:#132334;background:#eef3f6}*{box-sizing:border-box}body{margin:0}main{max-width:1120px;margin:auto;background:white;padding:56px}header{border-bottom:4px solid #1679a8;padding-bottom:28px}h1{font-size:38px;margin:8px 0 16px}h2{margin-top:42px;color:#0b6087;border-bottom:1px solid #cddbe2;padding-bottom:8px}h3{margin:0 0 8px}.kicker,.label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#217ca3;font-weight:700}.lede{max-width:800px;color:#506371;line-height:1.6}.metrics{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid #cddbe2;margin:24px 0}.metric{padding:18px;border-right:1px solid #cddbe2}.metric:last-child{border:0}.metric strong{display:block;font-size:22px;margin-top:8px}.metric small{color:#647986}table{width:100%;border-collapse:collapse;font-size:12px;margin:16px 0 30px}th,td{text-align:left;vertical-align:top;padding:9px;border-bottom:1px solid #dce5e9}th{background:#edf4f7;color:#31586a}ul{line-height:1.6}.notice{padding:16px;background:#fff7e7;border-left:4px solid #e4a33f}.review{display:grid;grid-template-columns:1fr 2fr;gap:20px;padding:20px;background:#edf4f7}.footer{margin-top:50px;padding-top:16px;border-top:1px solid #cddbe2;color:#657884;font-size:11px}@media(max-width:760px){main{padding:24px}.metrics{grid-template-columns:1fr 1fr}.metric:nth-child(2){border-right:0}.review{grid-template-columns:1fr}table{display:block;overflow:auto}}@media print{body{background:white}main{padding:0;max-width:none}h2{break-after:avoid}table{break-inside:auto}tr{break-inside:avoid}.no-print{display:none}}
   </style></head><body><main><header><p class="kicker">VENTURE GOVERNANCE SYSTEM™ · EXECUTION FEASIBILITY ENGINE</p><h1>${escapeHtml(input.proposalName)}</h1><p class="lede">${escapeHtml(input.proposalSummary || "No proposal summary supplied.")}</p><p class="label">Demonstrative planning estimate · ${escapeHtml(input.strategy)} delivery · seed ${result.generatedFrom.seed} · ${result.generatedFrom.samples.toLocaleString()} samples</p></header>
   <section><h2>Executive estimate</h2><div class="metrics"><div class="metric"><span class="label">Duration P50</span><strong>${result.durationMonths.p50} months</strong><small>P90 ${result.durationMonths.p90} months</small></div><div class="metric"><span class="label">Expected cost</span><strong>${formatMoney(result.cost.expected)}</strong><small>${formatMoney(result.cost.probableLow)}–${formatMoney(result.cost.probableHigh)}</small></div><div class="metric"><span class="label">Readiness</span><strong>${result.readiness.score}/100</strong><small>Decomposition follows</small></div><div class="metric"><span class="label">3-year TCO</span><strong>${formatMoney(result.cost.threeYearTco)}</strong><small>Planning assumption</small></div></div><p><strong>Main factors:</strong> ${escapeHtml(result.topFactors.join("; "))}.</p><p><strong>Critical path:</strong> ${escapeHtml(result.criticalPath.join(" → "))}.</p><table><thead><tr><th>Target month</th><th>Probability of completion</th></tr></thead><tbody>${rows(result.probabilityByMonth.map((item) => [`Month ${item.month}`, `${item.probability}%`]))}</tbody></table></section>
@@ -51,8 +91,8 @@ function download(content: string, type: string, name: string) {
 }
 
 export function ExecutionFeasibilityEngine() {
-  const { mission, ready, saveFeasibilityPlan } = useActiveMission();
-  const restored = useRef(false);
+  const { mission, ready, feasibilityStorageKey, saveFeasibilityPlan } = useActiveMission();
+  const restored = useRef<string | null>(null);
   const [draft, setDraft] = useState<FeasibilityInput>(DEFAULT_FEASIBILITY_INPUT);
   const [committed, setCommitted] = useState<FeasibilityInput>(DEFAULT_FEASIBILITY_INPUT);
   const [tab, setTab] = useState<Tab>("summary");
@@ -64,33 +104,29 @@ export function ExecutionFeasibilityEngine() {
   useEffect(() => {
     let active = true;
     queueMicrotask(() => {
-      if (!active || !ready || restored.current) return;
-      restored.current = true;
+      if (!active || !ready || restored.current === feasibilityStorageKey) return;
+      restored.current = feasibilityStorageKey;
+      const stored = readStoredFeasibility(feasibilityStorageKey);
       if (mission) {
-        const inherited: FeasibilityInput = {
+        const inherited = normalizeFeasibilityInput({
           ...DEFAULT_FEASIBILITY_INPUT,
           ...mission.feasibilityPlan,
           proposalName: mission.core.title || mission.feasibilityPlan?.proposalName || DEFAULT_FEASIBILITY_INPUT.proposalName,
           proposalSummary: [mission.core.decision, mission.core.constraints ? `Constraints: ${mission.core.constraints}` : ""].filter(Boolean).join("\n").slice(0, 1200) || mission.feasibilityPlan?.proposalSummary || DEFAULT_FEASIBILITY_INPUT.proposalSummary,
           samples: mission.scenarioPlan?.samples ?? mission.feasibilityPlan?.samples ?? DEFAULT_FEASIBILITY_INPUT.samples,
           seed: mission.scenarioPlan?.seed ?? mission.feasibilityPlan?.seed ?? DEFAULT_FEASIBILITY_INPUT.seed,
-        };
+        }, DEFAULT_FEASIBILITY_INPUT);
         setDraft(inherited); setCommitted(inherited);
-        setStatus("Active mission, scenario sampling and reproducible seed restored from the shared device context.");
+        if (stored) { setReview(stored.review); setReviewNote(stored.note); }
+        setStatus("Active mission, scenario sampling and reproducible seed restored from this identity-scoped browser tab.");
         return;
       }
-      const stored = window.localStorage.getItem(STORAGE_KEY);
       if (!stored) return;
-      try {
-        const parsed = JSON.parse(stored) as { input?: FeasibilityInput; review?: ReviewState; note?: string };
-        if (parsed.input) { setDraft(parsed.input); setCommitted(parsed.input); }
-        if (parsed.review) setReview(parsed.review);
-        if (typeof parsed.note === "string") setReviewNote(parsed.note.slice(0, 1000));
-        setStatus("Restored the last device-local estimate.");
-      } catch { window.localStorage.removeItem(STORAGE_KEY); }
+      setDraft(stored.input); setCommitted(stored.input); setReview(stored.review); setReviewNote(stored.note);
+      setStatus("Restored the last identity-scoped estimate from this browser tab.");
     });
     return () => { active = false; };
-  }, [mission, ready]);
+  }, [feasibilityStorageKey, mission, ready]);
 
   function update<K extends keyof FeasibilityInput>(key: K, value: FeasibilityInput[K]) {
     const next = { ...draft, [key]: value };
@@ -98,15 +134,15 @@ export function ExecutionFeasibilityEngine() {
     saveFeasibilityPlan(next);
   }
   function runEstimate() {
-    const next = { ...draft, proposalName: draft.proposalName.slice(0, 80), proposalSummary: draft.proposalSummary.slice(0, 1200) };
+    const next = normalizeFeasibilityInput(draft, DEFAULT_FEASIBILITY_INPUT);
     setCommitted(next); setReview("Not reviewed"); setReviewNote("");
     saveFeasibilityPlan(next);
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify({ input: next, review: "Not reviewed", note: "" }));
+    writeStoredFeasibility(feasibilityStorageKey, next, "Not reviewed", "");
     setStatus(`Estimate recalculated with ${next.samples.toLocaleString()} deterministic samples and seed ${next.seed}.`);
   }
   function recordReview(nextReview: ReviewState) {
-    setReview(nextReview); window.localStorage.setItem(STORAGE_KEY, JSON.stringify({ input: committed, review: nextReview, note: reviewNote }));
-    setStatus(`${nextReview} recorded on this device. No funding, contract or deployment action was triggered.`);
+    setReview(nextReview); writeStoredFeasibility(feasibilityStorageKey, committed, nextReview, reviewNote);
+    setStatus(`${nextReview} recorded in this browser tab. No funding, contract or deployment action was triggered.`);
   }
   function downloadReport() { download(buildReport(result, committed, review, reviewNote), "text/html;charset=utf-8", reportFileName(committed.proposalName)); setStatus("Executive report generated. Open the HTML file to print or save it as PDF."); }
   function downloadJson() { download(JSON.stringify({ input: committed, result, humanReview: { status: review, note: reviewNote } }, null, 2), "application/json", reportFileName(committed.proposalName).replace(/\.html$/, ".json")); setStatus("Inspectable estimate data exported as JSON."); }
@@ -155,7 +191,7 @@ export function ExecutionFeasibilityEngine() {
     {tab === "options" && <Options result={result} />}
     {tab === "roadmap" && <Roadmap result={result} />}
 
-    <section className="platform-panel execution-feasibility__review" aria-labelledby="feasibility-review-title"><header><div><span>HUMAN REVIEW GATE</span><h2 id="feasibility-review-title">Record a planning disposition</h2></div><strong>{review}</strong></header><label>Conditions and rationale<textarea maxLength={1000} value={reviewNote} onChange={(event) => setReviewNote(event.target.value)} placeholder="Record evidence gaps, conditions, ownership or reasons to revise." /></label><div><button type="button" onClick={() => recordReview("Return for revision")}>Return for revision</button><button type="button" onClick={() => recordReview("Advance with conditions")}>Advance with conditions</button></div><p>This state is stored only on this device. “Advance” means continue planning; it does not authorize investment or execution.</p></section>
+    <section className="platform-panel execution-feasibility__review" aria-labelledby="feasibility-review-title"><header><div><span>HUMAN REVIEW GATE</span><h2 id="feasibility-review-title">Record a planning disposition</h2></div><strong>{review}</strong></header><label>Conditions and rationale<textarea maxLength={1000} value={reviewNote} onChange={(event) => setReviewNote(event.target.value)} placeholder="Record evidence gaps, conditions, ownership or reasons to revise." /></label><div><button type="button" onClick={() => recordReview("Return for revision")}>Return for revision</button><button type="button" onClick={() => recordReview("Advance with conditions")}>Advance with conditions</button></div><p>This state is stored only in this browser tab and expires automatically. “Advance” means continue planning; it does not authorize investment or execution.</p></section>
     <div className="private-flow-actions"><Link href="/app/scenarios">Return to scenario assumptions</Link><Link href="/app/decision-lab">Continue to the human Decision Lab →</Link></div>
     <p className="execution-feasibility__status" role="status" aria-live="polite">{status}</p>
   </section>;

@@ -2,8 +2,9 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { DEMO_GOVERNANCE_QUEUE, DEMO_MISSIONS, PLATFORM_CAPABILITY_STATUS, PLATFORM_MODULES, graphFor } from "../src/platform/data.ts";
 import { VG_DESIGN_TOKENS } from "../src/platform/design-tokens.ts";
+import { purgeForeignPrivateSessionData } from "../src/platform/session-storage.ts";
 
-test("authenticated platform graph represents the private registry and bounded execution teams", () => {
+test("authenticated platform graph represents only the external private-product boundary", () => {
   for (const variant of ["overview", "access", "knowledge", "mission", "applications", "simulation", "agents"] as const) {
     const graph = graphFor(variant, "private");
     const ids = new Set(graph.nodes.map((node) => node.id));
@@ -50,9 +51,32 @@ test("platform module and fixture metadata remain honest and internally consiste
   assert.ok(DEMO_MISSIONS.every((mission) => mission.evidenceCoverage >= 0 && mission.evidenceCoverage <= 100));
   assert.ok(DEMO_MISSIONS.every((mission) => mission.progress >= 0 && mission.progress <= 100));
   assert.ok(DEMO_MISSIONS.every((mission) => mission.unresolvedAssumptions >= 0));
-  assert.equal(PLATFORM_CAPABILITY_STATUS.find((item) => item.id === "provider")?.state, "limited");
-  assert.equal(PLATFORM_CAPABILITY_STATUS.find((item) => item.id === "agents")?.value, "1,970 available");
+  assert.equal(PLATFORM_CAPABILITY_STATUS.find((item) => item.id === "provider")?.state, "unavailable");
+  assert.equal(PLATFORM_CAPABILITY_STATUS.find((item) => item.id === "agents")?.value, "External catalog");
   assert.equal(Object.keys(VG_DESIGN_TOKENS).length, 12);
+});
+
+test("identity switch purges foreign private session keys without touching public data", () => {
+  const values = new Map([
+    ["vg-private-current-active-mission-v1", "current"],
+    ["vg-private-current-execution-feasibility-v1", "current"],
+    ["vg-private-previous-active-mission-v1", "previous"],
+    ["venture-governance-public-lab-runs-v1", "public"],
+  ]);
+  const storage = {
+    get length() { return values.size; },
+    key(index: number) { return [...values.keys()][index] ?? null; },
+    removeItem(key: string) { values.delete(key); },
+  };
+  purgeForeignPrivateSessionData(storage, {
+    mission: "vg-private-current-active-mission-v1",
+    feasibility: "vg-private-current-execution-feasibility-v1",
+  });
+  assert.deepEqual([...values.keys()].sort(), [
+    "venture-governance-public-lab-runs-v1",
+    "vg-private-current-active-mission-v1",
+    "vg-private-current-execution-feasibility-v1",
+  ]);
 });
 
 test("platform public data does not expose private agent roles or guarantees", () => {

@@ -10,8 +10,7 @@ import { ModelingEvaluation } from "@/src/components/sections/ModelingEvaluation
 import { UseCasesBusiness } from "@/src/components/sections/UseCasesBusiness";
 import { RoadmapRisks } from "@/src/components/sections/RoadmapRisks";
 import { FinalCta } from "@/src/components/sections/FinalCta";
-import { WhitepaperInsights } from "@/src/components/sections/WhitepaperInsights";
-import { WhitepaperSection } from "@/src/components/sections/WhitepaperSection";
+import { EvidenceContext } from "@/src/components/sections/EvidenceContext";
 import { ExecutiveSummary } from "@/src/components/sections/ExecutiveSummary";
 import { PlatformShowcase } from "@/src/components/sections/PlatformShowcase";
 
@@ -25,7 +24,7 @@ export default function Home() {
         <PlatformShowcase />
         <ExecutiveSummary />
         <ProblemSolution />
-        <WhitepaperInsights />
+        <EvidenceContext />
         <Architecture />
         <AgentExplorer />
         <DecisionPipeline />
@@ -33,7 +32,6 @@ export default function Home() {
         <ModelingEvaluation />
         <UseCasesBusiness />
         <RoadmapRisks />
-        <WhitepaperSection />
         <FinalCta />
       </main>
       <Footer />

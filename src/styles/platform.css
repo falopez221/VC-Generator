@@ -534,9 +534,26 @@ html:has(.platform-shell)::-webkit-scrollbar-corner,
 @media (max-width: 960px) { .workspace-support-grid { grid-template-columns: 1fr 1fr; } .workspace-support-grid article:nth-child(2) { border-right: 0; } .workspace-support-grid article:nth-child(-n + 2) { border-bottom: 1px solid var(--platform-line); } .workspace-support-columns { grid-template-columns: 1fr; } }
 @media (max-width: 600px) { .workspace-support-boundary { align-items: flex-start; flex-direction: column; gap: .3rem; margin-top: -1.25rem; } .workspace-support-grid, .workspace-doc-grid { grid-template-columns: 1fr; } .workspace-support-grid article, .workspace-support-grid article:nth-child(2) { border-right: 0; border-bottom: 1px solid var(--platform-line); } .workspace-support-grid article:last-child { border-bottom: 0; } }
 
-/* Authenticated agent catalog: server-paged to avoid exposing the complete registry to the browser. */
+/* Authenticated aggregate agent boundary. Individual profiles stay outside the bundle. */
 .private-agent-library { display: grid; gap: 1rem; }
 .private-agent-library .platform-page-heading { margin-bottom: 0; }
+.private-agent-metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .7rem; margin-top: 1rem; }
+.private-agent-metrics div { min-height: 88px; display: grid; align-content: center; gap: .35rem; padding: .75rem; background: rgb(255 255 255 / 2.5%); border: 1px solid var(--platform-line); }
+.private-agent-metrics span { color: #7595a7; font: 650 .48rem var(--font-mono); letter-spacing: .06em; text-transform: uppercase; }
+.private-agent-metrics strong { color: #ddecf2; font: 650 1.15rem var(--font-mono); }
+.private-agent-metrics--expanded { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.private-agent-boundary-note { margin: .8rem 0 0; color: #819eae; font-size: .63rem; line-height: 1.55; }
+.private-agent-capability-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .7rem; margin-top: .8rem; }
+.private-agent-capability-grid article { min-height: 145px; padding: .8rem; background: rgb(255 255 255 / 2.5%); border: 1px solid var(--platform-line); }
+.private-agent-capability-grid span { color: #65caed; font: 650 .5rem var(--font-mono); letter-spacing: .08em; }
+.private-agent-capability-grid h3 { margin: 1.2rem 0 .45rem; color: #dcebf1; font-size: .78rem; }
+.private-agent-capability-grid p { margin: 0; color: #819eae; font-size: .61rem; line-height: 1.55; }
+.private-agent-topology { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: .8rem; border: 1px solid var(--platform-line); }
+.private-agent-topology div { position: relative; display: grid; gap: .35rem; min-height: 92px; align-content: center; padding: .75rem; border-right: 1px solid var(--platform-line); }
+.private-agent-topology div:last-child { border-right: 0; }
+.private-agent-topology div:not(:last-child)::after { content: "→"; position: absolute; right: -.45rem; top: calc(50% - .45rem); z-index: 1; color: #65caed; background: var(--platform-panel); font: 650 .7rem var(--font-mono); }
+.private-agent-topology strong { color: #dcebf1; font-size: .65rem; }
+.private-agent-topology span { color: #7897a8; font-size: .54rem; line-height: 1.45; }
 .private-agent-filters { display: grid; grid-template-columns: minmax(220px, 1.45fr) minmax(160px, .8fr) minmax(160px, .8fr) auto; gap: .7rem; align-items: end; padding: .85rem; background: var(--platform-panel); border: 1px solid var(--platform-line); }
 .private-agent-filters label { display: grid; gap: .35rem; color: #8eabb9; font: 650 .53rem var(--font-mono); letter-spacing: .06em; text-transform: uppercase; }
 .private-agent-filters input, .private-agent-filters select { min-width: 0; padding: .65rem .7rem; color: #dcecf2; background: #071a29; border: 1px solid var(--platform-line); border-radius: 3px; font: 400 .72rem var(--font-sans); }
@@ -593,8 +610,8 @@ html:has(.platform-shell)::-webkit-scrollbar-corner,
 .private-agent-run__grid h4 { margin: 0; color: #70c9e8; font: 650 .5rem var(--font-mono); letter-spacing: .06em; text-transform: uppercase; }
 .private-agent-run__grid ul { display: grid; gap: .3rem; margin: .45rem 0 0; padding-left: 1rem; color: #91adba; font-size: .61rem; line-height: 1.5; }
 .private-agent-pagination { display: flex; gap: .85rem; justify-content: center; align-items: center; color: #8facba; font: 600 .62rem var(--font-mono); }
-@media (max-width: 1120px) { .private-agent-filters { grid-template-columns: 1fr 1fr; } .private-agent-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 650px) { .private-agent-filters, .private-agent-grid, .private-agent-executor form, .private-agent-run__grid { grid-template-columns: 1fr; } .private-agent-filters .platform-secondary-button { width: 100%; } .private-agent-executor form footer, .private-agent-executor > header, .private-agent-run > header { align-items: stretch; flex-direction: column; } }
+@media (max-width: 1120px) { .private-agent-filters { grid-template-columns: 1fr 1fr; } .private-agent-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .private-agent-capability-grid, .private-agent-topology { grid-template-columns: repeat(2, minmax(0, 1fr)); } .private-agent-topology div:nth-child(2) { border-right: 0; } .private-agent-topology div:nth-child(-n + 2) { border-bottom: 1px solid var(--platform-line); } }
+@media (max-width: 650px) { .private-agent-filters, .private-agent-grid, .private-agent-executor form, .private-agent-run__grid, .private-agent-metrics--expanded, .private-agent-capability-grid, .private-agent-topology { grid-template-columns: 1fr; } .private-agent-filters .platform-secondary-button { width: 100%; } .private-agent-executor form footer, .private-agent-executor > header, .private-agent-run > header { align-items: stretch; flex-direction: column; } .private-agent-topology div, .private-agent-topology div:nth-child(2) { border-right: 0; border-bottom: 1px solid var(--platform-line); } .private-agent-topology div:last-child { border-bottom: 0; } .private-agent-topology div:not(:last-child)::after { content: "↓"; right: calc(50% - .3rem); top: auto; bottom: -.5rem; } }
 
 /* Three-level onboarding for the authenticated workspace. */
 .private-dashboard-guide { margin: 0 0 1rem; padding: 1rem; background: linear-gradient(135deg, rgb(22 95 124 / 16%), rgb(10 28 42 / 92%)); border: 1px solid rgb(89 197 235 / 32%); }

@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { analyzeScenarios } from "@/src/private/models";
-import { estimateExecutionFeasibility } from "@/src/private/feasibility";
+import { analyzeScenarios } from "@/src/platform/demo-models";
+import { estimateExecutionFeasibility } from "@/src/platform/demo-feasibility";
 import { useActiveMission } from "../active-mission";
 
 const ITEM_TYPES = ["Evidence", "Assumption", "Inference", "Hypothesis", "Model output"] as const;

@@ -45,7 +45,7 @@ export function Hero() {
         </div>
         <div className="cinematic-hero-copy">
           <div>
-            <p className="cinematic-eyebrow"><i aria-hidden="true" /> Venture Governance System™ · Whitepaper público 2026.2 · Public research surface</p>
+            <p className="cinematic-eyebrow"><i aria-hidden="true" /> Venture Governance System™ · Public research surface · Human-in-command</p>
             <h1>Knowledge begins <span>as possibility.</span></h1>
             <p className="cinematic-hero-lede">A governed intelligence environment that turns a human thesis into inspectable opportunities, visible uncertainty and decisions that remain unmistakably human.</p>
             <div className="cinematic-hero-actions">

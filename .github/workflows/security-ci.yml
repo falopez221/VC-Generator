@@ -1,0 +1,88 @@
+name: Security CI
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "23 8 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: security-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+
+      - name: Use the supported Node.js runtime
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
+        with:
+          node-version: 22.13.0
+          package-manager-cache: false
+
+      - name: Install the locked dependency graph without lifecycle scripts
+        run: npm ci --ignore-scripts
+
+      - name: Audit the complete dependency graph
+        run: npm audit --audit-level=moderate
+
+      - name: Enforce the public/private source boundary
+        run: npm run security:check
+
+      - name: Enforce the package boundary
+        run: npm run prepack
+
+      - name: Type check
+        run: npm run typecheck
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Run unit and security tests
+        run: npm run test:unit
+
+      - name: Build and run route integration tests
+        run: npm run test:integration
+
+      - name: Validate the standalone Next.js production build
+        run: npm run build:vercel
+
+      - name: Scan production artifacts for private-runtime markers
+        run: npm run security:artifacts
+
+  installer-security:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+
+      - name: Use the supported Node.js runtime
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
+        with:
+          node-version: 22.13.0
+          package-manager-cache: false
+
+      - name: Install the locked dependency graph without lifecycle scripts
+        run: npm ci --ignore-scripts
+
+      - name: Run Windows installer and local-runtime security tests
+        run: >-
+          node --experimental-strip-types --test
+          tests/installer-local-proxy.test.mjs
+          tests/installer-local-server.test.mjs
+          tests/installer-path-security.test.mjs
+          tests/local-runtime-health.test.ts
+          tests/local-runtime-trust.test.ts

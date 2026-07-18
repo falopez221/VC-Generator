@@ -1,5 +1,5 @@
 import { LinkButton } from "@/src/components/ui/LinkButton";
-import { SITE_LINKS, WHITEPAPER_AVAILABLE } from "@/src/config/site";
+import { SITE_LINKS } from "@/src/config/site";
 
 export function FinalCta() {
   return (
@@ -16,7 +16,7 @@ export function FinalCta() {
           <div><span>03</span><p>Medir calidad, tiempo y aprendizaje.</p></div>
           <div className="cta-actions">
             <LinkButton href={SITE_LINKS.email}>Discutir un piloto</LinkButton>
-            <LinkButton href={SITE_LINKS.whitepaper} variant="secondary" disabled={!WHITEPAPER_AVAILABLE}>Abrir whitepaper</LinkButton>
+            <LinkButton href={SITE_LINKS.demo} variant="secondary">Explorar el Lab</LinkButton>
           </div>
         </div>
       </div>

@@ -133,7 +133,7 @@
 .ps-system-map {
   grid-column: 2;
   min-width: 0;
-  min-height: 360px;
+  min-height: 660px;
   position: relative;
   overflow: hidden;
   background:
@@ -143,25 +143,36 @@
   background-size: auto, 35px 35px, 35px 35px;
 }
 
-.ps-system-map svg { width: 100%; height: 100%; position: absolute; z-index: 1; inset: 0; overflow: visible; }
+.ps-registry-field { position: absolute; z-index: 0; inset: 0; pointer-events: none; }
+.ps-registry-field::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, transparent 0 38%, rgb(4 18 31 / 12%) 73%, rgb(4 18 31 / 58%) 100%); }
+.ps-registry-field canvas { width: 100%; height: 100%; display: block; }
+.ps-system-map svg { width: 100%; height: 100%; position: absolute; z-index: 2; inset: 0; overflow: visible; }
 .ps-system-map marker path { fill: #65879c; }
 .ps-system-map line { stroke: #55788f; stroke-width: 1; vector-effect: non-scaling-stroke; opacity: .52; transition: stroke .2s ease, opacity .2s ease, stroke-width .2s ease; animation: ps-edge-reveal .8s ease both; }
 .ps-system-map line.is-collaboration { stroke: #85abc0; stroke-width: 1.1; stroke-dasharray: 3 3; opacity: .68; animation: none; }
 .ps-system-map line.is-path { stroke: #69a4c6; stroke-width: 1.35; opacity: .82; }
 .ps-system-map line.is-direct { stroke: var(--ps-accent); stroke-width: 1.8; opacity: 1; }
 .ps-system-map line.is-muted { opacity: .14; }
+.ps-system-map line.ps-light-route { stroke: #9cecff; stroke-width: 2.4; stroke-dasharray: 2 18; stroke-dashoffset: 0; opacity: .48; filter: url(#ps-blue-glow); animation: ps-light-run 2.1s linear infinite; animation-delay: var(--ps-delay); }
+.ps-system-map line.ps-light-route.is-collaboration { stroke: #74dcff; stroke-width: 1.8; stroke-dasharray: 1 22; opacity: .35; animation-duration: 2.8s; }
+.ps-system-map line.ps-light-route.is-path { opacity: .7; }
+.ps-system-map line.ps-light-route.is-direct { stroke: #d0f7ff; stroke-width: 3.2; opacity: 1; animation-duration: 1.45s; }
+.ps-system-map line.ps-light-route.is-muted { opacity: .08; }
 .ps-mobile-flow { display: none; }
 .ps-map-legend { position: absolute; z-index: 3; top: .55rem; left: .65rem; display: flex; gap: .7rem; color: #86a4b5; font: 600 .68rem var(--font-mono); }
 .ps-map-legend span { display: inline-flex; gap: .35rem; align-items: center; }
 .ps-map-legend i { width: 22px; height: 0; border-top: 1.5px solid #69a4c6; }
 .ps-map-legend span:last-child i { border-top-style: dashed; border-top-color: #85abc0; }
 
+.ps-capability-clusters { position: absolute; z-index: 1; inset: 0; pointer-events: none; }
+.ps-capability-clusters span { position: absolute; left: var(--ps-cluster-x); top: var(--ps-cluster-y); padding: .22rem .34rem; color: rgb(157 208 234 / 58%); background: rgb(4 18 31 / 66%); border: 1px solid rgb(84 185 232 / 12%); border-radius: 999px; font: 600 .46rem/1 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; transform: translate(-50%, -50%); white-space: nowrap; }
+
 .ps-node {
   --ps-node-surface: #092139;
   width: clamp(84px, 9vw, 112px);
   min-height: 58px;
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   left: var(--ps-x);
   top: var(--ps-y);
   display: grid;
@@ -236,6 +247,7 @@
 .ps-architecture-principle strong { display: block; margin-top: .38rem; color: #c9d9e2; font-size: .8rem; }
 
 @keyframes ps-edge-reveal { from { stroke-dasharray: 2 4; stroke-dashoffset: 14; opacity: 0; } to { stroke-dasharray: 2 0; stroke-dashoffset: 0; } }
+@keyframes ps-light-run { to { stroke-dashoffset: -100; } }
 
 @media (max-width: 1100px) {
   .platform-showcase-heading { grid-template-columns: 1fr; gap: 1.5rem; }
@@ -272,6 +284,7 @@
   .ps-screen-summary small { overflow: visible; text-overflow: clip; white-space: normal; }
   .ps-system-map { min-height: 590px; display: grid; grid-template-columns: 1fr 1fr; gap: .45rem; align-content: start; padding: .7rem; }
   .ps-system-map svg { display: none; }
+  .ps-registry-field, .ps-capability-clusters { display: none; }
   .ps-mobile-flow { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: .32rem 0; margin: 0 0 .35rem; padding: .45rem .5rem; color: #9fb7c5; background: rgb(85 197 236 / 5%); border: 1px solid rgb(85 197 236 / 13%); font: 650 .68rem var(--font-mono); list-style: none; }
   .ps-map-legend { display: none; }
   .ps-mobile-flow li { display: inline-flex; align-items: center; white-space: nowrap; }
@@ -325,15 +338,16 @@
 .ps-activity-stream .is-review i { background: #e2ad58; box-shadow: 0 0 0 4px rgb(226 173 88 / 9%); }
 .ps-activity-stream .is-review strong { color: #dfc08f; }
 
-.ps-system-map { min-height: 405px; }
-.ps-map-lanes { position: absolute; z-index: 0; inset: 0; display: grid; grid-template-columns: repeat(6, 1fr); pointer-events: none; }
+.ps-system-map { min-height: 660px; }
+.ps-map-lanes { position: absolute; z-index: 1; inset: 0; display: grid; grid-template-columns: repeat(6, 1fr); pointer-events: none; }
 .ps-map-lanes span { padding: .7rem .45rem 0; color: #7494a8; border-right: 1px solid rgb(147 190 216 / 8%); font: 650 .57rem var(--font-mono); letter-spacing: .08em; text-align: center; text-transform: uppercase; }
 .ps-map-lanes span:last-child { border-right: 0; }
-.ps-map-legend { top: auto; bottom: .65rem; left: .75rem; }
-.ps-trace-status { position: absolute; z-index: 3; right: .75rem; bottom: .55rem; display: flex; align-items: center; gap: .55rem; padding: .35rem .5rem; color: #9bb4c3; background: rgb(4 18 31 / 84%); border: 1px solid rgb(85 197 236 / 15%); font-size: .63rem; }
+.ps-map-legend { z-index: 4; top: auto; bottom: .65rem; left: .75rem; }
+.ps-trace-status { position: absolute; z-index: 4; right: .75rem; bottom: .55rem; display: flex; align-items: center; gap: .55rem; padding: .35rem .5rem; color: #9bb4c3; background: rgb(4 18 31 / 84%); border: 1px solid rgb(85 197 236 / 15%); font-size: .63rem; }
 .ps-trace-status span { color: var(--ps-accent); font: 650 .55rem var(--font-mono); letter-spacing: .07em; }
 .ps-trace-status strong { font-weight: 620; }
-.ps-node { width: clamp(92px, 8.2vw, 124px); }
+.ps-node { width: clamp(86px, 7.2vw, 112px); }
+.ps-node--model { width: clamp(74px, 6.4vw, 98px); }
 .ps-inspector { min-height: 142px; padding: .9rem 1rem; }
 .ps-demo-note { display: flex; align-items: center; justify-content: space-between; margin: .85rem 0 0; text-align: left; }
 .ps-demo-note::after { content: "SELECT A NODE TO TRACE ITS DEPENDENCIES"; color: #56788e; }
