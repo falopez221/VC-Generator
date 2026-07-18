@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState, type CSSProperties } from "react";
 import { simulateDomainScenario, type DomainKpiTone, type DomainWorkspaceDefinition } from "@/src/applications/domain-workspaces";
+import { DomainWorkspaceVisual, scaleDomainSeriesValue } from "./DomainWorkspaceVisuals";
 import styles from "./PrivateDomainWorkspaces.module.css";
 
 type Props = { workspace: DomainWorkspaceDefinition };
@@ -16,48 +17,6 @@ const TONE_LABEL: Record<DomainKpiTone, string> = {
 
 function formatNumber(value: number, maximumFractionDigits = 2) {
   return new Intl.NumberFormat("es-AR", { maximumFractionDigits }).format(value);
-}
-
-function WorkspaceVisual({ workspace }: Props) {
-  if (workspace.visualGroup === "pipeline") {
-    return <div className={`${styles.visual} ${styles.pipelineVisual}`} data-mode={workspace.visualMode}>
-      <div className={styles.pipelineTrack} aria-hidden="true" />
-      {workspace.nodes.map((item, index) => <article key={item.label} data-tone={item.tone}>
-        <span>{String(index + 1).padStart(2, "0")}</span><i aria-hidden="true" /><strong>{item.label}</strong><small>{item.value}</small>
-      </article>)}
-    </div>;
-  }
-  if (workspace.visualGroup === "flow") {
-    return <div className={`${styles.visual} ${styles.flowVisual}`} data-mode={workspace.visualMode}>
-      {workspace.nodes.map((item, index) => <article key={item.label} data-tone={item.tone}>
-        <span>{item.label}</span><strong>{item.value}</strong><i aria-hidden="true" style={{ width: `${42 + index * 10}%` }} />
-        {index < workspace.nodes.length - 1 && <b aria-hidden="true">→</b>}
-      </article>)}
-    </div>;
-  }
-  if (workspace.visualGroup === "matrix") {
-    return <div className={`${styles.visual} ${styles.matrixVisual}`} data-mode={workspace.visualMode}>
-      <span className={styles.matrixAxisY}>impacto ↑</span><span className={styles.matrixAxisX}>preparacion →</span>
-      {workspace.nodes.map((item, index) => <article key={item.label} data-tone={item.tone} style={{ left: `${15 + ((index * 31) % 70)}%`, bottom: `${14 + ((index * 23) % 68)}%` }}>
-        <i aria-hidden="true" /><strong>{item.label}</strong><small>{item.value}</small>
-      </article>)}
-    </div>;
-  }
-  if (workspace.visualGroup === "map") {
-    return <div className={`${styles.visual} ${styles.mapVisual}`} data-mode={workspace.visualMode}>
-      <div className={styles.mapGrid} aria-hidden="true" />
-      <div className={styles.mapRoute} aria-hidden="true" />
-      {workspace.nodes.map((item, index) => <article key={item.label} data-tone={item.tone} style={{ left: `${10 + ((index * 22) % 78)}%`, top: `${12 + ((index * 29) % 68)}%` }}>
-        <i aria-hidden="true" /><strong>{item.label}</strong><small>{item.value}</small>
-      </article>)}
-    </div>;
-  }
-  return <div className={`${styles.visual} ${styles.networkVisual}`} data-mode={workspace.visualMode}>
-    <div className={styles.networkCore}><span>{workspace.domain}</span><strong>{workspace.kpis[0].value}{workspace.kpis[0].unit}</strong></div>
-    {workspace.nodes.map((item, index) => <article key={item.label} data-tone={item.tone} data-node={index + 1}>
-      <i aria-hidden="true" /><strong>{item.label}</strong><small>{item.value}</small>
-    </article>)}
-  </div>;
 }
 
 export function DomainWorkspaceDashboard({ workspace }: Props) {
@@ -89,7 +48,7 @@ export function DomainWorkspaceDashboard({ workspace }: Props) {
     <section className={styles.commandGrid}>
       <section className={styles.primaryPanel} aria-labelledby="primary-visual-title">
         <header><div><span>{workspace.visualMode.replaceAll("-", " ").toUpperCase()}</span><h2 id="primary-visual-title">{workspace.chart.title}</h2></div><p><i /> observado sint.<i /> estimado<i /> alerta</p></header>
-        <WorkspaceVisual workspace={workspace} />
+        <DomainWorkspaceVisual workspace={workspace} />
         <p className={styles.visualSummary}>{workspace.chart.summary}</p>
       </section>
 
@@ -109,7 +68,7 @@ export function DomainWorkspaceDashboard({ workspace }: Props) {
       <article className={styles.trendPanel}>
         <header><div><span>SERIE DEMOSTRATIVA</span><h2>{workspace.chart.title}</h2></div><strong>{workspace.chart.unit}</strong></header>
         <div className={styles.barChart} role="img" aria-label={`${workspace.chart.summary} Valores: ${workspace.chart.labels.map((label, index) => `${label} ${workspace.chart.values[index]}`).join(", ")}`}>
-          {workspace.chart.values.map((value, index) => <div key={workspace.chart.labels[index]}><i style={{ height: `${Math.max(8, Math.min(100, value))}%` }} /><b>{value}</b><span>{workspace.chart.labels[index]}</span></div>)}
+          {workspace.chart.values.map((value, index) => <div key={workspace.chart.labels[index]}><i style={{ height: `${scaleDomainSeriesValue(workspace.chart.values, value)}%` }} /><b>{value}</b><span>{workspace.chart.labels[index]}</span></div>)}
         </div>
         <p>{workspace.chart.summary}</p>
       </article>

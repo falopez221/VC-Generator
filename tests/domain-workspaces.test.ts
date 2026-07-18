@@ -1,7 +1,9 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { readFile } from "node:fs/promises";
 import { APPLICATION_DOMAINS } from "../src/applications/catalog.ts";
 import { DOMAIN_WORKSPACES, getDomainWorkspace, simulateDomainScenario } from "../src/applications/domain-workspaces.ts";
+import { DOMAIN_VISUAL_CONTRACTS } from "../src/applications/domain-visual-contracts.ts";
 
 test("private domain library exposes one distinct bounded workspace per catalog domain", () => {
   assert.equal(DOMAIN_WORKSPACES.length, 30);
@@ -21,6 +23,23 @@ test("private domain library exposes one distinct bounded workspace per catalog 
     assert.ok(workspace.risks.length >= 2 && workspace.opportunities.length >= 2, workspace.slug);
     assert.equal(getDomainWorkspace(workspace.slug), workspace);
   }
+});
+
+test("every domain is backed by an explicit sector renderer contract", async () => {
+  assert.equal(DOMAIN_VISUAL_CONTRACTS.length, 30);
+  assert.equal(new Set(DOMAIN_VISUAL_CONTRACTS.map((contract) => contract.renderer)).size, 30);
+  const rendererSource = await readFile(new URL("../src/platform/components/DomainWorkspaceVisuals.tsx", import.meta.url), "utf8");
+  for (const workspace of DOMAIN_WORKSPACES) {
+    const contract = DOMAIN_VISUAL_CONTRACTS.find((candidate) => candidate.slug === workspace.slug);
+    assert.ok(contract, workspace.slug);
+    assert.equal(contract.mode, workspace.visualMode, workspace.slug);
+    assert.equal(contract.requiredFeatures.length, 3, workspace.slug);
+    assert.match(rendererSource, new RegExp(`case ["']${workspace.slug}["']:`), workspace.slug);
+  }
+  const finance = DOMAIN_VISUAL_CONTRACTS.find((contract) => contract.slug === "finance")!;
+  assert.deepEqual(finance.requiredFeatures, ["yield curve", "correlation heatmap", "VaR distribution"]);
+  const venture = DOMAIN_VISUAL_CONTRACTS.find((contract) => contract.slug === "venture-capital")!;
+  assert.deepEqual(venture.requiredFeatures, ["deal funnel", "opportunity ranking", "Monte Carlo distribution"]);
 });
 
 test("domain scenarios are deterministic, finite and clamped", () => {

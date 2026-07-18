@@ -15,6 +15,12 @@ const GROUPS: { id: "all" | DomainVisualGroup; label: string }[] = [
   { id: "matrix", label: "Portafolios" },
 ];
 
+function signalHeight(values: number[], value: number) {
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  return max === min ? 58 : 18 + ((value - min) / (max - min)) * 82;
+}
+
 export function PrivateDomainHub() {
   const [query, setQuery] = useState("");
   const [group, setGroup] = useState<(typeof GROUPS)[number]["id"]>("all");
@@ -61,7 +67,7 @@ export function PrivateDomainHub() {
           <h2>{workspace.name}</h2>
           <p>{workspace.title}</p>
           <div className={styles.cardSignal} aria-hidden="true">
-            {workspace.chart.values.slice(0, 6).map((value, signalIndex) => <i key={signalIndex} style={{ height: `${Math.max(18, Math.min(100, value))}%` }} />)}
+            {workspace.chart.values.slice(0, 6).map((value, signalIndex) => <i key={signalIndex} style={{ height: `${signalHeight(workspace.chart.values, value)}%` }} />)}
           </div>
           <ul aria-label={`Vocabulario de ${workspace.domain}`}>{workspace.vocabulary.slice(0, 3).map((term) => <li key={term}>{term}</li>)}</ul>
           <footer><span>{workspace.kpis.length} KPI · {workspace.models.length} modelos · 1 simulacion</span><Link href={`/app/applications/${workspace.slug}`}>Abrir workspace <b aria-hidden="true">→</b></Link></footer>

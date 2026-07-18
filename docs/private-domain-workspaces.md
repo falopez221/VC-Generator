@@ -17,7 +17,7 @@ Los roles visibles son responsabilidades ilustrativas de analisis y revision. No
 - Mantener el gate humano y la limitacion sectorial visibles.
 - Preservar aislamiento por identidad y evitar datos sensibles incluso dentro del area autenticada.
 
-Las cinco familias estructurales compartidas son red, mapa, pipeline, flujo y matriz. Cada dominio usa un modo visual, contenido, densidad, acentos y composicion propios; no se limita a cambiar el titulo de una plantilla.
+Los 30 renderers sectoriales se organizan conceptualmente en cinco familias —red, mapa, pipeline, flujo y matriz— pero cada dominio implementa su propia visualizacion principal. Por ejemplo, Finance combina curva de rendimientos, heatmap de correlacion y distribucion VaR; Venture Capital combina funnel, ranking de evidencia y distribucion Monte Carlo; Agriculture usa parcelas y capas agronomicas. Solo se comparten el shell, los estados accesibles y los limites de seguridad.
 
 ## Referencias oficiales investigadas
 
