@@ -8,6 +8,7 @@ import {
   type ThesisRiskPreference,
   type ThesisHorizon,
 } from "../domain/thesis";
+import { analyzeCrashWatch, type CrashWatchInput, type CrashWatchRegime } from "../domain/crash-watch";
 
 export type PrivateCapitalView =
   | "overview"
@@ -15,6 +16,7 @@ export type PrivateCapitalView =
   | "portfolio"
   | "builder"
   | "market"
+  | "crash"
   | "argentina"
   | "cedears"
   | "bonds"
@@ -144,6 +146,7 @@ const NAV_ITEMS: Array<{ id: PrivateCapitalView; label: string; group: string; g
   { id: "portfolio", label: "My Portfolio", group: "CAPITAL", glyph: "PF" },
   { id: "builder", label: "Portfolio Builder", group: "CAPITAL", glyph: "PB" },
   { id: "market", label: "Market Intelligence", group: "INTELLIGENCE", glyph: "MI" },
+  { id: "crash", label: "Crash Watch", group: "INTELLIGENCE", glyph: "CW" },
   { id: "argentina", label: "Argentina", group: "INTELLIGENCE", glyph: "AR" },
   { id: "cedears", label: "CEDEARs", group: "INTELLIGENCE", glyph: "CE" },
   { id: "bonds", label: "Bonds", group: "INTELLIGENCE", glyph: "BO" },
@@ -163,6 +166,7 @@ const VIEW_META: Record<PrivateCapitalView, { eyebrow: string; title: string; de
   portfolio: { eyebrow: "POSITION REGISTRY", title: "My Portfolio", description: "Manually maintained positions, context and investment theses." },
   builder: { eyebrow: "CONSTRAINED ALLOCATION", title: "Portfolio Builder", description: "Compare proposals shaped by limits, scenarios and economic judgment." },
   market: { eyebrow: "VALIDATED CONTEXT", title: "Market Intelligence", description: "Cross-market observations separated from recommendations." },
+  crash: { eyebrow: "SYSTEMIC STRESS WATCH", title: "Market Crash Watch", description: "Multi-signal stress patterns with four analytical lenses, explicit uncertainty and false-positive controls." },
   argentina: { eyebrow: "REGIME MONITOR", title: "Argentina", description: "Inflation, currency, sovereign and local-equity risk in one view." },
   cedears: { eyebrow: "INTERNATIONAL ACCESS", title: "CEDEARs", description: "Underlying exposure, local liquidity and implicit currency context." },
   bonds: { eyebrow: "FIXED INCOME", title: "Bonds", description: "Cash-flow structure, duration and sovereign risk scenarios." },
@@ -287,6 +291,21 @@ function AllocationBar({ items, compact = false }: { items: Array<{ label: strin
   </div>;
 }
 
+const CRASH_WATCH_PRESETS = {
+  normal: { volatility: 24, breadthDeterioration: 29, creditStress: 22, liquidityStress: 18, correlationConvergence: 31, macroSurprise: 28, crowdingNarrative: 25, dataCoverage: 65 },
+  stress: { volatility: 68, breadthDeterioration: 76, creditStress: 61, liquidityStress: 58, correlationConvergence: 71, macroSurprise: 64, crowdingNarrative: 73, dataCoverage: 65 },
+  crash: { volatility: 84, breadthDeterioration: 88, creditStress: 79, liquidityStress: 76, correlationConvergence: 85, macroSurprise: 72, crowdingNarrative: 86, dataCoverage: 65 },
+} satisfies Record<string, CrashWatchInput>;
+
+const CRASH_REGIME_LABELS: Record<CrashWatchRegime, string> = {
+  stable: "ESTABLE",
+  watch: "VIGILANCIA",
+  stress_building: "ESTRÉS EN FORMACIÓN",
+  crash_risk_elevated: "PATRÓN COMPATIBLE CON RIESGO DE CRASH",
+  extreme_risk: "PATRÓN DE ESTRÉS SISTÉMICO EXTREMO",
+  insufficient_data: "DATOS INSUFICIENTES",
+};
+
 export function PrivateCapitalDashboard({ initialData = MOCK_DATA, assetDetails = MOCK_ASSET_DETAILS, ownerLabel = "Private owner", initialView = "overview", onHoldingCreate, onReviewStateChange }: PrivateCapitalDashboardProps) {
   const [view, setView] = useState<PrivateCapitalView>(initialView);
   const [tourStep, setTourStep] = useState<number | null>(null);
@@ -299,6 +318,7 @@ export function PrivateCapitalDashboard({ initialData = MOCK_DATA, assetDetails 
   const [liveMessage, setLiveMessage] = useState("Quantitative Personal Capital loaded with simulated data.");
   const [profile, setProfile] = useState({ capital: initialData.totalAssets, referenceCurrency: initialData.currency, horizon: 7, liquidityNeed: 20, maxLoss: 22, argentinaLimit: 25, bitcoinLimit: 10, assetLimit: 25, sectorLimit: 35, rebalanceMonths: 6, style: "Balanced" });
   const [scenario, setScenario] = useState({ fxShock: 18, equityShock: -20, sovereignShock: -28, bitcoinShock: -35, contribution: 1500 });
+  const [crashInputs, setCrashInputs] = useState<CrashWatchInput>(CRASH_WATCH_PRESETS.normal);
   const [settings, setSettings] = useState({ compact: false, quietHours: true, groupAlerts: true });
   const [holdingDraft, setHoldingDraft] = useState({ ticker: "", name: "", assetClass: "CEDEAR", market: "BYMA", quantity: "", averagePrice: "", currency: "USD" as "USD" | "ARS", brokerReference: "", purchaseDate: "", fees: "", horizon: "", reviewCondition: "", thesis: "", notes: "" });
 
@@ -337,6 +357,7 @@ export function PrivateCapitalDashboard({ initialData = MOCK_DATA, assetDetails 
     const currencyBuffer = Math.max(0, scenario.fxShock) * 0.12;
     return Math.round((equity + local + bitcoin + currencyBuffer) * 10) / 10;
   }, [scenario]);
+  const crashWatch = useMemo(() => analyzeCrashWatch(crashInputs), [crashInputs]);
 
   const changeView = (next: PrivateCapitalView) => {
     setView(next);
@@ -460,11 +481,12 @@ export function PrivateCapitalDashboard({ initialData = MOCK_DATA, assetDetails 
       <main id="pc-main" className="pc-main" tabIndex={-1}>
         <p className="pc-live" role="status" aria-live="polite" aria-atomic="true">{liveMessage}</p>
         <header className="pc-page-head"><div><span>{VIEW_META[view].eyebrow}</span><h1>{VIEW_META[view].title}</h1><p>{VIEW_META[view].description}</p></div><div className="pc-data-stamp"><i /> DATA STATUS<strong>MOCK · VALIDATION REQUIRED</strong><small>{initialData.asOf}</small></div></header>
-        {view === "overview" && <OverviewView data={initialData} privacyMode={privacyMode} profile={profile} setProfile={setProfile} derivedProfile={derivedProfile} alerts={alerts} onOpenAlerts={() => changeView("alerts")} />}
+        {view === "overview" && <OverviewView data={initialData} privacyMode={privacyMode} profile={profile} setProfile={setProfile} derivedProfile={derivedProfile} alerts={alerts} crashWatch={crashWatch} onOpenCrash={() => changeView("crash")} onOpenAlerts={() => changeView("alerts")} />}
         {view === "thesis" && <ThesisLabView profile={profile} onStatus={setLiveMessage} onQueueReview={queueThesisReview} onOpenReview={() => changeView("review")} />}
         {view === "portfolio" && <PortfolioView holdings={holdings} privacyMode={privacyMode} draft={holdingDraft} setDraft={setHoldingDraft} onSubmit={submitHolding} />}
         {view === "builder" && <BuilderView data={initialData} privacyMode={privacyMode} selected={selectedProposal} setSelected={setSelectedProposal} onStatus={setLiveMessage} />}
         {MARKET_VIEWS[view] && !activeAssetDetails && <MarketView view={view} data={MARKET_VIEWS[view]!} />}
+        {view === "crash" && <CrashWatchView inputs={crashInputs} setInputs={setCrashInputs} result={crashWatch} onStatus={setLiveMessage} />}
         {activeAssetDetails && <AssetDetailsView records={activeAssetDetails} privacyMode={privacyMode} />}
         {view === "signals" && <SignalsView onStatus={setLiveMessage} />}
         {view === "rebalancing" && <RebalancingView privacyMode={privacyMode} contribution={scenario.contribution} setContribution={(value) => setScenario((current) => ({ ...current, contribution: value }))} />}
@@ -488,7 +510,7 @@ export function PrivateCapitalDashboard({ initialData = MOCK_DATA, assetDetails 
 
 type Profile = { capital: number; referenceCurrency: "USD" | "ARS"; horizon: number; liquidityNeed: number; maxLoss: number; argentinaLimit: number; bitcoinLimit: number; assetLimit: number; sectorLimit: number; rebalanceMonths: number; style: string };
 
-function OverviewView({ data, privacyMode, profile, setProfile, derivedProfile, alerts, onOpenAlerts }: { data: PrivateCapitalViewData; privacyMode: boolean; profile: Profile; setProfile: React.Dispatch<React.SetStateAction<Profile>>; derivedProfile: { score: number; label: string }; alerts: CapitalAlert[]; onOpenAlerts: () => void }) {
+function OverviewView({ data, privacyMode, profile, setProfile, derivedProfile, alerts, crashWatch, onOpenCrash, onOpenAlerts }: { data: PrivateCapitalViewData; privacyMode: boolean; profile: Profile; setProfile: React.Dispatch<React.SetStateAction<Profile>>; derivedProfile: { score: number; label: string }; alerts: CapitalAlert[]; crashWatch: ReturnType<typeof analyzeCrashWatch>; onOpenCrash: () => void; onOpenAlerts: () => void }) {
   const metrics = [
     ["ESTIMATED NET ASSETS", formatMoney(data.totalAssets, data.currency, privacyMode), "Simulated total", "cyan"],
     ["PERIOD RETURN", `${data.periodReturn > 0 ? "+" : ""}${data.periodReturn}%`, "12-month mock window", "green"],
@@ -497,6 +519,11 @@ function OverviewView({ data, privacyMode, profile, setProfile, derivedProfile, 
   ];
   return <div className="pc-view-stack">
     <section className="pc-kpis" aria-label="Portfolio summary">{metrics.map(([label, value, note, tone]) => <article key={label} className={`is-${tone}`}><span>{label}</span><strong>{value}</strong><small>{note}</small><i /></article>)}</section>
+    <section className={`pc-crash-strip is-${crashWatch.regime}`} aria-label="Systemic stress early warning">
+      <div><span>MARKET CRASH WATCH · REPLAY SINTÉTICO SELECCIONADO</span><strong>{CRASH_REGIME_LABELS[crashWatch.regime]}</strong><p>{crashWatch.confirmations}/4 lentes coinciden · calidad de evidencia {crashWatch.evidenceQuality}% · horizonte {crashWatch.horizon}</p></div>
+      <div className="pc-crash-strip__score"><strong>{crashWatch.score}</strong><small>STRESS / 100</small></div>
+      <ActionButton onClick={onOpenCrash}>Abrir Crash Watch</ActionButton>
+    </section>
     <div className="pc-grid pc-grid--overview">
       <section className="pc-panel"><header><div><span>01 / ALLOCATION</span><h2>Portfolio structure</h2></div><small>Percentage view remains visible in privacy mode</small></header><AllocationBar items={data.allocation} /><div className="pc-stat-row"><div><span>Argentina</span><strong>23.4%</strong><small>Limit 25%</small></div><div><span>International</span><strong>54.6%</strong><small>Across CEDEARs</small></div><div><span>Bitcoin</span><strong>8.0%</strong><small>Band 6–10%</small></div></div></section>
       <section className="pc-panel pc-profile"><header><div><span>02 / INVESTOR POLICY</span><h2>Risk profile</h2></div><div className="pc-profile-score"><strong>{derivedProfile.score}</strong><small>{derivedProfile.label}</small></div></header><div className="pc-form-grid"><label>Investable capital<input aria-label="Investable capital" inputMode="decimal" type={privacyMode ? "password" : "number"} min="0" max="1000000000000" value={profile.capital} onChange={(event) => setProfile((current) => ({ ...current, capital: Math.max(0, Math.min(1_000_000_000_000, Number(event.target.value) || 0)) }))} /></label><label>Reference currency<select value={profile.referenceCurrency} onChange={(event) => setProfile((current) => ({ ...current, referenceCurrency: event.target.value as "USD" | "ARS" }))}><option>USD</option><option>ARS</option></select></label><label>Allocation style<select value={profile.style} onChange={(event) => setProfile((current) => ({ ...current, style: event.target.value }))}><option>Preservation</option><option>Balanced</option><option>Growth</option><option>Income</option><option>Custom</option></select></label><RangeControl label="Horizon" value={profile.horizon} min={1} max={20} suffix=" years" onChange={(value) => setProfile((current) => ({ ...current, horizon: value }))} /><RangeControl label="Liquidity need" value={profile.liquidityNeed} min={0} max={100} suffix="%" onChange={(value) => setProfile((current) => ({ ...current, liquidityNeed: value }))} /><RangeControl label="Maximum tolerable loss" value={profile.maxLoss} min={5} max={50} suffix="%" onChange={(value) => setProfile((current) => ({ ...current, maxLoss: value }))} /><RangeControl label="Argentina ceiling" value={profile.argentinaLimit} min={0} max={60} suffix="%" onChange={(value) => setProfile((current) => ({ ...current, argentinaLimit: value }))} /><RangeControl label="Bitcoin ceiling" value={profile.bitcoinLimit} min={0} max={25} suffix="%" onChange={(value) => setProfile((current) => ({ ...current, bitcoinLimit: value }))} /><RangeControl label="Single-asset ceiling" value={profile.assetLimit} min={5} max={50} suffix="%" onChange={(value) => setProfile((current) => ({ ...current, assetLimit: value }))} /><RangeControl label="Sector ceiling" value={profile.sectorLimit} min={10} max={70} suffix="%" onChange={(value) => setProfile((current) => ({ ...current, sectorLimit: value }))} /><RangeControl label="Rebalance horizon" value={profile.rebalanceMonths} min={1} max={24} suffix=" months" onChange={(value) => setProfile((current) => ({ ...current, rebalanceMonths: value }))} /></div><p className="pc-method-note">Transparent demo rule: score = (maximum loss × 2) + (horizon × 3) − (liquidity need × 0.45), bounded to 0–100. The label alone never determines suitability.</p></section>
@@ -618,6 +645,58 @@ function BuilderView({ data, privacyMode, selected, setSelected, onStatus }: { d
   const proposal = data.proposals.find((item) => item.id === selected) ?? data.proposals[0];
   const selectProposal = (id: string, name: string) => { setSelected(id); onStatus(`${name} proposal selected for comparison. No allocation was accepted or executed.`); };
   return <div className="pc-view-stack"><section className="pc-proposal-grid" aria-label="Portfolio proposals">{data.proposals.map((item) => <button type="button" key={item.id} onClick={() => selectProposal(item.id, item.name)} aria-pressed={selected === item.id}><span>{item.character}</span><strong>{item.name}</strong><AllocationBar items={item.allocations} compact /><div><small>Expected range <b>{item.expectedRange}</b></small><small>Plausible loss <b>{item.plausibleLoss}</b></small></div></button>)}</section>{proposal && <section className="pc-panel pc-proposal-detail"><header><div><span>SELECTED PROPOSAL · {proposal.id.toUpperCase()}</span><h2>{proposal.name} allocation</h2></div><div className="pc-risk-dial" role="img" aria-label={`Illustrative risk score ${proposal.risk} out of 100`} style={{ "--risk": `${proposal.risk * 3.6}deg` } as React.CSSProperties}><strong>{proposal.risk}</strong><small>RISK</small></div></header><div className="pc-builder-detail"><AllocationBar items={proposal.allocations} /><dl><div><dt>Expected return range</dt><dd>{proposal.expectedRange}</dd></div><div><dt>Plausible adverse range</dt><dd>{proposal.plausibleLoss}</dd></div><div><dt>Estimated liquidity</dt><dd>{proposal.liquidity}</dd></div><div><dt>Concentration index</dt><dd>{proposal.concentration}/100</dd></div><div><dt>Illustrative capital</dt><dd>{formatMoney(data.totalAssets, data.currency, privacyMode)}</dd></div><div><dt>Optimization policy</dt><dd>Bounded · regularized</dd></div></dl></div><div className="pc-thesis-grid"><article><span>RATIONALE</span><p>{proposal.rationale}</p></article><article><span>INVALIDATION CONDITION</span><p>{proposal.invalidation}</p></article></div><footer className="pc-governance-footer"><p>Expected ranges are assumptions, not forecasts. Historical fit never overrides liquidity, concentration and personal loss constraints.</p><div><ActionButton onClick={() => onStatus(`${proposal.name} was added to the simulated comparison set only. Human review is still required.`)}>Stage in simulation</ActionButton><ActionButton disabled title="This UI does not create or execute orders">Execution unavailable</ActionButton></div></footer></section>}</div>;
+}
+
+function CrashWatchView({ inputs, setInputs, result, onStatus }: {
+  inputs: CrashWatchInput;
+  setInputs: React.Dispatch<React.SetStateAction<CrashWatchInput>>;
+  result: ReturnType<typeof analyzeCrashWatch>;
+  onStatus: (message: string) => void;
+}) {
+  const controls: Array<{ key: keyof CrashWatchInput; label: string; note: string }> = [
+    { key: "volatility", label: "Volatilidad implícita", note: "Nivel de estrés del escenario" },
+    { key: "breadthDeterioration", label: "Deterioro de amplitud", note: "Menos activos sostienen el mercado" },
+    { key: "creditStress", label: "Estrés de crédito", note: "Spreads, defaults y refinanciación" },
+    { key: "liquidityStress", label: "Compresión de liquidez", note: "Profundidad, spreads y financiación" },
+    { key: "correlationConvergence", label: "Convergencia de correlaciones", note: "Diversificación que deja de proteger" },
+    { key: "macroSurprise", label: "Sorpresa macro", note: "Desvío contra expectativas de consenso" },
+    { key: "crowdingNarrative", label: "Crowding y narrativa", note: "Posicionamiento, euforia y concentración temática" },
+  ];
+  const applyPreset = (key: keyof typeof CRASH_WATCH_PRESETS, label: string) => {
+    setInputs(CRASH_WATCH_PRESETS[key]);
+    onStatus(`${label} synthetic stress replay loaded. The result is an analytical simulation, not a forecast.`);
+  };
+  return <div className="pc-view-stack">
+    <section className={`pc-crash-command is-${result.regime}`}>
+      <div className="pc-crash-command__status">
+        <span>COMPOSITE SYSTEMIC STRESS · SYNTHETIC REPLAY</span>
+        <h2>{CRASH_REGIME_LABELS[result.regime]}</h2>
+        <p>El sistema busca convergencia entre volatilidad, amplitud, crédito, liquidez, correlaciones y macro. Una alerta indica condiciones compatibles con estrés; no predice fecha, magnitud ni dirección con certeza.</p>
+        <div className="pc-crash-command__facts"><small>{result.confirmations}/4 LENTES COINCIDEN</small><small>{result.evidenceQuality}% CALIDAD DE EVIDENCIA</small><small>{result.agreement}% CONVERGENCIA</small><small>FALSOS POSITIVOS NO CALIBRADOS</small></div>
+      </div>
+      <div className="pc-crash-gauge" role="img" aria-label={`Simulated systemic stress score ${result.score} out of 100`} style={{ "--crash-score": `${result.score * 3.6}deg` } as React.CSSProperties}>
+        <div><strong>{result.score}</strong><small>STRESS / 100</small></div>
+      </div>
+    </section>
+
+    <section className="pc-panel pc-crash-controls">
+      <header><div><span>REPLAY LAB</span><h2>Probá regímenes y verificá cómo cambia el consenso</h2></div><div className="pc-crash-presets"><ActionButton onClick={() => applyPreset("normal", "Normal regime")}>Normal</ActionButton><ActionButton onClick={() => applyPreset("stress", "Stress buildup")}>Stress buildup</ActionButton><ActionButton tone="danger" onClick={() => applyPreset("crash", "Crash-like regime")}>Crash-like</ActionButton></div></header>
+      <div className="pc-crash-signal-grid">{controls.map((control) => <label key={control.key}><span><b>{control.label}</b><small>{control.note}</small></span><output>{inputs[control.key]}</output><input type="range" min="0" max="100" value={inputs[control.key]} onChange={(event) => setInputs((current) => ({ ...current, [control.key]: Number(event.target.value) }))} /></label>)}</div>
+      <p className="pc-method-note">Regla pública y determinística. Pesos: volatilidad 20%, amplitud 18%, crédito 18%, liquidez 16%, correlación 10%, macro 8% y crowding 10%. La cobertura está fijada en 65% por tratarse de un replay sintético y no puede aumentarse desde la interfaz. Un patrón elevado requiere cobertura ≥60% y al menos tres lentes por encima del umbral.</p>
+    </section>
+
+    <section className="pc-panel pc-agent-council pc-crash-agents">
+      <header><div><span>FOUR-AGENT LENS CHECK</span><h2>Convergencia explicable, desacuerdo visible</h2></div><small>Solo Mathematics, Finance, Strategy y Marketing · inferencia simulada</small></header>
+      <div>{result.agents.map((agent) => <article key={agent.id} className={`is-${agent.stance}`}><header><i>{agent.label.slice(0, 2).toUpperCase()}</i><div><strong>{agent.label}</strong><small>{agent.mandate}</small></div><em>{agent.score}</em></header><p>{agent.conclusion}</p><footer>{agent.stance.toUpperCase()} · EVIDENCE QUALITY {agent.evidenceQuality}%</footer></article>)}</div>
+    </section>
+
+    <section className="pc-crash-validation">
+      <article><span>01 · CONFIRMATION</span><h3>No depende de una sola señal</h3><p>El régimen sube solo cuando múltiples familias de evidencia y al menos tres lentes determinísticas coinciden.</p></article>
+      <article><span>02 · CALIBRATION</span><h3>Calidad limitada y falsos positivos</h3><p>La calidad de evidencia tiene un techo de 65%. La tasa de falsos positivos todavía no está calibrada con datos observados.</p></article>
+      <article><span>03 · HUMAN GATE</span><h3>Señalizar no significa operar</h3><p>La salida sirve para revisar exposición, liquidez y escenarios. Nunca crea una orden ni recomienda una venta automática.</p></article>
+    </section>
+    <details className="pc-thesis-method"><summary>Supuestos, límites y condiciones de invalidación</summary><div><section><h3>Qué observa</h3><ul><li>Nivel compuesto de estrés dentro del escenario seleccionado.</li><li>Contagio entre crédito, liquidez, amplitud y correlación.</li><li>Convergencia entre lentes y calidad de evidencia.</li></ul></section><section><h3>Qué no puede saber</h3><ul>{result.limitations.map((item) => <li key={item}>{item}</li>)}</ul></section></div></details>
+  </div>;
 }
 
 function MarketView({ view, data }: { view: PrivateCapitalView; data: { tone: string; headline: string; summary: string; facts: Array<[string, string, string]> } }) {

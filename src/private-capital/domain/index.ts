@@ -1,4 +1,5 @@
 export * from "./alerts.ts";
+export * from "./crash-watch.ts";
 export * from "./metrics.ts";
 export * from "./instruments.ts";
 export * from "./mock-data.ts";

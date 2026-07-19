@@ -9,6 +9,7 @@ import {
   analyzeArgentineBond,
   analyzeBitcoinPosition,
   analyzeCedear,
+  analyzeCrashWatch,
   analyzeInvestmentThesis,
   calculatePortfolioMetrics,
   createExplainableSignal,
@@ -212,6 +213,63 @@ test("signals remain explainable, uncertain, and require human review", () => {
   assert.ok(signal.value);
   assert.equal(signal.value.humanReviewRequired, true);
   assert.equal(inferSignalAction({ evidenceScore: 0.9, riskScore: 0.2, confidence: 0.2, dataSufficient: true, thesisBroken: false }), "insufficient_data");
+});
+
+test("crash watch requires coverage and cross-lens convergence before elevating stress", () => {
+  const stressed = analyzeCrashWatch({
+    volatility: 84,
+    breadthDeterioration: 88,
+    creditStress: 79,
+    liquidityStress: 76,
+    correlationConvergence: 85,
+    macroSurprise: 72,
+    crowdingNarrative: 86,
+    dataCoverage: 91,
+  });
+  assert.equal(stressed.regime, "crash_risk_elevated");
+  assert.ok(stressed.confirmations >= 3);
+  assert.ok(stressed.evidenceQuality <= 65);
+  assert.deepEqual(stressed, analyzeCrashWatch({
+    volatility: 84,
+    breadthDeterioration: 88,
+    creditStress: 79,
+    liquidityStress: 76,
+    correlationConvergence: 85,
+    macroSurprise: 72,
+    crowdingNarrative: 86,
+    dataCoverage: 91,
+  }));
+  assert.deepEqual(stressed.agents.map((agent) => agent.label), ["Mathematics", "Finance", "Strategy", "Marketing"]);
+  assert.equal(Object.values(stressed.weights).reduce((sum, weight) => sum + weight, 0), 1);
+  assert.ok(stressed.agents.every((agent) => agent.score >= 0 && agent.score <= 100));
+
+  const weakCoverage = analyzeCrashWatch({ ...{
+    volatility: 95,
+    breadthDeterioration: 95,
+    creditStress: 95,
+    liquidityStress: 95,
+    correlationConvergence: 95,
+    macroSurprise: 95,
+    crowdingNarrative: 95,
+  }, dataCoverage: 40 });
+  assert.equal(weakCoverage.regime, "insufficient_data");
+  assert.equal(weakCoverage.falsePositiveRisk, "not_calibrated");
+  assert.equal(weakCoverage.predictionMade, false);
+  assert.equal(weakCoverage.executionAuthorized, false);
+  assert.match(weakCoverage.limitations.join(" "), /falso positivo|sintéticos/iu);
+
+  const calm = analyzeCrashWatch({
+    volatility: 20,
+    breadthDeterioration: 20,
+    creditStress: 20,
+    liquidityStress: 20,
+    correlationConvergence: 20,
+    macroSurprise: 20,
+    crowdingNarrative: 20,
+    dataCoverage: 65,
+  });
+  assert.ok(stressed.score > calm.score);
+  assert.equal(calm.regime, "stable");
 });
 
 test("operational alerts suppress mock data while informational observations deduplicate deterministically", () => {
