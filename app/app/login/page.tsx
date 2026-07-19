@@ -53,8 +53,8 @@ export default async function PlatformLoginPage({ searchParams }: { searchParams
 
         <div className="access-actions">
           {scopeAuthorized && authorized ? (
-            <Link className="access-primary" href={isAerialScope ? "/app/aerial-simulation-access" : "/app"}>
-              {isAerialScope ? "Continue to lab verification" : `Continue as ${authorized.displayName}`} -&gt;
+            <Link className="access-primary" href={isAerialScope ? "/app/aerial-simulation" : "/app"}>
+              {isAerialScope ? "Continue to owner lab" : `Continue as ${authorized.displayName}`} -&gt;
             </Link>
           ) : user ? (
             <a className="access-primary" href={chatGPTSignOutPath("/app/login")}>Switch identity -&gt;</a>
@@ -86,7 +86,7 @@ export default async function PlatformLoginPage({ searchParams }: { searchParams
           <p>
             Identity verification is handled by the hosting platform, so Venture Governance never receives or stores a password.
             {isAerialScope ? (
-              " The defense lab applies its own allowlist first, then verifies a separate lab credential before issuing a short-lived session."
+              " The defense lab applies its own server-side owner allowlist, so the verified owner profile enters directly while every other identity remains denied."
             ) : (
               " Workspace access is checked separately against a server-side owner allowlist. A verified identity that does not match the authorized owner remains outside every private application."
             )}

@@ -18,7 +18,7 @@ const STORAGE_KEYS = { sidebar: "vg-platform-sidebar-collapsed", context: "vg-pl
 const CONTEXT_BY_ROUTE = [
   { match: "/app/missions/new", title: "Mission configuration", items: [["Human gate", "Independent review"], ["Catalog", "Authenticated library"], ["Persistence", "Page-local draft"]] },
   { match: "/app/execution-feasibility", title: "Execution feasibility", items: [["Schedule", "PERT · CPM · Monte Carlo"], ["Cost model", "CAPEX · OPEX · TCO"], ["Authority", "Human planning gate"]] },
-  { match: "/app/aerial-simulation", title: "Aerial resilience context", items: [["Access", "Dedicated second gate"], ["Model", "Synthetic and deterministic"], ["Authority", "Human review only"]] },
+  { match: "/app/aerial-simulation", title: "Aerial resilience context", items: [["Access", "Owner profile only"], ["Model", "Synthetic and deterministic"], ["Authority", "Human review only"]] },
   { match: "/app/applications/", title: "Industry workspace", items: [["Surface", "Domain-specific mini-app"], ["Data", "Synthetic and bounded"], ["Authority", "Human review only"]] },
   { match: "/app/applications", title: "Industry workspace library", items: [["Domains", "30 distinct workspaces"], ["Runtime", "Read-only demonstration"], ["Private logic", "Not embedded"]] },
   { match: "/app/models", title: "Model context", items: [["Catalog", "Public demo models"], ["Execution", "Deterministic"], ["Validation", "Per-model status"]] },

@@ -102,14 +102,14 @@ export function PrivateDomainHub({
 
     <section className={styles.domainGrid} aria-label="Mini-apps por dominio">
       {aerialSimulationVisible && <article className={styles.domainCard} style={{ "--domain-accent": "#72d7e8", "--domain-accent-alt": "#efb553" } as CSSProperties} data-visual-group="map">
-        <header><span>RESTRICTED LAB · SECOND GATE</span><i aria-hidden="true" /></header>
+        <header><span>RESTRICTED LAB · OWNER PROFILE</span><i aria-hidden="true" /></header>
         <h2>Aerial Resilience Lab</h2>
         <p>Simulacion matematica deterministica en espacio normalizado, con estimacion probabilistica, incertidumbre y revision humana.</p>
         <div className={styles.cardSignal} aria-hidden="true">
           {[32, 54, 76, 48, 88, 64].map((height, index) => <i key={index} style={{ height: `${height}%` }} />)}
         </div>
         <ul aria-label="Aerial Resilience Lab capabilities"><li>State estimation</li><li>Monte Carlo</li><li>Audit trail</li></ul>
-        <footer><span>DEDICATED CREDENTIAL · SYNTHETIC · HUMAN CONTROL</span><Link href="/app/aerial-simulation">Abrir lab privado <b aria-hidden="true">→</b></Link></footer>
+        <footer><span>OWNER ONLY · SYNTHETIC · HUMAN CONTROL</span><Link href="/app/aerial-simulation">Abrir lab privado <b aria-hidden="true">→</b></Link></footer>
       </article>}
       {privateCapitalVisible && <article className={styles.domainCard} style={{ "--domain-accent": "#54d5dc", "--domain-accent-alt": "#8b80f9" } as CSSProperties} data-visual-group="matrix">
         <header><span>OWNER APP · RESTRICTED</span><i aria-hidden="true" /></header>

@@ -3,7 +3,7 @@ import { AerialSimulationLab } from "@/src/lab/components/AerialSimulationLab";
 /**
  * Dedicated, authenticated presentation of the bounded aerial simulation engine.
  *
- * Access enforcement stays server-side in the protected route and its lab gate;
+ * Access enforcement stays server-side in the protected owner route;
  * this component only presents the verified private session and model boundary.
  */
 export function PrivateAerialSimulation() {
@@ -19,21 +19,17 @@ export function PrivateAerialSimulation() {
           <h1 id="private-aerial-simulation-title">Aerial resilience workspace</h1>
         </div>
         <p>
-          A separate lab credential and authorization scope protect this workspace
-          beyond general private-platform access.
+          Your verified owner profile and the dedicated aerial allowlist protect this
+          workspace from every other identity.
         </p>
       </header>
 
       <div className="private-workflow-notice" role="note" aria-label="Access and model boundary">
-        <strong>LAB SESSION VERIFIED</strong>
+        <strong>OWNER ACCESS VERIFIED</strong>
         <span>
-          Dedicated lab credential verified server-side. Access expires automatically
-          and remains bound to the current workspace identity.
+          The current profile is verified server-side as the authorized owner. No
+          additional lab credential is required and other identities remain denied.
         </span>
-        <form className="private-aerial-lock" method="post" action="/api/private/aerial-simulation/session">
-          <input type="hidden" name="action" value="lock" />
-          <button className="platform-secondary-button" type="submit">Lock lab session</button>
-        </form>
       </div>
 
       <section className="platform-panel" aria-labelledby="private-aerial-boundary-title">

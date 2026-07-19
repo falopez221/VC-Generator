@@ -65,8 +65,7 @@ test("aerial simulation route is covered by the shared and dedicated server gate
   assert.match(layoutSource, /evaluateAerialPrivateAuthorization\(user\)\.authorized/);
   assert.match(dedicatedLayoutSource, /requireAuthorizedChatGPTUser\(AERIAL_SIMULATION_ROOT\)/);
   assert.match(dedicatedLayoutSource, /evaluateAerialPrivateAuthorization\(user\)/);
-  assert.match(dedicatedLayoutSource, /hasValidAerialLabSession\(authorization\.email\)/);
-  assert.match(dedicatedLayoutSource, /AERIAL_SIMULATION_ACCESS_PATH/);
+  assert.doesNotMatch(dedicatedLayoutSource, /hasValidAerialLabSession|AERIAL_SIMULATION_ACCESS_PATH/);
   assert.match(platformLayoutSource, /export const dynamic\s*=\s*["']force-dynamic["']/);
   assert.match(platformLayoutSource, /export const fetchCache\s*=\s*["']force-no-store["']/);
   assert.match(platformLayoutSource, /export const revalidate\s*=\s*0/);
@@ -84,7 +83,7 @@ test("authorized identities alone receive private navigation and catalog discove
   assert.match(applicationsPage, /aerialSimulationAvailable=\{aerialSimulationAvailable\}/);
   assert.match(domainHub, /aerialSimulationAvailable[\s\S]*aerialSimulationVisible/);
   assert.match(domainHub, /\{aerialSimulationVisible\s*&&[\s\S]*href=["']\/app\/aerial-simulation["']/);
-  assert.match(domainHub, /SECOND GATE/);
+  assert.match(domainHub, /OWNER PROFILE/);
 });
 
 test("public surfaces do not link directly to the private aerial simulation", () => {
@@ -120,13 +119,14 @@ test("private surface exposes exactly the four allowed specialist perspectives",
   assert.match(componentSource, /<AerialSimulationLab\s+surface=["']private["']\s*\/>/);
 });
 
-test("private surface remains synthetic after the dedicated credential gate", () => {
+test("private surface remains synthetic after owner-profile authorization", () => {
   const privateSource = `${readSource(PRIVATE_ROUTE)}\n${readSource(PRIVATE_COMPONENT)}`;
 
   assert.match(privateSource, /PRIVATE\s*\/\s*DEDICATED LAB/);
   assert.match(privateSource, /SYNTHETIC\s*·\s*NON-OPERATIONAL/i);
-  assert.match(privateSource, /separate lab credential and authorization scope/i);
-  assert.match(privateSource, /LAB SESSION VERIFIED/);
+  assert.match(privateSource, /verified owner profile and the dedicated aerial allowlist/i);
+  assert.match(privateSource, /OWNER ACCESS VERIFIED/);
+  assert.match(privateSource, /No\s+additional lab credential is required/i);
   assert.doesNotMatch(privateSource, /type\s*=\s*["']password["']/i);
   assert.doesNotMatch(privateSource, /\b(?:bcrypt|argon2|passwordHash|verifyPassword|CredentialsProvider)\b/i);
   assert.doesNotMatch(privateSource, /\b(?:get|require|authorize)ChatGPTUser\b/);

@@ -134,22 +134,21 @@ test("the configured owner can open Private Capital and reach the Thesis Lab", a
   assert.match(html, /noindex/i);
 });
 
-test("the aerial workspace sends its owner through a separate lab credential gate", async () => {
+test("the aerial workspace opens directly for the configured owner profile", async () => {
   const response = await render("/app/aerial-simulation", {
     "oai-authenticated-user-email": "owner@example.test",
   });
-  assert.ok([302, 303, 307, 308].includes(response.status));
-  const location = new URL(response.headers.get("location") ?? "http://localhost/", "http://localhost");
-  assert.equal(location.pathname, "/app/aerial-simulation-access");
+  assert.equal(response.status, 200);
+  const text = renderedText(await response.text());
+  assert.match(text, /Aerial resilience workspace/i);
+  assert.match(text, /OWNER ACCESS VERIFIED/i);
+  assert.match(text, /No additional lab credential is required/i);
 
   const access = await render("/app/aerial-simulation-access", {
     "oai-authenticated-user-email": "owner@example.test",
   });
-  assert.equal(access.status, 200);
-  const text = renderedText(await access.text());
-  assert.match(text, /Unlock the defense simulation lab/i);
-  assert.match(text, /second, separate credential/i);
-  assert.doesNotMatch(text, /ChatGPT/i);
+  assert.ok([302, 303, 307, 308].includes(access.status));
+  assert.equal(new URL(access.headers.get("location") ?? "http://localhost/", "http://localhost").pathname, "/app/aerial-simulation");
 });
 
 test("the configured owner can render execution feasibility and its report controls", async () => {
