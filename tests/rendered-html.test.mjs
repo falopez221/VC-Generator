@@ -103,12 +103,13 @@ test("the configured owner can render the protected demo workspace", async () =>
   assert.equal(response.status, 200);
   assert.match(response.headers.get("cache-control") ?? "", /no-store/i);
   const html = await response.text();
-  assert.match(renderedText(html), /Decisions, evidence and human gates/i);
+  assert.match(renderedText(html), /Choose an intelligence app. Frame the mission/i);
   assert.match(html, /noindex/i);
   assert.doesNotMatch(renderedText(html), /SYSTEM AVAILABLE/i);
   assert.match(renderedText(html), /AUTHENTICATED WORKSPACE/i);
+  assert.match(html, /href="\/app\/aerial-simulation"/i);
   assert.match(html, /href="\/app\/private-capital-intelligence"/i);
-  assert.match(renderedText(html), /Private Capital.*Owner only/i);
+  assert.match(renderedText(html), /Quantitative Personal Capital.*Owner only/i);
 });
 
 test("authorized non-owner users do not receive the Private Capital shortcut", async () => {
@@ -128,9 +129,27 @@ test("the configured owner can open Private Capital and reach the Thesis Lab", a
   const response = await render("/app/private-capital-intelligence", { "oai-authenticated-user-email": "owner@example.test" });
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(renderedText(html), /Private Capital.*Thesis Lab/i);
+  assert.match(renderedText(html), /Quantitative Personal Capital.*Thesis Lab/i);
   assert.match(renderedText(html), /Decision-support environment/i);
   assert.match(html, /noindex/i);
+});
+
+test("the aerial workspace sends its owner through a separate lab credential gate", async () => {
+  const response = await render("/app/aerial-simulation", {
+    "oai-authenticated-user-email": "owner@example.test",
+  });
+  assert.ok([302, 303, 307, 308].includes(response.status));
+  const location = new URL(response.headers.get("location") ?? "http://localhost/", "http://localhost");
+  assert.equal(location.pathname, "/app/aerial-simulation-access");
+
+  const access = await render("/app/aerial-simulation-access", {
+    "oai-authenticated-user-email": "owner@example.test",
+  });
+  assert.equal(access.status, 200);
+  const text = renderedText(await access.text());
+  assert.match(text, /Unlock the defense simulation lab/i);
+  assert.match(text, /second, separate credential/i);
+  assert.doesNotMatch(text, /ChatGPT/i);
 });
 
 test("the configured owner can render execution feasibility and its report controls", async () => {

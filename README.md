@@ -24,6 +24,12 @@ Sitio institucional y demostración pública limitada de Venture Governance Syst
 
 Los resultados no son predicciones ni asesoramiento de inversión. La arquitectura completa, los agentes internos, los prompts, el scoring propietario, las fuentes privadas y la ejecución a escala no forman parte de este repositorio público.
 
+## Laboratorio privado de defensa
+
+`/app/aerial-simulation` agrega una segunda frontera independiente despues del acceso general a `/app`. Requiere `VG_AERIAL_LAB_CREDENTIAL` (una clave distinta, de alta entropia y al menos 20 bytes UTF-8) y `VG_AERIAL_LAB_SESSION_SECRET` (base64url sin padding que decodifique a un minimo de 32 bytes aleatorios). La allowlist opcional se configura con `VG_AERIAL_SIMULATION_OWNER_EMAIL` o `VG_AERIAL_SIMULATION_OWNER_EMAILS`; si se omite, solo se admite el owner confiable ya configurado.
+
+Todas esas variables son exclusivas del servidor y deben vivir en el secret manager del runtime. Si falta o es invalida cualquiera de las dos credenciales del lab, la ruta queda cerrada. Rotar `VG_AERIAL_LAB_SESSION_SECRET` invalida todas las sesiones del lab. El formato y un generador seguro para el secreto de sesion estan documentados en `.env.example`.
+
 ## Stack
 
 - Next.js 16 App Router, React 19 y TypeScript estricto.

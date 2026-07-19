@@ -1,13 +1,22 @@
 import Link from "next/link";
-import { getChatGPTUser, chatGPTSignInPath, authorizeChatGPTUser } from "@/app/chatgpt-auth";
+import { chatGPTSignInPath, chatGPTSignOutPath, getChatGPTUser, authorizeChatGPTUser } from "@/app/chatgpt-auth";
+import { evaluateAerialPrivateAuthorization } from "@/src/private-aerial/security/authorization";
 import { IntelligenceGraph } from "@/src/platform/components/IntelligenceGraph";
 
 export const dynamic = "force-dynamic";
 
-export default async function PlatformLoginPage() {
+export default async function PlatformLoginPage({ searchParams }: { searchParams?: { reason?: string } }) {
   const user = await getChatGPTUser();
   const authorized = user ? authorizeChatGPTUser(user) : null;
-  const credentialState = authorized ? "AUTHORIZED" : user ? "ALLOWLIST REQUIRED" : "SEALED";
+  const isAerialScope = searchParams?.reason === "aerial-private";
+  const aerialAuthorization = isAerialScope && authorized
+    ? evaluateAerialPrivateAuthorization(authorized)
+    : null;
+  const scopeAuthorized = Boolean(authorized && (!isAerialScope || aerialAuthorization?.authorized));
+  const credentialState = scopeAuthorized ? "ACCESS GRANTED" : user ? "ACCESS DENIED" : "SEALED";
+  const privateHint = isAerialScope
+    ? "The defense lab uses a dedicated allowlist and then requests its own separate credential."
+    : "This workspace uses a dedicated private allowlist.";
 
   return (
     <main className="access-page" lang="en">
@@ -43,20 +52,26 @@ export default async function PlatformLoginPage() {
         </div>
 
         <div className="access-actions">
-          {authorized ? (
-            <Link className="access-primary" href="/app">Continue as {authorized.displayName} -&gt;</Link>
+          {scopeAuthorized && authorized ? (
+            <Link className="access-primary" href={isAerialScope ? "/app/aerial-simulation-access" : "/app"}>
+              {isAerialScope ? "Continue to lab verification" : `Continue as ${authorized.displayName}`} -&gt;
+            </Link>
           ) : user ? (
-            <Link className="access-primary" href="/request-access">Request authorization -&gt;</Link>
+            <a className="access-primary" href={chatGPTSignOutPath("/app/login")}>Switch identity -&gt;</a>
           ) : (
-            <a className="access-primary" href={chatGPTSignInPath("/app")}>Sign in securely with ChatGPT -&gt;</a>
+            <a className="access-primary" href={chatGPTSignInPath("/app")}>Verify private credential -&gt;</a>
           )}
-          <Link href="/request-access">Request access</Link>
           <Link href="/">Return to public site</Link>
         </div>
 
         {user && !authorized && (
           <p className="access-denied" role="status">
-            Signed in as {user.email}, but this account is not on the server-side workspace allowlist.
+            Signed in as {user.email}, but this account is not on the server-side allowlist for this private area.
+          </p>
+        )}
+        {isAerialScope && authorized && !aerialAuthorization?.authorized && (
+          <p className="access-denied" role="status">
+            Your private workspace identity is valid, but it is not on the server-side allowlist for the defense lab.
           </p>
         )}
 
@@ -69,10 +84,14 @@ export default async function PlatformLoginPage() {
         <aside>
           <span>ACCESS MODEL</span>
           <p>
-            Sign in is handled by ChatGPT, so Venture Governance never receives or stores a password.
-            Workspace access is checked separately against a server-side allowlist. Persistent invitations,
-            organization membership and enterprise SSO remain planned until a durable authorization backend is connected.
+            Identity verification is handled by the hosting platform, so Venture Governance never receives or stores a password.
+            {isAerialScope ? (
+              " The defense lab applies its own allowlist first, then verifies a separate lab credential before issuing a short-lived session."
+            ) : (
+              " Workspace access is checked separately against a server-side owner allowlist. A verified identity that does not match the authorized owner remains outside every private application."
+            )}
           </p>
+          <p>{privateHint}</p>
         </aside>
       </section>
 

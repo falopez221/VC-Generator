@@ -67,6 +67,11 @@ export function authorizeChatGPTUser(user: ChatGPTUser): AuthorizedChatGPTUser |
   const ownerEmail = sanitizeEmail(process.env.VG_OWNER_EMAIL ?? null);
   if (ownerEmail && email === ownerEmail) return { ...sanitizedUser, role: "System Admin" };
 
+  // Production can be sealed to the single owner identity. When enabled this
+  // is deliberately fail-closed: even a configured secondary allowlist cannot
+  // widen access to /app or its private APIs.
+  if (process.env.VG_OWNER_ONLY === "1") return null;
+
   const allowed = (process.env.VG_AUTHORIZED_EMAILS ?? "")
     .split(",")
     .map((value) => sanitizeEmail(value))

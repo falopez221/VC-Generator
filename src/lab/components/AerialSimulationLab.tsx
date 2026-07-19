@@ -10,6 +10,7 @@ import {
   uncertaintyEllipse,
   type AerialSimulationResult,
   type IntegratorMethod,
+  type KalmanTrack,
   type PublicScenarioId,
   type SimulationStep,
 } from "../aerial-simulation/index.ts";
@@ -17,6 +18,7 @@ import {
 type Mode = "Live" | "Replay" | "Model Comparison" | "Monte Carlo" | "Saturation" | "Agents" | "Audit" | "Executive" | "Research";
 type Layer = "truth" | "observed" | "estimated" | "prediction";
 type ScenarioId = PublicScenarioId;
+type AerialSurface = "public" | "private";
 
 interface SavedControls {
   scenario: ScenarioId;
@@ -37,7 +39,177 @@ const LAYERS: Array<{ id: Layer; label: string; detail: string }> = [
 const SCENARIOS = Object.fromEntries(PUBLIC_SCENARIO_CATALOG.map((item) => [item.id, item])) as Record<ScenarioId, (typeof PUBLIC_SCENARIO_CATALOG)[number]>;
 
 function clamp(value: number, min = 0, max = 1) { return Math.min(max, Math.max(min, value)); }
+function lerp(start: number, end: number, alpha: number) { return start + (end - start) * alpha; }
 function round(value: number, digits = 1) { return Number(value.toFixed(digits)); }
+
+interface TerrainLayerCache {
+  canvas: HTMLCanvasElement;
+  width: number;
+  height: number;
+  ratio: number;
+  seed: number;
+}
+
+interface MapRenderOptions {
+  interpolateMotion?: boolean;
+  terrainLayer?: HTMLCanvasElement | null;
+  showTestMarkers?: boolean;
+}
+
+function terrainValue(horizontal: number, vertical: number, seed: number) {
+  const phase = ((seed % 997) / 997) * Math.PI * 2;
+  const ridge = Math.sin((horizontal * 3.3 + vertical * 1.5) * Math.PI + phase) * .09;
+  const grain = Math.cos((horizontal * 8.2 - vertical * 5.1) * Math.PI - phase * .62) * .035;
+  const hillA = .32 * Math.exp(-(((horizontal - .26) ** 2) / .055 + ((vertical - .34) ** 2) / .11));
+  const hillB = .28 * Math.exp(-(((horizontal - .75) ** 2) / .095 + ((vertical - .63) ** 2) / .065));
+  const basin = .22 * Math.exp(-(((horizontal - .56) ** 2) / .06 + ((vertical - .28) ** 2) / .075));
+  return clamp(.35 + ridge + grain + hillA + hillB - basin, 0, 1);
+}
+
+function terrainColor(value: number) {
+  if (value < .27) return "#10251f";
+  if (value < .39) return "#18362a";
+  if (value < .52) return "#285037";
+  if (value < .66) return "#466844";
+  if (value < .79) return "#71805b";
+  return "#9a966d";
+}
+
+/** Draws a seed-derived visual texture only; it has no geographic or elevation meaning. */
+function drawSyntheticTerrain(context: CanvasRenderingContext2D, width: number, height: number, seed: number) {
+  context.fillStyle = "#10231e";
+  context.fillRect(0, 0, width, height);
+
+  const cell = Math.max(18, Math.min(32, Math.floor(Math.min(width, height) / 18)));
+  for (let y = 0; y < height; y += cell) {
+    for (let x = 0; x < width; x += cell) {
+      const horizontal = clamp((x + cell * .5) / width);
+      const vertical = clamp((y + cell * .5) / height);
+      context.fillStyle = terrainColor(terrainValue(horizontal, vertical, seed));
+      context.fillRect(x, y, cell + 1, cell + 1);
+    }
+  }
+
+  context.save();
+  context.globalAlpha = .28;
+  context.lineWidth = .7;
+  for (const level of [.3, .42, .54, .66, .78]) {
+    context.strokeStyle = level >= .66 ? "rgba(236, 229, 184, .68)" : "rgba(205, 231, 193, .52)";
+    for (let y = 0; y < height; y += cell) {
+      for (let x = 0; x < width; x += cell) {
+        const x1 = Math.min(width, x + cell);
+        const y1 = Math.min(height, y + cell);
+        const topLeft = terrainValue(x / width, y / height, seed);
+        const topRight = terrainValue(x1 / width, y / height, seed);
+        const bottomRight = terrainValue(x1 / width, y1 / height, seed);
+        const bottomLeft = terrainValue(x / width, y1 / height, seed);
+        const crossings: Array<[number, number]> = [];
+        const addCrossing = (from: number, to: number, fromX: number, fromY: number, toX: number, toY: number) => {
+          if ((from - level) * (to - level) > 0 || from === to) return;
+          const progress = clamp((level - from) / (to - from));
+          crossings.push([lerp(fromX, toX, progress), lerp(fromY, toY, progress)]);
+        };
+        addCrossing(topLeft, topRight, x, y, x1, y);
+        addCrossing(topRight, bottomRight, x1, y, x1, y1);
+        addCrossing(bottomRight, bottomLeft, x1, y1, x, y1);
+        addCrossing(bottomLeft, topLeft, x, y1, x, y);
+        if (crossings.length === 2 || crossings.length === 4) {
+          context.beginPath();
+          context.moveTo(crossings[0][0], crossings[0][1]);
+          context.lineTo(crossings[1][0], crossings[1][1]);
+          if (crossings.length === 4) {
+            context.moveTo(crossings[2][0], crossings[2][1]);
+            context.lineTo(crossings[3][0], crossings[3][1]);
+          }
+          context.stroke();
+        }
+      }
+    }
+  }
+  const vignette = context.createRadialGradient(width * .5, height * .45, Math.min(width, height) * .12, width * .5, height * .45, Math.max(width, height) * .76);
+  vignette.addColorStop(0, "rgba(8, 18, 14, 0)");
+  vignette.addColorStop(1, "rgba(5, 12, 9, .54)");
+  context.fillStyle = vignette;
+  context.fillRect(0, 0, width, height);
+  context.restore();
+}
+
+function getTerrainLayer(
+  existing: TerrainLayerCache | null,
+  canvas: HTMLCanvasElement,
+  seed: number,
+): TerrainLayerCache | null {
+  const rect = canvas.getBoundingClientRect();
+  const ratio = Math.min(window.devicePixelRatio || 1, 2);
+  const width = Math.max(320, rect.width);
+  const height = Math.max(360, rect.height);
+  if (existing && existing.width === width && existing.height === height && existing.ratio === ratio && existing.seed === seed) return existing;
+  const terrain = document.createElement("canvas");
+  terrain.width = Math.floor(width * ratio);
+  terrain.height = Math.floor(height * ratio);
+  const context = terrain.getContext("2d");
+  if (!context) return null;
+  context.setTransform(ratio, 0, 0, ratio, 0, 0);
+  drawSyntheticTerrain(context, width, height, seed);
+  return { canvas: terrain, width, height, ratio, seed };
+}
+
+function drawSyntheticTestMarker(
+  context: CanvasRenderingContext2D,
+  point: { x: number; y: number },
+  velocity: { x: number; y: number },
+  label: string,
+  time: number,
+  index: number,
+) {
+  const heading = Math.atan2(-velocity.y, velocity.x);
+  const pulse = .55 + Math.sin(time * 6 + index * 1.37) * .18;
+  const radius = 7 + pulse * 4;
+  context.save();
+  context.strokeStyle = `rgba(230, 252, 241, ${.2 + pulse * .18})`;
+  context.lineWidth = 1;
+  context.beginPath();
+  context.arc(point.x, point.y, radius, 0, Math.PI * 2);
+  context.stroke();
+  context.translate(point.x, point.y);
+  context.rotate(heading);
+  const trail = context.createLinearGradient(-21, 0, 11, 0);
+  trail.addColorStop(0, "rgba(89, 222, 177, 0)");
+  trail.addColorStop(.72, "rgba(89, 222, 177, .4)");
+  trail.addColorStop(1, "rgba(229, 255, 243, .9)");
+  context.strokeStyle = trail;
+  context.lineWidth = 1.4;
+  context.beginPath();
+  context.moveTo(-22, 0);
+  context.lineTo(7, 0);
+  context.stroke();
+  context.fillStyle = "#dff9ec";
+  context.strokeStyle = "rgba(89, 222, 177, .9)";
+  context.lineWidth = 1;
+  context.beginPath();
+  context.arc(0, 0, 4.1, 0, Math.PI * 2);
+  context.fill();
+  context.stroke();
+  context.restore();
+  context.fillStyle = "rgba(232, 250, 239, .86)";
+  context.font = "600 9px ui-monospace, monospace";
+  context.fillText(label, point.x + 11, point.y - 10);
+}
+
+function usePrefersReducedMotion() {
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const query = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updatePreference = () => setPrefersReducedMotion(query.matches);
+    updatePreference();
+    query.addEventListener("change", updatePreference);
+    return () => query.removeEventListener("change", updatePreference);
+  }, []);
+
+  return prefersReducedMotion;
+}
+
 function download(name: string, content: string, type: string) {
   const url = URL.createObjectURL(new Blob([content], { type }));
   const anchor = document.createElement("a");
@@ -74,45 +246,115 @@ function calculateSnapshot(result: AerialSimulationResult, step: SimulationStep)
 function drawMap(
   canvas: HTMLCanvasElement,
   steps: SimulationStep[],
-  currentIndex: number,
+  simulationTime: number,
+  deltaTime: number,
   layers: Record<Layer, boolean>,
+  options: MapRenderOptions = {},
 ) {
+  const { interpolateMotion = true, terrainLayer = null, showTestMarkers = false } = options;
   const rect = canvas.getBoundingClientRect();
   const ratio = Math.min(window.devicePixelRatio || 1, 2);
   const width = Math.max(320, rect.width);
   const height = Math.max(360, rect.height);
-  canvas.width = Math.floor(width * ratio);
-  canvas.height = Math.floor(height * ratio);
+  const pixelWidth = Math.floor(width * ratio);
+  const pixelHeight = Math.floor(height * ratio);
+  if (canvas.width !== pixelWidth) canvas.width = pixelWidth;
+  if (canvas.height !== pixelHeight) canvas.height = pixelHeight;
   const context = canvas.getContext("2d");
   if (!context) return;
-  context.scale(ratio, ratio);
+  context.setTransform(ratio, 0, 0, ratio, 0, 0);
   context.clearRect(0, 0, width, height);
+  context.lineCap = "round";
+  context.lineJoin = "round";
 
-  const grid = context.createLinearGradient(0, 0, width, height);
-  grid.addColorStop(0, "#071a2b");
-  grid.addColorStop(1, "#091f30");
-  context.fillStyle = grid;
-  context.fillRect(0, 0, width, height);
-  context.strokeStyle = "rgba(116, 188, 203, .09)";
-  context.lineWidth = 1;
-  for (let x = 0; x <= width; x += 48) { context.beginPath(); context.moveTo(x, 0); context.lineTo(x, height); context.stroke(); }
-  for (let y = 0; y <= height; y += 48) { context.beginPath(); context.moveTo(0, y); context.lineTo(width, y); context.stroke(); }
-  context.strokeStyle = "rgba(118, 207, 217, .2)";
-  context.setLineDash([4, 8]);
-  context.beginPath(); context.arc(width * .18, height * .78, Math.min(width, height) * .16, 0, Math.PI * 2); context.stroke();
-  context.beginPath(); context.arc(width * .78, height * .68, Math.min(width, height) * .11, 0, Math.PI * 2); context.stroke();
-  context.setLineDash([]);
+  if (terrainLayer) {
+    context.drawImage(terrainLayer, 0, 0, width, height);
+    context.fillStyle = "rgba(4, 16, 11, .1)";
+    context.fillRect(0, 0, width, height);
+  } else {
+    const backdrop = context.createLinearGradient(0, 0, width, height);
+    backdrop.addColorStop(0, "#061724");
+    backdrop.addColorStop(.52, "#082133");
+    backdrop.addColorStop(1, "#061a28");
+    context.fillStyle = backdrop;
+    context.fillRect(0, 0, width, height);
 
+    const ambient = context.createRadialGradient(width * .5, height * .42, 0, width * .5, height * .42, Math.max(width, height) * .72);
+    ambient.addColorStop(0, "rgba(36, 119, 144, .12)");
+    ambient.addColorStop(.62, "rgba(3, 14, 23, .04)");
+    ambient.addColorStop(1, "rgba(1, 8, 14, .42)");
+    context.fillStyle = ambient;
+    context.fillRect(0, 0, width, height);
+
+    const gridSize = 40;
+    for (let x = 0; x <= width; x += gridSize) {
+      const major = Math.round(x / gridSize) % 5 === 0;
+      context.strokeStyle = major ? "rgba(120, 202, 218, .13)" : "rgba(120, 202, 218, .055)";
+      context.lineWidth = major ? 1 : .75;
+      context.beginPath(); context.moveTo(x, 0); context.lineTo(x, height); context.stroke();
+    }
+    for (let y = 0; y <= height; y += gridSize) {
+      const major = Math.round(y / gridSize) % 5 === 0;
+      context.strokeStyle = major ? "rgba(120, 202, 218, .13)" : "rgba(120, 202, 218, .055)";
+      context.lineWidth = major ? 1 : .75;
+      context.beginPath(); context.moveTo(0, y); context.lineTo(width, y); context.stroke();
+    }
+    context.strokeStyle = "rgba(118, 207, 217, .18)";
+    context.beginPath(); context.moveTo(width / 2, 0); context.lineTo(width / 2, height); context.stroke();
+    context.beginPath(); context.moveTo(0, height / 2); context.lineTo(width, height / 2); context.stroke();
+
+    context.fillStyle = "rgba(59, 148, 169, .025)";
+    context.strokeStyle = "rgba(118, 207, 217, .17)";
+    context.setLineDash([4, 8]);
+    context.beginPath(); context.arc(width * .18, height * .78, Math.min(width, height) * .16, 0, Math.PI * 2); context.fill(); context.stroke();
+    context.beginPath(); context.arc(width * .78, height * .68, Math.min(width, height) * .11, 0, Math.PI * 2); context.fill(); context.stroke();
+    context.setLineDash([]);
+  }
+
+  const rawIndex = simulationTime / Math.max(deltaTime, .000001);
+  const currentIndex = Math.min(steps.length - 1, Math.max(0, Math.floor(rawIndex)));
+  const nextIndex = Math.min(steps.length - 1, currentIndex + 1);
+  const alpha = interpolateMotion ? clamp(rawIndex - currentIndex) : 0;
   const current = steps[currentIndex] ?? steps[0];
+  const next = steps[nextIndex] ?? current;
   if (!current) return;
   const toPoint = (x: number, y: number) => ({ x: width * (.5 + x / 4.4), y: height * (.5 - y / 4.4) });
+  const interpolateTrack = (track: KalmanTrack | undefined, nextTrack: KalmanTrack | undefined): KalmanTrack | undefined => {
+    if (!track) return nextTrack;
+    if (!nextTrack) return track;
+    return {
+      ...track,
+      state: track.state.map((value, index) => lerp(value, nextTrack.state[index], alpha)) as KalmanTrack["state"],
+      covariance: track.covariance.map((row, rowIndex) => row.map((value, columnIndex) => lerp(value, nextTrack.covariance[rowIndex]?.[columnIndex] ?? value, alpha))),
+    };
+  };
   const objectIds = Object.keys(current.truth);
   for (const [index, objectId] of objectIds.entries()) {
-    const truth = current.truth[objectId];
+    const currentTruth = current.truth[objectId];
+    const nextTruth = next.truth[objectId] ?? currentTruth;
+    const truth = {
+      position: {
+        x: lerp(currentTruth.position.x, nextTruth.position.x, alpha),
+        y: lerp(currentTruth.position.y, nextTruth.position.y, alpha),
+      },
+      velocity: {
+        x: lerp(currentTruth.velocity.x, nextTruth.velocity.x, alpha),
+        y: lerp(currentTruth.velocity.y, nextTruth.velocity.y, alpha),
+      },
+    };
     const truthPoint = toPoint(truth.position.x, truth.position.y);
-    const measurement = current.measurements.find((item) => item.objectId === objectId);
-    const track = current.tracks.find((item) => item.objectId === objectId);
-    const observedPoint = measurement ? toPoint(measurement.position.x, measurement.position.y) : null;
+    const measurement = current.measurements.find((item) => item.objectId === objectId && item.observationKind === "detection");
+    const nextMeasurement = next.measurements.find((item) => item.objectId === objectId && item.observationKind === "detection");
+    const track = interpolateTrack(
+      current.tracks.find((item) => item.objectId === objectId),
+      next.tracks.find((item) => item.objectId === objectId),
+    );
+    const observedPoint = measurement
+      ? toPoint(
+          nextMeasurement ? lerp(measurement.position.x, nextMeasurement.position.x, alpha) : measurement.position.x,
+          nextMeasurement ? lerp(measurement.position.y, nextMeasurement.position.y, alpha) : measurement.position.y,
+        )
+      : null;
     const estimatedPoint = track ? toPoint(track.state[0], track.state[1]) : null;
 
     if (layers.truth) {
@@ -154,6 +396,16 @@ function drawMap(
       context.fillStyle = "#59deb1";
       context.beginPath(); context.arc(truthPoint.x, truthPoint.y, 3.2, 0, Math.PI * 2); context.fill();
     }
+    if (showTestMarkers && (layers.truth || layers.estimated)) {
+      drawSyntheticTestMarker(
+        context,
+        layers.estimated && estimatedPoint ? estimatedPoint : truthPoint,
+        truth.velocity,
+        `T-${String(index + 1).padStart(2, "0")}`,
+        simulationTime,
+        index,
+      );
+    }
   }
   if (layers.observed) {
     for (const measurement of current.measurements.filter((item) => item.observationKind === "false-observation")) {
@@ -162,17 +414,22 @@ function drawMap(
       context.strokeRect(point.x - 5, point.y - 5, 10, 10);
     }
   }
-  context.fillStyle = "rgba(132, 170, 181, .7)"; context.font = "10px ui-monospace, monospace";
-  context.fillText("NORMALIZED SYNTHETIC SPACE · 0—100", 14, height - 16);
+  context.fillStyle = terrainLayer ? "rgba(225, 239, 219, .74)" : "rgba(132, 170, 181, .7)";
+  context.font = "10px ui-monospace, monospace";
+  context.fillText(terrainLayer ? "FICTIONAL RELIEF · NO GEOGRAPHY · VISUAL ONLY" : "NORMALIZED SYNTHETIC SPACE · 0–100", 14, height - 16);
 }
 
-export function AerialSimulationLab() {
+export function AerialSimulationLab({ surface = "public" }: { surface?: AerialSurface } = {}) {
+  const isPrivateSurface = surface === "private";
+  const prefersReducedMotion = usePrefersReducedMotion();
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const terrainCacheRef = useRef<TerrainLayerCache | null>(null);
   const [scenario, setScenario] = useState<ScenarioId>("crossing");
   const [seed, setSeed] = useState(4127);
-  const [speed, setSpeed] = useState(1);
+  const [speed, setSpeed] = useState(() => isPrivateSurface ? .5 : 1);
   const [time, setTime] = useState(0);
   const [running, setRunning] = useState(false);
+  const timeRef = useRef(0);
   const [mode, setMode] = useState<Mode>("Live");
   const [notice, setNotice] = useState("Ready. Local deterministic model initialized.");
   const [layers, setLayers] = useState<Record<Layer, boolean>>({ truth: true, observed: true, estimated: true, prediction: true });
@@ -210,62 +467,175 @@ export function AerialSimulationLab() {
     }));
   }, [result, currentIndex, snapshot.confidence]);
 
+  const replayProgress = Math.round(clamp(time / Math.max(duration, .001)) * 100);
+  const synchronizedModels = [
+    {
+      id: "propagation",
+      order: "01",
+      name: "State propagation",
+      formula: "xₖ₊₁ = RK4(f, xₖ, Δt)",
+      detail: "Advances normalized position and velocity with the selected numerical integrator.",
+      output: `step ${currentStep.step}/${result.config.steps}`,
+    },
+    {
+      id: "observation",
+      order: "02",
+      name: "Observation + gate",
+      formula: "zₖ = Hxₖ + vₖ · d² ≤ gate",
+      detail: "Applies seeded synthetic noise, then keeps only bounded compatible observations.",
+      output: `${snapshot.observed}/${currentStep.observationSummary.expectedDetections} observed`,
+    },
+    {
+      id: "estimation",
+      order: "03",
+      name: "Kalman estimate",
+      formula: "x̂ₖ = x̂⁻ₖ + Kₖ(zₖ − Hx̂⁻ₖ)",
+      detail: "Updates the filtered state and its 95% covariance ellipse.",
+      output: `${snapshot.confidence}% proxy`,
+    },
+    {
+      id: "sampling",
+      order: "04",
+      name: "Monte Carlo review",
+      formula: "600 seeded draws → P10 / P50 / P90",
+      detail: "Shows a reproducible uncertainty range; it does not forecast a real outcome.",
+      output: `P50 ${monteCarlo.median}`,
+    },
+  ];
+
+  const storageKey = isPrivateSurface ? "vgs-aerial-simulation-private-v1" : STORAGE_KEY;
+
   useEffect(() => {
     try {
-      const parsed = JSON.parse(window.localStorage.getItem(STORAGE_KEY) ?? "null") as SavedControls | null;
+      const storage = isPrivateSurface ? window.sessionStorage : window.localStorage;
+      const parsed = JSON.parse(storage.getItem(storageKey) ?? "null") as SavedControls | null;
       if (parsed && SCENARIOS[parsed.scenario] && MODES.includes(parsed.mode)) queueMicrotask(() => {
         setScenario(parsed.scenario);
         setSeed(clamp(Math.round(parsed.seed), 1, 999999));
         setSpeed(clamp(parsed.speed, .25, 4));
-        setLayers(parsed.layers);
+        setLayers(Object.fromEntries(LAYERS.map(({ id }) => [id, parsed.layers?.[id] ?? true])) as Record<Layer, boolean>);
         setMode(parsed.mode);
-        setNotice("Local session restored.");
+        setNotice(isPrivateSurface ? "Private session settings restored." : "Local settings restored.");
       });
     } catch { /* Optional local persistence; defaults remain valid. */ }
-  }, []);
+  }, [isPrivateSurface, storageKey]);
 
   useEffect(() => {
-    try { window.localStorage.setItem(STORAGE_KEY, JSON.stringify({ scenario, seed, speed, layers, mode } satisfies SavedControls)); } catch { /* UI remains usable. */ }
-  }, [scenario, seed, speed, layers, mode]);
+    const storage = isPrivateSurface ? window.sessionStorage : window.localStorage;
+    try { storage.setItem(storageKey, JSON.stringify({ scenario, seed, speed, layers, mode } satisfies SavedControls)); } catch { /* UI remains usable. */ }
+  }, [isPrivateSurface, storageKey, scenario, seed, speed, layers, mode]);
+
+  const renderCanvas = useCallback((simulationTime: number) => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const terrain = isPrivateSurface
+      ? getTerrainLayer(terrainCacheRef.current, canvas, seed)
+      : null;
+    terrainCacheRef.current = terrain;
+    drawMap(
+      canvas,
+      result.steps,
+      simulationTime,
+      result.config.deltaTime,
+      layers,
+      {
+        interpolateMotion: !prefersReducedMotion,
+        terrainLayer: terrain?.canvas ?? null,
+        showTestMarkers: isPrivateSurface,
+      },
+    );
+  }, [isPrivateSurface, layers, prefersReducedMotion, result.config.deltaTime, result.steps, seed]);
 
   useEffect(() => {
     if (!running) return;
-    const timer = window.setInterval(() => setTime((current) => {
-      const next = current + speed * result.config.deltaTime;
-      if (next >= duration) { setRunning(false); playSound("simulation.complete"); return duration; }
-      return next;
-    }), 500);
-    return () => window.clearInterval(timer);
-  }, [running, speed, duration, result.config.deltaTime]);
+    let frameId = 0;
+    let previousStamp = performance.now();
+    let lastUiCommit = previousStamp;
+    const animate = (stamp: number) => {
+      const deltaSeconds = Math.min(0.1, Math.max(0, (stamp - previousStamp) / 1000));
+      previousStamp = stamp;
+      const previousTime = timeRef.current;
+      const next = Math.min(duration, previousTime + deltaSeconds * speed);
+      const crossedIntegrationStep = Math.floor(previousTime / result.config.deltaTime)
+        !== Math.floor(next / result.config.deltaTime);
+      timeRef.current = next;
+
+      if (!prefersReducedMotion || crossedIntegrationStep || next >= duration) renderCanvas(next);
+      if (
+        (prefersReducedMotion && crossedIntegrationStep)
+        || (!prefersReducedMotion && stamp - lastUiCommit >= 50)
+        || next >= duration
+      ) {
+        lastUiCommit = stamp;
+        setTime(next);
+      }
+
+      if (next >= duration) {
+        setRunning(false);
+        playSound("simulation.complete");
+        return;
+      }
+      frameId = requestAnimationFrame(animate);
+    };
+    frameId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frameId);
+  }, [duration, prefersReducedMotion, renderCanvas, result.config.deltaTime, running, speed]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
-    const render = () => drawMap(canvas, result.steps, currentIndex, layers);
+    if (!canvas) return undefined;
+    const render = () => renderCanvas(timeRef.current);
     render();
+    if (typeof ResizeObserver === "undefined") {
+      window.addEventListener("resize", render);
+      return () => window.removeEventListener("resize", render);
+    }
     const observer = new ResizeObserver(render);
     observer.observe(canvas);
     return () => observer.disconnect();
-  }, [result, currentIndex, layers]);
+  }, [renderCanvas]);
 
   const toggleRunning = () => {
-    setRunning((current) => {
-      const next = !current;
-      if (next && time >= duration) setTime(0);
-      playSound(next ? "simulation.start" : "simulation.pause");
-      setNotice(next ? "Simulation running." : "Simulation paused.");
-      return next;
-    });
+    const next = !running;
+    if (next && timeRef.current >= duration) {
+      timeRef.current = 0;
+      setTime(0);
+      renderCanvas(0);
+    } else if (!next) {
+      setTime(timeRef.current);
+    }
+    setRunning(next);
+    playSound(next ? "simulation.start" : "simulation.pause");
+    setNotice(next ? "Simulation running." : "Simulation paused.");
   };
-  const step = () => { setRunning(false); setTime((current) => Math.min(duration, current + result.config.deltaTime)); setNotice(`Advanced by one ${result.config.deltaTime} s integration step.`); playSound("ui.select"); };
-  const reset = () => { setRunning(false); setTime(0); setNotice("Scenario reset with the same reproducible seed."); playSound("ui.select"); };
-  const changeScenario = (next: ScenarioId) => { setScenario(next); setTime(0); setRunning(false); setNotice(`${SCENARIOS[next].label} loaded; outputs recalculated.`); };
+  const step = () => {
+    const next = Math.min(duration, timeRef.current + result.config.deltaTime);
+    setRunning(false);
+    timeRef.current = next;
+    setTime(next);
+    renderCanvas(next);
+    setNotice(`Advanced by one ${result.config.deltaTime} s integration step.`);
+    playSound("ui.select");
+  };
+  const reset = () => { setRunning(false); setTime(0); timeRef.current = 0; renderCanvas(0); setNotice("Scenario reset with the same reproducible seed."); playSound("ui.select"); };
+  const seek = (next: number) => {
+    const bounded = clamp(next, 0, duration);
+    setRunning(false);
+    timeRef.current = bounded;
+    setTime(bounded);
+    renderCanvas(bounded);
+    setNotice(`Replay position set to T+${bounded.toFixed(1)} s.`);
+  };
+  const changeScenario = (next: ScenarioId) => { setScenario(next); setTime(0); timeRef.current = 0; setRunning(false); setNotice(`${SCENARIOS[next].label} loaded; outputs recalculated.`); };
+  const changeSeed = (next: number) => { setSeed(next); setTime(0); timeRef.current = 0; setRunning(false); setNotice("Seed changed; deterministic outputs recalculated."); };
   const setActiveMode = (next: Mode) => { setMode(next); setNotice(`${next} view selected.`); playSound("ui.select"); };
   const exportPayload = useCallback(() => ({
-    classification: "SYNTHETIC ACADEMIC SIMULATION — NON-OPERATIONAL",
+    classification: isPrivateSurface
+      ? "PRIVATE SESSION — SYNTHETIC ACADEMIC SIMULATION — NON-OPERATIONAL"
+      : "SYNTHETIC ACADEMIC SIMULATION — NON-OPERATIONAL",
     generatedAt: new Date().toISOString(), scenario, simulationTime: round(time, 1), layers, currentMetrics: snapshot,
     modelComparison: models, result,
-  }), [scenario, time, layers, snapshot, models, result]);
+  }), [isPrivateSurface, scenario, time, layers, snapshot, models, result]);
   const exportJson = () => { download(`synthetic-aerial-simulation-${seed}.json`, JSON.stringify(exportPayload(), null, 2), "application/json"); setNotice("Non-operational JSON exported."); };
   const exportCsv = () => {
     const header = "model,one_step_error,uncertainty_confidence_proxy,relative_cost,state\n";
@@ -282,28 +652,40 @@ export function AerialSimulationLab() {
     detail: agent.responsibility,
     confidence: snapshot.confidence,
   }));
+  const Root = isPrivateSurface ? "section" : "main";
+  const Title = isPrivateSurface ? "h2" : "h1";
+  const surfaceTitleId = isPrivateSurface ? "private-aerial-workspace-title" : undefined;
+  const mapSummaryId = isPrivateSurface ? "private-terrain-summary" : "public-map-summary";
 
   return (
-    <main className="asl-shell" id="lab-content">
+    <Root
+      className={`asl-shell${isPrivateSurface ? " asl-shell--private" : ""}`}
+      id={isPrivateSurface ? "aerial-private-content" : "lab-content"}
+      aria-labelledby={surfaceTitleId}
+    >
       <header className="asl-masthead">
         <div>
-          <p className="asl-eyebrow"><span /> Public Lab 03 / Aerial systems</p>
-          <h1>Aerial resilience <em>simulation</em></h1>
-          <p>A reproducible digital-twin experiment in normalized space: noisy virtual observations, probabilistic state estimation and uncertainty-aware review.</p>
+          <p className="asl-eyebrow"><span /> {isPrivateSurface ? "Private lab / Aerial systems" : "Public Lab 03 / Aerial systems"}</p>
+          <Title className="asl-title" id={surfaceTitleId}>Aerial resilience <em>{isPrivateSurface ? "workspace" : "simulation"}</em></Title>
+          <p>{isPrivateSurface
+            ? "A session-scoped analytical workspace for reproducible normalized scenarios, probabilistic state estimation and uncertainty-aware human review."
+            : "A reproducible digital-twin experiment in normalized space: noisy virtual observations, probabilistic state estimation and uncertainty-aware review."}</p>
         </div>
         <aside role="note" aria-label="Simulation boundary">
-          <span>SYNTHETIC · ACADEMIC · NON-OPERATIONAL</span>
+          <span>{isPrivateSurface ? "PRIVATE SESSION · SYNTHETIC · NON-OPERATIONAL" : "SYNTHETIC · ACADEMIC · NON-OPERATIONAL"}</span>
           <strong>No real geography. No weapons. No physical control.</strong>
-          <p>This public model cannot ingest live feeds or produce operational instructions.</p>
+          <p>{isPrivateSurface
+            ? "Dedicated authorization controls access; it does not enable live feeds or operational instructions."
+            : "This public model cannot ingest live feeds or produce operational instructions."}</p>
         </aside>
       </header>
 
-      <nav className="asl-modebar" aria-label="Simulation workspace modes">
+      <div className="asl-modebar" role="group" aria-label="Simulation workspace modes">
         <span>Workspace</span>
-        <div role="tablist" aria-label="Analysis mode">
-          {MODES.map((item) => <button key={item} type="button" role="tab" aria-selected={mode === item} className={mode === item ? "is-active" : undefined} onClick={() => setActiveMode(item)}>{item}</button>)}
+        <div>
+          {MODES.map((item) => <button key={item} type="button" aria-pressed={mode === item} className={mode === item ? "is-active" : undefined} onClick={() => setActiveMode(item)}>{item}</button>)}
         </div>
-      </nav>
+      </div>
 
       <section className="asl-command" aria-label="Simulation controls">
         <div className="asl-run-controls">
@@ -312,10 +694,11 @@ export function AerialSimulationLab() {
           <button type="button" onClick={reset}><span aria-hidden="true">↺</span> Reset</button>
         </div>
         <label><span>Scenario</span><select value={scenario} onChange={(event) => changeScenario(event.target.value as ScenarioId)}>{Object.entries(SCENARIOS).map(([id, item]) => <option key={id} value={id}>{item.label}</option>)}</select></label>
-        <label><span>Seed</span><input type="number" min="1" max="999999" value={seed} onChange={(event) => setSeed(clamp(Math.round(Number(event.target.value) || 1), 1, 999999))} /></label>
+        <label><span>Seed</span><input type="number" min="1" max="999999" value={seed} onChange={(event) => changeSeed(clamp(Math.round(Number(event.target.value) || 1), 1, 999999))} /></label>
         <label className="asl-speed"><span>Speed <output>{speed}×</output></span><input type="range" min="0.25" max="4" step="0.25" value={speed} onChange={(event) => setSpeed(Number(event.target.value))} /></label>
         <div className="asl-clock"><span>T +</span><strong>{time.toFixed(1)}</strong><small>/ {duration.toFixed(1)} s</small></div>
       </section>
+      {isPrivateSurface && <label className="asl-timeline"><span>Replay position <output>T+{time.toFixed(1)} s · {replayProgress}%</output></span><input type="range" min="0" max={duration} step={result.config.deltaTime} value={time} onChange={(event) => seek(Number(event.target.value))} /></label>}
 
       <p className="sr-only" role="status" aria-live="polite">{notice}</p>
       <section className="asl-kpis" aria-label="Current calculated metrics">
@@ -329,18 +712,31 @@ export function AerialSimulationLab() {
       <section className="asl-main-grid">
         <article className="asl-map-panel asl-panel" aria-labelledby="map-title">
           <header className="asl-panel-head">
-            <div><p>01 · NORMALIZED FIELD</p><h2 id="map-title">Synthetic situation map</h2></div>
+            <div><p>01 · {isPrivateSurface ? "SYNTHETIC RELIEF" : "NORMALIZED FIELD"}</p><h2 id="map-title">{isPrivateSurface ? "Fictional terrain field" : "Synthetic situation map"}</h2></div>
             <span className={running ? "asl-live is-running" : "asl-live"}><i /> {running ? "Running" : "Paused"}</span>
           </header>
           <div className="asl-canvas-wrap">
-            <canvas ref={canvasRef} aria-label={`Abstract 2D simulation field at ${time.toFixed(1)} seconds`} role="img">Text summary follows the visual field.</canvas>
-            <div className="asl-map-stamp" aria-hidden="true">NOT A REAL MAP</div>
-            <div className="asl-map-scale" aria-hidden="true"><i />10 normalized units</div>
+            <canvas ref={canvasRef} aria-label={isPrivateSurface ? `Fictional seed-derived terrain texture with synthetic test markers at ${time.toFixed(1)} seconds; the texture has no geographic, elevation, or operational meaning.` : `Abstract 2D simulation field at ${time.toFixed(1)} seconds`} aria-describedby={mapSummaryId} role="img">Text summary follows the visual field.</canvas>
+            <div className="asl-map-stamp" aria-hidden="true">{isPrivateSurface ? "FICTIONAL TERRAIN · NOT A REAL MAP" : "NOT A REAL MAP"}</div>
+            <div className="asl-map-scale" aria-hidden="true"><i />{isPrivateSurface ? "visual relief only" : "10 normalized units"}</div>
+            {isPrivateSurface && <div className="asl-private-map-key" aria-hidden="true"><span><i /> synthetic test marker</span><span><b /> filtered estimate</span><span><em /> forecast</span></div>}
           </div>
+          {isPrivateSurface && <section className="asl-model-rail" aria-labelledby="model-rail-title">
+            <header><div><p>LIVE MODEL VIEW</p><h3 id="model-rail-title">Four mathematical views in synchronized replay</h3></div><span>{running ? "SYNCED" : "READY"}</span></header>
+            <ol>
+              {synchronizedModels.map((model) => <li key={model.id} style={{ "--model-progress": `${Math.max(5, replayProgress)}%` } as React.CSSProperties}>
+                <span className="asl-model-order">{model.order}</span>
+                <div><strong>{model.name}</strong><code>{model.formula}</code><small>{model.detail}</small></div>
+                <output>{model.output}</output>
+                <i aria-hidden="true"><b /></i>
+              </li>)}
+            </ol>
+            <p>Visual replay of precomputed local deterministic calculations. It does not show a live agent network or operational system.</p>
+          </section>}
           <div className="asl-layer-controls" aria-label="Map layers">
             {LAYERS.map((layer) => <label key={layer.id} className={`is-${layer.id}`}><input type="checkbox" checked={layers[layer.id]} onChange={() => setLayers((current) => ({ ...current, [layer.id]: !current[layer.id] }))} /><i /><span><strong>{layer.label}</strong><small>{layer.detail}</small></span></label>)}
           </div>
-          <p className="sr-only">The map shows {result.config.objects.length} synthetic objects, {snapshot.observed} currently observed, with a normalized RMSE of {snapshot.rmse}. Enabled layers: {LAYERS.filter((layer) => layers[layer.id]).map((layer) => layer.label).join(", ")}.</p>
+          <p id={mapSummaryId} className="sr-only">{isPrivateSurface ? "The displayed terrain is a seed-derived visual texture only. It does not affect trajectories, estimation, risk, allocation, or location." : "The map shows"} {result.config.objects.length} synthetic objects, {snapshot.observed} currently observed, with a normalized RMSE of {snapshot.rmse}. Enabled layers: {LAYERS.filter((layer) => layers[layer.id]).map((layer) => layer.label).join(", ")}.</p>
         </article>
 
         <aside className="asl-situation asl-panel" aria-labelledby="situation-title">
@@ -359,11 +755,13 @@ export function AerialSimulationLab() {
 
       <section className={`asl-analysis-grid mode-${mode.toLowerCase().replaceAll(" ", "-")}`}>
         <article className="asl-agents asl-panel" aria-labelledby="agents-title">
-          <header className="asl-panel-head"><div><p>03 · PUBLIC AGENTS</p><h2 id="agents-title">Four bounded perspectives</h2></div><span>4 / 4 visible</span></header>
+          <header className="asl-panel-head"><div><p>03 · {isPrivateSurface ? "CONTROLLED AGENTS" : "PUBLIC AGENTS"}</p><h2 id="agents-title">Four bounded perspectives</h2></div><span>4 / 4 {isPrivateSurface ? "enabled" : "visible"}</span></header>
           <div className="asl-agent-list">
             {agentCards.map((agent) => <article key={agent.code}><div className="asl-agent-code">{agent.code}</div><div><header><h3>{agent.name}</h3><span className={agent.status === "Active" ? "is-active" : undefined}>{agent.status}</span></header><p>{agent.detail}</p><footer><strong>{agent.metric}</strong><span>confidence {agent.confidence}%</span></footer></div></article>)}
           </div>
-          <p className="asl-boundary-line">This repository exposes no hidden agent network, private prompts or proprietary orchestration.</p>
+          <p className="asl-boundary-line">{isPrivateSurface
+            ? "This authenticated view does not expose hidden prompts, private model weights or proprietary orchestration."
+            : "This repository exposes no hidden agent network, private prompts or proprietary orchestration."}</p>
         </article>
 
         <article className="asl-math asl-panel" aria-labelledby="math-title">
@@ -374,7 +772,7 @@ export function AerialSimulationLab() {
             <div><span>Covariance coverage</span><i><b style={{ width: `${snapshot.confidence}%` }} /></i><strong>{snapshot.confidence}%</strong></div>
             <div><span>Observation continuity</span><i><b style={{ width: `${round(snapshot.observed / Math.max(1, currentStep.observationSummary.expectedDetections) * 100)}%` }} /></i><strong>{round(snapshot.observed / Math.max(1, currentStep.observationSummary.expectedDetections) * 100)}%</strong></div>
           </div>
-          <details><summary>Assumptions & validity</summary><p>Constant-velocity transition over 0.5 s steps; additive zero-mean bounded demo noise; normalized dimensionless space. The comparison is educational and is not calibrated against real-world sensors.</p></details>
+          <details><summary>Assumptions & validity</summary><p>Constant-velocity transition over {result.config.deltaTime} s steps; additive zero-mean bounded demo noise; normalized dimensionless space. The comparison is educational and is not calibrated against real-world sensors.</p></details>
         </article>
 
         <article className="asl-models asl-panel" aria-labelledby="models-title">
@@ -385,7 +783,7 @@ export function AerialSimulationLab() {
 
         <article className="asl-monte asl-panel" aria-labelledby="monte-title">
           <header className="asl-panel-head"><div><p>06 · MONTE CARLO</p><h2 id="monte-title">Uncertainty distribution</h2></div><span>{monteCarlo.samples} deterministic draws</span></header>
-          <div className="asl-distribution" aria-label={`Stress distribution percentiles: P10 ${monteCarlo.p10}, P50 ${monteCarlo.median}, P90 ${monteCarlo.p90}`}>
+          <div className="asl-distribution" role="img" aria-label={`Stress distribution percentiles: P10 ${monteCarlo.p10}, P50 ${monteCarlo.median}, P90 ${monteCarlo.p90}`}>
             {Array.from({ length: 22 }, (_, index) => { const center = monteCarlo.median / 100; const x = index / 21; const width = Math.max(.018, monteCarlo.standardDeviation / 100 * .18); const height = Math.exp(-Math.pow(x - center, 2) / width); return <i key={index} style={{ height: `${Math.max(5, height * 100)}%` }} />; })}
           </div>
           <div className="asl-percentiles"><div><span>P10</span><strong>{monteCarlo.p10}</strong></div><div><span>P50</span><strong>{monteCarlo.median}</strong></div><div><span>Mean</span><strong>{monteCarlo.meanRisk}</strong></div><div><span>P90</span><strong>{monteCarlo.p90}</strong></div></div>
@@ -395,15 +793,15 @@ export function AerialSimulationLab() {
         <article className="asl-audit asl-panel" aria-labelledby="audit-title">
           <header className="asl-panel-head"><div><p>07 · AUDIT</p><h2 id="audit-title">Traceable calculation log</h2></div><span>run {seed}-{Math.floor(time * 10).toString().padStart(4, "0")}</span></header>
           <ol>
-            {auditEvents.map((event) => <li key={event.sequence}><time>T+{(event.step * result.config.deltaTime).toFixed(1)}</time><div><strong>{event.summary}</strong><p>{Object.entries(event.data).slice(0, 3).map(([key, value]) => `${key}: ${String(value)}`).join(" · ") || "Recorded by the deterministic public core."}</p></div><span>{event.kind.slice(0, 4).toUpperCase()}</span></li>)}
+            {auditEvents.map((event) => <li key={event.sequence}><time>T+{(event.step * result.config.deltaTime).toFixed(1)}</time><div><strong>{event.summary}</strong><p>{Object.entries(event.data).slice(0, 3).map(([key, value]) => `${key}: ${String(value)}`).join(" · ") || `Recorded by the deterministic ${isPrivateSurface ? "bounded" : "public"} core.`}</p></div><span>{event.kind.slice(0, 4).toUpperCase()}</span></li>)}
           </ol>
         </article>
       </section>
 
       <section className="asl-footer-tools" aria-label="Export and methodology">
-        <div><p>Run status</p><strong>{notice}</strong><span>Configuration is persisted locally in this browser.</span></div>
+        <div><p>Run status</p><strong>{notice}</strong><span>{isPrivateSurface ? "Configuration remains isolated to this browser tab session." : "Configuration is persisted locally in this browser."}</span></div>
         <div className="asl-export"><button type="button" onClick={exportJson}>Export JSON</button><button type="button" onClick={exportCsv}>Export CSV</button><a href="/lab/methodology">Methodology & limitations</a></div>
       </section>
-    </main>
+    </Root>
   );
 }

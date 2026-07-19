@@ -29,13 +29,29 @@ const PRIVATE_CAPITAL_SEARCH_TERMS = [
   "simulaciones",
 ];
 
+const AERIAL_SIMULATION_SEARCH_TERMS = [
+  "aerial resilience",
+  "aerial simulation",
+  "resiliencia aerea",
+  "simulacion",
+  "incertidumbre",
+  "kalman",
+  "monte carlo",
+];
+
 function signalHeight(values: number[], value: number) {
   const min = Math.min(...values);
   const max = Math.max(...values);
   return max === min ? 58 : 18 + ((value - min) / (max - min)) * 82;
 }
 
-export function PrivateDomainHub({ privateCapitalAvailable = false }: { privateCapitalAvailable?: boolean }) {
+export function PrivateDomainHub({
+  privateCapitalAvailable = false,
+  aerialSimulationAvailable = false,
+}: {
+  privateCapitalAvailable?: boolean;
+  aerialSimulationAvailable?: boolean;
+}) {
   const [query, setQuery] = useState("");
   const [group, setGroup] = useState<(typeof GROUPS)[number]["id"]>("all");
   const normalizedQuery = query.trim().toLocaleLowerCase();
@@ -48,13 +64,20 @@ export function PrivateDomainHub({ privateCapitalAvailable = false }: { privateC
   const privateCapitalVisible = privateCapitalAvailable
     && (group === "all" || group === "matrix")
     && (!normalizedQuery || PRIVATE_CAPITAL_SEARCH_TERMS.some((term) => term.includes(normalizedQuery)));
-  const visibleCount = workspaces.length + (privateCapitalVisible ? 1 : 0);
+  const aerialSimulationVisible = aerialSimulationAvailable
+    && (group === "all" || group === "map")
+    && (!normalizedQuery || AERIAL_SIMULATION_SEARCH_TERMS.some((term) => term.includes(normalizedQuery) || normalizedQuery.includes(term)));
+  const restrictedVisibleCount = Number(privateCapitalVisible) + Number(aerialSimulationVisible);
+  const visibleCount = workspaces.length + restrictedVisibleCount;
+  const catalogLabel = aerialSimulationAvailable
+    ? privateCapitalAvailable ? "30 MINI-APPS + 2 RESTRICTED APPS" : "30 MINI-APPS + 1 RESTRICTED LAB"
+    : privateCapitalAvailable ? "30 MINI-APPS + 1 OWNER APP" : "30 MINI-APPS";
 
   return <div className={styles.hub}>
     <DemoNotice />
     <header className={styles.hubHero}>
       <div>
-        <p>{privateCapitalAvailable ? "30 MINI-APPS + 1 OWNER APP" : "30 MINI-APPS"} · AREA AUTENTICADA</p>
+        <p>{catalogLabel} · AREA AUTENTICADA</p>
         <h1>Un workspace de decision propio para cada industria.</h1>
         <p>Cada dominio combina KPIs, vocabulario, fuentes, modelos, roles, visualizaciones y simulaciones especificas. Todo el contenido de esta demostracion es sintetico y reproducible.</p>
       </div>
@@ -78,6 +101,16 @@ export function PrivateDomainHub({ privateCapitalAvailable = false }: { privateC
     </section>
 
     <section className={styles.domainGrid} aria-label="Mini-apps por dominio">
+      {aerialSimulationVisible && <article className={styles.domainCard} style={{ "--domain-accent": "#72d7e8", "--domain-accent-alt": "#efb553" } as CSSProperties} data-visual-group="map">
+        <header><span>RESTRICTED LAB · SECOND GATE</span><i aria-hidden="true" /></header>
+        <h2>Aerial Resilience Lab</h2>
+        <p>Simulacion matematica deterministica en espacio normalizado, con estimacion probabilistica, incertidumbre y revision humana.</p>
+        <div className={styles.cardSignal} aria-hidden="true">
+          {[32, 54, 76, 48, 88, 64].map((height, index) => <i key={index} style={{ height: `${height}%` }} />)}
+        </div>
+        <ul aria-label="Aerial Resilience Lab capabilities"><li>State estimation</li><li>Monte Carlo</li><li>Audit trail</li></ul>
+        <footer><span>DEDICATED CREDENTIAL · SYNTHETIC · HUMAN CONTROL</span><Link href="/app/aerial-simulation">Abrir lab privado <b aria-hidden="true">→</b></Link></footer>
+      </article>}
       {privateCapitalVisible && <article className={styles.domainCard} style={{ "--domain-accent": "#54d5dc", "--domain-accent-alt": "#8b80f9" } as CSSProperties} data-visual-group="matrix">
         <header><span>OWNER APP · RESTRICTED</span><i aria-hidden="true" /></header>
         <h2>Quantitative Personal Capital</h2>
@@ -91,7 +124,7 @@ export function PrivateDomainHub({ privateCapitalAvailable = false }: { privateC
       {workspaces.map((workspace, index) => {
         const style = { "--domain-accent": workspace.accent, "--domain-accent-alt": workspace.accentAlt } as CSSProperties;
         return <article key={workspace.slug} className={styles.domainCard} style={style} data-visual-group={workspace.visualGroup}>
-          <header><span>{String(index + (privateCapitalVisible ? 2 : 1)).padStart(2, "0")} · {workspace.visualMode.replaceAll("-", " ")}</span><i aria-hidden="true" /></header>
+          <header><span>{String(index + restrictedVisibleCount + 1).padStart(2, "0")} · {workspace.visualMode.replaceAll("-", " ")}</span><i aria-hidden="true" /></header>
           <h2>{workspace.name}</h2>
           <p>{workspace.title}</p>
           <div className={styles.cardSignal} aria-hidden="true">

@@ -126,6 +126,13 @@ export function graphFor(variant: GraphVariant, scope: "public" | "private" = "p
   };
 }
 
+export const AERIAL_SIMULATION_MODULE = {
+  href: "/app/aerial-simulation",
+  label: "Aerial Resilience Lab",
+  shortLabel: "AR",
+  status: "Second gate",
+} as const;
+
 export const PLATFORM_MODULES = [
   { href: "/app", label: "Operational Overview", shortLabel: "OV", status: "Private" },
   { href: "/app/missions", label: "Missions", shortLabel: "MS", status: "Private" },

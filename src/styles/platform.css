@@ -624,6 +624,8 @@ html:has(.platform-shell)::-webkit-scrollbar-corner,
 /* Browser-local protected workflows */
 .private-workflow-notice { display: flex; gap: .65rem; align-items: baseline; margin: -1rem 0 1rem; padding: .7rem .8rem; color: #8da6b6; background: rgb(230 174 94 / 5%); border: 1px solid rgb(230 174 94 / 22%); font-size: .68rem; line-height: 1.55; }
 .private-workflow-notice strong { flex: 0 0 auto; color: var(--platform-warning); font: 700 .55rem var(--font-mono); letter-spacing: .08em; }
+.private-aerial-lock { margin-left: auto; }
+.private-aerial-lock .platform-secondary-button { white-space: nowrap; }
 .private-workflow-success { margin: 1rem 0 0; padding: .7rem; color: #a9dcc4; background: rgb(99 211 161 / 7%); border: 1px solid rgb(99 211 161 / 24%); font-size: .68rem; line-height: 1.5; }
 .private-workflow-next { margin: 1rem 0 0; color: #7997a9; font-size: .7rem; }
 .private-workflow-next a, .mission-workbench a { color: #b8dbe8; text-decoration: underline; text-underline-offset: .18em; }
@@ -669,7 +671,7 @@ html:has(.platform-shell)::-webkit-scrollbar-corner,
 .decision-record-gate { margin-top: .75rem; }
 .decision-record-gate__fields { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
 .decision-record-gate__fields label:nth-child(n + 3) { grid-column: span 1; }
-@media (max-width: 760px) { .private-workflow-notice { align-items: start; flex-direction: column; gap: .25rem; margin-top: -1.25rem; } .mission-workbench > header, .mission-workbench footer, .decision-record-gate footer { align-items: stretch; flex-direction: column; } .mission-workbench__fields, .decision-record-grid, .decision-record-gate__fields { grid-template-columns: 1fr; } .decision-record-items li { flex-direction: column; } }
+@media (max-width: 760px) { .private-workflow-notice { align-items: start; flex-direction: column; gap: .25rem; margin-top: -1.25rem; } .private-aerial-lock { margin-left: 0; } .mission-workbench > header, .mission-workbench footer, .decision-record-gate footer { align-items: stretch; flex-direction: column; } .mission-workbench__fields, .decision-record-grid, .decision-record-gate__fields { grid-template-columns: 1fr; } .decision-record-items li { flex-direction: column; } }
 @media (max-width: 980px) {
   .private-simulation__layout { grid-template-columns: 1fr; }
   .private-simulation__metrics--four { grid-template-columns: 1fr 1fr; }
