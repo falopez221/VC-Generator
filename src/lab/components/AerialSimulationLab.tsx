@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { playSound } from "../audio.ts";
+import { playSound, unlockAudio } from "../audio.ts";
 import {
   createScenarioConfig,
   integrateKinematics,
@@ -243,6 +243,27 @@ function calculateSnapshot(result: AerialSimulationResult, step: SimulationStep)
   };
 }
 
+/** Finds one reproducible visual cue; it does not affect any model output. */
+function findSyntheticConvergenceTime(result: AerialSimulationResult) {
+  let closestDistance = Number.POSITIVE_INFINITY;
+  let closestStep = 0;
+  for (const step of result.steps) {
+    const states = Object.values(step.truth);
+    for (let leftIndex = 0; leftIndex < states.length; leftIndex += 1) {
+      for (let rightIndex = leftIndex + 1; rightIndex < states.length; rightIndex += 1) {
+        const left = states[leftIndex];
+        const right = states[rightIndex];
+        const distance = Math.hypot(left.position.x - right.position.x, left.position.y - right.position.y);
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestStep = step.step;
+        }
+      }
+    }
+  }
+  return closestStep * result.config.deltaTime;
+}
+
 function drawMap(
   canvas: HTMLCanvasElement,
   steps: SimulationStep[],
@@ -430,12 +451,19 @@ export function AerialSimulationLab({ surface = "public" }: { surface?: AerialSu
   const [time, setTime] = useState(0);
   const [running, setRunning] = useState(false);
   const timeRef = useRef(0);
+  const cueFiredRef = useRef(false);
+  const cueTimerRef = useRef<number | null>(null);
+  const [cueActive, setCueActive] = useState(false);
   const [mode, setMode] = useState<Mode>("Live");
   const [notice, setNotice] = useState("Ready. Local deterministic model initialized.");
   const [layers, setLayers] = useState<Record<Layer, boolean>>({ truth: true, observed: true, estimated: true, prediction: true });
   const config = useMemo(() => createScenarioConfig(scenario, seed), [scenario, seed]);
   const result = useMemo(() => runAerialSimulation(config), [config]);
   const duration = result.config.steps * result.config.deltaTime;
+  const syntheticCueTime = useMemo(
+    () => isPrivateSurface ? findSyntheticConvergenceTime(result) : null,
+    [isPrivateSurface, result],
+  );
   const currentIndex = Math.min(result.steps.length - 1, Math.max(0, Math.floor(time / result.config.deltaTime)));
   const currentStep = result.steps[currentIndex];
   const snapshot = useMemo(() => calculateSnapshot(result, currentStep), [result, currentStep]);
@@ -483,15 +511,15 @@ export function AerialSimulationLab({ surface = "public" }: { surface?: AerialSu
       name: "Observation + gate",
       formula: "zₖ = Hxₖ + vₖ · d² ≤ gate",
       detail: "Applies seeded synthetic noise, then keeps only bounded compatible observations.",
-      output: `${snapshot.observed}/${currentStep.observationSummary.expectedDetections} observed`,
+      output: `${snapshot.observed}/${result.config.objects.length} eligible`,
     },
     {
       id: "estimation",
       order: "03",
       name: "Kalman estimate",
       formula: "x̂ₖ = x̂⁻ₖ + Kₖ(zₖ − Hx̂⁻ₖ)",
-      detail: "Updates the filtered state and its 95% covariance ellipse.",
-      output: `${snapshot.confidence}% proxy`,
+      detail: "Updates the filtered state and its nominal 95% Gaussian covariance ellipse.",
+      output: `${snapshot.confidence}% size proxy`,
     },
     {
       id: "sampling",
@@ -504,6 +532,34 @@ export function AerialSimulationLab({ surface = "public" }: { surface?: AerialSu
   ];
 
   const storageKey = isPrivateSurface ? "vgs-aerial-simulation-private-v1" : STORAGE_KEY;
+
+  const resetSyntheticCue = useCallback(() => {
+    cueFiredRef.current = false;
+    if (cueTimerRef.current !== null) {
+      window.clearTimeout(cueTimerRef.current);
+      cueTimerRef.current = null;
+    }
+    setCueActive(false);
+  }, []);
+
+  const triggerSyntheticCue = useCallback(() => {
+    if (!isPrivateSurface || cueFiredRef.current) return;
+    cueFiredRef.current = true;
+    if (cueTimerRef.current !== null) window.clearTimeout(cueTimerRef.current);
+    setCueActive(true);
+    cueTimerRef.current = window.setTimeout(() => {
+      cueTimerRef.current = null;
+      setCueActive(false);
+    }, 1300);
+    const played = playSound("simulation.syntheticCue");
+    setNotice(played
+      ? "Synthetic convergence cue played; background score paused."
+      : "Synthetic convergence cue reached. Audio remains disabled.");
+  }, [isPrivateSurface]);
+
+  useEffect(() => () => {
+    if (cueTimerRef.current !== null) window.clearTimeout(cueTimerRef.current);
+  }, []);
 
   useEffect(() => {
     try {
@@ -560,6 +616,14 @@ export function AerialSimulationLab({ surface = "public" }: { surface?: AerialSu
         !== Math.floor(next / result.config.deltaTime);
       timeRef.current = next;
 
+      if (
+        isPrivateSurface
+        && syntheticCueTime !== null
+        && !cueFiredRef.current
+        && previousTime < syntheticCueTime
+        && next >= syntheticCueTime
+      ) triggerSyntheticCue();
+
       if (!prefersReducedMotion || crossedIntegrationStep || next >= duration) renderCanvas(next);
       if (
         (prefersReducedMotion && crossedIntegrationStep)
@@ -579,7 +643,7 @@ export function AerialSimulationLab({ surface = "public" }: { surface?: AerialSu
     };
     frameId = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(frameId);
-  }, [duration, prefersReducedMotion, renderCanvas, result.config.deltaTime, running, speed]);
+  }, [duration, isPrivateSurface, prefersReducedMotion, renderCanvas, result.config.deltaTime, running, speed, syntheticCueTime, triggerSyntheticCue]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -597,7 +661,9 @@ export function AerialSimulationLab({ surface = "public" }: { surface?: AerialSu
 
   const toggleRunning = () => {
     const next = !running;
+    if (next) unlockAudio();
     if (next && timeRef.current >= duration) {
+      resetSyntheticCue();
       timeRef.current = 0;
       setTime(0);
       renderCanvas(0);
@@ -609,25 +675,36 @@ export function AerialSimulationLab({ surface = "public" }: { surface?: AerialSu
     setNotice(next ? "Simulation running." : "Simulation paused.");
   };
   const step = () => {
+    const previousTime = timeRef.current;
     const next = Math.min(duration, timeRef.current + result.config.deltaTime);
+    const crossesSyntheticCue = isPrivateSurface
+      && syntheticCueTime !== null
+      && !cueFiredRef.current
+      && previousTime < syntheticCueTime
+      && next >= syntheticCueTime;
+    unlockAudio();
     setRunning(false);
     timeRef.current = next;
     setTime(next);
     renderCanvas(next);
-    setNotice(`Advanced by one ${result.config.deltaTime} s integration step.`);
-    playSound("ui.select");
+    if (crossesSyntheticCue) triggerSyntheticCue();
+    else {
+      setNotice(`Advanced by one ${result.config.deltaTime} s integration step.`);
+      playSound("ui.select");
+    }
   };
-  const reset = () => { setRunning(false); setTime(0); timeRef.current = 0; renderCanvas(0); setNotice("Scenario reset with the same reproducible seed."); playSound("ui.select"); };
+  const reset = () => { resetSyntheticCue(); setRunning(false); setTime(0); timeRef.current = 0; renderCanvas(0); setNotice("Scenario reset with the same reproducible seed."); playSound("ui.select"); };
   const seek = (next: number) => {
     const bounded = clamp(next, 0, duration);
+    if (syntheticCueTime !== null && bounded < syntheticCueTime) resetSyntheticCue();
     setRunning(false);
     timeRef.current = bounded;
     setTime(bounded);
     renderCanvas(bounded);
     setNotice(`Replay position set to T+${bounded.toFixed(1)} s.`);
   };
-  const changeScenario = (next: ScenarioId) => { setScenario(next); setTime(0); timeRef.current = 0; setRunning(false); setNotice(`${SCENARIOS[next].label} loaded; outputs recalculated.`); };
-  const changeSeed = (next: number) => { setSeed(next); setTime(0); timeRef.current = 0; setRunning(false); setNotice("Seed changed; deterministic outputs recalculated."); };
+  const changeScenario = (next: ScenarioId) => { resetSyntheticCue(); setScenario(next); setTime(0); timeRef.current = 0; setRunning(false); setNotice(`${SCENARIOS[next].label} loaded; outputs recalculated.`); };
+  const changeSeed = (next: number) => { resetSyntheticCue(); setSeed(next); setTime(0); timeRef.current = 0; setRunning(false); setNotice("Seed changed; deterministic outputs recalculated."); };
   const setActiveMode = (next: Mode) => { setMode(next); setNotice(`${next} view selected.`); playSound("ui.select"); };
   const exportPayload = useCallback(() => ({
     classification: isPrivateSurface
@@ -704,7 +781,7 @@ export function AerialSimulationLab({ surface = "public" }: { surface?: AerialSu
       <section className="asl-kpis" aria-label="Current calculated metrics">
         <article><span>Objects / observed</span><strong>{result.config.objects.length}<i>/ {snapshot.observed}</i></strong><small>synthetic entities</small></article>
         <article><span>Estimation RMSE</span><strong>{snapshot.rmse}<i> u</i></strong><small>normalized units</small></article>
-        <article><span>Covariance confidence proxy</span><strong>{snapshot.confidence}<i>%</i></strong><small>derived from ellipse size</small></article>
+        <article><span>Ellipse-size proxy</span><strong>{snapshot.confidence}<i>%</i></strong><small>heuristic; not empirical coverage</small></article>
         <article><span>Capacity utilization</span><strong>{snapshot.utilization}<i>%</i></strong><small>{snapshot.queue} queued abstractions</small></article>
         <article className={snapshot.risk >= 70 ? "is-alert" : undefined}><span>Composite stress</span><strong>{snapshot.risk}<i>/100</i></strong><small>{riskLabel}</small></article>
       </section>
@@ -719,6 +796,7 @@ export function AerialSimulationLab({ surface = "public" }: { surface?: AerialSu
             <canvas ref={canvasRef} aria-label={isPrivateSurface ? `Fictional seed-derived terrain texture with synthetic test markers at ${time.toFixed(1)} seconds; the texture has no geographic, elevation, or operational meaning.` : `Abstract 2D simulation field at ${time.toFixed(1)} seconds`} aria-describedby={mapSummaryId} role="img">Text summary follows the visual field.</canvas>
             <div className="asl-map-stamp" aria-hidden="true">{isPrivateSurface ? "FICTIONAL TERRAIN · NOT A REAL MAP" : "NOT A REAL MAP"}</div>
             <div className="asl-map-scale" aria-hidden="true"><i />{isPrivateSurface ? "visual relief only" : "10 normalized units"}</div>
+            {isPrivateSurface && <div className={`asl-synthetic-cue${cueActive ? " is-active" : ""}`} aria-hidden="true"><i /><span>synthetic convergence cue</span><small>score paused</small></div>}
             {isPrivateSurface && <div className="asl-private-map-key" aria-hidden="true"><span><i /> synthetic test marker</span><span><b /> filtered estimate</span><span><em /> forecast</span></div>}
           </div>
           {isPrivateSurface && <section className="asl-model-rail" aria-labelledby="model-rail-title">
@@ -748,7 +826,7 @@ export function AerialSimulationLab({ surface = "public" }: { surface?: AerialSu
             <div><dt>Abstract review demand</dt><dd>{snapshot.reviewDemand}</dd></div>
             <div><dt>Association state</dt><dd>{snapshot.unassignedObservations > 0 ? "Ambiguous" : "Stable"}</dd></div>
           </dl>
-          <div className="asl-callout"><span>Interpretation</span><p>{snapshot.confidence < 70 ? "Confidence is degraded; high visual precision should not be read as high mathematical certainty." : "Estimates remain inside the demonstrative confidence boundary for this run."}</p></div>
+          <div className="asl-callout"><span>Interpretation</span><p>{snapshot.confidence < 70 ? "The ellipse-size proxy is degraded; high visual precision should not be read as high mathematical certainty." : "This run retains a bounded nominal covariance estimate; it is not validated coverage."}</p></div>
           <div className="asl-assumptions"><strong>Visible assumptions</strong><ul><li>Coordinates and zones are fictitious.</li><li>Noise is bounded and seed-derived.</li><li>No result is an instruction or decision.</li></ul></div>
         </aside>
       </section>

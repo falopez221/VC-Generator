@@ -92,6 +92,10 @@
 .asl-shell--private .asl-map-scale { color: #c4d6bd; }.asl-shell--private .asl-map-scale i { border-color: #c4d6bd; }
 .asl-private-map-key { position: absolute; bottom: 1.35rem; left: 1.55rem; display: flex; gap: .7rem; align-items: center; padding: .42rem .55rem; color: #d7ead3; background: rgb(7 26 16 / 76%); border: 1px solid rgb(204 237 192 / 18%); font: 600 .43rem var(--font-mono); letter-spacing: .04em; text-transform: uppercase; }
 .asl-private-map-key span { display: inline-flex; gap: .3rem; align-items: center; white-space: nowrap; }.asl-private-map-key i, .asl-private-map-key b, .asl-private-map-key em { width: 7px; height: 7px; display: inline-block; border-radius: 50%; background: #dff9ec; box-shadow: 0 0 8px rgb(89 222 177 / 70%); }.asl-private-map-key b { background: #76d6ee; box-shadow: 0 0 8px rgb(118 214 238 / 70%); }.asl-private-map-key em { width: 9px; height: 0; border-radius: 0; background: transparent; border-top: 1px dashed var(--asl-amber); box-shadow: none; }
+.asl-synthetic-cue { position: absolute; top: 50%; left: 50%; z-index: 2; display: grid; gap: .18rem; min-width: 174px; padding: .72rem .9rem; color: #effcf0; background: rgb(8 42 27 / 90%); border: 1px solid rgb(161 239 181 / 56%); box-shadow: 0 0 0 6px rgb(106 221 141 / 8%), 0 0 28px rgb(85 220 133 / 34%); font-family: var(--font-mono); letter-spacing: .09em; text-align: center; text-transform: uppercase; opacity: 0; pointer-events: none; transform: translate(-50%, -50%) scale(.92); transition: opacity .18s ease, transform .18s ease; }
+.asl-synthetic-cue i { width: 28px; height: 28px; justify-self: center; border: 2px solid #abf3bd; border-radius: 50%; box-shadow: inset 0 0 0 5px rgb(171 243 189 / 18%), 0 0 16px rgb(139 239 163 / 70%); }.asl-synthetic-cue span { font-size: .48rem; font-weight: 750; }.asl-synthetic-cue small { color: #b7d9bd; font-size: .43rem; font-weight: 650; }
+.asl-synthetic-cue.is-active { opacity: 1; transform: translate(-50%, -50%) scale(1); animation: asl-synthetic-cue .88s ease both; }
+@keyframes asl-synthetic-cue { 0% { box-shadow: 0 0 0 0 rgb(106 221 141 / 34%), 0 0 12px rgb(85 220 133 / 20%); } 55% { box-shadow: 0 0 0 16px rgb(106 221 141 / 0%), 0 0 34px rgb(85 220 133 / 58%); } 100% { box-shadow: 0 0 0 6px rgb(106 221 141 / 8%), 0 0 28px rgb(85 220 133 / 34%); } }
 .asl-layer-controls { display: grid; grid-template-columns: repeat(4, 1fr); background: #061724; border-top: 1px solid var(--asl-line); }
 .asl-layer-controls label { min-height: 70px; display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: .55rem; align-items: center; padding: .7rem 1rem; border-right: 1px solid var(--asl-line); cursor: pointer; }
 .asl-layer-controls input { position: absolute; opacity: 0; pointer-events: none; }
@@ -115,6 +119,14 @@
 
 .private-aerial-simulation .private-aerial-capacity { display: grid; grid-template-columns: minmax(116px, .35fr) minmax(0, 1fr); gap: 1rem 1.4rem; align-items: center; margin: 1rem 0; padding: 1.05rem 1.2rem; color: #d9ebd7; background: linear-gradient(135deg, rgb(14 43 28 / 85%), rgb(8 27 19 / 94%)); border: 1px solid rgb(143 211 160 / 22%); border-left: 3px solid #8fd3a0; }
 .private-aerial-capacity > div { display: grid; gap: .3rem; }.private-aerial-capacity span { color: #9ccba6; font: 700 .48rem var(--font-mono); letter-spacing: .1em; text-transform: uppercase; }.private-aerial-capacity strong { color: #eff9ed; font: 520 clamp(2rem, 3vw, 3rem) var(--font-mono); line-height: .9; }.private-aerial-capacity p { margin: 0; color: #9db8a1; font-size: .6rem; line-height: 1.55; }
+.private-aerial-mathematics { margin: 1rem 0 0; color: #d7e7d6; background: #081b12; border: 1px solid rgb(143 211 160 / 20%); }
+.private-aerial-mathematics > header { display: grid; grid-template-columns: minmax(0, 1fr) minmax(230px, .52fr); gap: 1.4rem; align-items: end; padding: 1.25rem 1.35rem; background: linear-gradient(120deg, rgb(24 63 36 / 74%), rgb(8 27 18 / 92%)); border-bottom: 1px solid rgb(143 211 160 / 18%); }
+.private-aerial-mathematics header span { color: #9fd9ac; font: 700 .5rem var(--font-mono); letter-spacing: .11em; }.private-aerial-mathematics header h2 { margin: .35rem 0 0; color: #edf6eb; font-size: clamp(1rem, 1.7vw, 1.35rem); font-weight: 560; letter-spacing: -.02em; }.private-aerial-mathematics header p { margin: 0; color: #9bb79f; font-size: .61rem; line-height: 1.55; }
+.private-aerial-mathematics ol { display: grid; grid-template-columns: 1fr 1fr; margin: 0; padding: 0; list-style: none; counter-reset: mathematical-line; }
+.private-aerial-mathematics li { display: grid; grid-template-columns: 42px minmax(0, 1fr); gap: .8rem; padding: 1.15rem 1.2rem; border-right: 1px solid rgb(143 211 160 / 13%); border-bottom: 1px solid rgb(143 211 160 / 13%); }
+.private-aerial-mathematics li > span { width: 29px; height: 29px; display: grid; place-items: center; color: #bfeac7; background: rgb(143 211 160 / 10%); border: 1px solid rgb(143 211 160 / 28%); font: 650 .5rem var(--font-mono); }
+.private-aerial-mathematics h3 { margin: 0 0 .45rem; color: #e4f3e2; font-size: .72rem; font-weight: 620; }.private-aerial-mathematics li p:not(.private-aerial-equation) { margin: .55rem 0 0; color: #9bb59e; font-size: .57rem; line-height: 1.58; }.private-aerial-mathematics li p b { color: #d2e6d2; }
+.private-aerial-equation { margin: .45rem 0; padding: .65rem .7rem; overflow-wrap: anywhere; color: #bce8c4; background: rgb(3 13 8 / 56%); border-left: 2px solid #82c994; font: 500 .65rem var(--font-mono); line-height: 1.6; }.private-aerial-equation i { color: #f2fbef; }.private-aerial-equation sub, .private-aerial-equation sup { color: #91ba99; }
 
 .asl-situation { background: #071825; }
 .asl-situation-score { display: grid; grid-template-columns: 105px 1fr; gap: 1.2rem; align-items: center; padding: 1.4rem 1.2rem; border-bottom: 1px solid var(--asl-line); }
@@ -201,6 +213,7 @@
   .asl-kpis { grid-template-columns: repeat(3, 1fr); }.asl-kpis article { border-bottom: 1px solid var(--asl-line); }
   .asl-main-grid { grid-template-columns: 1fr; }.asl-map-panel { border-right: 0; border-bottom: 1px solid var(--asl-line); }
   .asl-analysis-grid > .asl-panel { grid-column: span 6; }.asl-models, .asl-audit { grid-column: 1 / -1 !important; }
+  .private-aerial-mathematics > header { grid-template-columns: 1fr; }.private-aerial-mathematics ol { grid-template-columns: 1fr; }
 }
 @media (max-width: 620px) {
   .asl-masthead { min-height: auto; padding-top: 3.5rem; }.asl-masthead .asl-title { font-size: clamp(2.7rem, 15vw, 4.8rem); }

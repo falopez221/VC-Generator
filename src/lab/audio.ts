@@ -1,4 +1,4 @@
-export type SoundEventName = "ui.select" | "ui.primaryAction" | "simulation.start" | "simulation.pause" | "simulation.complete" | "agent.activate" | "agent.complete" | "opportunity.generated" | "ranking.updated" | "evidence.warning" | "human.approve" | "human.uncertain" | "human.reject";
+export type SoundEventName = "ui.select" | "ui.primaryAction" | "simulation.start" | "simulation.pause" | "simulation.complete" | "simulation.syntheticCue" | "agent.activate" | "agent.complete" | "opportunity.generated" | "ranking.updated" | "evidence.warning" | "human.approve" | "human.uncertain" | "human.reject";
 export type LabScoreTheme = "lab" | "simulation" | "discovery" | "methodology";
 
 const SCORE_PATHS: Record<LabScoreTheme, string> = {
@@ -16,6 +16,7 @@ let score: HTMLAudioElement | null = null;
 let scoreFadeFrame = 0;
 let scoreLevel = .68;
 let resumeOnVisible = false;
+const activeEffects = new Set<HTMLAudioElement>();
 
 function normalizeVolume(value: number) { return Number.isFinite(value) ? Math.min(100, Math.max(0, Math.round(value))) : 25; }
 function targetVolume(level = scoreLevel) { return Math.min(.82, Math.max(0, volume / 100 * level)); }
@@ -72,6 +73,21 @@ function startScore() {
 
 function stopScore() { cancelFade(); score?.pause(); }
 
+function playEffect(path: string, level = .86) {
+  const effect = new Audio(path);
+  effect.preload = "auto";
+  effect.volume = Math.min(.82, targetVolume(level));
+  activeEffects.add(effect);
+  const release = () => {
+    activeEffects.delete(effect);
+    effect.removeEventListener("ended", release);
+    effect.removeEventListener("error", release);
+  };
+  effect.addEventListener("ended", release);
+  effect.addEventListener("error", release);
+  void effect.play().catch(release);
+}
+
 export function getAudioSettings() {
   if (typeof window !== "undefined") {
     try {
@@ -105,7 +121,12 @@ export function setLabScoreTheme(nextTheme: LabScoreTheme) {
   crossfade(previous, next);
 }
 
-export function stopLabAudio() { resumeOnVisible = false; stopScore(); }
+export function stopLabAudio() {
+  resumeOnVisible = false;
+  stopScore();
+  for (const effect of activeEffects) effect.pause();
+  activeEffects.clear();
+}
 
 if (typeof window !== "undefined") {
   document.addEventListener("visibilitychange", () => {
@@ -117,6 +138,11 @@ if (typeof window !== "undefined") {
 
 export function playSound(eventName: SoundEventName) {
   if (!unlocked || !enabled || volume <= 0 || typeof window === "undefined") return false;
+  if (eventName === "simulation.syntheticCue") {
+    stopLabAudio();
+    playEffect("/audio/swosh.mp3");
+    return true;
+  }
   if (eventName === "simulation.start") fadeScore(.82, 700);
   else if (eventName === "simulation.pause") fadeScore(.42, 500);
   else if (eventName === "simulation.complete") fadeScore(.56, 1400);
