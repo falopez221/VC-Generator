@@ -31,6 +31,7 @@ for (const [pathname, expected] of [
   ["/", "Venture Governance System"],
   ["/lab", "Explore how governed agents"],
   ["/lab/demo", "Run Lab Simulation"],
+  ["/lab/mvp", "From an opportunity to a"],
   ["/lab/simulation", "Aerial resilience"],
   ["/lab/companies", "Estados contables"],
   ["/lab/methodology", "Score is an analytical interface"],
@@ -184,6 +185,16 @@ test("public demo exposes only the four allowed public agents", async () => {
   assert.match(html, /Human Input/i);
   assert.match(html, /Changing this affects/i);
   assert.match(html, />Help</i);
+});
+
+test("MVP Lab keeps generation behind an explicit human gate and remains non-operational", async () => {
+  const response = await render("/lab/mvp");
+  const html = await response.text();
+  const text = renderedText(html);
+  for (const name of ["Mathematics", "Finance", "Strategy", "Marketing"]) assert.match(text, new RegExp(name, "i"));
+  assert.match(text, /only after a named human records approval/i);
+  assert.match(text, /What it never does Deploy, run code, access data/i);
+  assert.doesNotMatch(text, /Tokenomics Agent|Red Team Agent|Investment Committee Agent/i);
 });
 
 test("synthetic aerial Lab stays non-operational and exposes only four public agents", async () => {

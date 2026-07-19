@@ -10,6 +10,7 @@ import { structureIdea } from "../src/lab/idea-assistant.ts";
 import { calculateDefensibilityLens, calculateMacroeconomicLens } from "../src/lab/context-lenses.ts";
 import { buildCsv, csvCell } from "../src/lab/export.ts";
 import { hydrateStoredRun, listRuns } from "../src/lab/storage.ts";
+import { buildMvpPrototypeHtml, createMvpApproval, generateMvpDraft, hasOnlyPublicMvpAgents } from "../src/lab/mvp.ts";
 
 test("validates and bounds the public input", () => {
   const result = validateLabInput({ ...EXAMPLES["Venture Capital"], opportunityCount: 100, seed: -5, problem: "<b>test \u202eproblem\u2066 with enough detail</b>" });
@@ -347,4 +348,19 @@ test("human decisions and new evidence persist in run state", () => {
   assert.equal(updated.opportunities.find((opportunity) => opportunity.id === id)?.dimensions.evidenceQuality, decided.opportunities.find((opportunity) => opportunity.id === id)?.dimensions.evidenceQuality);
   const duplicate = addEvidence(updated, id, "Observed willingness-to-pay test reached the public threshold.");
   assert.equal(duplicate.opportunities.find((opportunity) => opportunity.id === id)?.availableEvidence.length, updated.opportunities.find((opportunity) => opportunity.id === id)?.availableEvidence.length);
+});
+
+test("MVP draft is deterministic, uses only the four public agents and requires an exact human approval", () => {
+  const run = generateLabRun(EXAMPLES["Venture Capital"]);
+  const opportunity = run.opportunities[0];
+  assert.throws(() => generateMvpDraft(opportunity, { id: "missing", sourceRunId: run.id, sourceOpportunityId: "different", reviewer: "Reviewer", approvedAt: new Date().toISOString(), acknowledgement: "local-validation-only" }));
+  const approval = createMvpApproval({ sourceRunId: run.id, sourceOpportunityId: opportunity.id, reviewer: "Human reviewer", acknowledgement: true, approvedAt: "2026-01-01T00:00:00.000Z" });
+  const first = generateMvpDraft(opportunity, approval);
+  const second = generateMvpDraft(opportunity, approval);
+  assert.deepEqual(first, second);
+  assert.ok(hasOnlyPublicMvpAgents(first));
+  assert.equal(first.prototypeScreens.length, 3);
+  const prototype = buildMvpPrototypeHtml(first);
+  assert.match(prototype, /LOCAL STATIC VALIDATION PROTOTYPE/);
+  assert.doesNotMatch(prototype, /<script/i);
 });

@@ -13,6 +13,7 @@ const links = [
   ["Platform", "/"],
   ["Lab", "/lab"],
   ["Demo", "/lab/demo"],
+  ["MVP Lab", "/lab/mvp"],
   ["Simulation", "/lab/simulation"],
   ["Companies", "/lab/companies"],
   ["Valuation", "/lab/valuation"],

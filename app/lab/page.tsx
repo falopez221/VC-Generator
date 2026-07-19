@@ -18,7 +18,7 @@ export default function LabHome() {
           <p className="lab-kicker">PUBLIC · LIMITED · INTERACTIVE</p>
           <h1>Explore how governed agents turn a thesis into <em>visible possibilities.</em></h1>
           <p>This public Lab uses four simplified agents, synthetic data and demonstrative quantitative models. It is not the complete architecture or the private local product.</p>
-          <div className="lab-actions"><a className="lab-button lab-button--primary" href="/lab/demo">Run Lab Simulation</a><a className="lab-button" href="/lab/simulation">Open Synthetic Airspace Lab</a><a className="lab-button" href="/lab/companies">Analyze a company</a><a className="lab-button" href="/lab/methodology">Read methodology</a></div>
+          <div className="lab-actions"><a className="lab-button lab-button--primary" href="/lab/demo">Run Lab Simulation</a><a className="lab-button" href="/lab/mvp">Open MVP Validation Lab</a><a className="lab-button" href="/lab/simulation">Open Synthetic Airspace Lab</a><a className="lab-button" href="/lab/companies">Analyze a company</a><a className="lab-button" href="/lab/methodology">Read methodology</a></div>
         </div>
         <aside className="lab-cinematic-metrics" aria-label="Public Lab scope"><div><strong>6–12</strong><span>SYNTHETIC OPPORTUNITIES</span></div><div><strong>04</strong><span>VISIBLE AGENTS</span></div><div><strong>{PUBLIC_MODEL_COUNT}</strong><span>PUBLIC MODELS</span></div></aside>
       </section>
@@ -32,7 +32,7 @@ export default function LabHome() {
         <ol className="lab-stage-map">{STAGES.map((stage) => <li key={stage.id}><span>{stage.id}</span><div><strong>{stage.label}</strong><small>{stage.owner}</small></div></li>)}</ol>
       </section>
       <section className="lab-limit-grid">
-        <div><p className="lab-kicker">INCLUDED</p><h2>Interactive public evidence.</h2><p>Deterministic opportunities, structured agents, real demo calculations, sensitivity, scenarios, comparison, export and human decisions.</p></div>
+        <div><p className="lab-kicker">INCLUDED</p><h2>Interactive public evidence.</h2><p>Deterministic opportunities, structured agents, real demo calculations, sensitivity, scenarios, comparison, export, human decisions and human-gated MVP validation drafts.</p></div>
         <div><p className="lab-kicker">DELIBERATELY EXCLUDED</p><h2>Private product logic.</h2><p>Extended agents, private prompts, proprietary scoring, historical calibration, local models, datasets and complete startup execution.</p></div>
       </section>
     </main>
