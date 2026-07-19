@@ -1,7 +1,8 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { playSound, unlockAudio } from "../audio.ts";
+import { startTransition, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { INTERFACE_SOUND_STATE_EVENT, readInterfaceSoundSettings } from "@/src/components/ui/SoundController";
+import { applyInterfaceAudioSettings, playSound, releaseInterfaceAudioSettings, unlockAudio } from "../audio.ts";
 import {
   createScenarioConfig,
   integrateKinematics,
@@ -451,6 +452,7 @@ export function AerialSimulationLab({ surface = "public" }: { surface?: AerialSu
   const [time, setTime] = useState(0);
   const [running, setRunning] = useState(false);
   const timeRef = useRef(0);
+  const launchFiredRef = useRef(false);
   const cueFiredRef = useRef(false);
   const cueTimerRef = useRef<number | null>(null);
   const [cueActive, setCueActive] = useState(false);
@@ -551,15 +553,33 @@ export function AerialSimulationLab({ surface = "public" }: { surface?: AerialSu
       cueTimerRef.current = null;
       setCueActive(false);
     }, 1300);
-    const played = playSound("simulation.syntheticCue");
+    const played = playSound("simulation.collision");
     setNotice(played
-      ? "Synthetic convergence cue played; background score paused."
-      : "Synthetic convergence cue reached. Audio remains disabled.");
+      ? "Synthetic collision cue played; visual and audio marker only."
+      : "Synthetic collision cue reached. Audio remains disabled.");
+  }, [isPrivateSurface]);
+
+  const triggerLaunchCue = useCallback(() => {
+    if (!isPrivateSurface || launchFiredRef.current) return;
+    launchFiredRef.current = true;
+    playSound("simulation.launch");
   }, [isPrivateSurface]);
 
   useEffect(() => () => {
     if (cueTimerRef.current !== null) window.clearTimeout(cueTimerRef.current);
   }, []);
+
+  useEffect(() => {
+    if (!isPrivateSurface) return undefined;
+    const applyInterfaceSettings = (settings: { enabled: boolean; volume: number }) => applyInterfaceAudioSettings(settings);
+    const onInterfaceSettings = (event: Event) => applyInterfaceSettings((event as CustomEvent<{ enabled: boolean; volume: number }>).detail);
+    applyInterfaceSettings(readInterfaceSoundSettings());
+    window.addEventListener(INTERFACE_SOUND_STATE_EVENT, onInterfaceSettings);
+    return () => {
+      window.removeEventListener(INTERFACE_SOUND_STATE_EVENT, onInterfaceSettings);
+      releaseInterfaceAudioSettings();
+    };
+  }, [isPrivateSurface]);
 
   useEffect(() => {
     try {
@@ -608,7 +628,7 @@ export function AerialSimulationLab({ surface = "public" }: { surface?: AerialSu
     let previousStamp = performance.now();
     let lastUiCommit = previousStamp;
     const animate = (stamp: number) => {
-      const deltaSeconds = Math.min(0.1, Math.max(0, (stamp - previousStamp) / 1000));
+      const deltaSeconds = Math.min(.075, Math.max(0, (stamp - previousStamp) / 1000));
       previousStamp = stamp;
       const previousTime = timeRef.current;
       const next = Math.min(duration, previousTime + deltaSeconds * speed);
@@ -627,11 +647,12 @@ export function AerialSimulationLab({ surface = "public" }: { surface?: AerialSu
       if (!prefersReducedMotion || crossedIntegrationStep || next >= duration) renderCanvas(next);
       if (
         (prefersReducedMotion && crossedIntegrationStep)
-        || (!prefersReducedMotion && stamp - lastUiCommit >= 50)
+        || (!prefersReducedMotion && stamp - lastUiCommit >= 32)
         || next >= duration
       ) {
         lastUiCommit = stamp;
-        setTime(next);
+        if (next >= duration) setTime(next);
+        else startTransition(() => setTime(next));
       }
 
       if (next >= duration) {
@@ -664,12 +685,14 @@ export function AerialSimulationLab({ surface = "public" }: { surface?: AerialSu
     if (next) unlockAudio();
     if (next && timeRef.current >= duration) {
       resetSyntheticCue();
+      launchFiredRef.current = false;
       timeRef.current = 0;
       setTime(0);
       renderCanvas(0);
     } else if (!next) {
       setTime(timeRef.current);
     }
+    if (next) triggerLaunchCue();
     setRunning(next);
     playSound(next ? "simulation.start" : "simulation.pause");
     setNotice(next ? "Simulation running." : "Simulation paused.");
@@ -683,6 +706,7 @@ export function AerialSimulationLab({ surface = "public" }: { surface?: AerialSu
       && previousTime < syntheticCueTime
       && next >= syntheticCueTime;
     unlockAudio();
+    if (previousTime <= .0001) triggerLaunchCue();
     setRunning(false);
     timeRef.current = next;
     setTime(next);
@@ -693,18 +717,19 @@ export function AerialSimulationLab({ surface = "public" }: { surface?: AerialSu
       playSound("ui.select");
     }
   };
-  const reset = () => { resetSyntheticCue(); setRunning(false); setTime(0); timeRef.current = 0; renderCanvas(0); setNotice("Scenario reset with the same reproducible seed."); playSound("ui.select"); };
+  const reset = () => { resetSyntheticCue(); launchFiredRef.current = false; setRunning(false); setTime(0); timeRef.current = 0; renderCanvas(0); setNotice("Scenario reset with the same reproducible seed."); playSound("ui.select"); };
   const seek = (next: number) => {
     const bounded = clamp(next, 0, duration);
     if (syntheticCueTime !== null && bounded < syntheticCueTime) resetSyntheticCue();
+    if (bounded <= .0001) launchFiredRef.current = false;
     setRunning(false);
     timeRef.current = bounded;
     setTime(bounded);
     renderCanvas(bounded);
     setNotice(`Replay position set to T+${bounded.toFixed(1)} s.`);
   };
-  const changeScenario = (next: ScenarioId) => { resetSyntheticCue(); setScenario(next); setTime(0); timeRef.current = 0; setRunning(false); setNotice(`${SCENARIOS[next].label} loaded; outputs recalculated.`); };
-  const changeSeed = (next: number) => { resetSyntheticCue(); setSeed(next); setTime(0); timeRef.current = 0; setRunning(false); setNotice("Seed changed; deterministic outputs recalculated."); };
+  const changeScenario = (next: ScenarioId) => { resetSyntheticCue(); launchFiredRef.current = false; setScenario(next); setTime(0); timeRef.current = 0; setRunning(false); setNotice(`${SCENARIOS[next].label} loaded; outputs recalculated.`); };
+  const changeSeed = (next: number) => { resetSyntheticCue(); launchFiredRef.current = false; setSeed(next); setTime(0); timeRef.current = 0; setRunning(false); setNotice("Seed changed; deterministic outputs recalculated."); };
   const setActiveMode = (next: Mode) => { setMode(next); setNotice(`${next} view selected.`); playSound("ui.select"); };
   const exportPayload = useCallback(() => ({
     classification: isPrivateSurface
@@ -796,7 +821,7 @@ export function AerialSimulationLab({ surface = "public" }: { surface?: AerialSu
             <canvas ref={canvasRef} aria-label={isPrivateSurface ? `Fictional seed-derived terrain texture with synthetic test markers at ${time.toFixed(1)} seconds; the texture has no geographic, elevation, or operational meaning.` : `Abstract 2D simulation field at ${time.toFixed(1)} seconds`} aria-describedby={mapSummaryId} role="img">Text summary follows the visual field.</canvas>
             <div className="asl-map-stamp" aria-hidden="true">{isPrivateSurface ? "FICTIONAL TERRAIN · NOT A REAL MAP" : "NOT A REAL MAP"}</div>
             <div className="asl-map-scale" aria-hidden="true"><i />{isPrivateSurface ? "visual relief only" : "10 normalized units"}</div>
-            {isPrivateSurface && <div className={`asl-synthetic-cue${cueActive ? " is-active" : ""}`} aria-hidden="true"><i /><span>synthetic convergence cue</span><small>score paused</small></div>}
+            {isPrivateSurface && <div className={`asl-synthetic-cue${cueActive ? " is-active" : ""}`} aria-hidden="true"><i /><span>synthetic collision cue</span><small>visual + audio marker only</small></div>}
             {isPrivateSurface && <div className="asl-private-map-key" aria-hidden="true"><span><i /> synthetic test marker</span><span><b /> filtered estimate</span><span><em /> forecast</span></div>}
           </div>
           {isPrivateSurface && <section className="asl-model-rail" aria-labelledby="model-rail-title">

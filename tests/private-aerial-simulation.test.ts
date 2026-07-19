@@ -31,6 +31,8 @@ const DEDICATED_LAYOUT = path.join(
   "layout.tsx",
 );
 const PLATFORM_LAYOUT = path.join(REPOSITORY_ROOT, "app", "app", "layout.tsx");
+const AERIAL_COMPONENT = path.join(REPOSITORY_ROOT, "src", "lab", "components", "AerialSimulationLab.tsx");
+const LAB_AUDIO = path.join(REPOSITORY_ROOT, "src", "lab", "audio.ts");
 
 function readSource(filePath: string): string {
   return readFileSync(filePath, "utf8");
@@ -130,4 +132,18 @@ test("private surface remains synthetic after the dedicated credential gate", ()
   assert.doesNotMatch(privateSource, /\b(?:get|require|authorize)ChatGPTUser\b/);
   assert.doesNotMatch(privateSource, /from\s+["'][^"']*(?:next-auth|authjs|oauth|chatgpt-auth)[^"']*["']/i);
   assert.doesNotMatch(privateSource, /\b(?:headers|cookies|redirect)\s*\(/);
+});
+
+test("private simulation has gesture-gated launch and collision audio cues", () => {
+  const componentSource = readSource(AERIAL_COMPONENT);
+  const audioSource = readSource(LAB_AUDIO);
+
+  assert.match(componentSource, /unlockAudio\(\)/);
+  assert.match(componentSource, /playSound\(["']simulation\.launch["']\)/);
+  assert.match(componentSource, /playSound\(["']simulation\.collision["']\)/);
+  assert.match(componentSource, /applyInterfaceAudioSettings/);
+  assert.match(audioSource, /function synthesizeLaunch/);
+  assert.match(audioSource, /function synthesizeCollision/);
+  assert.match(audioSource, /if \(!unlocked \|\| !enabled \|\| volume <= 0/);
+  assert.doesNotMatch(`${componentSource}\n${audioSource}`, /autoplay/i);
 });

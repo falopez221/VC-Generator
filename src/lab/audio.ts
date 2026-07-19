@@ -1,4 +1,4 @@
-export type SoundEventName = "ui.select" | "ui.primaryAction" | "simulation.start" | "simulation.pause" | "simulation.complete" | "simulation.syntheticCue" | "agent.activate" | "agent.complete" | "opportunity.generated" | "ranking.updated" | "evidence.warning" | "human.approve" | "human.uncertain" | "human.reject";
+export type SoundEventName = "ui.select" | "ui.primaryAction" | "simulation.start" | "simulation.pause" | "simulation.complete" | "simulation.launch" | "simulation.collision" | "simulation.syntheticCue" | "agent.activate" | "agent.complete" | "opportunity.generated" | "ranking.updated" | "evidence.warning" | "human.approve" | "human.uncertain" | "human.reject";
 export type LabScoreTheme = "lab" | "simulation" | "discovery" | "methodology";
 
 const SCORE_PATHS: Record<LabScoreTheme, string> = {
@@ -16,10 +16,14 @@ let score: HTMLAudioElement | null = null;
 let scoreFadeFrame = 0;
 let scoreLevel = .68;
 let resumeOnVisible = false;
-const activeEffects = new Set<HTMLAudioElement>();
+let effectsOnly = false;
+let effectContext: AudioContext | null = null;
+let scoreRestoreTimer = 0;
+const activeSynthSources = new Set<AudioScheduledSourceNode>();
 
 function normalizeVolume(value: number) { return Number.isFinite(value) ? Math.min(100, Math.max(0, Math.round(value))) : 25; }
 function targetVolume(level = scoreLevel) { return Math.min(.82, Math.max(0, volume / 100 * level)); }
+function effectVolume(level = .86) { return Math.min(.82, Math.max(0, volume / 100 * level)); }
 function cancelFade() { window.cancelAnimationFrame(scoreFadeFrame); }
 
 function fadeScore(level: number, duration = 800) {
@@ -56,7 +60,7 @@ function crossfade(previous: HTMLAudioElement | null, next: HTMLAudioElement, du
 }
 
 function startScore() {
-  if (!unlocked || !enabled || volume <= 0 || typeof window === "undefined") return;
+  if (effectsOnly || !unlocked || !enabled || volume <= 0 || typeof window === "undefined") return;
   if (!score) {
     score = new Audio(SCORE_PATHS[scoreTheme]);
     score.loop = true;
@@ -73,19 +77,113 @@ function startScore() {
 
 function stopScore() { cancelFade(); score?.pause(); }
 
-function playEffect(path: string, level = .86) {
-  const effect = new Audio(path);
-  effect.preload = "auto";
-  effect.volume = Math.min(.82, targetVolume(level));
-  activeEffects.add(effect);
-  const release = () => {
-    activeEffects.delete(effect);
-    effect.removeEventListener("ended", release);
-    effect.removeEventListener("error", release);
-  };
-  effect.addEventListener("ended", release);
-  effect.addEventListener("error", release);
-  void effect.play().catch(release);
+function getEffectContext() {
+  if (typeof window === "undefined") return null;
+  effectContext ??= new AudioContext();
+  return effectContext;
+}
+
+function createDeterministicNoise(context: AudioContext, duration: number, seed: number) {
+  const frameCount = Math.max(1, Math.ceil(context.sampleRate * duration));
+  const buffer = context.createBuffer(1, frameCount, context.sampleRate);
+  const data = buffer.getChannelData(0);
+  let state = seed >>> 0;
+  for (let index = 0; index < frameCount; index += 1) {
+    state = (Math.imul(state, 1664525) + 1013904223) >>> 0;
+    data[index] = (state / 0xffffffff) * 2 - 1;
+  }
+  return buffer;
+}
+
+function trackSynthSource(source: AudioScheduledSourceNode) {
+  activeSynthSources.add(source);
+  source.addEventListener("ended", () => activeSynthSources.delete(source), { once: true });
+}
+
+function stopSynthEffects() {
+  for (const source of activeSynthSources) {
+    try { source.stop(); } catch { /* Source may already have ended. */ }
+  }
+  activeSynthSources.clear();
+  if (effectContext?.state === "running") void effectContext.suspend().catch(() => undefined);
+}
+
+function synthesizeLaunch(context: AudioContext) {
+  const now = context.currentTime;
+  const master = context.createGain();
+  master.gain.setValueAtTime(.0001, now);
+  master.gain.exponentialRampToValueAtTime(Math.max(.0001, effectVolume(.48)), now + .07);
+  master.gain.exponentialRampToValueAtTime(.0001, now + .82);
+  master.connect(context.destination);
+
+  const thrust = context.createOscillator();
+  const thrustGain = context.createGain();
+  thrust.type = "sawtooth";
+  thrust.frequency.setValueAtTime(74, now);
+  thrust.frequency.exponentialRampToValueAtTime(210, now + .72);
+  thrustGain.gain.setValueAtTime(.22, now);
+  thrustGain.gain.exponentialRampToValueAtTime(.0001, now + .8);
+  thrust.connect(thrustGain).connect(master);
+
+  const noise = context.createBufferSource();
+  const filter = context.createBiquadFilter();
+  const noiseGain = context.createGain();
+  noise.buffer = createDeterministicNoise(context, .84, 0x5a17c9e3);
+  filter.type = "bandpass";
+  filter.frequency.setValueAtTime(320, now);
+  filter.frequency.exponentialRampToValueAtTime(1450, now + .7);
+  filter.Q.value = .72;
+  noiseGain.gain.setValueAtTime(.7, now);
+  noiseGain.gain.exponentialRampToValueAtTime(.0001, now + .82);
+  noise.connect(filter).connect(noiseGain).connect(master);
+
+  trackSynthSource(thrust);
+  trackSynthSource(noise);
+  thrust.start(now);
+  thrust.stop(now + .84);
+  noise.start(now);
+  noise.stop(now + .84);
+}
+
+function synthesizeCollision(context: AudioContext) {
+  const now = context.currentTime;
+  const master = context.createGain();
+  master.gain.setValueAtTime(Math.max(.0001, effectVolume(.68)), now);
+  master.gain.exponentialRampToValueAtTime(.0001, now + .58);
+  master.connect(context.destination);
+
+  const impact = context.createBufferSource();
+  const impactFilter = context.createBiquadFilter();
+  impact.buffer = createDeterministicNoise(context, .6, 0xc0111de);
+  impactFilter.type = "lowpass";
+  impactFilter.frequency.setValueAtTime(2200, now);
+  impactFilter.frequency.exponentialRampToValueAtTime(160, now + .5);
+  impactFilter.Q.value = 1.2;
+  impact.connect(impactFilter).connect(master);
+
+  const body = context.createOscillator();
+  const bodyGain = context.createGain();
+  body.type = "sine";
+  body.frequency.setValueAtTime(96, now);
+  body.frequency.exponentialRampToValueAtTime(38, now + .48);
+  bodyGain.gain.setValueAtTime(.58, now);
+  bodyGain.gain.exponentialRampToValueAtTime(.0001, now + .55);
+  body.connect(bodyGain).connect(master);
+
+  trackSynthSource(impact);
+  trackSynthSource(body);
+  impact.start(now);
+  impact.stop(now + .6);
+  body.start(now);
+  body.stop(now + .58);
+}
+
+function playSynthEffect(kind: "launch" | "collision") {
+  const context = getEffectContext();
+  if (!context) return;
+  const play = () => kind === "launch" ? synthesizeLaunch(context) : synthesizeCollision(context);
+  if (context.state === "suspended") void context.resume().then(play).catch(() => undefined);
+  else play();
 }
 
 export function getAudioSettings() {
@@ -98,7 +196,21 @@ export function getAudioSettings() {
   return { enabled, volume };
 }
 
-export function unlockAudio() { if (typeof window !== "undefined") { unlocked = true; getAudioSettings(); startScore(); } }
+export function unlockAudio() { if (typeof window !== "undefined") { unlocked = true; if (!effectsOnly) getAudioSettings(); startScore(); } }
+
+export function applyInterfaceAudioSettings(next: { enabled: boolean; volume: number }) {
+  effectsOnly = true;
+  enabled = next.enabled;
+  volume = normalizeVolume(next.volume);
+  stopScore();
+  if (!enabled || volume <= 0) stopSynthEffects();
+  else if (unlocked && effectContext?.state === "suspended") void effectContext.resume().catch(() => undefined);
+}
+
+export function releaseInterfaceAudioSettings() {
+  effectsOnly = false;
+  getAudioSettings();
+}
 
 export function setAudioSettings(next: { enabled: boolean; volume: number }) {
   enabled = next.enabled;
@@ -124,8 +236,8 @@ export function setLabScoreTheme(nextTheme: LabScoreTheme) {
 export function stopLabAudio() {
   resumeOnVisible = false;
   stopScore();
-  for (const effect of activeEffects) effect.pause();
-  activeEffects.clear();
+  window.clearTimeout(scoreRestoreTimer);
+  stopSynthEffects();
 }
 
 if (typeof window !== "undefined") {
@@ -138,9 +250,15 @@ if (typeof window !== "undefined") {
 
 export function playSound(eventName: SoundEventName) {
   if (!unlocked || !enabled || volume <= 0 || typeof window === "undefined") return false;
-  if (eventName === "simulation.syntheticCue") {
-    stopLabAudio();
-    playEffect("/audio/swosh.mp3");
+  if (eventName === "simulation.launch") {
+    playSynthEffect("launch");
+    return true;
+  }
+  if (eventName === "simulation.collision" || eventName === "simulation.syntheticCue") {
+    playSynthEffect("collision");
+    fadeScore(.28, 90);
+    window.clearTimeout(scoreRestoreTimer);
+    scoreRestoreTimer = window.setTimeout(() => fadeScore(.56, 620), 460);
     return true;
   }
   if (eventName === "simulation.start") fadeScore(.82, 700);
