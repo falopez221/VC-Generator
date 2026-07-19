@@ -22,7 +22,7 @@
 .asl-shell button { cursor: pointer; }
 .asl-shell--private { margin-top: 1rem; border: 1px solid rgb(114 215 232 / 16%); }
 .asl-shell--private .asl-masthead { min-height: 260px; padding-block: 2.5rem; }
-.asl-shell--private .asl-canvas-wrap { background: #0b1d15; }
+.asl-shell--private .asl-canvas-wrap { background: #28243b; }
 .asl-shell--private .asl-canvas-wrap canvas { border-color: rgb(180 224 178 / 25%); }
 .asl-shell--private .asl-map-stamp { color: rgb(223 239 205 / 76%); border-color: rgb(203 236 187 / 27%); background: rgb(9 29 20 / 68%); }
 .asl-masthead { min-height: 330px; display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(300px, .5fr); gap: clamp(2rem, 8vw, 9rem); align-items: end; padding: clamp(3.5rem, 7vw, 6.5rem) clamp(1.25rem, 4vw, 4rem) 2.8rem; background: radial-gradient(circle at 75% 30%, rgb(45 136 159 / 22%), transparent 30%), linear-gradient(145deg, #061827 0%, #071c2c 54%, #061521 100%); border-bottom: 1px solid var(--asl-line); }

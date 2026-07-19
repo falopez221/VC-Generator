@@ -121,6 +121,14 @@ const ARCHITECTURE_LAYERS = [
   ["05", "Decision record", "Conditions, dissent and next review"],
 ] as const;
 
+const WORKSPACE_PREVIEW_MODULES = [
+  { id: "overview", label: "Overview", nodeId: "mission" },
+  { id: "missions", label: "Missions", nodeId: "mission" },
+  { id: "evidence", label: "Evidence", nodeId: "evidence" },
+  { id: "models", label: "Models", nodeId: "monte-carlo" },
+  { id: "governance", label: "Governance", nodeId: "human-gate" },
+] as const;
+
 const NODE_KIND_LABELS: Record<ShowcaseNode["kind"], string> = {
   evidence: "Evidence layer",
   mission: "Human mission",
@@ -132,6 +140,7 @@ const NODE_KIND_LABELS: Record<ShowcaseNode["kind"], string> = {
 
 export function PlatformShowcase() {
   const [selectedId, setSelectedId] = useState("mission");
+  const [activePreviewModule, setActivePreviewModule] = useState<(typeof WORKSPACE_PREVIEW_MODULES)[number]["id"]>("overview");
   const selected = SYNTHETIC_MISSION.nodes.find((node) => node.id === selectedId) ?? SYNTHETIC_MISSION.nodes[1];
   const graphState = useMemo(() => {
     const upstream = collectGraphPath(selectedId, SYNTHETIC_MISSION.edges, "upstream");
@@ -185,11 +194,20 @@ export function PlatformShowcase() {
                 <div className="ps-screen-workspace">
                   <aside className="ps-screen-rail" aria-label="Workspace preview modules">
                     <span>WORKSPACE</span>
-                    <strong>Overview</strong>
-                    <span>Missions</span>
-                    <span>Evidence</span>
-                    <span>Models</span>
-                    <span>Governance</span>
+                    {WORKSPACE_PREVIEW_MODULES.map((module) => (
+                      <button
+                        type="button"
+                        key={module.id}
+                        aria-pressed={activePreviewModule === module.id}
+                        aria-controls="ps-component-inspector"
+                        onClick={() => {
+                          setActivePreviewModule(module.id);
+                          setSelectedId(module.nodeId);
+                        }}
+                      >
+                        {module.label}
+                      </button>
+                    ))}
                     <small>UI PREVIEW</small>
                   </aside>
 

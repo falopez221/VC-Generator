@@ -68,17 +68,19 @@ function terrainValue(horizontal: number, vertical: number, seed: number) {
 }
 
 function terrainColor(value: number) {
-  if (value < .27) return "#10251f";
-  if (value < .39) return "#18362a";
-  if (value < .52) return "#285037";
-  if (value < .66) return "#466844";
-  if (value < .79) return "#71805b";
-  return "#9a966d";
+  // A warm, park-like palette keeps the synthetic relief readable without the
+  // tactical green treatment associated with military maps.
+  if (value < .27) return "#39354f";
+  if (value < .39) return "#514964";
+  if (value < .52) return "#74647a";
+  if (value < .66) return "#a2817c";
+  if (value < .79) return "#c9aa8a";
+  return "#ead2a6";
 }
 
 /** Draws a seed-derived visual texture only; it has no geographic or elevation meaning. */
 function drawSyntheticTerrain(context: CanvasRenderingContext2D, width: number, height: number, seed: number) {
-  context.fillStyle = "#10231e";
+  context.fillStyle = "#332f47";
   context.fillRect(0, 0, width, height);
 
   const cell = Math.max(18, Math.min(32, Math.floor(Math.min(width, height) / 18)));
@@ -95,7 +97,7 @@ function drawSyntheticTerrain(context: CanvasRenderingContext2D, width: number, 
   context.globalAlpha = .28;
   context.lineWidth = .7;
   for (const level of [.3, .42, .54, .66, .78]) {
-    context.strokeStyle = level >= .66 ? "rgba(236, 229, 184, .68)" : "rgba(205, 231, 193, .52)";
+      context.strokeStyle = level >= .66 ? "rgba(255, 237, 203, .68)" : "rgba(237, 211, 213, .52)";
     for (let y = 0; y < height; y += cell) {
       for (let x = 0; x < width; x += cell) {
         const x1 = Math.min(width, x + cell);
@@ -128,8 +130,8 @@ function drawSyntheticTerrain(context: CanvasRenderingContext2D, width: number, 
     }
   }
   const vignette = context.createRadialGradient(width * .5, height * .45, Math.min(width, height) * .12, width * .5, height * .45, Math.max(width, height) * .76);
-  vignette.addColorStop(0, "rgba(8, 18, 14, 0)");
-  vignette.addColorStop(1, "rgba(5, 12, 9, .54)");
+  vignette.addColorStop(0, "rgba(36, 31, 54, 0)");
+  vignette.addColorStop(1, "rgba(25, 22, 38, .48)");
   context.fillStyle = vignette;
   context.fillRect(0, 0, width, height);
   context.restore();
@@ -291,7 +293,7 @@ function drawMap(
 
   if (terrainLayer) {
     context.drawImage(terrainLayer, 0, 0, width, height);
-    context.fillStyle = "rgba(4, 16, 11, .1)";
+    context.fillStyle = "rgba(33, 28, 48, .08)";
     context.fillRect(0, 0, width, height);
   } else {
     const backdrop = context.createLinearGradient(0, 0, width, height);
