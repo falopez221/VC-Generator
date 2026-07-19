@@ -40,7 +40,7 @@
 .osl-masthead aside { padding: 1.25rem; background: rgb(5 13 24 / 64%); border-left: 2px solid var(--osl-cyan); }
 .osl-masthead aside p { margin: .65rem 0 0; color: var(--osl-muted); font-size: .78rem; line-height: 1.55; }
 
-.osl-controls { display: grid; grid-template-columns: auto minmax(180px, 1fr) 120px minmax(190px, .7fr) auto; gap: 1px; margin-top: 1px; background: var(--osl-line); border: 1px solid var(--osl-line); }
+.osl-controls { display: grid; grid-template-columns: minmax(235px, auto) minmax(220px, 1fr) 130px auto; gap: 1px; margin-top: 1px; background: var(--osl-line); border: 1px solid var(--osl-line); }
 .osl-controls > * { min-width: 0; background: #08111e; }
 .osl-playback { display: flex; gap: .5rem; align-items: center; padding: .9rem; }
 .osl-controls button, .osl-export button, .osl-export a { min-height: 42px; padding: .65rem 1rem; color: #d7edf2; background: #0b1827; border: 1px solid rgb(122 202 219 / 24%); cursor: pointer; text-decoration: none; transition: border-color .2s ease, background .2s ease, transform .2s ease; }
@@ -64,8 +64,17 @@
 .osl-visual-panel h2, .osl-events h2, .osl-summary h2 { margin: .35rem 0 0; font-size: clamp(1.15rem, 2vw, 1.65rem); font-weight: 560; letter-spacing: -.03em; }
 .osl-visual-panel > header > span { padding: .4rem .55rem; color: #7f9aa5; border: 1px solid rgb(143 169 179 / 22%); font: 700 .58rem var(--font-mono, monospace); letter-spacing: .1em; }
 .osl-visual-panel > header > span.is-running { color: #b9f3fb; border-color: var(--osl-cyan); box-shadow: 0 0 24px rgb(108 222 243 / 16%); }
-.osl-canvas-wrap { position: relative; min-height: min(66vh, 690px); overflow: hidden; background: #030711; }
-.osl-canvas-wrap canvas { display: block; width: 100%; min-height: min(66vh, 690px); }
+.osl-canvas-wrap { position: relative; aspect-ratio: 16 / 9; min-height: 360px; overflow: hidden; background: #000; isolation: isolate; }
+.osl-cinematic-shot { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.04); transform-origin: 50% 50%; transition: opacity 900ms cubic-bezier(.22, .61, .36, 1), transform 12s cubic-bezier(.2, .65, .3, 1); will-change: opacity, transform; }
+.osl-cinematic-shot.is-active { z-index: 1; opacity: 1; }
+.osl-cinematic-shot:nth-child(1).is-active { animation: osl-pad-push 12s cubic-bezier(.2, .65, .3, 1) both; }
+.osl-cinematic-shot:nth-child(2).is-active { animation: osl-liftoff-rise 9s ease-out both; transform-origin: 52% 70%; }
+.osl-cinematic-shot:nth-child(3).is-active { animation: osl-separation-drift 10s ease-out both; transform-origin: 46% 52%; }
+.osl-cinematic-shot:nth-child(4).is-active { animation: osl-orbit-pullback 14s cubic-bezier(.22, .61, .36, 1) both; }
+@keyframes osl-pad-push { from { transform: scale(1.04); } to { transform: scale(1.095) translate3d(-.35%, -.2%, 0); } }
+@keyframes osl-liftoff-rise { 0% { transform: scale(1.075) translate3d(0, 1.1%, 0); } 35% { transform: scale(1.085) translate3d(-.12%, -.25%, 0); } 56% { transform: scale(1.09) translate3d(.1%, -.8%, 0); } 74% { transform: scale(1.095) translate3d(-.08%, -1.25%, 0); } 100% { transform: scale(1.105) translate3d(0, -1.8%, 0); } }
+@keyframes osl-separation-drift { from { transform: scale(1.085) translate3d(-.75%, 0, 0); } to { transform: scale(1.045) translate3d(.85%, -.2%, 0); } }
+@keyframes osl-orbit-pullback { from { transform: scale(1.09) translate3d(.25%, .2%, 0); } to { transform: scale(1.015) translate3d(-.2%, -.15%, 0); } }
 .osl-canvas-stamp { position: absolute; right: 1rem; bottom: 1rem; padding: .45rem .6rem; color: rgb(205 234 240 / 74%); background: rgb(3 8 16 / 66%); border: 1px solid rgb(108 222 243 / 20%); font: 700 .55rem var(--font-mono, monospace); letter-spacing: .13em; }
 .osl-timeline { display: grid; gap: .65rem; padding: 1rem 1.3rem 1.25rem; border-top: 1px solid var(--osl-line); }.osl-timeline span { display: flex; justify-content: space-between; color: #8fa8b4; font: 650 .62rem var(--font-mono, monospace); letter-spacing: .07em; text-transform: uppercase; }.osl-timeline output { color: var(--osl-cyan); }
 
@@ -80,12 +89,16 @@
   .osl-controls { grid-template-columns: 1fr 1fr 1fr; }.osl-playback { grid-column: span 2; }.osl-clock { justify-content: center; }
   .osl-telemetry { grid-template-columns: repeat(3, 1fr); }.osl-telemetry article:first-child { grid-column: span 2; }
   .osl-workspace { grid-template-columns: 1fr; }.osl-events ol { grid-template-columns: 1fr 1fr; }.osl-deployment { grid-template-columns: repeat(4, 1fr); }
+  .osl-canvas-wrap { min-height: 0; }
 }
 @media (max-width: 720px) {
   .osl-shell { width: min(100% - 1rem, 1480px); }.osl-masthead { grid-template-columns: 1fr; min-height: 430px; padding: 2rem 1.25rem; }.osl-masthead h1 { font-size: clamp(3rem, 16vw, 5rem); }
   .osl-controls { grid-template-columns: 1fr 1fr; }.osl-playback, .osl-speed, .osl-clock { grid-column: 1 / -1; }.osl-controls label { min-height: 78px; }
   .osl-telemetry { grid-template-columns: 1fr 1fr; }.osl-telemetry article:first-child { grid-column: 1 / -1; }.osl-telemetry article { min-height: 96px; }
-  .osl-canvas-wrap, .osl-canvas-wrap canvas { min-height: 520px; }.osl-events ol { grid-template-columns: 1fr; }.osl-deployment { grid-template-columns: 1fr 1fr; }
+  .osl-canvas-wrap { aspect-ratio: 16 / 9; min-height: 0; }.osl-events ol { grid-template-columns: 1fr; }.osl-deployment { grid-template-columns: 1fr 1fr; }
   .osl-summary, .osl-method { grid-template-columns: 1fr; }.osl-summary dl { grid-template-columns: 1fr 1fr; }.osl-export { grid-column: auto; flex-wrap: wrap; }.osl-export p { flex-basis: 100%; }
 }
-@media (prefers-reduced-motion: reduce) { .osl-shell *, .osl-shell *::before, .osl-shell *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
+@media (prefers-reduced-motion: reduce) {
+  .osl-shell *, .osl-shell *::before, .osl-shell *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+  .osl-cinematic-shot, .osl-cinematic-shot.is-active { animation: none !important; transform: none !important; transition: opacity .01ms linear !important; }
+}

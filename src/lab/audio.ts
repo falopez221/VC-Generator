@@ -20,6 +20,9 @@ let effectsOnly = false;
 let effectContext: AudioContext | null = null;
 let scoreRestoreTimer = 0;
 const activeSynthSources = new Set<AudioScheduledSourceNode>();
+const ORBITAL_LAUNCH_SEQUENCE_PATH = "/audio/orbital-launch-sequence.mp3";
+let orbitalLaunchSequence: HTMLAudioElement | null = null;
+let restoreScoreAfterOrbitalSequence = false;
 
 function normalizeVolume(value: number) { return Number.isFinite(value) ? Math.min(100, Math.max(0, Math.round(value))) : 25; }
 function targetVolume(level = scoreLevel) { return Math.min(.82, Math.max(0, volume / 100 * level)); }
@@ -76,6 +79,54 @@ function startScore() {
 }
 
 function stopScore() { cancelFade(); score?.pause(); }
+
+function updateOrbitalLaunchSequenceVolume() {
+  if (orbitalLaunchSequence) orbitalLaunchSequence.volume = effectVolume(.9);
+}
+
+function restoreScoreAfterSequence() {
+  const shouldRestore = restoreScoreAfterOrbitalSequence;
+  restoreScoreAfterOrbitalSequence = false;
+  if (shouldRestore && unlocked && enabled && volume > 0) startScore();
+}
+
+export function playOrbitalLaunchSequence(fromSeconds = 0) {
+  if (typeof window === "undefined" || !unlocked || !enabled || volume <= 0) return false;
+  const sequenceWasPlaying = Boolean(orbitalLaunchSequence && !orbitalLaunchSequence.paused && !orbitalLaunchSequence.ended);
+  if (!sequenceWasPlaying) restoreScoreAfterOrbitalSequence = Boolean(score && !score.paused);
+  stopScore();
+  if (!orbitalLaunchSequence) {
+    orbitalLaunchSequence = new Audio(ORBITAL_LAUNCH_SEQUENCE_PATH);
+    orbitalLaunchSequence.preload = "auto";
+    orbitalLaunchSequence.addEventListener("ended", () => {
+      if (orbitalLaunchSequence) orbitalLaunchSequence.currentTime = 0;
+      restoreScoreAfterSequence();
+    });
+  }
+  updateOrbitalLaunchSequenceVolume();
+  const requestedTime = Number.isFinite(fromSeconds) ? Math.max(0, fromSeconds) : 0;
+  try {
+    orbitalLaunchSequence.currentTime = Number.isFinite(orbitalLaunchSequence.duration)
+      ? Math.min(requestedTime, Math.max(0, orbitalLaunchSequence.duration - .01))
+      : requestedTime;
+  } catch { /* The browser will retain the default position until metadata is available. */ }
+  void orbitalLaunchSequence.play().catch(() => restoreScoreAfterSequence());
+  return true;
+}
+
+export function pauseOrbitalLaunchSequence() {
+  if (!orbitalLaunchSequence || orbitalLaunchSequence.paused) return;
+  orbitalLaunchSequence.pause();
+  restoreScoreAfterSequence();
+}
+
+export function stopOrbitalLaunchSequence() {
+  if (orbitalLaunchSequence) {
+    orbitalLaunchSequence.pause();
+    try { orbitalLaunchSequence.currentTime = 0; } catch { /* Metadata may not be ready yet. */ }
+  }
+  restoreScoreAfterSequence();
+}
 
 function getEffectContext() {
   if (typeof window === "undefined") return null;
@@ -202,8 +253,9 @@ export function applyInterfaceAudioSettings(next: { enabled: boolean; volume: nu
   effectsOnly = true;
   enabled = next.enabled;
   volume = normalizeVolume(next.volume);
+  updateOrbitalLaunchSequenceVolume();
   stopScore();
-  if (!enabled || volume <= 0) stopSynthEffects();
+  if (!enabled || volume <= 0) { stopSynthEffects(); stopOrbitalLaunchSequence(); }
   else if (unlocked && effectContext?.state === "suspended") void effectContext.resume().catch(() => undefined);
 }
 
@@ -215,8 +267,14 @@ export function releaseInterfaceAudioSettings() {
 export function setAudioSettings(next: { enabled: boolean; volume: number }) {
   enabled = next.enabled;
   volume = normalizeVolume(next.volume);
+  updateOrbitalLaunchSequenceVolume();
   if (typeof window !== "undefined") window.localStorage.setItem(SETTINGS_KEY, JSON.stringify({ enabled, volume }));
-  if (enabled && volume > 0) startScore(); else stopScore();
+  if (enabled && volume > 0) {
+    if (!orbitalLaunchSequence || orbitalLaunchSequence.paused) startScore();
+  } else {
+    stopScore();
+    stopOrbitalLaunchSequence();
+  }
 }
 
 export function setLabScoreTheme(nextTheme: LabScoreTheme) {
@@ -235,7 +293,9 @@ export function setLabScoreTheme(nextTheme: LabScoreTheme) {
 
 export function stopLabAudio() {
   resumeOnVisible = false;
+  stopOrbitalLaunchSequence();
   stopScore();
+  stopOrbitalLaunchSequence();
   window.clearTimeout(scoreRestoreTimer);
   stopSynthEffects();
 }
