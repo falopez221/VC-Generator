@@ -31,6 +31,7 @@ for (const [pathname, expected] of [
   ["/", "Venture Governance System"],
   ["/lab", "Explore how governed agents"],
   ["/lab/demo", "Run Lab Simulation"],
+  ["/lab/simulation", "Aerial resilience"],
   ["/lab/companies", "Estados contables"],
   ["/lab/methodology", "Score is an analytical interface"],
   ["/lab/results/example", "LOADING LOCAL RESULT"],
@@ -183,6 +184,19 @@ test("public demo exposes only the four allowed public agents", async () => {
   assert.match(html, /Human Input/i);
   assert.match(html, /Changing this affects/i);
   assert.match(html, />Help</i);
+});
+
+test("synthetic aerial Lab stays non-operational and exposes only four public agents", async () => {
+  const response = await render("/lab/simulation");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  const text = renderedText(html);
+  for (const name of ["Mathematics", "Finance", "Strategy", "Marketing"]) assert.match(text, new RegExp(name, "i"));
+  assert.match(text, /synthetic.*academic.*non-operational/i);
+  assert.match(text, /No real geography.*No weapons.*No physical control/i);
+  assert.match(text, /cannot ingest live feeds or produce operational instructions/i);
+  assert.doesNotMatch(text, /Tokenomics Agent|Red Team Agent|Investment Committee Agent/i);
+  assert.doesNotMatch(html, /<audio[^>]+autoplay/i);
 });
 
 test("first-time tour remains available without changing the public model", async () => {
