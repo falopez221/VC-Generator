@@ -164,10 +164,12 @@ test("the configured owner can render execution feasibility and its report contr
 test("the configured owner can render a domain-specific private mini-app", async () => {
   const response = await render("/app/applications/agriculture", { "oai-authenticated-user-email": "owner@example.test" });
   assert.equal(response.status, 200);
-  const text = renderedText(await response.text());
+  const html = await response.text();
+  const text = renderedText(html);
   for (const expected of ["Field Yield Command", "Rendimiento, agua y riesgo agronomico", "SIMULACION PROPIA", "Agronomy Analyst", "Sintetico"]) {
     assert.match(text, new RegExp(expected, "i"));
   }
+  assert.match(html, /href="\/app\/applications"[^>]*aria-label="Back to Applications"/i);
   assert.doesNotMatch(text, /autonomous investment approval|real patient data/i);
 });
 

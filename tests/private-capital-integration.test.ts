@@ -103,6 +103,16 @@ test("private capital controls preserve privacy and human authorization framing"
   assert.match(dashboard, /role="status"/u);
 });
 
+test("crash watch evaluates on demand and leaves timed monitoring visibly unavailable", async () => {
+  const dashboard = await source("src/private-capital/components/PrivateCapitalDashboard.tsx");
+  assert.match(dashboard, /evaluatedCrashInputs/u);
+  assert.match(dashboard, /Evaluar índice ahora/u);
+  assert.match(dashboard, /CAMBIOS PENDIENTES/u);
+  assert.match(dashboard, /Monitoreo por duración/u);
+  assert.match(dashboard, /Iniciar monitoreo/u);
+  assert.match(dashboard, /<ActionButton disabled title="El monitoreo continuo todavía no está habilitado"/u);
+});
+
 test("private capital offers an accessible, repeatable guided tour", async () => {
   const [dashboard, styles] = await Promise.all([
     source("src/private-capital/components/PrivateCapitalDashboard.tsx"),

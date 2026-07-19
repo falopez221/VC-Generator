@@ -319,6 +319,7 @@ export function PrivateCapitalDashboard({ initialData = MOCK_DATA, assetDetails 
   const [profile, setProfile] = useState({ capital: initialData.totalAssets, referenceCurrency: initialData.currency, horizon: 7, liquidityNeed: 20, maxLoss: 22, argentinaLimit: 25, bitcoinLimit: 10, assetLimit: 25, sectorLimit: 35, rebalanceMonths: 6, style: "Balanced" });
   const [scenario, setScenario] = useState({ fxShock: 18, equityShock: -20, sovereignShock: -28, bitcoinShock: -35, contribution: 1500 });
   const [crashInputs, setCrashInputs] = useState<CrashWatchInput>(CRASH_WATCH_PRESETS.normal);
+  const [evaluatedCrashInputs, setEvaluatedCrashInputs] = useState<CrashWatchInput>(CRASH_WATCH_PRESETS.normal);
   const [settings, setSettings] = useState({ compact: false, quietHours: true, groupAlerts: true });
   const [holdingDraft, setHoldingDraft] = useState({ ticker: "", name: "", assetClass: "CEDEAR", market: "BYMA", quantity: "", averagePrice: "", currency: "USD" as "USD" | "ARS", brokerReference: "", purchaseDate: "", fees: "", horizon: "", reviewCondition: "", thesis: "", notes: "" });
 
@@ -357,7 +358,7 @@ export function PrivateCapitalDashboard({ initialData = MOCK_DATA, assetDetails 
     const currencyBuffer = Math.max(0, scenario.fxShock) * 0.12;
     return Math.round((equity + local + bitcoin + currencyBuffer) * 10) / 10;
   }, [scenario]);
-  const crashWatch = useMemo(() => analyzeCrashWatch(crashInputs), [crashInputs]);
+  const crashWatch = useMemo(() => analyzeCrashWatch(evaluatedCrashInputs), [evaluatedCrashInputs]);
 
   const changeView = (next: PrivateCapitalView) => {
     setView(next);
@@ -486,7 +487,11 @@ export function PrivateCapitalDashboard({ initialData = MOCK_DATA, assetDetails 
         {view === "portfolio" && <PortfolioView holdings={holdings} privacyMode={privacyMode} draft={holdingDraft} setDraft={setHoldingDraft} onSubmit={submitHolding} />}
         {view === "builder" && <BuilderView data={initialData} privacyMode={privacyMode} selected={selectedProposal} setSelected={setSelectedProposal} onStatus={setLiveMessage} />}
         {MARKET_VIEWS[view] && !activeAssetDetails && <MarketView view={view} data={MARKET_VIEWS[view]!} />}
-        {view === "crash" && <CrashWatchView inputs={crashInputs} setInputs={setCrashInputs} result={crashWatch} onStatus={setLiveMessage} />}
+        {view === "crash" && <CrashWatchView inputs={crashInputs} evaluatedInputs={evaluatedCrashInputs} setInputs={setCrashInputs} result={crashWatch} onEvaluate={() => {
+          const nextResult = analyzeCrashWatch(crashInputs);
+          setEvaluatedCrashInputs({ ...crashInputs });
+          setLiveMessage(`Crash Watch index evaluated: ${nextResult.score} out of 100, ${CRASH_REGIME_LABELS[nextResult.regime]}. Synthetic analysis only; no action was executed.`);
+        }} onStatus={setLiveMessage} />}
         {activeAssetDetails && <AssetDetailsView records={activeAssetDetails} privacyMode={privacyMode} />}
         {view === "signals" && <SignalsView onStatus={setLiveMessage} />}
         {view === "rebalancing" && <RebalancingView privacyMode={privacyMode} contribution={scenario.contribution} setContribution={(value) => setScenario((current) => ({ ...current, contribution: value }))} />}
@@ -647,12 +652,17 @@ function BuilderView({ data, privacyMode, selected, setSelected, onStatus }: { d
   return <div className="pc-view-stack"><section className="pc-proposal-grid" aria-label="Portfolio proposals">{data.proposals.map((item) => <button type="button" key={item.id} onClick={() => selectProposal(item.id, item.name)} aria-pressed={selected === item.id}><span>{item.character}</span><strong>{item.name}</strong><AllocationBar items={item.allocations} compact /><div><small>Expected range <b>{item.expectedRange}</b></small><small>Plausible loss <b>{item.plausibleLoss}</b></small></div></button>)}</section>{proposal && <section className="pc-panel pc-proposal-detail"><header><div><span>SELECTED PROPOSAL · {proposal.id.toUpperCase()}</span><h2>{proposal.name} allocation</h2></div><div className="pc-risk-dial" role="img" aria-label={`Illustrative risk score ${proposal.risk} out of 100`} style={{ "--risk": `${proposal.risk * 3.6}deg` } as React.CSSProperties}><strong>{proposal.risk}</strong><small>RISK</small></div></header><div className="pc-builder-detail"><AllocationBar items={proposal.allocations} /><dl><div><dt>Expected return range</dt><dd>{proposal.expectedRange}</dd></div><div><dt>Plausible adverse range</dt><dd>{proposal.plausibleLoss}</dd></div><div><dt>Estimated liquidity</dt><dd>{proposal.liquidity}</dd></div><div><dt>Concentration index</dt><dd>{proposal.concentration}/100</dd></div><div><dt>Illustrative capital</dt><dd>{formatMoney(data.totalAssets, data.currency, privacyMode)}</dd></div><div><dt>Optimization policy</dt><dd>Bounded · regularized</dd></div></dl></div><div className="pc-thesis-grid"><article><span>RATIONALE</span><p>{proposal.rationale}</p></article><article><span>INVALIDATION CONDITION</span><p>{proposal.invalidation}</p></article></div><footer className="pc-governance-footer"><p>Expected ranges are assumptions, not forecasts. Historical fit never overrides liquidity, concentration and personal loss constraints.</p><div><ActionButton onClick={() => onStatus(`${proposal.name} was added to the simulated comparison set only. Human review is still required.`)}>Stage in simulation</ActionButton><ActionButton disabled title="This UI does not create or execute orders">Execution unavailable</ActionButton></div></footer></section>}</div>;
 }
 
-function CrashWatchView({ inputs, setInputs, result, onStatus }: {
+function CrashWatchView({ inputs, evaluatedInputs, setInputs, result, onEvaluate, onStatus }: {
   inputs: CrashWatchInput;
+  evaluatedInputs: CrashWatchInput;
   setInputs: React.Dispatch<React.SetStateAction<CrashWatchInput>>;
   result: ReturnType<typeof analyzeCrashWatch>;
+  onEvaluate: () => void;
   onStatus: (message: string) => void;
 }) {
+  const [monitoringDuration, setMonitoringDuration] = useState(24);
+  const [monitoringUnit, setMonitoringUnit] = useState<"hours" | "days" | "weeks">("hours");
+  const hasPendingChanges = (Object.keys(inputs) as Array<keyof CrashWatchInput>).some((key) => inputs[key] !== evaluatedInputs[key]);
   const controls: Array<{ key: keyof CrashWatchInput; label: string; note: string }> = [
     { key: "volatility", label: "Volatilidad implícita", note: "Nivel de estrés del escenario" },
     { key: "breadthDeterioration", label: "Deterioro de amplitud", note: "Menos activos sostienen el mercado" },
@@ -664,7 +674,7 @@ function CrashWatchView({ inputs, setInputs, result, onStatus }: {
   ];
   const applyPreset = (key: keyof typeof CRASH_WATCH_PRESETS, label: string) => {
     setInputs(CRASH_WATCH_PRESETS[key]);
-    onStatus(`${label} synthetic stress replay loaded. The result is an analytical simulation, not a forecast.`);
+    onStatus(`${label} synthetic stress replay loaded. Press Evaluate index now to update the result.`);
   };
   return <div className="pc-view-stack">
     <section className={`pc-crash-command is-${result.regime}`}>
@@ -682,6 +692,17 @@ function CrashWatchView({ inputs, setInputs, result, onStatus }: {
     <section className="pc-panel pc-crash-controls">
       <header><div><span>REPLAY LAB</span><h2>Probá regímenes y verificá cómo cambia el consenso</h2></div><div className="pc-crash-presets"><ActionButton onClick={() => applyPreset("normal", "Normal regime")}>Normal</ActionButton><ActionButton onClick={() => applyPreset("stress", "Stress buildup")}>Stress buildup</ActionButton><ActionButton tone="danger" onClick={() => applyPreset("crash", "Crash-like regime")}>Crash-like</ActionButton></div></header>
       <div className="pc-crash-signal-grid">{controls.map((control) => <label key={control.key}><span><b>{control.label}</b><small>{control.note}</small></span><output>{inputs[control.key]}</output><input type="range" min="0" max="100" value={inputs[control.key]} onChange={(event) => setInputs((current) => ({ ...current, [control.key]: Number(event.target.value) }))} /></label>)}</div>
+      <div className="pc-crash-actions">
+        <div><strong>{hasPendingChanges ? "CAMBIOS PENDIENTES" : "ÍNDICE EVALUADO"}</strong><p>{hasPendingChanges ? "Ajustaste las señales. El resultado superior conserva la última evaluación hasta que confirmes." : `Lectura actual: ${result.score}/100. Modificá las señales y evaluá nuevamente cuando quieras.`}</p></div>
+        <ActionButton tone="primary" onClick={onEvaluate}>Evaluar índice ahora</ActionButton>
+      </div>
+      <fieldset className="pc-crash-monitor" aria-describedby="crash-monitor-note">
+        <legend>Monitoreo por duración <span>PRÓXIMAMENTE</span></legend>
+        <label>Duración<input type="number" min="1" max="365" step="1" value={monitoringDuration} onChange={(event) => setMonitoringDuration(Math.min(365, Math.max(1, Number(event.target.value) || 1)))} /></label>
+        <label>Unidad<select value={monitoringUnit} onChange={(event) => setMonitoringUnit(event.target.value as typeof monitoringUnit)}><option value="hours">Horas</option><option value="days">Días</option><option value="weeks">Semanas</option></select></label>
+        <ActionButton disabled title="El monitoreo continuo todavía no está habilitado">Iniciar monitoreo</ActionButton>
+        <p id="crash-monitor-note">Podés dejar definida la duración. Por ahora este control no inicia tareas automáticas ni consulta datos en segundo plano.</p>
+      </fieldset>
       <p className="pc-method-note">Regla pública y determinística. Pesos: volatilidad 20%, amplitud 18%, crédito 18%, liquidez 16%, correlación 10%, macro 8% y crowding 10%. La cobertura está fijada en 65% por tratarse de un replay sintético y no puede aumentarse desde la interfaz. Un patrón elevado requiere cobertura ≥60% y al menos tres lentes por encima del umbral.</p>
     </section>
 

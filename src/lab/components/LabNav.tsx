@@ -15,6 +15,7 @@ const links = [
   ["Demo", "/lab/demo"],
   ["MVP Lab", "/lab/mvp"],
   ["Simulation", "/lab/simulation"],
+  ["Orbital", "/lab/orbital-simulation"],
   ["Companies", "/lab/companies"],
   ["Valuation", "/lab/valuation"],
   ["Methodology", "/lab/methodology"],

@@ -18,7 +18,7 @@ export default function LabHome() {
           <p className="lab-kicker">PUBLIC · LIMITED · INTERACTIVE</p>
           <h1>Explore how governed agents turn a thesis into <em>visible possibilities.</em></h1>
           <p>This public Lab uses four simplified agents, synthetic data and demonstrative quantitative models. It is not the complete architecture or the private local product.</p>
-          <div className="lab-actions"><a className="lab-button lab-button--primary" href="/lab/demo">Run Lab Simulation</a><a className="lab-button" href="/lab/mvp">Open MVP Validation Lab</a><a className="lab-button" href="/lab/simulation">Open Synthetic Airspace Lab</a><a className="lab-button" href="/lab/companies">Analyze a company</a><a className="lab-button" href="/lab/methodology">Read methodology</a></div>
+          <div className="lab-actions"><a className="lab-button lab-button--primary" href="/lab/demo">Run Lab Simulation</a><a className="lab-button" href="/lab/orbital-simulation">Launch Orbital Simulation</a><a className="lab-button" href="/lab/mvp">Open MVP Validation Lab</a><a className="lab-button" href="/lab/simulation">Open Synthetic Airspace Lab</a><a className="lab-button" href="/lab/companies">Analyze a company</a><a className="lab-button" href="/lab/methodology">Read methodology</a></div>
         </div>
         <aside className="lab-cinematic-metrics" aria-label="Public Lab scope"><div><strong>6–12</strong><span>SYNTHETIC OPPORTUNITIES</span></div><div><strong>04</strong><span>VISIBLE AGENTS</span></div><div><strong>{PUBLIC_MODEL_COUNT}</strong><span>PUBLIC MODELS</span></div></aside>
       </section>
